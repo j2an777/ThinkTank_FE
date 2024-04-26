@@ -8,6 +8,11 @@ export default defineConfig({
       jsxImportSource: '@emotion/react',
     }),
   ],
+  resolve: {
+    alias: {
+      '@': '/src', // src 디렉토리를 "@"로 매핑
+    },
+  },
 });
 
 /**

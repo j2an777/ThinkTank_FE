@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { colors } from '../../../styles/colorPalette';
+import { colors } from '@/styles/colorPalette';
 
 export const Label = styled.div<{ hasFocus: boolean }>`
   color: ${(props) => (props.hasFocus ? `${colors.yellow}` : `${colors.gray100}`)};
