@@ -1,10 +1,10 @@
 import { Icon, ShadowBox } from '../../shared';
 
-import * as s from './styles';
+import * as S from './styles';
 
 const TestCaseBox = () => {
   return (
-    <s.TestCaseContainer>
+    <S.TestCaseContainer>
       <div
         style={{
           display: 'flex',
@@ -15,7 +15,7 @@ const TestCaseBox = () => {
         <p>테스트 케이스</p> <Icon value="plus" />
       </div>
       <ShadowBox></ShadowBox>
-    </s.TestCaseContainer>
+    </S.TestCaseContainer>
   );
 };
 

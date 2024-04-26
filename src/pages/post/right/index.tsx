@@ -1,7 +1,7 @@
-import * as s from './styles';
+import * as S from './styles';
 
 const PostRight = () => {
-  return <s.Container>PostRight</s.Container>;
+  return <S.Container>PostRight</S.Container>;
 };
 
 export default PostRight;

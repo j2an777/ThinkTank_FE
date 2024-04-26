@@ -1,11 +1,11 @@
 import { CATEGORY } from '../../../consts/post';
 import { ShadowBox } from '../../shared';
 
-import * as s from './styles';
+import * as S from './styles';
 
 const DescriptionBox = () => {
   return (
-    <s.Container>
+    <S.Container>
       <select name="choice" id="">
         {CATEGORY.map(({ value, name }) => (
           <option value={value} key={value}>
@@ -17,7 +17,7 @@ const DescriptionBox = () => {
         <input type="text" />
         <textarea name="" id=""></textarea>
       </ShadowBox>
-    </s.Container>
+    </S.Container>
   );
 };
 

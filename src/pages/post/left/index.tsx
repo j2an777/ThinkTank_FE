@@ -1,12 +1,12 @@
 import { DescriptionBox, TestCaseBox } from '../../../components/post';
-import * as s from './styles';
+import * as S from './styles';
 
 const PostLeft = () => {
   return (
-    <s.Container>
+    <S.Container>
       <DescriptionBox />
       <TestCaseBox />
-    </s.Container>
+    </S.Container>
   );
 };
 
