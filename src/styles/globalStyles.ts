@@ -5,6 +5,11 @@ import { fontStyles } from './fonts';
 export default css`
   ${colorPalette}
   ${fontStyles}
+
+  :root {
+    --dimmed-zindex: 10;
+  }
+
   html,
   body,
   div,
