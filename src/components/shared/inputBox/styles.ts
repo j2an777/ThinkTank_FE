@@ -15,3 +15,8 @@ export const Input = styled.input<{ hasFocus: boolean }>`
     ${(props) => (props.hasFocus ? `${colors.yellow}` : `${colors.gray100}`)};
   outline: none;
 `;
+
+export const Error = styled.div`
+  position: absolute;
+  color: ${colors.red};
+`;
