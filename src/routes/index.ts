@@ -9,23 +9,23 @@ export const routers = [
     isProtected : false,
   },
   {
-    path: 'login',
+    path: '/login',
     component: LoginPage,
     isProtected : false,
   },
   {
-    path: 'signup',
+    path: '/signup',
     component: SignupPage,
     isProtected : false,
   },
   {
-    path: 'pm/:postId',
+    path: '/pm/:postId',
     component: MainPage,
     isProtected : true,
   },
   {
     // 유저 페이지 (컴포넌트 바꿀 것)
-    path: 'mp/:userId',
+    path: '/mp/:userId',
     component: MainPage,
     isProtected : true,
   },
