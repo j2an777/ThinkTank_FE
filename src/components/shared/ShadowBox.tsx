@@ -8,7 +8,7 @@ interface ShadowBoxProp {
 const ShadowBox = styled.div<ShadowBoxProp>`
   padding: ${({ padding = 20 }) => padding}px;
   height: ${({ height }) => height}px;
-  border-radius: 10px;
+  border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
