@@ -1,7 +1,7 @@
-import emotionStyled from "@emotion/styled";
+import styled from "@emotion/styled";
 import { colors } from "../../../styles/colorPalette";
 
-export const MlWrapper = emotionStyled.div`
+export const MlContainer = styled.div`
     width : auto;
     flex-grow : 1;
     height : 100%;
@@ -15,7 +15,7 @@ export const MlWrapper = emotionStyled.div`
     border-right : 1px solid ${colors.gray50};
 `;
 
-export const MlItemBox = emotionStyled.div`
+export const MlItemBox = styled.div`
     width : 100%;
     max-height : 500px;
     margin : 0;
@@ -28,7 +28,7 @@ export const MlItemBox = emotionStyled.div`
     gap : 30px;
 `;
 
-export const MlUser = emotionStyled.div`
+export const MlUserBlock = styled.div`
     width : 100%;
     height : 50px;
     margin : 0;
@@ -39,7 +39,7 @@ export const MlUser = emotionStyled.div`
     gap : 20px;
 `;
 
-export const MlProfile = emotionStyled.img`
+export const MlProfile = styled.img`
     width : 50px;
     height : 50px;
     object-fit : contain;
@@ -47,7 +47,7 @@ export const MlProfile = emotionStyled.img`
     border : 3px solid ${colors.gray};
 `;
 
-export const MlInfo = emotionStyled.div`
+export const MlInfo = styled.div`
     width : 100%;
     height : 100%;
     display : flex;
@@ -67,36 +67,7 @@ export const MlInfo = emotionStyled.div`
     }
 `;
 
-export const MlArticle = emotionStyled.div`
-    width : 100%;
-    height : 380px;
-    margin : 0;
-    padding : 20px;
-    box-sizing : border-box;
-    background-color : white;
-    box-shadow : 0px 0px 20px rgba(0, 0, 0, 0.1);
-    border-radius : 20px;
-    display : flex;
-    flex-direction : column;
-    justify-content : space-between;
-    gap : 10px;
-`;
-
-export const MlTitle = emotionStyled.p`
-    font-size : 28px;
-    font-weight : 500;
-    color : black;
-`;
-
-export const MlContent = emotionStyled.p`
-    width : 100%;
-    height : 200px;
-    font-size : 16px;
-    font-weight : 500;
-    color : black;
-`;
-
-export const MlData = emotionStyled.div`
+export const MlData = styled.div`
     width : 100%;
     height : 50px;
     margin : 0;
@@ -107,7 +78,7 @@ export const MlData = emotionStyled.div`
     gap : 15px;
 `;
 
-export const MlDataBox = emotionStyled.div`
+export const MlDataWrap = styled.div`
     width : auto;
     height : 100%;
     marign : 0;

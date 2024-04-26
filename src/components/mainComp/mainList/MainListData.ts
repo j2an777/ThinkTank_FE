@@ -1,4 +1,4 @@
-export const ListData = [
+export const listData = [
     {
         nickname : 'user1',
         createdAt: '2024-04-22',

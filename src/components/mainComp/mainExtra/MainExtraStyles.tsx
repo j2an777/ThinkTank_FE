@@ -1,8 +1,8 @@
-import emotionStyled from "@emotion/styled";
+import styled from "@emotion/styled";
 import { colors } from "../../../styles/colorPalette";
 
 
-export const MeWrapper = emotionStyled.div`
+export const MeContainer = styled.div`
     position : sticky;
     top : 0;
     left : 0;
@@ -18,7 +18,7 @@ export const MeWrapper = emotionStyled.div`
     gap : 30px;
 `;
 
-export const SearchBox = emotionStyled.div`
+export const SearchBox = styled.div`
     width : 100%;
     height : 40px;
     border-radius : 999px;
@@ -48,14 +48,14 @@ export const SearchBox = emotionStyled.div`
     }
 `;
 
-export const SearchImg = emotionStyled.svg`
+export const SearchImgBlock = styled.svg`
     width : 24px;
     height : 24px;
     object-fit : contain;
     fill : ${colors.gray};
 `;
 
-export const MeContainer = emotionStyled.div`
+export const MeBox = styled.div`
     width : 100%;
     height : auto;
     margin : 0 0 30px 0;
@@ -68,7 +68,7 @@ export const MeContainer = emotionStyled.div`
     gap : 20px;
 `;
 
-export const MeTitle = emotionStyled.div`
+export const MeTitleBlock = styled.div`
     width : 100%;
     display : flex;
     align-items : center;
@@ -91,7 +91,7 @@ export const MeTitle = emotionStyled.div`
     }
 `;
 
-export const MeContent = emotionStyled.div`
+export const MeContentBlock = styled.div`
     width : 100%;
     display : flex;
     flex-direction : column;

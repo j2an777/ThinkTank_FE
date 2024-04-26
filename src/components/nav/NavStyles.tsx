@@ -1,8 +1,8 @@
-import emotionStyled from "@emotion/styled";
+import styled from "@emotion/styled";
 import { colors } from "../../styles/colorPalette";
 
 
-export const NavWrapper = emotionStyled.div`
+export const NavContainer = styled.div`
     position : sticky;
     top : 0;
     left : 0;
@@ -18,7 +18,7 @@ export const NavWrapper = emotionStyled.div`
     gap : 50px;
 `;
 
-export const NavLogo = emotionStyled.div`
+export const NavLogoBox = styled.div`
     width : 100%;
     height : 40px;
     margin : 0;
@@ -34,7 +34,7 @@ export const NavLogo = emotionStyled.div`
     }
 `;
 
-export const NavItemBox = emotionStyled.div`
+export const NavItemBox = styled.div`
     width : 100%;
     height : auto;
     margin : 0;
@@ -47,7 +47,7 @@ export const NavItemBox = emotionStyled.div`
     background-color : white;
 `;
 
-export const NavItem = emotionStyled.div`
+export const NavItemBlock = styled.div`
     width : 100%;
     height : 50px;
     margin : 0;
@@ -78,7 +78,7 @@ export const NavItem = emotionStyled.div`
     }
 `;
 
-export const NavPostBtn = emotionStyled.button`
+export const NavPostBtn = styled.button`
     width : 100%;
     height : 60px;
     margin : 0;

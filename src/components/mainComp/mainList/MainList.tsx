@@ -1,43 +1,44 @@
-import { MlArticle, MlContent, MlData, MlDataBox, MlInfo, MlItemBox, MlProfile, MlTitle, MlUser, MlWrapper } from "./MainListStyles";
+import { MlContainer, MlData, MlDataWrap, MlInfo, MlItemBox, MlProfile, MlUserBlock } from "./MainListStyles";
 import Profile from '../../../assets/images/shared/user.svg';
 import Like from '../../../assets/images/shared/nolike.svg';
 import Comment from '../../../assets/images/shared/comment.svg';
 import Check from '../../../assets/images/shared/check.svg';
-import { ListData } from "./MainListData";
+import { listData } from "./mainListData";
+import { ArContent, ArTitle, ArticleBlock } from "../../shared/Article";
 
 const MainList = () => {
   return (
-    <MlWrapper>
-      {ListData.map((item, index) => (
+    <MlContainer>
+      {listData.map((item, index) => (
         <MlItemBox key={index}>
-          <MlUser>
+          <MlUserBlock>
             <MlProfile src={Profile}/>
             <MlInfo>
               <h3>{item.nickname}</h3>
               <p>{item.createdAt}</p>
             </MlInfo>
-          </MlUser>
-          <MlArticle>
-            <MlTitle>{item.title}</MlTitle>
-            <MlContent dangerouslySetInnerHTML={ item.content } />
+          </MlUserBlock>
+          <ArticleBlock>
+            <ArTitle>{item.title}</ArTitle>
+            <ArContent dangerouslySetInnerHTML={ item.content } />
             <MlData>
-              <MlDataBox>
+              <MlDataWrap>
                 <img src={Like} />
                 <p>{item.like}</p>
-              </MlDataBox>
-              <MlDataBox>
+              </MlDataWrap>
+              <MlDataWrap>
                 <img src={Comment} />
                 <p>{item.comment}</p>
-              </MlDataBox>
-              <MlDataBox>
+              </MlDataWrap>
+              <MlDataWrap>
                 <img src={Check} />
                 <p>{item.check}</p>
-              </MlDataBox>
+              </MlDataWrap>
             </MlData>
-          </MlArticle>
+          </ArticleBlock>
         </MlItemBox>
       ))}
-    </MlWrapper>
+    </MlContainer>
   )
 }
 
