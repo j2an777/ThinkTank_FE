@@ -1,7 +1,8 @@
 import * as S from './styles.ts';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { SignUp } from '../../../types/user.ts';
-import { InputBox } from '../index.ts';
+import { SignUp } from '@/types/user.ts';
+import { InputBox } from '../shared/index.ts';
+import Logo from '@/assets/Logo.tsx';
 
 export default function SignupForm() {
   const {
@@ -16,6 +17,7 @@ export default function SignupForm() {
 
   return (
     <S.ShadowBox>
+      <Logo />
       <div style={{ width: '70%' }}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputBox
@@ -31,26 +33,6 @@ export default function SignupForm() {
           />
           <S.Blank />
           <InputBox
-            {...register('username', {
-              required: '필수 응답 항목입니다.',
-              minLength: {
-                value: 4,
-                message: '아이디는 최소 4자 이상이어야 합니다.',
-              },
-              maxLength: {
-                value: 20,
-                message: '아이디는 최대 20자까지 허용됩니다.',
-              },
-              pattern: {
-                value: /^[A-Za-z0-9]+$/,
-                message: '아이디는 영문자와 숫자만 가능합니다.',
-              },
-            })}
-            label="아이디"
-            error={errors.username?.message}
-          />
-          <S.Blank />
-          <InputBox
             {...register('nickname', {
               required: '필수 응답 항목입니다.',
               minLength: {
@@ -58,8 +40,8 @@ export default function SignupForm() {
                 message: '닉네임은 최소 2자 이상이어야 합니다.',
               },
               maxLength: {
-                value: 30,
-                message: '닉네임은 최대 30자까지 허용됩니다.',
+                value: 10,
+                message: '닉네임은 최대 10자까지 허용됩니다.',
               },
             })}
             label="닉네임"
@@ -70,12 +52,17 @@ export default function SignupForm() {
             {...register('password', {
               required: '필수 응답 항목입니다.',
               minLength: {
-                value: 8,
-                message: '비밀번호는 최소 8자 이상이어야 합니다.',
+                value: 6,
+                message: '비밀번호는 최소 6자 이상이어야 합니다.',
+              },
+              maxLength: {
+                value: 20,
+                message: '비밀번호는 최대 20자까지 허용됩니다.',
               },
               pattern: {
-                value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
-                message: '비밀번호는 대문자, 소문자, 숫자 및 특수문자를 포함해야 합니다.',
+                value:
+                  /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[~!@#$%^&*_+=`|\(){}[\]:;"'<>,.?/-])$/,
+                message: '비밀번호는 영문, 숫자 및 특수문자를 모두 포함해야 합니다.',
               },
             })}
             label="비밀번호"
@@ -84,13 +71,13 @@ export default function SignupForm() {
           />
           <S.Blank />
           <InputBox
-            {...register('passwordConfirm', {
+            {...register('checkPassword', {
               validate: (value) =>
                 value === watch('password') || '비밀번호가 일치하지 않습니다.',
             })}
             label="비밀번호 확인"
             type="password"
-            error={errors.passwordConfirm?.message}
+            error={errors.checkPassword?.message}
           />
           <button style={{ cursor: 'pointer' }}>확인</button>
         </form>

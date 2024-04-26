@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-//import { colors } from '../../../styles/colorPalette';
+//import { colors } from '@/styles/colorPalette';
 
 // 임시 --> 추후 삭제
 export const ShadowBox = styled.div`
