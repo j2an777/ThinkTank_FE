@@ -1,9 +1,10 @@
 import * as S from './styles.ts';
-import { InputBox } from '../shared/index.ts';
+import { Icon, InputBox } from '../shared/index.ts';
 
 export default function OptionalForm() {
   return (
     <S.ShadowBox>
+      <Icon value='logo' />
       <div style={{ width: '70%' }}>
         <form>
           <InputBox label="깃허브" type="text" />
