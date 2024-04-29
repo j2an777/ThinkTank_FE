@@ -1,12 +1,14 @@
-import { AuthBackground } from '@/components/shared/index.ts';
+import { AuthBackground, ShadowBox } from '@/components/shared';
 import * as S from '@/components/shared/authBackground/styles.ts';
-import SignupForm from '@/components/signupForm';
+import SignupForm from '@/components/signup/signupForm';
 
 const SignupRequiredPage = () => {
   return (
     <S.Container>
       <AuthBackground />
-      <SignupForm />
+      <ShadowBox padding={50} height={850}>
+        <SignupForm />
+      </ShadowBox>
     </S.Container>
   );
 };
