@@ -1,33 +1,34 @@
-import HomeIcon from '../../assets/images/nav/home.svg';
-import SearchIcon from '../../assets/images/shared/search.svg';
-import FileIcon from '../../assets/images/nav/file.svg';
-import ProfileIcon from '../../assets/images/nav/profile.svg';
-import ThreeIcon from '../../assets/images/nav/threedot.svg';
+import { IconValues } from "../shared/Icon"
 
+interface NavItemsProps {
+    icon: IconValues;
+    label : string;
+    path : string;
+}
 
-export const navItems = [
+export const navItems: NavItemsProps[] = [
     {
-        icon: HomeIcon,
+        icon: 'home',
         label: 'Home',
         path : '/'
     },
     {
-        icon: SearchIcon,
+        icon: 'search',
         label: 'Search',
         path : '/'
     },
     {
-        icon: FileIcon,
+        icon: 'file',
         label: 'Problem',
-        path : '/'
+        path : '/post'
     },
     {
-        icon: ProfileIcon,
+        icon: 'profile',
         label: 'Profile',
         path : '/mp'
     },
     {
-        icon: ThreeIcon,
+        icon: 'threedot',
         label: 'Setting',
         path : '/'
     }

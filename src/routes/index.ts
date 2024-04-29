@@ -1,6 +1,5 @@
-import { LoginPage, MainPage } from '../pages';
+import { LoginPage, MainPage, PostPage, SignupOptionalPage, SignupRequiredPage } from '../pages';
 import ErrorPage from '../pages/error';
-import SignupPage from '../pages/signup';
 
 export const routers = [
   { 
@@ -14,16 +13,6 @@ export const routers = [
     isProtected : false,
   },
   {
-    path: '/signup',
-    component: SignupPage,
-    isProtected : false,
-  },
-  {
-    path: '/pm/:postId',
-    component: MainPage,
-    isProtected : true,
-  },
-  {
     // 유저 페이지 (컴포넌트 바꿀 것)
     path: '/mp/:userId',
     component: MainPage,
@@ -34,5 +23,25 @@ export const routers = [
     path: "*",
     component : ErrorPage,
     isProtected : false,
-  }
-];
+  },
+  {
+    path:'/signup/required',
+    component: SignupRequiredPage,
+    isProtected : false,
+  },
+  {
+    path: '/signup/optional',
+    component: SignupOptionalPage,
+    isProtected : false,
+  },
+  {
+    path: '/post',
+    component: PostPage,
+    isProtected : true,
+  },
+  {
+    path: '/post/:postId',
+    component: MainPage,
+    isProtected : true,
+  },
+]
