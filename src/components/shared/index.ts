@@ -6,3 +6,4 @@ export { default as ShadowBox } from './ShadowBox';
 export { default as Text } from './Text';
 export { default as CodeEditor } from './CodeEditor';
 export { default as Select } from './select';
+export { default as StyledButton } from './StyledButton';
