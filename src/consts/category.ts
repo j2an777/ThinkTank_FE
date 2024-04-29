@@ -1,4 +1,5 @@
 export const CATEGORY = [
+  { value: '', name: '알고리즘' },
   { value: 'Bubble Sort', name: '버블 정렬' },
   { value: 'Insertion Sort', name: '삽입 정렬' },
   { value: 'Selection Sort', name: '선택 정렬' },
@@ -30,4 +31,13 @@ export const CATEGORY = [
   { value: 'Convex Hull', name: '볼록 껍질' },
   { value: 'Line Segment Intersection', name: '선분 교차' },
   { value: 'Closest Pair of Points', name: '최근접 점 쌍' },
-] as const;
+];
+
+export type CategoryValues = (typeof CATEGORY)[number]['value'];
+
+type CategoryNames = (typeof CATEGORY)[number]['name'];
+
+export interface CategoryOption {
+  value: CategoryValues;
+  name: CategoryNames;
+}
