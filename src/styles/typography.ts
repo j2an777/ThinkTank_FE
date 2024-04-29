@@ -10,6 +10,9 @@ export const typographyMap = {
   t3: css`
     font-size: 20px;
   `,
+  t4: css`
+    font-size: 16px;
+  `,
 };
 
 export type Typograph = keyof typeof typographyMap;
