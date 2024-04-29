@@ -1,4 +1,11 @@
-import { LoginPage, MainPage, PostPage, SignupRequiredPage, SignupOptionalPage } from '../pages';
+import {
+  LoginPage,
+  MainPage,
+  PostPage,
+  SignupRequiredPage,
+  SignupOptionalPage,
+  MyPage,
+} from '../pages';
 
 export const routers = [
   { path: '/', component: MainPage },
@@ -6,4 +13,5 @@ export const routers = [
   { path: '/signup/required', component: SignupRequiredPage },
   { path: '/signup/optional', component: SignupOptionalPage },
   { path: '/post', component: PostPage },
+  { path: '/mypage', component: MyPage },
 ];
