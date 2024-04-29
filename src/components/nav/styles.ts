@@ -8,7 +8,6 @@ export const NavContainer = styled.div`
     left : 0;
     width : 400px;
     height : 100%;
-    margin : 0;
     padding : 50px 50px;
     box-sizing : border-box;
     display : flex;
@@ -21,8 +20,6 @@ export const NavContainer = styled.div`
 export const NavLogoBox = styled.div`
     width : 100%;
     height : 40px;
-    margin : 0;
-    padding : 0;
     display : flex;
     align-items : center;
     justify-content : center;
@@ -37,52 +34,48 @@ export const NavLogoBox = styled.div`
 export const NavItemBox = styled.div`
     width : 100%;
     height : auto;
-    margin : 0;
-    padding : 0;
     display : flex;
     flex-direction : column;
     align-items : center;
     justify-content : center;
     gap : 30px;
     background-color : white;
-`;
 
-export const NavItemBlock = styled.div`
-    width : 100%;
-    height : 50px;
-    margin : 0;
-    padding : 0 0 0 30px;
-    box-sizing : border-box;
-    display : flex;
-    align-items : center;
-    justify-content : flex-start;
-    gap : 20px;
-    transition : all 0.3s ease;
+    a {
+        text-decoration : none;
+        width : 100%;
+        height : 50px;
+        padding : 0 0 0 30px;
+        box-sizing : border-box;
+        display : flex;
+        align-items : center;
+        justify-content : flex-start;
+        gap : 20px;
+        transition : all 0.3s ease;
 
-    img {
-        width : 40px;
-        height : 40px;
-        object-fit : contain;
-    }
+        img {
+            width : 40px;
+            height : 40px;
+            object-fit : contain;
+        }
 
-    p {
-        font-family : 'pretendard', sans-serif;
-        font-size : 28px;
-        font-weight : 700;
-        color : black;
-    }
+        p {
+            font-family : 'pretendard', sans-serif;
+            font-size : 28px;
+            font-weight : 700;
+            color : black;
+        }
 
-    &:hover {
-        cursor : pointer;
-        background-color : ${colors.gray50};
+        &:hover {
+            cursor : pointer;
+            background-color : ${colors.gray50};
+        }
     }
 `;
 
 export const NavPostBtn = styled.button`
     width : 100%;
     height : 60px;
-    margin : 0;
-    padding : 0;
     display : flex;
     align-items : center;
     justify-content : center;

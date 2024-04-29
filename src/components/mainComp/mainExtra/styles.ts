@@ -8,7 +8,6 @@ export const MeContainer = styled.div`
     left : 0;
     width : 350px;
     height : 100%;
-    margin : 0;
     padding : 30px;
     box-sizing : border-box;
     display : flex;
@@ -26,7 +25,6 @@ export const SearchBox = styled.div`
     display : flex;
     align-items : center;
     justify-content : flex-start;
-    margin : 0;
     padding : 5px 15px;
     box-sizing : border-box;
 
@@ -74,8 +72,6 @@ export const MeTitleBlock = styled.div`
     align-items : center;
     justify-content : flex-start;
     gap : 10px;
-    margin : 0;
-    padding : 0;
 
     img {
         width : 28px;
@@ -102,7 +98,5 @@ export const MeContentBlock = styled.div`
         font-size : 18px;
         font-weight : 600;
         color : ${colors.gray300};
-        margin : 0;
-        padding : 0;
     }
 `;

@@ -1,7 +1,7 @@
-import emotionStyled from "@emotion/styled";
+import styled from "@emotion/styled";
 
 
-export const Wrapper = emotionStyled.div`
+export const MainContainer = styled.div`
     width : 100%;
     min-height : 100vh;
     display : flex;
