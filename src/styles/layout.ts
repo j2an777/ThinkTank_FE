@@ -8,4 +8,11 @@ export const layoutMap = {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
   `,
+
+  flexCenter: css`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  `,
 };
