@@ -1,11 +1,9 @@
 import * as S from './styles.ts';
 import { InputBox } from '../shared/index.ts';
-import Logo from '@/assets/Logo.tsx';
 
 export default function OptionalForm() {
   return (
     <S.ShadowBox>
-      <Logo />
       <div style={{ width: '70%' }}>
         <form>
           <InputBox label="깃허브" type="text" />
