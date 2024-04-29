@@ -7,5 +7,6 @@ export const layoutMap = {
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    background: white;
   `,
 };

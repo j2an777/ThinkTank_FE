@@ -13,4 +13,9 @@ export const fontStyles = css`
       url('../assets/fonts/Pretendard-Regular.otf') format('otf'),
       url('../assets/fonts/Pretendard-Regular.ttf') format('ttf');
   }
+
+  body {
+    font-family: 'Pretendard';
+    font-size: 18px;
+  }
 `;
