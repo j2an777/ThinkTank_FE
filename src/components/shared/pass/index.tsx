@@ -1,16 +1,18 @@
 import React from 'react'
-import { Container } from '../likes/styles'
+import { ActiveBox, Container } from '../likes/styles'
 import Icon from '../Icon'
 
 interface PassProps {
-    passes : number;
+    answerCount : number;
 }
 
-const Pass: React.FC<PassProps> = ({ passes }) => {
+const Pass: React.FC<PassProps> = ({ answerCount }) => {
   return (
     <Container>
+      <ActiveBox>
         <Icon value='check' />
-        <p>{passes}</p>
+      </ActiveBox>
+        <p>{ answerCount }</p>
     </Container>
   )
 }

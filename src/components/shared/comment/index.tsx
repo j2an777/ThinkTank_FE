@@ -1,16 +1,18 @@
 import React from 'react'
-import { Container } from '../likes/styles'
+import { ActiveBox, Container } from '../likes/styles'
 import Icon from '../Icon'
 
 interface CommentProps {
-    comments : number;
+    commentCount : number;
 }
 
-const Comment: React.FC<CommentProps> = ({ comments }) => {
+const Comment: React.FC<CommentProps> = ({ commentCount }) => {
   return (
     <Container>
+      <ActiveBox>
         <Icon value='comment' />
-        <p>{comments}</p>
+      </ActiveBox>
+        <p>{commentCount}</p>
     </Container>
   )
 }

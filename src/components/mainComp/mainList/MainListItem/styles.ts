@@ -50,12 +50,3 @@ export const MlInfoBlock = styled.div`
         color : ${colors.gray200};
     }
 `;
-
-export const MlDataBlock = styled.div`
-    width : 100%;
-    height : 50px;
-    display : flex;
-    align-items : center;
-    justify-content : flex-start;
-    gap : 15px;
-`;

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const ArticleBox = styled.div`
+export const ArticleContainer = styled.div`
     width : 100%;
     height : 380px;
     margin : 0;
@@ -15,16 +15,25 @@ export const ArticleBox = styled.div`
     gap : 10px;
 `;
 
-export const ArTitle = styled.p`
+export const ArTitleBlock = styled.p`
     font-size : 28px;
     font-weight : 500;
     color : black;
 `;
 
-export const ArContent = styled.p`
+export const ArContentBlock = styled.p`
     width : 100%;
     height : 200px;
     font-size : 16px;
     font-weight : 500;
     color : black;
+`;
+
+export const ArDataBlock = styled.div`
+    width : 100%;
+    height : 50px;
+    display : flex;
+    align-items : center;
+    justify-content : flex-start;
+    gap : 15px;
 `;
