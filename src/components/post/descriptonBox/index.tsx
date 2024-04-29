@@ -1,22 +1,19 @@
-import { CATEGORY } from '../../../consts/post';
-import { ShadowBox } from '../../shared';
+import { CATEGORY } from '@/consts/category';
+import { TextareaField } from '..';
+import { Line, Select } from '../../shared';
 
 import * as S from './styles';
 
 const DescriptionBox = () => {
   return (
     <S.Container>
-      <select name="choice" id="">
-        {CATEGORY.map(({ value, name }) => (
-          <option value={value} key={value}>
-            {name}
-          </option>
-        ))}
-      </select>
-      <ShadowBox>
-        <input type="text" />
-        <textarea name="" id=""></textarea>
-      </ShadowBox>
+      <Select optionData={CATEGORY} />
+      <S.ContentBox>
+        <S.Title type="text" placeholder="제목을 입력해주세요" required />
+        <TextareaField label="본문 내용" />
+        <Line />
+        <TextareaField label="조건 내용" />
+      </S.ContentBox>
     </S.Container>
   );
 };

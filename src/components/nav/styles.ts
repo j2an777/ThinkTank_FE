@@ -80,11 +80,14 @@ export const NavPostBtn = styled.button`
     align-items : center;
     justify-content : center;
     background-color : ${colors.yellow};
-    color : white;
     border : none;
     border-radius : 999px;
-    font-size : 36px;
-    font-weight : bold;
+
+    a {
+        color : white;
+        font-size : 36px;
+        font-weight : bold;
+    }
 
     &:hover {
         cursor: pointer;

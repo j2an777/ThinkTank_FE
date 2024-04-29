@@ -1,7 +1,7 @@
 import * as S from './styles.ts';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { SignUp } from '@/types/user.ts';
-import { Icon, InputBox } from '../shared/index.ts';
+import { InputBox } from '../shared/index.ts';
 
 export default function SignupForm() {
   const {
@@ -16,7 +16,6 @@ export default function SignupForm() {
 
   return (
     <S.ShadowBox>
-      <Icon value='logo' />
       <div style={{ width: '70%' }}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputBox

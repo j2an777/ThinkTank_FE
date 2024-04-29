@@ -5,9 +5,9 @@ import { fontStyles } from './fonts';
 export default css`
   ${colorPalette}
   ${fontStyles}
-
   :root {
     --dimmed-zindex: 10;
+    --select-zindex: 9;
   }
 
   html,

@@ -20,7 +20,9 @@ const Nav = () => {
                     </Link>
                 ))}
             </S.NavItemBox>
-            <S.NavPostBtn>Post</S.NavPostBtn>
+            <S.NavPostBtn>
+                <Link to="/post">Post</Link>
+            </S.NavPostBtn>
         </S.NavContainer>
     )
 }

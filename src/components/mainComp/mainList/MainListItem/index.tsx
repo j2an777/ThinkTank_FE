@@ -2,10 +2,10 @@ import { Icon } from "@/components/shared"
 
 import * as S from './styles';
 import Article from "@/components/shared/article";
-import { List } from "@/types/article";
+import { ArticleItem } from "@/types/article";
 
 interface ListItemProps {
-    listItem: List;
+    listItem: ArticleItem;
 }
 
 const MainListItem: React.FC<ListItemProps> = ({ listItem }) => {
@@ -14,14 +14,21 @@ const MainListItem: React.FC<ListItemProps> = ({ listItem }) => {
         <S.MltContainer>
             <S.MlUserBox>
                 {listItem.author.profileImage ? 
-                    <img src={listItem.author.profileImage} /> : <Icon value="profile" />
+                    <img src={listItem.author.profileImage} /> : <Icon value="user" />
                 }
                 <S.MlInfoBlock>
                     <h3>{listItem.author.nickName}</h3>
-                    <p>{listItem.article.createdAt}</p>
+                    <p>{listItem.createdAt}</p>
                 </S.MlInfoBlock>
             </S.MlUserBox>
-            <Article article={listItem.article} />
+            <Article 
+                postId={listItem.postId}
+                title={listItem.title}
+                content={listItem.content}
+                likeCount={listItem.likeCount}
+                likeType={listItem.likeType}
+                commentCount={listItem.commentCount}
+                answerCount={listItem.answerCount} />
         </S.MltContainer>
     )
 }

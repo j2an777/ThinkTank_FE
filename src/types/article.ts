@@ -16,29 +16,13 @@ export type ArticleItem = {
     likeCount: number;
     answerCount: number;
     likeType: boolean;
-}
-
-export type List = {
-    article: ArticleItem;
     author: Author;
 }
 
-export type Page = {
-    pageInfo: {
-        pageIndex: number;
-        done: boolean;
-    }
-}
-
-
-export type Item = {
-    nickname: string;
-    createdAt: string;
-    title : string;
-    content: {
-        __html: string;
-    };
-    like: number;
-    comment: number;
-    check: number;
-};
+// export type List = {
+//     posts: ArticleItem[],
+//     pageInfo?: {
+//         pageIndex: number;
+//         done: boolean;
+//     }
+// }

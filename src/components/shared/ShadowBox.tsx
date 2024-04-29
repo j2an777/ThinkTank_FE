@@ -1,3 +1,4 @@
+import { layoutMap } from '@/styles/layout';
 import styled from '@emotion/styled';
 
 interface ShadowBoxProp {
@@ -6,12 +7,9 @@ interface ShadowBoxProp {
 }
 
 const ShadowBox = styled.div<ShadowBoxProp>`
+  ${layoutMap.shadowBox}
   padding: ${({ padding = 20 }) => padding}px;
   height: ${({ height }) => height}px;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
 `;
 
 export default ShadowBox;

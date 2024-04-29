@@ -69,7 +69,7 @@ object형태의 type (대부분 정의는 interface 일부분만 type)
 
 ### 📦 Skills
 
-기술스택 선정 [이미지는 추합된 다음에 올려야지]
+![스크린샷 2024-04-29 오전 9 30 50(2)](https://github.com/Goorm-Lucky7/ThinkTank_FE/assets/83047601/ba2b9c2e-0b30-4d03-9e4f-c86980f2a171)
 
 ### 📦 파일구조 (아키텍쳐)
 
