@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const ArticleBlock = styled.div`
+export const ArticleBox = styled.div`
     width : 100%;
     height : 380px;
     margin : 0;

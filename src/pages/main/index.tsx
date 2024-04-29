@@ -1,15 +1,15 @@
 import MainExtra from "../../components/mainComp/mainExtra/MainExtra";
 import MainList from "../../components/mainComp/mainList/MainList";
 import Nav from "../../components/nav/Nav";
-import { Wrapper } from "./indexStyles";
+import { MainContainer } from "./styles";
 
 const MainPage = () => {
   return (
-    <Wrapper>
+    <MainContainer>
       <Nav />
       <MainList />
       <MainExtra />
-    </Wrapper>
+    </MainContainer>
   );
 };
 
