@@ -6,5 +6,6 @@ interface IconContainerProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const Container = styled.div<IconContainerProps>`
+  width: fit-content;
   transform: ${({ rotate }) => (rotate ? 'rotate(180deg)' : 'rotate(0deg)')};
 `;

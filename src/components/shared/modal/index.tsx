@@ -1,5 +1,6 @@
 import { ShadowBox, Text } from '..';
 import Dimmed from './Dimmed';
+
 import * as S from './styles';
 
 interface ModalProps {

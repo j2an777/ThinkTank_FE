@@ -14,6 +14,7 @@ export const Container = styled.div`
     overflow: scroll;
     overflow-x: hidden;
     z-index: var(--select-zindex);
+    background-color: white;
   }
 `;
 

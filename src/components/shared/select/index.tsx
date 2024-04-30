@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from 'react';
+import { ForwardedRef, MouseEvent, RefAttributes, forwardRef, useState } from 'react';
 import { CategoryOption, CategoryValues } from '../../../consts/category';
 
 import * as S from './styles';
@@ -6,12 +6,13 @@ import * as S from './styles';
 interface CategoryProps<T extends CategoryOption> {
   optionData: T[];
   type?: 'primary' | 'fill';
+  onChange?: (value: string) => void;
 }
 
-const Select = <T extends CategoryOption>({
-  optionData,
-  type = 'primary',
-}: CategoryProps<T>) => {
+const InnerSelect = <T extends CategoryOption>(
+  { optionData, type = 'primary', onChange }: CategoryProps<T>,
+  ref: ForwardedRef<HTMLSelectElement>,
+) => {
   const [isExpand, setIsExpand] = useState<boolean>(false);
   const [selected, setSelected] = useState<CategoryValues>(optionData[0].value);
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
@@ -29,6 +30,7 @@ const Select = <T extends CategoryOption>({
           const value = e.target.value as CategoryValues;
           setSelected(value);
         }}
+        ref={ref}
       >
         {optionData.length > 0 &&
           optionData.map(({ value, name }) => (
@@ -51,6 +53,7 @@ const Select = <T extends CategoryOption>({
                   onMouseDown={(e) => {
                     e.preventDefault();
                     setSelected(value);
+                    if (onChange) onChange(value);
                   }}
                 >
                   {name}
@@ -62,6 +65,14 @@ const Select = <T extends CategoryOption>({
     </S.Container>
   );
 };
+
+function fixedForwardRef<T, P = object>(
+  render: (props: P, ref: React.Ref<T>) => React.ReactNode,
+): (props: P & React.RefAttributes<T>) => React.ReactNode {
+  return forwardRef(render) as (props: P & RefAttributes<T>) => React.ReactNode;
+}
+
+const Select = fixedForwardRef(InnerSelect);
 
 export default Select;
 
