@@ -143,6 +143,7 @@ export default css`
     color: inherit;
     font: inherit;
     line-height: normal;
+    cursor: pointer;
   }
   a {
     color: inherit;

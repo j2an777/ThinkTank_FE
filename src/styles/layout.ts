@@ -9,4 +9,11 @@ export const layoutMap = {
     padding: 20px;
     background: white;
   `,
+
+  flexCenter: css`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  `,
 };

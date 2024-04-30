@@ -1,4 +1,4 @@
-import { LoginPage, MainPage, PostPage, SignupOptionalPage, SignupRequiredPage } from '../pages';
+import { LoginPage, MainPage, PostPage, SignupOptionalPage, SignupRequiredPage, MyPage } from '../pages';
 import ErrorPage from '../pages/error';
 
 export const routers = [
@@ -42,6 +42,11 @@ export const routers = [
   {
     path: '/post/:postId',
     component: MainPage,
+    isProtected : true,
+  },
+  {
+    path: '/mypage',
+    component: MyPage,
     isProtected : true,
   },
 ]
