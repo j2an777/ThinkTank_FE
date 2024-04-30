@@ -16,4 +16,13 @@ export const layoutMap = {
     justify-content: center;
     align-items: center;
   `,
+
+  styledButton: css`
+    padding: 15px;
+    width: 100%;
+    border-radius: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `,
 };

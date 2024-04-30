@@ -3,6 +3,8 @@ import { colors } from '@/styles/colorPalette';
 
 interface ButtonProp {
   width?: string;
+  background?: string;
+  color?: string;
 }
 
 const StyledButton = styled.button<ButtonProp>`
@@ -12,11 +14,10 @@ const StyledButton = styled.button<ButtonProp>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${colors.yellow};
-  color: white;
+  background: ${({ background }) => background || colors.yellow};
+  color: ${({ color }) => color || 'white'};
   font-size: 20px;
   font-weight: 700;
-  cursor: pointer;
 `;
 
 export default StyledButton;
