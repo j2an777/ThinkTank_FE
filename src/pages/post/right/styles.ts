@@ -11,9 +11,8 @@ export const Container = styled.div`
 `;
 
 export const IconCss = css`
-  display: flex;
-  justify-content: end;
   margin-bottom: 15px;
+  margin-left: auto;
 `;
 
 export const testButton = css`

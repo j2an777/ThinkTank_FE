@@ -1,12 +1,14 @@
 import PostLeft from './left';
 import PostRight from './right';
 
+import * as S from './styles';
+
 const PostPage = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
+    <S.Container>
       <PostLeft />
       <PostRight />
-    </div>
+    </S.Container>
   );
 };
 
