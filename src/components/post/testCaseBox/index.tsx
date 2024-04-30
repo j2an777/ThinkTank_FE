@@ -1,35 +1,66 @@
-import { useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { Icon, Text } from '../../shared';
 
 import * as S from './styles';
+import { postFormStore } from '@/stores/post';
+import { TestCase } from '@/types/post';
 
-const defalutValue = [{ parameters: '1234', return: '123' }];
+const defalutValue = [{ example: '', return: '' }];
 
 const TestCaseBox = () => {
-  const [testCases, setTestCases] =
-    useState<{ parameters: string; return: string }[]>(defalutValue);
+  const updatePostForm = postFormStore((state) => state.updatePostForm);
+  const [testCase, setTestCases] = useState<TestCase[]>(defalutValue);
+  useEffect(() => {
+    updatePostForm({ testCase });
+  }, [testCase, updatePostForm]);
+  const handleChange = ({
+    index,
+    event,
+  }: {
+    index: number;
+    event: ChangeEvent<HTMLTextAreaElement>;
+  }) => {
+    const { value, name } = event.target;
+    const updateTestCase = testCase.map((testCase, i) => {
+      if (index === i) {
+        return { ...testCase, [name]: value };
+      }
+      return testCase;
+    });
+    console.log(updateTestCase);
+    // setTestCases(updateTestCase);
+    updatePostForm({ testCase: updateTestCase });
+  };
   return (
     <S.TestCaseContainer>
       <S.TitleBox>
         <Text typography="t2">테스트 케이스</Text>
         <Icon
           value="plus"
-          onClick={() =>
-            setTestCases((prev) => [...prev, { parameters: '', return: '' }])
-          }
+          onClick={() => setTestCases((prev) => [...prev, { example: '', return: '' }])}
         />
       </S.TitleBox>
       <S.ContentBox>
-        <Text>Parameters</Text>
-        <Text>Return</Text>
+        <Text>Example</Text>
         <S.TestBlock>
-          {testCases.map((_, index) => (
-            <input key={`parameters-${index}`} type="text" />
+          {testCase.map((testCase, index) => (
+            <textarea
+              key={`parameters-${index}`}
+              name="example"
+              value={testCase.example}
+              onChange={(event) => handleChange({ index, event })}
+            />
           ))}
         </S.TestBlock>
+        <Text>Return</Text>
         <S.TestBlock>
-          {testCases.map((_, index) => (
-            <input key={`return-${index}`} type="text" />
+          {testCase.map((testCase, index) => (
+            <textarea
+              key={`return-${index}`}
+              name="return"
+              value={testCase.return}
+              onChange={(event) => handleChange({ index, event })}
+            />
           ))}
         </S.TestBlock>
       </S.ContentBox>

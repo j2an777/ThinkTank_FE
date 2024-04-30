@@ -1,12 +1,14 @@
 import * as S from './styles';
-import { useModalContext } from '../../../contexts/ModalContext';
+import { useModalContext } from '@/contexts/ModalContext';
 import { CodeBox } from '@/components/post';
 import { Icon } from '@/components/shared';
 import { useNavigate } from 'react-router-dom';
+import { postFormStore } from '@/stores/post';
 
 const PostRight = () => {
   const navigate = useNavigate();
   const { open } = useModalContext();
+  const postForm = postFormStore((state) => state.postForm);
   return (
     <S.Container>
       <Icon
@@ -26,7 +28,9 @@ const PostRight = () => {
         onClick={() =>
           open({
             title: '게시글을 올리겠습니까?',
-            onButtonClick: () => console.log('hi'),
+            onButtonClick: () => {
+              console.log(postForm);
+            },
             hasCancelButton: true,
             buttonLabel: '확인',
           })
