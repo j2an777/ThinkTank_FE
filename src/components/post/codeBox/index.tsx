@@ -13,7 +13,7 @@ const CodeBox = () => {
     <S.Container>
       <S.LanguageBox>
         <Text typography="t4">언어</Text>
-        <Select optionData={LANGUAGE} type="fill" onChnage={handleChangeSelect} />
+        <Select optionData={LANGUAGE} type="fill" onChange={handleChangeSelect} />
       </S.LanguageBox>
       <CodeEditor language={postForm.language} />
     </S.Container>

@@ -12,7 +12,7 @@ const DescriptionBox = () => {
   };
   return (
     <S.Container>
-      <Select optionData={CATEGORY} onChnage={handleChangeSelect} />
+      <Select optionData={CATEGORY} onChange={handleChangeSelect} />
       <S.ContentBox>
         <S.Title
           type="text"

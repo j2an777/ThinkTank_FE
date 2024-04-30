@@ -6,11 +6,11 @@ import * as S from './styles';
 interface CategoryProps<T extends CategoryOption> {
   optionData: T[];
   type?: 'primary' | 'fill';
-  onChnage?: (value: string) => void;
+  onChange?: (value: string) => void;
 }
 
 const InnerSelect = <T extends CategoryOption>(
-  { optionData, type = 'primary', onChnage }: CategoryProps<T>,
+  { optionData, type = 'primary', onChange }: CategoryProps<T>,
   ref: ForwardedRef<HTMLSelectElement>,
 ) => {
   const [isExpand, setIsExpand] = useState<boolean>(false);
@@ -53,7 +53,7 @@ const InnerSelect = <T extends CategoryOption>(
                   onMouseDown={(e) => {
                     e.preventDefault();
                     setSelected(value);
-                    if (onChnage) onChnage(value);
+                    if (onChange) onChange(value);
                   }}
                 >
                   {name}
