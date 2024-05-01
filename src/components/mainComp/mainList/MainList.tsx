@@ -1,6 +1,6 @@
 import * as S from './styles';
-import MainListItem from "./MainListItem";
-import { listData } from './mainListData';
+import MainListItem from './MainListItem';
+import { listData } from './MainListData';
 
 const MainList = () => {
   // const [articles, setArticles] = useState([]);
@@ -31,7 +31,7 @@ const MainList = () => {
         <MainListItem key={index} listItem={item} />
       ))}
     </S.MlContainer>
-  )
-}
+  );
+};
 
 export default MainList;

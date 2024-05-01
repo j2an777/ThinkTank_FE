@@ -1,20 +1,20 @@
-import React from 'react'
-import { ActiveBox, Container } from '../likes/styles'
-import Icon from '../Icon'
+import React from 'react';
+import { ActiveBox, Container } from '../likes/styles';
+import { Icon } from '..';
 
 interface PassProps {
-    answerCount : number;
+  answerCount: number;
 }
 
 const Pass: React.FC<PassProps> = ({ answerCount }) => {
   return (
     <Container>
       <ActiveBox>
-        <Icon value='check' />
+        <Icon value="check" />
       </ActiveBox>
-        <p>{ answerCount }</p>
+      <p>{answerCount}</p>
     </Container>
-  )
-}
+  );
+};
 
-export default Pass
+export default Pass;
