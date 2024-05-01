@@ -5,7 +5,7 @@ import useSetFormData from '@/hooks/post/useSetFormData';
 
 import * as S from './styles';
 
-const DescriptionBox = () => {
+const PostDescBox = () => {
   const { postForm, handleChange, updatePostForm } = useSetFormData();
   const handleChangeSelect = (value: string) => {
     updatePostForm({ category: value });
@@ -39,4 +39,4 @@ const DescriptionBox = () => {
   );
 };
 
-export default DescriptionBox;
+export default PostDescBox;
