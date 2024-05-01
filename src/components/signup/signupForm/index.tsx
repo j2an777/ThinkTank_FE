@@ -1,10 +1,20 @@
 import * as S from './styles.ts';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { SignUp } from '@/types/user.ts';
 import { StyledButton, Icon, InputBox } from '@/components/shared';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useSignupStore } from '@/stores/signupStore';
+
+interface SignUp {
+  email: string;
+  nickname: string;
+  password: string;
+  checkPassword: string;
+}
 
 const SignupForm = () => {
+  const navigate = useNavigate();
+  const setRequiredData = useSignupStore((state) => state.setRequiredData);
+
   const {
     register,
     handleSubmit,
@@ -13,7 +23,10 @@ const SignupForm = () => {
   } = useForm<SignUp>({
     mode: 'onChange',
   });
-  const onSubmit: SubmitHandler<SignUp> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<SignUp> = (data) => {
+    setRequiredData(data.email, data.password, data.nickname);
+    navigate('/signup/optional');
+  };
 
   return (
     <S.Container>
@@ -78,11 +91,9 @@ const SignupForm = () => {
           type="password"
           error={errors.checkPassword?.message}
         />
-        <Link to="/signup/optional">
-          <StyledButton width={'100%'} style={{ marginTop: '80px' }}>
-            확인
-          </StyledButton>
-        </Link>
+        <StyledButton width={'100%'} style={{ marginTop: '80px' }}>
+          확인
+        </StyledButton>
       </S.Form>
     </S.Container>
   );

@@ -3,12 +3,18 @@ import { InputBox, StyledButton, Icon } from '@/components/shared';
 import { useState } from 'react';
 import { useModalContext } from '@/contexts/ModalContext.tsx';
 import { useNavigate } from 'react-router-dom';
+import useForm from '@/hooks/useForm.ts';
+import { useSignupStore } from '@/stores/signupStore';
 
 const OptionalForm = () => {
+  const navigate = useNavigate();
+  const { open } = useModalContext();
   const [isFocus, setIsFocus] = useState(false);
   const [text, setText] = useState('');
-  const { open } = useModalContext();
-  const navigate = useNavigate();
+  const { value: github, onChange: onChangeGithub } = useForm();
+  const { value: blog, onChange: onChangeBlog } = useForm();
+  const setOptionalData = useSignupStore((state) => state.setOptionalData);
+  const submitSignup = useSignupStore((state) => state.submitSignup);
 
   const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (event.target.value.length <= 150) {
@@ -16,13 +22,31 @@ const OptionalForm = () => {
     }
   };
 
+  const handleSubmit = async () => {
+    setOptionalData(github, blog, text);
+    await submitSignup();
+    navigate('/login');
+  };
+
   return (
     <S.Container>
       <Icon value="logo" />
-      <S.Form>
-        <InputBox label="깃허브" type="text" placeholder="선택 입력 사항 입니다." />
+      <S.Inputs>
+        <InputBox
+          label="깃허브"
+          type="text"
+          placeholder="선택 입력 사항 입니다."
+          value={github}
+          onChange={onChangeGithub}
+        />
         <S.Blank />
-        <InputBox label="블로그" type="text" placeholder="선택 입력 사항 입니다." />
+        <InputBox
+          label="블로그"
+          type="text"
+          placeholder="선택 입력 사항 입니다."
+          value={blog}
+          onChange={onChangeBlog}
+        />
         <S.Blank />
         <S.Label isFocus={isFocus}>자기소개</S.Label>
         <S.TextArea
@@ -34,14 +58,14 @@ const OptionalForm = () => {
           onChange={handleTextChange}
         />
         <S.TextLimit>{`${text.length}/150 자`}</S.TextLimit>
-      </S.Form>
+      </S.Inputs>
       <StyledButton
         width="100%"
         onClick={() =>
           open({
             title: '회원가입이 완료되었습니다.',
             onButtonClick: () => {
-              navigate('/login');
+              handleSubmit();
             },
             hasCancelButton: true,
             buttonLabel: '확인',
