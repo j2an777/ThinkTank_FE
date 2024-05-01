@@ -75,13 +75,138 @@ export const listData = [
                     nickName: "ccc",
                     profileImage: ""
                 }
-            }, 
+            },
+            {
+                postId: 4,
+                title: "A / B를 구하시오.",
+                category: "greedy",
+                createdAt: "2024-04-25",
+                content: {
+                    __html: `
+                        <p>두 정수 A와 B를 입력받은 다음, A / B를 출력하는 프로그램을 작성하시오.</p>
+                        <br/>
+                        <p>입력</p>
+                        <p>첫째 줄에 A와 B가 주어진다.</p>
+                        <br/>
+                        <p>출력</p>
+                        <p>첫째 줄에 A/B를 출력한다.</p>
+                    `},
+                commentCount: 7,
+                likeCount: 24,
+                answerCount: 74,
+                likeType: false,
+                author : {
+                    userId: "3",
+                    nickName: "ccc",
+                    profileImage: ""
+                }
+            },
+            {
+                postId: 5,
+                title: "A / B를 구하시오.",
+                category: "greedy",
+                createdAt: "2024-04-25",
+                content: {
+                    __html: `
+                        <p>두 정수 A와 B를 입력받은 다음, A / B를 출력하는 프로그램을 작성하시오.</p>
+                        <br/>
+                        <p>입력</p>
+                        <p>첫째 줄에 A와 B가 주어진다.</p>
+                        <br/>
+                        <p>출력</p>
+                        <p>첫째 줄에 A/B를 출력한다.</p>
+                    `},
+                commentCount: 7,
+                likeCount: 24,
+                answerCount: 74,
+                likeType: false,
+                author : {
+                    userId: "3",
+                    nickName: "ccc",
+                    profileImage: ""
+                }
+            },
+            {
+                postId: 6,
+                title: "A / B를 구하시오.",
+                category: "greedy",
+                createdAt: "2024-04-25",
+                content: {
+                    __html: `
+                        <p>두 정수 A와 B를 입력받은 다음, A / B를 출력하는 프로그램을 작성하시오.</p>
+                        <br/>
+                        <p>입력</p>
+                        <p>첫째 줄에 A와 B가 주어진다.</p>
+                        <br/>
+                        <p>출력</p>
+                        <p>첫째 줄에 A/B를 출력한다.</p>
+                    `},
+                commentCount: 7,
+                likeCount: 24,
+                answerCount: 74,
+                likeType: false,
+                author : {
+                    userId: "3",
+                    nickName: "ccc",
+                    profileImage: ""
+                }
+            },
+            {
+                postId: 7,
+                title: "A / B를 구하시오.",
+                category: "greedy",
+                createdAt: "2024-04-25",
+                content: {
+                    __html: `
+                        <p>두 정수 A와 B를 입력받은 다음, A / B를 출력하는 프로그램을 작성하시오.</p>
+                        <br/>
+                        <p>입력</p>
+                        <p>첫째 줄에 A와 B가 주어진다.</p>
+                        <br/>
+                        <p>출력</p>
+                        <p>첫째 줄에 A/B를 출력한다.</p>
+                    `},
+                commentCount: 7,
+                likeCount: 24,
+                answerCount: 74,
+                likeType: false,
+                author : {
+                    userId: "3",
+                    nickName: "ccc",
+                    profileImage: ""
+                }
+            },
+            {
+                postId: 8,
+                title: "A / B를 구하시오.",
+                category: "greedy",
+                createdAt: "2024-04-25",
+                content: {
+                    __html: `
+                        <p>두 정수 A와 B를 입력받은 다음, A / B를 출력하는 프로그램을 작성하시오.</p>
+                        <br/>
+                        <p>입력</p>
+                        <p>첫째 줄에 A와 B가 주어진다.</p>
+                        <br/>
+                        <p>출력</p>
+                        <p>첫째 줄에 A/B를 출력한다.</p>
+                    `},
+                commentCount: 7,
+                likeCount: 24,
+                answerCount: 74,
+                likeType: false,
+                author : {
+                    userId: "3",
+                    nickName: "ccc",
+                    profileImage: ""
+                }
+            },
         ]
     },
     {
         pageInfo: {
-            pageIndex: 0,
-            done: true
+            pageIndex: 0, // 현재 페이지
+            done: true // 마지막 페이지 여부
         }
     }
 ]

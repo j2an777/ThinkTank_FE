@@ -10,7 +10,7 @@ const updateLike = async (postId: number): Promise<void> => {
             postId
         }, {
             headers: {
-                Authorization: `Bearer ${accessToken}`,
+                Authorization: `Bearer as ${accessToken}`,
             }
         });
         console.log('성공', response);
