@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { formBaseCss } from '../descriptonBox/styles';
+import { formBaseCss } from '../postDescBox/styles';
 import { colors } from '@/styles/colorPalette';
 
 export const Container = styled.div<{ hasFocus: boolean }>`
@@ -16,5 +16,6 @@ export const Container = styled.div<{ hasFocus: boolean }>`
     ${formBaseCss}
     resize: none;
     flex: 1;
+    font-size: 14px;
   }
 `;
