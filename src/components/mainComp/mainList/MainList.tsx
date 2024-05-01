@@ -9,7 +9,16 @@ const MainList = () => {
   const [pageInfo, setPageInfo] = useState<{ pageIndex: number; done: boolean }>();
 
   useEffect(() => {
-      // 실제 데이터 요청 구문으로 바꿔야함.
+      // listData가 아닌 실제 데이터 요청 받은 객체로 해야함.
+      // const fetchData = async () => {
+      // const accessToken = localStorage.getItem('accessToken')
+      //
+      // try {
+      //   const response = await axios.get('/api/posts', {
+      //     headers: {
+      //       Authorization: `Bearer as ${accessToken}`,
+      //     }
+      //   });
       const posts = listData[0].posts;
       const pageInfo = listData[1]?.pageInfo;
 
@@ -19,6 +28,12 @@ const MainList = () => {
       if (pageInfo) {
         setPageInfo(pageInfo);
       }
+      //   setArticles(response.data.posts);
+      // } catch (error) {
+      //   console.error(error);
+      // }
+      //   };
+      // fetchData();
   }, []);
 
   return (
