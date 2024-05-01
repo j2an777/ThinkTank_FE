@@ -11,6 +11,8 @@ export const useLike = (postId: number, initialLikeCount: number, initialLikeTyp
     }, [initialLikeType]);
 
     const toggleLike = useCallback(async () => {
+
+        // 선 렌더링 (animation, 좋아요 변화 반영)
         const newLikeType = !likeType;
         setLikeType(newLikeType);
         setLikeCount((prev) => (newLikeType ? prev + 1 : prev - 1));
@@ -20,6 +22,7 @@ export const useLike = (postId: number, initialLikeCount: number, initialLikeTyp
           setJellyAnimation((prev) => !prev);
         }, 100);
     
+        // 상태 업데이트
         try {
           const accessToken = localStorage.getItem('access_token');
           
