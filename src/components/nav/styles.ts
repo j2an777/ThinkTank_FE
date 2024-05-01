@@ -60,7 +60,6 @@ export const NavItemBox = styled.div`
         }
 
         p {
-            font-family : 'pretendard', sans-serif;
             font-size : 28px;
             font-weight : 700;
             color : black;

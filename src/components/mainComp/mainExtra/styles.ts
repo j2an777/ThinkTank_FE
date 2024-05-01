@@ -80,7 +80,6 @@ export const MeTitleBlock = styled.div`
     }
 
     p {
-        font-family : 'pretendard';
         font-size : 28px;
         font-weight : 700;
         color : black;
@@ -94,7 +93,6 @@ export const MeContentBlock = styled.div`
     gap : 10px;
 
     p {
-        font-family : 'pretendard';
         font-size : 18px;
         font-weight : 600;
         color : ${colors.gray300};
