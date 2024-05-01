@@ -19,10 +19,11 @@ export type ArticleItem = {
     author: Author;
 }
 
-// export type List = {
-//     posts: ArticleItem[],
-//     pageInfo?: {
-//         pageIndex: number;
-//         done: boolean;
-//     }
-// }
+export type List = {
+    posts: ArticleItem[],
+    // 인피니티 스크롤
+    pageInfo?: {
+        pageIndex: number;
+        done: boolean;
+    }
+}
