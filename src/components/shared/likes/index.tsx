@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
-import Icon from "../Icon"
 import { ActiveBox, Container } from "./styles"
 import { updateLike } from "@/apis";
+import Icon from "../icon";
 
 interface LikesProps {
     postId: number;

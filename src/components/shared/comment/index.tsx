@@ -1,6 +1,6 @@
 import React from 'react'
 import { ActiveBox, Container } from '../likes/styles'
-import Icon from '../Icon'
+import Icon from '../icon';
 
 interface CommentProps {
     commentCount : number;

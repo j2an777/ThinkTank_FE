@@ -16,7 +16,7 @@ const MainListItem: React.FC<ListItemProps> = ({ listItem }) => {
         <S.MltContainer>
             <S.MlUserBox>
                 {author.profileImage ? 
-                    <img src={author.profileImage} /> : <Icon value="user" />
+                    <img src={author.profileImage} /> : <Icon value="user" size={50}/>
                 }
                 <S.MlInfoBlock>
                     <h3>{author.nickName}</h3>
