@@ -9,26 +9,21 @@ interface ListItemProps {
 }
 
 const MainListItem: React.FC<ListItemProps> = ({ listItem }) => {
+    // 구조 분해 할당으로 author과 그 외 나머지 정보들로 분리
+    const { author, ...articleDetails} = listItem;
 
     return (
         <S.MltContainer>
             <S.MlUserBox>
-                {listItem.author.profileImage ? 
-                    <img src={listItem.author.profileImage} /> : <Icon value="user" />
+                {author.profileImage ? 
+                    <img src={author.profileImage} /> : <Icon value="user" />
                 }
                 <S.MlInfoBlock>
-                    <h3>{listItem.author.nickName}</h3>
+                    <h3>{author.nickName}</h3>
                     <p>{listItem.createdAt}</p>
                 </S.MlInfoBlock>
             </S.MlUserBox>
-            <Article 
-                postId={listItem.postId}
-                title={listItem.title}
-                content={listItem.content}
-                likeCount={listItem.likeCount}
-                likeType={listItem.likeType}
-                commentCount={listItem.commentCount}
-                answerCount={listItem.answerCount} />
+            <Article article={articleDetails} />
         </S.MltContainer>
     )
 }

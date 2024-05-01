@@ -1,30 +1,22 @@
+import { ArticleItem } from '@/types/article';
 import Comment from '../comment';
 import Likes from '../likes';
 import Pass from '../pass';
 import * as S from './styles';
 
-interface ArticleProps {
-    postId: number;
-    title: string;
-    content: {
-        __html: string;
-    };
-    likeCount: number;
-    likeType: boolean;
-    commentCount: number;
-    answerCount: number;
-}
+// ArticleItem 타입에서 author 제외한 타입 정의
+type ArticleProps = Omit<ArticleItem, 'author'>;
 
 // 게시글 컴포넌트 (마이페이지에서 활용 가능)
-const Article: React.FC<ArticleProps> = ({ postId, title, content, likeCount, likeType, commentCount, answerCount }) => {
+const Article: React.FC<{ article: ArticleProps }> = ({ article }) => {
     return (
         <S.ArticleContainer>
-            <S.ArTitleBlock>{ title }</S.ArTitleBlock>
-            <S.ArContentBlock dangerouslySetInnerHTML={ content } />
+            <S.ArTitleBlock>{ article.title }</S.ArTitleBlock>
+            <S.ArContentBlock dangerouslySetInnerHTML={ article.content } />
             <S.ArDataBlock>
-                <Likes likeCount={ likeCount } likeType={ likeType } postId={ postId } />
-                <Comment commentCount={ commentCount } />
-                <Pass answerCount={ answerCount } />
+                <Likes likeCount={ article.likeCount } likeType={ article.likeType } postId={ article.postId } />
+                <Comment commentCount={ article.commentCount } />
+                <Pass answerCount={ article.answerCount } />
             </S.ArDataBlock>
         </S.ArticleContainer>
     )
