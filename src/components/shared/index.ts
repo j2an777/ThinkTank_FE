@@ -7,6 +7,4 @@ export { default as Text } from './Text';
 export { default as CodeEditor } from './CodeEditor';
 export { default as Select } from './select';
 export { default as StyledButton } from './StyledButton';
-export { default as Likes } from './likes';
-export { default as Comments} from './comment';
-export { default as Passes} from './pass';
+export { default as Status } from './infoStatus';
