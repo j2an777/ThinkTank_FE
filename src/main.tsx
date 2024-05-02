@@ -4,12 +4,17 @@ import App from './App.tsx';
 import { Global } from '@emotion/react';
 import globalStyles from './styles/globalStyles.ts';
 import { ModalContextProvider } from './contexts/ModalContext.tsx';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Global styles={globalStyles} />
-    <ModalContextProvider>
-      <App />
-    </ModalContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <ModalContextProvider>
+        <App />
+      </ModalContextProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
 );
