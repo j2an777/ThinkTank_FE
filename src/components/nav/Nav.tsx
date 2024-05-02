@@ -15,7 +15,7 @@ const Nav = () => {
             <S.NavItemBox>
                 {navItems.map(item => (
                     <Link to={item.path} key={item.label}>
-                        <Icon value={item.icon} size={40} />
+                        <Icon value={item.icon} size={48} />
                         <p>{item.label}</p>
                     </Link>
                 ))}

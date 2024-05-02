@@ -15,6 +15,12 @@ export const ArticleContainer = styled.div`
     gap : 10px;
 `;
 
+export const ArTopBox = styled.div`
+    display : flex;
+    align-items : center;
+    justify-content : space-between;
+`;
+
 export const ArTitleBlock = styled.p`
     font-size : 28px;
     font-weight : 500;
