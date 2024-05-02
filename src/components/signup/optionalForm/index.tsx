@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useModalContext } from '@/contexts/ModalContext.tsx';
 import { useNavigate } from 'react-router-dom';
 import useForm from '@/hooks/useForm.ts';
-import { useSignupStore } from '@/stores/signupStore';
 
 const OptionalForm = () => {
   const navigate = useNavigate();
@@ -13,8 +12,6 @@ const OptionalForm = () => {
   const [text, setText] = useState('');
   const { value: github, onChange: onChangeGithub } = useForm();
   const { value: blog, onChange: onChangeBlog } = useForm();
-  const setOptionalData = useSignupStore((state) => state.setOptionalData);
-  const submitSignup = useSignupStore((state) => state.submitSignup);
 
   const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (event.target.value.length <= 150) {
@@ -23,8 +20,6 @@ const OptionalForm = () => {
   };
 
   const handleSubmit = async () => {
-    setOptionalData(github, blog, text);
-    await submitSignup();
     navigate('/login');
   };
 

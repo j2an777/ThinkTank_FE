@@ -2,30 +2,47 @@ import * as S from './styles.ts';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { StyledButton, Icon, InputBox } from '@/components/shared';
 import { useNavigate } from 'react-router-dom';
-import { useSignupStore } from '@/stores/signupStore';
-
-interface SignUp {
-  email: string;
-  nickname: string;
-  password: string;
-  checkPassword: string;
-}
+//import { useSignupStore } from '@/stores/signupStore';
+import { postSignup } from '@/apis/AuthAPI.ts';
+import { SignUp } from '@/types/auth.ts';
+import { AxiosError } from 'axios';
 
 const SignupForm = () => {
   const navigate = useNavigate();
-  const setRequiredData = useSignupStore((state) => state.setRequiredData);
 
   const {
     register,
     handleSubmit,
     watch,
+    setError,
     formState: { errors },
   } = useForm<SignUp>({
     mode: 'onChange',
   });
-  const onSubmit: SubmitHandler<SignUp> = (data) => {
-    setRequiredData(data.email, data.password, data.nickname);
-    navigate('/signup/optional');
+  const onSubmit: SubmitHandler<SignUp> = async (data) => {
+    try {
+      // 선택사항 빈 값으로 보냄
+      const fullData = { ...data, github: '', blog: '', introduce: '' };
+      const response = await postSignup(fullData);
+      console.log('회원가입 성공:', response);
+      navigate('/signup/optional');
+    } catch (error) {
+      const axiosError = error as AxiosError<{ message: string }>;
+      if (axiosError.response) {
+        const errorMessage = axiosError.response.data.message;
+        if (errorMessage.includes('[❎ ERROR] 이미 존재하는 닉네임입니다')) {
+          setError('nickname', {
+            type: 'manual',
+            message: '이미 존재하는 닉네임입니다',
+          });
+        } else if (errorMessage.includes('[❎ ERROR] 이미 존재하는 이메일입니다')) {
+          setError('email', {
+            type: 'manual',
+            message: '이미 존재하는 이메일입니다.',
+          });
+        }
+      }
+    }
   };
 
   return (
