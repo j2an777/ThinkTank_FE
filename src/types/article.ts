@@ -9,9 +9,7 @@ export type ArticleItem = {
     title: string;
     category: string;
     createdAt: string;
-    content: {
-        __html: string;
-    };
+    content: string;
     commentCount: number;
     likeCount: number;
     answerCount: number;
