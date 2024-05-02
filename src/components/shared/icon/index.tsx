@@ -24,11 +24,12 @@ interface IconProps {
   rotate?: boolean;
   onClick?: () => void;
   size?: number;
+  color?: string;
 }
 
-const Icon = ({ value, rotate, onClick, size, ...props }: IconProps) => {
+const Icon = ({ value, rotate, onClick, size, color, ...props }: IconProps) => {
   return (
-    <S.Container rotate={rotate} onClick={onClick} size={size} {...props}>
+    <S.Container rotate={rotate} onClick={onClick} size={size} color={color} {...props}>
       {renderIcon(value)}
     </S.Container>
   );

@@ -46,13 +46,6 @@ export const SearchBox = styled.div`
     }
 `;
 
-export const SearchImgBlock = styled.svg`
-    width : 24px;
-    height : 24px;
-    object-fit : contain;
-    fill : ${colors.gray};
-`;
-
 export const MeBox = styled.div`
     width : 100%;
     height : auto;

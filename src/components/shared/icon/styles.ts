@@ -4,6 +4,7 @@ import { HTMLAttributes } from 'react';
 interface IconContainerProps extends HTMLAttributes<HTMLDivElement> {
   rotate?: boolean;
   size?: number;
+  color?: string;
 }
 
 export const Container = styled.div<IconContainerProps>`
@@ -15,5 +16,6 @@ export const Container = styled.div<IconContainerProps>`
     width: 100%;
     height : 100%;
     object-fit: contain;
+    stroke: ${({ color }) => (color ? color : '')};
   }
 `;
