@@ -25,6 +25,7 @@ const defaultValue: ModalProps = {
   description: null,
   onButtonClick: () => {},
   close: () => {},
+  type: 'alert',
 };
 
 export const ModalContextProvider = ({ children }: PropsWithChildren) => {

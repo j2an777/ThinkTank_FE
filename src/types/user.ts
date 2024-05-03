@@ -4,3 +4,8 @@ export type SignUp = {
   password: string;
   checkPassword: string;
 };
+
+export interface User {
+  nickName: string;
+  profileImage: string | null;
+}
