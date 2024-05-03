@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { HTMLAttributes } from 'react';
 
 interface IconContainerProps extends HTMLAttributes<HTMLDivElement> {
-  rotate?: boolean;
+  $rotate?: boolean;
   size?: number;
   color?: string;
 }
@@ -10,7 +10,7 @@ interface IconContainerProps extends HTMLAttributes<HTMLDivElement> {
 export const Container = styled.div<IconContainerProps>`
   width: ${({ size }) => size ? `${size}px` : 'fit-content'};
   height: ${({ size }) => size ? `${size}px` : 'fit-content'};
-  transform: ${({ rotate }) => (rotate ? 'rotate(180deg)' : 'rotate(0deg)')};
+  transform: ${({ $rotate }) => ( $rotate ? 'rotate(180deg)' : 'rotate(0deg)')};
 
   svg {
     width: 100%;

@@ -24,7 +24,7 @@ const MainList = () => {
         <MainListItem key={item.postId} listItem={item} />
       ))}
     </S.MlContainer>
-  )
-}
+  );
+};
 
 export default MainList;

@@ -1,21 +1,27 @@
-import { Link } from "react-router-dom"
-import * as S from './styles';
-import Error from '../../assets/images/404.gif';
+import { Link } from 'react-router-dom';
+import {
+  ErrorBottomBox,
+  ErrorContainer,
+  ErrorContentBlock,
+  ErrorPBlock,
+  ErrorTopBox,
+} from './styles';
+import Error from '@/assets/images/404.gif';
 
 const ErrorPage = () => {
   return (
-    <S.ErrorContainer>
-        <S.ErrorTopBox>
-            <S.ErrorPBlock>4</S.ErrorPBlock>
-            <img src={Error} />
-            <S.ErrorPBlock>4</S.ErrorPBlock>
-        </S.ErrorTopBox>
-        <S.ErrorBottomBox>
-            <S.ErrorContentBlock>Page not found.</S.ErrorContentBlock>
-            <Link to="/">Home</Link>
-        </S.ErrorBottomBox>
-    </S.ErrorContainer>
-  )
-}
+    <ErrorContainer>
+      <ErrorTopBox>
+        <ErrorPBlock>4</ErrorPBlock>
+        <img src={Error} />
+        <ErrorPBlock>4</ErrorPBlock>
+      </ErrorTopBox>
+      <ErrorBottomBox>
+        <ErrorContentBlock>Page not found.</ErrorContentBlock>
+        <Link to="/">Home</Link>
+      </ErrorBottomBox>
+    </ErrorContainer>
+  );
+};
 
-export default ErrorPage
+export default ErrorPage;

@@ -4,6 +4,7 @@ import * as S from './styles';
 type InputBoxProps = {
   label: string;
   type?: string;
+  value?: string;
   placeholder?: string;
   error?: string;
   name?: string;
@@ -12,7 +13,7 @@ type InputBoxProps = {
 };
 
 const InputBox = forwardRef<HTMLInputElement, InputBoxProps>(
-  ({ label, name, placeholder, type, error, onChange, onBlur }, ref) => {
+  ({ label, name, type, value, placeholder, error, onChange, onBlur }, ref) => {
     const [isFocus, setIsFocus] = useState(false);
 
     return (
@@ -21,6 +22,7 @@ const InputBox = forwardRef<HTMLInputElement, InputBoxProps>(
         <S.Input
           name={name}
           type={type}
+          value={value}
           placeholder={placeholder}
           isFocus={isFocus}
           onFocus={() => setIsFocus(true)}

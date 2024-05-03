@@ -1,7 +1,8 @@
-import { ShadowBox, Text } from '..';
+import AlertComponent from './alertComponent';
+import CommentComponent from './commentComponent';
 import Dimmed from './Dimmed';
 
-import * as S from './styles';
+type ModalType = 'alert' | 'comment';
 
 interface ModalProps {
   open?: boolean;
@@ -11,32 +12,21 @@ interface ModalProps {
   hasCancelButton?: boolean;
   onButtonClick: () => void;
   close?: () => void;
+  type?: ModalType;
 }
 
-const Modal = ({
-  title,
-  onButtonClick,
-  buttonLabel,
-  description,
-  hasCancelButton = false,
-  open,
-  close,
-}: ModalProps) => {
+const Modal = ({ open, type = 'comment', ...props }: ModalProps) => {
   if (!open) return null;
-  return (
-    <Dimmed>
-      <ShadowBox css={S.ContainerCss}>
-        <Text typography="t1" bold>
-          {title}
-        </Text>
-        {description ?? <Text>{description}</Text>}
-        <S.ButtonBox>
-          {hasCancelButton ? <button onClick={close}>취소</button> : null}
-          <button onClick={onButtonClick}>{buttonLabel}</button>
-        </S.ButtonBox>
-      </ShadowBox>
-    </Dimmed>
-  );
+  return <Dimmed>{renderComponent({ type, ...props })}</Dimmed>;
 };
 
 export default Modal;
+
+const renderComponent = ({ type, ...props }: Omit<ModalProps, 'open'>) => {
+  switch (type) {
+    case 'alert':
+      return <AlertComponent {...props} />;
+    case 'comment':
+      return <CommentComponent {...props} />;
+  }
+};

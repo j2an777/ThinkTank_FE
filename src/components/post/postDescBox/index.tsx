@@ -5,7 +5,8 @@ import useSetFormData from '@/hooks/post/useSetFormData';
 
 import * as S from './styles';
 
-const DescriptionBox = () => {
+const PostDescBox = () => {
+  // 이걸 상위 컴포넌트에서 내려주는 것으로 바꿔보자
   const { postForm, handleChange, updatePostForm } = useSetFormData();
   const handleChangeSelect = (value: string) => {
     updatePostForm({ category: value });
@@ -39,4 +40,4 @@ const DescriptionBox = () => {
   );
 };
 
-export default DescriptionBox;
+export default PostDescBox;

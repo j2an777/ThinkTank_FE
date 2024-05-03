@@ -36,5 +36,5 @@ export const useLike = (postId: number, initialLikeCount: number, initialLikeTyp
         // likeType과 postId값이 변하지 않는 이상 함수는 재생성 x
     }, [likeType, postId]);
 
-    return { likeCount, likeType, jellyAnimation, toggleLike };
-}
+  return { likeCount, likeType, jellyAnimation, toggleLike };
+};

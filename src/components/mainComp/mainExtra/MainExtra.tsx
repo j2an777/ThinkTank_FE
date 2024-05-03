@@ -1,8 +1,7 @@
-import { bestMakers, mostSolvedProblems } from "./mainExtraData";
-import { Icon } from "@/components/shared";
-
+import { Icon } from '@/components/shared';
 import * as S from './styles';
-import { colors } from "@/styles/colorPalette";
+import { bestMakers, mostSolvedProblems } from './mainExtraData';
+import { colors } from '@/styles/colorPalette';
 
 const MainExtra = () => {
   return (
@@ -20,7 +19,9 @@ const MainExtra = () => {
         </S.MeTitleBlock>
         <S.MeContentBlock>
           {bestMakers.map((maker) => (
-            <p key={maker.id}>{maker.id}. {maker.name}</p>
+            <p key={maker.id}>
+              {maker.id}. {maker.name}
+            </p>
           ))}
         </S.MeContentBlock>
       </S.MeBox>
@@ -30,12 +31,14 @@ const MainExtra = () => {
         </S.MeTitleBlock>
         <S.MeContentBlock>
           {mostSolvedProblems.map((problem) => (
-            <p key={problem.id}>{problem.id}. {problem.title}</p>
+            <p key={problem.id}>
+              {problem.id}. {problem.title}
+            </p>
           ))}
         </S.MeContentBlock>
       </S.MeBox>
     </S.MeContainer>
-  )
-}
+  );
+};
 
-export default MainExtra
+export default MainExtra;

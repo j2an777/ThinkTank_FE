@@ -1,11 +1,11 @@
-import { Icon } from "@/components/shared"
+import { Icon } from '@/components/shared';
 
 import * as S from './styles';
-import Article from "@/components/shared/article";
-import { ArticleItem } from "@/types/article";
+import Article from '@/components/shared/article';
+import { ArticleItem } from '@/types/article';
 
 interface ListItemProps {
-    listItem: ArticleItem;
+  listItem: ArticleItem;
 }
 
 const MainListItem = ({ listItem }: ListItemProps) => {
@@ -30,4 +30,4 @@ const MainListItem = ({ listItem }: ListItemProps) => {
     )
 }
 
-export default MainListItem
+export default MainListItem;
