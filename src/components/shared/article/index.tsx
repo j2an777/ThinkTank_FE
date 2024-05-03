@@ -1,6 +1,7 @@
 import Comment from '../comment';
 import Likes from '../likes';
 import Pass from '../pass';
+
 import * as S from './styles';
 
 interface ArticleProps {
