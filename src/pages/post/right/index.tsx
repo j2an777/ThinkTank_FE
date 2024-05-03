@@ -1,9 +1,9 @@
 import * as S from './styles';
 import { useModalContext } from '@/contexts/ModalContext';
 import { CodeBox } from '@/components/post';
-import { Icon } from '@/components/shared';
 import { useNavigate } from 'react-router-dom';
 import { postFormStore } from '@/stores/post';
+import { Icon } from '@/components/shared';
 
 const PostRight = () => {
   const navigate = useNavigate();
