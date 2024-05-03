@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { colors } from '../../../styles/colorPalette';
-import { css } from '@emotion/react';
 import { layoutMap } from '@/styles/layout';
+import { css } from '@emotion/react';
 
 export const Container = styled.div`
   display: flex;
@@ -12,7 +12,20 @@ export const Container = styled.div`
   gap: 30px;
 `;
 
-export const ContentBox = styled.div`
+export const DetailContentBox = styled.div`
+  ${layoutMap.shadowBox}
+  flex: 1;
+  gap: 20px;
+
+  > textarea {
+    flex: 1;
+    resize: none;
+    border: none;
+    outline: none;
+  }
+`;
+
+export const PostContentBox = styled.div`
   ${layoutMap.shadowBox}
   flex: 1;
   gap: 20px;

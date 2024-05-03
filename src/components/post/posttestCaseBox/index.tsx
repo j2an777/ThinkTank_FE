@@ -5,9 +5,9 @@ import * as S from './styles';
 import { postFormStore } from '@/stores/post';
 import { TestCase } from '@/types/post';
 
-const defalutValue = [{ example: '', return: '' }];
+const defalutValue = [{ example: '', result: '' }];
 
-const TestCaseBox = () => {
+const PostTestCaseBox = () => {
   const updatePostForm = postFormStore((state) => state.updatePostForm);
   const [testCase, setTestCases] = useState<TestCase[]>(defalutValue);
   useEffect(() => {
@@ -27,8 +27,6 @@ const TestCaseBox = () => {
       }
       return testCase;
     });
-    console.log(updateTestCase);
-    // setTestCases(updateTestCase);
     updatePostForm({ testCase: updateTestCase });
   };
   return (
@@ -37,7 +35,7 @@ const TestCaseBox = () => {
         <Text typography="t2">테스트 케이스</Text>
         <Icon
           value="plus"
-          onClick={() => setTestCases((prev) => [...prev, { example: '', return: '' }])}
+          onClick={() => setTestCases((prev) => [...prev, { example: '', result: '' }])}
         />
       </S.TitleBox>
       <S.ContentBox>
@@ -58,7 +56,7 @@ const TestCaseBox = () => {
             <textarea
               key={`return-${index}`}
               name="return"
-              value={testCase.return}
+              value={testCase.result}
               onChange={(event) => handleChange({ index, event })}
             />
           ))}
@@ -68,6 +66,6 @@ const TestCaseBox = () => {
   );
 };
 
-export default TestCaseBox;
+export default PostTestCaseBox;
 
 // post부분에서 detail부분을 구현해버림! 나중에 다시 만들어서 확인하자
