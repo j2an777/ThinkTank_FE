@@ -4,7 +4,7 @@ import getTimeDifference from '@/utils/getTimeDifference';
 
 import * as S from './styles';
 
-const CommentItem = ({ commentId, content, createdAt, user }: Comment) => {
+const CommentItem = ({ content, createdAt, user }: Comment) => {
   return (
     <S.Container>
       <UserCircle size={56} profileImage={user.profileImage} />
