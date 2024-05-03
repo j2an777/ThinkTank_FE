@@ -2,7 +2,7 @@ import { useModalContext } from '@/contexts/ModalContext';
 import { CodeBox } from '@/components/post';
 import { useNavigate } from 'react-router-dom';
 import { postFormStore } from '@/stores/post';
-import { Icon } from '@/components/shared';
+import { Icon, StyledButton } from '@/components/shared';
 
 import * as S from './styles';
 
@@ -15,23 +15,24 @@ const DetailRight = () => {
       <Icon value="cancel" css={S.IconCss} onClick={() => navigate(-1)} />
       <CodeBox />
       <S.ButtonBox>
-        <button>댓글</button>
         <div>
-          <Icon value="question" />
+          <button
+            onClick={() =>
+              open({
+                title: '게시글 작성을 그만두시겠습니까?',
+                onButtonClick: () => navigate(-1),
+                hasCancelButton: true,
+                buttonLabel: '뒤로가기',
+              })
+            }
+          >
+            댓글
+          </button>
         </div>
-        <button
-          onClick={() =>
-            open({
-              title: '게시글을 올리겠습니까?',
-              onButtonClick: () => console.log(postForm),
-              hasCancelButton: true,
-              buttonLabel: '확인',
-            })
-          }
-          css={S.testButton}
-        >
+        <Icon value="question" {...{ css: S.questionCss }} />
+        <StyledButton onClick={() => console.log('제출하기')} css={S.testButton}>
           Submit
-        </button>
+        </StyledButton>
       </S.ButtonBox>
     </S.Container>
   );
