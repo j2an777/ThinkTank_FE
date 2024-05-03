@@ -10,3 +10,4 @@ export { default as Likes } from './likes';
 export { default as Comments } from './comment';
 export { default as Passes } from './pass';
 export { default as Icon } from './icon';
+export { default as UserCircle } from './UserCircle';

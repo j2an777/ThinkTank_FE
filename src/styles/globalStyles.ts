@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { colorPalette } from './colorPalette';
+import { colorPalette, colors } from './colorPalette';
 import { fontStyles } from './fonts';
 
 export default css`
@@ -148,5 +148,8 @@ export default css`
   a {
     color: inherit;
     text-decoration: inherit;
+  }
+  .margin-view-overlays {
+    background-color: ${colors.gray50};
   }
 `;
