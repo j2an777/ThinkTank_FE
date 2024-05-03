@@ -1,4 +1,4 @@
-import { IconValues } from "../shared/Icon"
+import { IconValues } from "../shared/icon";
 
 interface NavItemsProps {
     icon: IconValues;

@@ -51,17 +51,10 @@ export const NavItemBox = styled.div`
         align-items : center;
         justify-content : flex-start;
         gap : 20px;
-        transition : all 0.3s ease;
-
-        img {
-            width : 40px;
-            height : 40px;
-            object-fit : contain;
-        }
+        transition : all 0.1s ease;
 
         p {
-            font-family : 'pretendard', sans-serif;
-            font-size : 28px;
+            font-size : 36px;
             font-weight : 700;
             color : black;
         }

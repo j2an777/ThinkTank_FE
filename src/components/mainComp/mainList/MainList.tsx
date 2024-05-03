@@ -1,34 +1,27 @@
 import * as S from './styles';
-import MainListItem from './MainListItem';
-import { listData } from './MainListData';
+import MainListItem from "./MainListItem";
+import { fetchPosts } from '@/apis';
+import { useQuery } from '@tanstack/react-query';
+import { ArticleItem } from '@/types/article';
 
 const MainList = () => {
-  // const [articles, setArticles] = useState([]);
+  const { data, error, isLoading, isSuccess } = useQuery({
+    queryKey: ['posts'],
+    queryFn: fetchPosts,
+  });
 
-  // 페이지 로드 되면 데이터 조회
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const accessToken = localStorage.getItem('accessToken');
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-  //     try {
-  //       const response = await axios.get('/api/posts', {
-  //         headers: {
-  //           Authorization: `Bearer as ${accessToken}`,
-  //         }
-  //       });
-  //       setArticles(response.data.posts);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
+  if (error instanceof Error) {
+    return <div>{error.message}</div>
+  }
 
   return (
     <S.MlContainer>
-      {listData.map((item, index) => (
-        <MainListItem key={index} listItem={item} />
+      {isSuccess && data.posts.map((item: ArticleItem) => (
+        <MainListItem key={item.postId} listItem={item} />
       ))}
     </S.MlContainer>
   );

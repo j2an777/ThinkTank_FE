@@ -46,13 +46,6 @@ export const SearchBox = styled.div`
     }
 `;
 
-export const SearchImgBlock = styled.svg`
-    width : 24px;
-    height : 24px;
-    object-fit : contain;
-    fill : ${colors.gray};
-`;
-
 export const MeBox = styled.div`
     width : 100%;
     height : auto;
@@ -80,7 +73,6 @@ export const MeTitleBlock = styled.div`
     }
 
     p {
-        font-family : 'pretendard';
         font-size : 28px;
         font-weight : 700;
         color : black;
@@ -94,7 +86,6 @@ export const MeContentBlock = styled.div`
     gap : 10px;
 
     p {
-        font-family : 'pretendard';
         font-size : 18px;
         font-weight : 600;
         color : ${colors.gray300};

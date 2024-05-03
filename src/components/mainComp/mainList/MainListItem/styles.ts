@@ -23,6 +23,14 @@ export const MlUserBox = styled.div`
     gap : 20px;
 `;
 
+export const AvatarBlock = styled.div`
+    display : flex;
+    align-items : center;
+    justify-content : center;
+    border : 2px solid ${colors.gray};
+    border-radius : 50%;
+`;
+
 export const MlProfile = styled.img`
     width : 50px;
     height : 50px;

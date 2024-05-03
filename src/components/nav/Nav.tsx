@@ -9,13 +9,13 @@ const Nav = () => {
         <S.NavContainer>
             <S.NavLogoBox>
                 <Link to="/">
-                    <Icon value="logo" />
+                    <Icon value="logo" size={250} />
                 </Link>
             </S.NavLogoBox>
             <S.NavItemBox>
                 {navItems.map(item => (
                     <Link to={item.path} key={item.label}>
-                        <Icon value={item.icon} />
+                        <Icon value={item.icon} size={48} />
                         <p>{item.label}</p>
                     </Link>
                 ))}
