@@ -14,7 +14,7 @@ export const Blank = styled.div`
   margin: 25px;
 `;
 
-export const Form = styled.form`
+export const Inputs = styled.div`
   width: 600px;
   margin: 80px 0;
 `;
