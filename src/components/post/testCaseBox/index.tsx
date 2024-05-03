@@ -45,7 +45,7 @@ const TestCaseBox = () => {
         <S.TestBlock>
           {testCase.map((testCase, index) => (
             <textarea
-              key={`parameters-${index}`}
+              key={`example-${index}`}
               name="example"
               value={testCase.example}
               onChange={(event) => handleChange({ index, event })}
@@ -71,19 +71,3 @@ const TestCaseBox = () => {
 export default TestCaseBox;
 
 // post부분에서 detail부분을 구현해버림! 나중에 다시 만들어서 확인하자
-// const TestCaseBox = () => {
-//   const [isExpand, setIsExpand] = useState<boolean>(false);
-//   return (
-//     <S.TestCaseContainer>
-//       <S.TitleBox>
-//         <Text typography="t2">테스트 케이스</Text>
-//         <Icon
-//           value="arrow"
-//           rotate={isExpand}
-//           onClick={() => setIsExpand((prev) => !prev)}
-//         />
-//       </S.TitleBox>
-//       {isExpand && <ShadowBox></ShadowBox>}
-//     </S.TestCaseContainer>
-//   );
-// };

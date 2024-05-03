@@ -12,9 +12,11 @@ export const colorPalette = css`
     --red: #ff0000;
     --gray: #aaaaaa;
     --gray50: #e7e7e7;
-    --gray100: #cacaca;
-    --gray200: #777777;
-    --gray300: #444444;
+    --gray100: #aaaaaa;
+    --gray200: #cacaca;
+    --gray300: #777777;
+    --gray400: #444444;
+    --black: 000000;
   }
 `;
 
@@ -32,6 +34,8 @@ export const colors = {
   gray100: 'var(--gray100)',
   gray200: 'var(--gray200)',
   gray300: 'var(--gray300)',
+  gray400: 'var(--gray400)',
+  black: 'var(--black)',
 };
 
 export type Colors = keyof typeof colors;

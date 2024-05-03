@@ -1,20 +1,20 @@
-import React from 'react'
-import { ActiveBox, Container } from '../likes/styles'
-import Icon from '../Icon'
+import React from 'react';
+import { ActiveBox, Container } from '../likes/styles';
+import { Icon } from '..';
 
 interface CommentProps {
-    commentCount : number;
+  commentCount: number;
 }
 
 const Comment: React.FC<CommentProps> = ({ commentCount }) => {
   return (
     <Container>
       <ActiveBox>
-        <Icon value='comment' />
+        <Icon value="comment" />
       </ActiveBox>
-        <p>{commentCount}</p>
+      <p>{commentCount}</p>
     </Container>
-  )
-}
+  );
+};
 
-export default Comment
+export default Comment;
