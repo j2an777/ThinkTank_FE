@@ -2,6 +2,7 @@ import { ArticleItem } from '@/types/article';
 import * as S from './styles';
 import React, { ReactNode } from 'react';
 import { Status } from '../infoStatus';
+import { useNavigate } from 'react-router-dom';
 
 // ArticleItem 타입에서 author 제외한 타입 정의
 type ArticleTypes = Omit<ArticleItem, 'author'>;
@@ -25,7 +26,7 @@ const formatContent = (content: string, maxLines: number = Infinity): ReactNode 
                     <br/>
                 </React.Fragment>
             ))}
-            {lines.length > maxLines && '...'}
+            {lines.length > maxLines && <span><br/><br/>... 더 보기</span>}
         </>
     );
 };
@@ -33,10 +34,15 @@ const formatContent = (content: string, maxLines: number = Infinity): ReactNode 
 // 게시글 컴포넌트 (마이페이지에서 활용 가능)
 const Article = ({ article, threedot, statusFlag }: ArticleProps) => {
     // statusFlag가 open인 경우(상세페이지인 경우) 문제 내용 그대로, 나머지 경우에서는 10번째 라인까지 제한
-    const contentNode = statusFlag === 'open' ? formatContent(article.content) : formatContent(article.content, 10);
+    const contentNode = statusFlag === 'open' ? formatContent(article.content, 10) : formatContent(article.content);
+    const navigate = useNavigate();
+
+    const toHandleDetail = () => {
+        navigate(`/detail/${article.postId}`);
+    }
 
     return (
-        <S.ArticleContainer>
+        <S.ArticleContainer onClick={toHandleDetail}>
             <S.ArTopBox>
                 <S.ArTitleBlock>{ article.title }</S.ArTitleBlock>
                 {/* 마이페이지에서는 threedot 위치 입니다. */}

@@ -15,6 +15,7 @@ export const ArticleContainer = styled.div`
     justify-content : space-between;
     gap : 10px;
     overflow-y : auto;
+    transition : all 0.3s ease;
 
     /* 스크롤바 전체 디자인 */
     &::-webkit-scrollbar {
@@ -31,6 +32,11 @@ export const ArticleContainer = styled.div`
     /* 스크롤바 버튼(위, 아래) 디자인 */
     &::-webkit-scrollbar-button {
       display: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+      box-shadow : 0 0 20px rgba(0, 0, 0, 0.2);
     }
 `;
 
