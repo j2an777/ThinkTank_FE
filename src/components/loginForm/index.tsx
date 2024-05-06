@@ -4,8 +4,8 @@ import { Login } from '@/types/auth.ts';
 import { Icon, InputBox, StyledButton } from '../shared/index.ts';
 import { Link, useNavigate } from 'react-router-dom';
 import loginImage from '@/assets/images/loginImage.jpg';
-import { postLogin } from '@/apis/AuthAPI.ts';
 import { AxiosError } from 'axios';
+import { postLogin } from '@/apis/userapi.ts';
 
 export default function LoginForm() {
   const navigate = useNavigate();
