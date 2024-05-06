@@ -5,7 +5,9 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
   ${layoutMap.flexCenter}
   align-items: start;
-  margin: 0 420px;
+  margin: 70px 420px;
+  text-align: left;
+  row-gap: 110px;
 `;
 
 export const Block = styled.div``;
@@ -20,4 +22,10 @@ export const Subtitle = styled.div`
   font-size: 20px;
   font-weight: 400;
   margin-top: 15px;
+`;
+
+export const Logout = styled.div`
+  font-size: 30px;
+  font-weight: 700;
+  color: ${colors.red};
 `;

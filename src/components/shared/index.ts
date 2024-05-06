@@ -8,3 +8,4 @@ export { default as CodeEditor } from './CodeEditor';
 export { default as Select } from './select';
 export { default as StyledButton } from './StyledButton';
 export { default as Status } from './infoStatus';
+export { default as UserCircle } from './UserCircle';

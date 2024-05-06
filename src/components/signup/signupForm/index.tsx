@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { StyledButton, Icon, InputBox } from '@/components/shared';
 import { useNavigate } from 'react-router-dom';
 //import { useSignupStore } from '@/stores/signupStore';
-import { postSignup } from '@/apis/AuthAPI.ts';
+import { postSignup } from '@/apis/userapi.ts';
 import { SignUp } from '@/types/auth.ts';
 import { AxiosError } from 'axios';
 
