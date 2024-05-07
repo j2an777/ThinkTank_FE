@@ -1,4 +1,4 @@
-# node 16 이미지를 기반으로 함
+# node 18 이미지를 기반으로 함
 FROM krmp-d2hub-idock.9rum.cc/goorm/node:18
 
 # 작업 디렉토리 설정
@@ -11,7 +11,7 @@ RUN npm install -g pnpm
 COPY ./ ./
 
 # 필요한 npm 패키지 설치
-RUN pnpm ci
+RUN pnpm install
 RUN pnpm install -g serve
 
 # 프로젝트 npm build
