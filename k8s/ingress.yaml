@@ -5,7 +5,7 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: 'false'
   labels:
     app.kubernetes.io/managed-by: kargocd
-  name: krampoline
+  name: frontend
   namespace: default
 spec:
   rules:
@@ -14,5 +14,5 @@ spec:
           - backend:
               serviceName: frontend
               servicePort: 3000
-            # 여러분의 app path 를 넣어주세요.
-            path: /k9dc703603d38a(/|$)(.*)
+            path: /
+            pathType: Prefix
