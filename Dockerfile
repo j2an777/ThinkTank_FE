@@ -1,25 +1,27 @@
-# node 18 이미지를 기반으로 함
-FROM krmp-d2hub-idock.9rum.cc/goorm/node:18
+# Node.js 18을 기반으로 한 이미지 사용
+FROM node:18-alpine as builder
 
 # 작업 디렉토리 설정
 WORKDIR /usr/src/app
 
+# 필요한 파일 복사
+COPY package*.json pnpm-lock.yaml ./
 
-# 필요한 React App 소스 코드를 이미지에 복사
-COPY ./ ./
+# pnpm 설치 및 종속성 설치
+RUN npm install -g pnpm && pnpm install
 
-# 필요한 npm 패키지 설치
-RUN npm install
-RUN npm run build
-RUN npm install -g serve
-RUN npm install -g pnpm
+# 나머지 소스 코드 복사
+COPY . .
 
-# pnpm을 사용하여 종속성 설치
-RUN pnpm install
-
-# 프로젝트 npm build
+# 프로젝트 빌드
 RUN pnpm run build
-COPY --from=build /usr/src/app/dist ./dist
+
+# 런타임 이미지 준비
+FROM node:18-alpine
+WORKDIR /usr/src/app
+COPY --from=builder /usr/src/app/build ./build
+RUN npm install -g serve
+
 # 서버 실행 시 사용하는 포트 지정
 EXPOSE 3000
 
