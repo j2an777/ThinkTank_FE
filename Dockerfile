@@ -19,7 +19,7 @@ RUN pnpm install
 
 # 프로젝트 npm build
 RUN pnpm run build
-
+COPY --from=build /usr/src/app/dist ./dist
 # 서버 실행 시 사용하는 포트 지정
 EXPOSE 3000
 
