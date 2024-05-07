@@ -24,4 +24,4 @@ RUN pnpm run build
 EXPOSE 3000
 
 # 컨테이너를 시작할 때 빌드된 React App을 서빙
-CMD ["serve", "-s", "build"]
+CMD ["serve", "-s", "dist"]
