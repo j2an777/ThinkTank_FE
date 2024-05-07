@@ -4,6 +4,9 @@ FROM krmp-d2hub-idock.9rum.cc/goorm/node:16
 # 작업 디렉토리 설정
 WORKDIR /usr/src/app
 
+# pnpm 설치
+RUN npm install -g pnpm
+
 # 필요한 React App 소스 코드를 이미지에 복사
 COPY ./ ./
 
