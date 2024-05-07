@@ -13,6 +13,9 @@ RUN npm install
 RUN npm run build
 RUN npm install -g serve
 
+# pnpm을 사용하여 종속성 설치
+RUN pnpm install
+
 # 프로젝트 npm build
 RUN pnpm run build
 
