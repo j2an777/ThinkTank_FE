@@ -5,17 +5,19 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   position: relative;
-  > ul {
-    position: absolute;
-    ${layoutMap.shadowBox}
-    gap: 10px;
-    top: 48px;
-    height: 300px;
-    overflow: scroll;
-    overflow-x: hidden;
-    z-index: var(--select-zindex);
-    background-color: white;
-  }
+`;
+
+export const SelectList = styled.ul`
+  position: absolute;
+  ${layoutMap.shadowBox}
+  gap: 10px;
+  top: 48px;
+  min-height: fit-content;
+  max-height: 300px;
+  overflow: scroll;
+  overflow-x: hidden;
+  z-index: var(--select-zindex);
+  background-color: white;
 `;
 
 export const Select = styled.select<{ type?: 'primary' | 'fill' }>`

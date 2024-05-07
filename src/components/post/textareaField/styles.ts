@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { formBaseCss } from '../postDescBox/styles';
 import { colors } from '@/styles/colorPalette';
+import { formBaseCss } from '@/components/shared/descriptionBox/styles';
 
 export const Container = styled.div<{ hasFocus: boolean }>`
   display: flex;

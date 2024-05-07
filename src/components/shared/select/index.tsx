@@ -1,5 +1,6 @@
-import { ForwardedRef, MouseEvent, RefAttributes, forwardRef, useState } from 'react';
-import { CategoryOption, CategoryValues } from '../../../consts/category';
+import { MouseEvent, useState } from 'react';
+import { CategoryOption, CategoryValues } from '@/consts/category';
+import { motion } from 'framer-motion';
 
 import * as S from './styles';
 
@@ -9,17 +10,38 @@ interface CategoryProps<T extends CategoryOption> {
   onChange?: (value: string) => void;
 }
 
-const InnerSelect = <T extends CategoryOption>(
-  { optionData, type = 'primary', onChange }: CategoryProps<T>,
-  ref: ForwardedRef<HTMLSelectElement>,
-) => {
+const subMenuAnimate = {
+  enter: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    },
+    display: 'block',
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.5,
+      delay: 0.1,
+    },
+    transitionEnd: {
+      display: 'none',
+    },
+  },
+};
+
+const Select = <T extends CategoryOption>({
+  optionData,
+  type = 'primary',
+  onChange,
+}: CategoryProps<T>) => {
   const [isExpand, setIsExpand] = useState<boolean>(false);
   const [selected, setSelected] = useState<CategoryValues>(optionData[0].value);
+
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsExpand((prev) => !prev);
   };
-
   return (
     <S.Container onBlur={() => setIsExpand(false)} onMouseDown={handleMouseDown}>
       <S.Select
@@ -30,7 +52,6 @@ const InnerSelect = <T extends CategoryOption>(
           const value = e.target.value as CategoryValues;
           setSelected(value);
         }}
-        ref={ref}
       >
         {optionData.length > 0 &&
           optionData.map(({ value, name }) => (
@@ -39,8 +60,13 @@ const InnerSelect = <T extends CategoryOption>(
             </option>
           ))}
       </S.Select>
-      {isExpand && (
-        <ul>
+
+      <motion.div
+        initial="exit"
+        animate={isExpand ? 'enter' : 'exit'}
+        variants={subMenuAnimate}
+      >
+        <S.SelectList>
           {optionData.length > 0 &&
             optionData.map(({ value, name }, index) => {
               if (!index) {
@@ -60,19 +86,11 @@ const InnerSelect = <T extends CategoryOption>(
                 </li>
               );
             })}
-        </ul>
-      )}
+        </S.SelectList>
+      </motion.div>
     </S.Container>
   );
 };
-
-function fixedForwardRef<T, P = object>(
-  render: (props: P, ref: React.Ref<T>) => React.ReactNode,
-): (props: P & React.RefAttributes<T>) => React.ReactNode {
-  return forwardRef(render) as (props: P & RefAttributes<T>) => React.ReactNode;
-}
-
-const Select = fixedForwardRef(InnerSelect);
 
 export default Select;
 

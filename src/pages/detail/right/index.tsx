@@ -23,6 +23,7 @@ const DetailRight = () => {
                 onButtonClick: () => navigate(-1),
                 hasCancelButton: true,
                 buttonLabel: '뒤로가기',
+                type: 'comment',
               })
             }
           >

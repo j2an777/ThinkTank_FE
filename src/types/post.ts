@@ -13,5 +13,5 @@ export interface PostForm {
 
 export interface TestCase {
   example: string;
-  return: string;
+  result: string;
 }

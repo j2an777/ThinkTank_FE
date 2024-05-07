@@ -1,6 +1,5 @@
 //left side
-export { default as PostDescBox } from './postDescBox';
-export { default as TestCaseBox } from './testCaseBox';
+export { default as PostTestCaseBox } from './posttestCaseBox';
 export { default as TextareaField } from './textareaField';
 
 // right side
