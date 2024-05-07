@@ -1,6 +1,7 @@
 import { ActiveBox, Container } from './styles'
 import Icon, { IconValues } from '../icon';
 import { useLike } from '@/hooks/like/useLike';
+import React from 'react';
 
 interface StatusProps {
   postId: number;
@@ -19,7 +20,10 @@ export const Status = ({ postId, likeCount, likeType, commentCount, answerCount 
 
   return (
     <>
-      <InfoStatus value={iconValue} count={updatedLikeCount} onClick={toggleLike} />
+      <InfoStatus value={iconValue} count={updatedLikeCount} onClick={(e) => {
+        e.stopPropagation();
+        toggleLike();
+      }} />
       <InfoStatus value='comment' count={commentCount} />
       <InfoStatus value='check' count={answerCount} />
     </>
@@ -29,7 +33,7 @@ export const Status = ({ postId, likeCount, likeType, commentCount, answerCount 
 interface InfoStatusProps {
     value: IconValues;
     count: number;
-    onClick?: () => void;
+    onClick?: (e: React.MouseEvent) => void;
 }
 
 const InfoStatus = ({ value, count, onClick }: InfoStatusProps) => {

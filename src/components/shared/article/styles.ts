@@ -1,3 +1,4 @@
+import { colors } from "@/styles/colorPalette";
 import styled from "@emotion/styled";
 
 export const ArticleContainer = styled.div`
@@ -13,6 +14,30 @@ export const ArticleContainer = styled.div`
     flex-direction : column;
     justify-content : space-between;
     gap : 10px;
+    overflow-y : auto;
+    transition : all 0.3s ease;
+
+    /* 스크롤바 전체 디자인 */
+    &::-webkit-scrollbar {
+      width: 12px;
+      background-color: ${colors.gray50};
+    }
+
+    /* 스크롤바 핸들(바) 디자인 */
+    &::-webkit-scrollbar-thumb {
+      background-color: ${colors.yellow};
+      border-radius: 4px;
+    }
+
+    /* 스크롤바 버튼(위, 아래) 디자인 */
+    &::-webkit-scrollbar-button {
+      display: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+      box-shadow : 0 0 20px rgba(0, 0, 0, 0.2);
+    }
 `;
 
 export const ArTopBox = styled.div`
