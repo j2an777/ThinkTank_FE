@@ -19,7 +19,7 @@ RUN pnpm run build
 # 런타임 이미지 준비
 FROM node:18-alpine
 WORKDIR /usr/src/app
-COPY --from=builder /usr/src/app/build ./build
+
 RUN npm install -g serve
 
 # 서버 실행 시 사용하는 포트 지정
