@@ -12,6 +12,7 @@ COPY ./ ./
 RUN npm install
 RUN npm run build
 RUN npm install -g serve
+RUN npm install -g pnpm
 
 # pnpm을 사용하여 종속성 설치
 RUN pnpm install
