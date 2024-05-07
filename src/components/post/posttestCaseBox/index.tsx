@@ -27,6 +27,7 @@ const PostTestCaseBox = () => {
       }
       return testCase;
     });
+    setTestCases(updateTestCase);
     updatePostForm({ testCase: updateTestCase });
   };
   return (
@@ -54,8 +55,8 @@ const PostTestCaseBox = () => {
         <S.TestBlock>
           {testCase.map((testCase, index) => (
             <textarea
-              key={`return-${index}`}
-              name="return"
+              key={`result-${index}`}
+              name="result"
               value={testCase.result}
               onChange={(event) => handleChange({ index, event })}
             />

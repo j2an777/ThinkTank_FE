@@ -11,6 +11,7 @@ type DescriptonForm = Omit<PostForm, 'testCase' | 'language' | 'answer'>;
 type DescriptionBoxProps = {
   page: 'post' | 'detail';
   onChange?: (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
+  categorySelect?: (value: string) => void;
 } & DescriptonForm;
 
 const DescriptionBox = (props: DescriptionBoxProps) => {
@@ -25,6 +26,7 @@ const renderComponent = ({
   content,
   condition,
   onChange,
+  categorySelect,
 }: DescriptionBoxProps) => {
   switch (page) {
     case 'detail':
@@ -46,7 +48,7 @@ const renderComponent = ({
         <>
           <Select
             optionData={CATEGORY}
-            onChange={onChange as (event: ChangeEvent<HTMLInputElement>) => void}
+            onChange={categorySelect as (value: string) => void}
           />
           <S.PostContentBox>
             <S.Title

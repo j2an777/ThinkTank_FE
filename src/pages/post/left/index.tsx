@@ -4,7 +4,10 @@ import { DescriptionBox } from '@/components/shared';
 import useSetFormData from '@/hooks/post/useSetFormData';
 
 const PostLeft = () => {
-  const { postForm } = useSetFormData();
+  const { postForm, handleChange, updatePostForm } = useSetFormData();
+  const handleCategurySelect = (value: string) => {
+    updatePostForm({ category: value });
+  };
   return (
     <S.Container>
       <DescriptionBox
@@ -13,6 +16,8 @@ const PostLeft = () => {
         content={postForm.content}
         condition={postForm.condition}
         category="category"
+        onChange={handleChange}
+        categorySelect={handleCategurySelect}
       />
       <PostTestCaseBox />
     </S.Container>
