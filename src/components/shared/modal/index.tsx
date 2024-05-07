@@ -1,6 +1,7 @@
 import AlertComponent from './alertComponent';
 import CommentComponent from './commentComponent';
 import Dimmed from './Dimmed';
+import { motion } from 'framer-motion';
 
 type ModalType = 'alert' | 'comment';
 
@@ -15,9 +16,39 @@ interface ModalProps {
   type?: ModalType;
 }
 
-const Modal = ({ open, type = 'comment', ...props }: ModalProps) => {
+const subMenuAnimate = {
+  enter: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    },
+    display: 'block',
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.5,
+      delay: 0.1,
+    },
+    transitionEnd: {
+      display: 'none',
+    },
+  },
+};
+
+const Modal = ({ open, type = 'alert', ...props }: ModalProps) => {
   if (!open) return null;
-  return <Dimmed>{renderComponent({ type, ...props })}</Dimmed>;
+  return (
+    <Dimmed>
+      <motion.div
+        initial="exit"
+        animate={open ? 'enter' : 'exit'}
+        variants={subMenuAnimate}
+      >
+        {renderComponent({ type, ...props })}
+      </motion.div>
+    </Dimmed>
+  );
 };
 
 export default Modal;
