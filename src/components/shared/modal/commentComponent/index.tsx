@@ -17,7 +17,7 @@ const defaultComment = {
   content:
     'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf',
   user: {
-    nickName: '아브라카타브라마이마이마이',
+    nickname: '아브라카타브라마이마이마이',
     profileImage: null,
   },
 } as Comment;
