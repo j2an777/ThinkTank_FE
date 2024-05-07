@@ -10,11 +10,11 @@ export const Container = styled.div`
 `;
 
 export const LeftBox = styled.div`
-  flex: 2;
+  flex: 1;
 `;
 
 export const RightBox = styled.div`
-  flex: 5;
+  flex: 4;
 `;
 
 export const ProfileImage = styled.img`

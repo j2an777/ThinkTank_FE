@@ -5,6 +5,7 @@ import {
   SignupOptionalPage,
   SignupRequiredPage,
   MyPage,
+  Profile,
   DetailPage,
 } from '../pages';
 import ErrorPage from '../pages/error';
@@ -55,6 +56,11 @@ export const routers = [
   {
     path: '/mypage',
     component: MyPage,
+    isProtected: true,
+  },
+  {
+    path: '/mypage/profile',
+    component: Profile,
     isProtected: true,
   },
 ];
