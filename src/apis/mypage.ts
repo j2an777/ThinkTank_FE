@@ -10,6 +10,6 @@ export const getMyPage = async () => {
   }
 
   const authAxios = getAuthAxios(access);
-  const response = await authAxios.get('/api/mypage');
+  const response = await authAxios.get('/api/mypage/users');
   return response.data;
 };

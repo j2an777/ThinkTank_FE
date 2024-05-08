@@ -4,7 +4,9 @@ import axios from 'axios';
 /** LOGIN API **/
 export const postLogin = async ({ email, password }: Login) => {
   const data = { email, password };
-  const response = await axios.post(`/api/login`, data);
+  const response = await axios.post(`http://211.206.94.24:9999/api/login`, data, {
+    withCredentials: true,
+  });
   return response.data;
 };
 
@@ -29,6 +31,12 @@ export const postSignup = async ({
     introduce,
     profileImage,
   };
-  const response = await axios.post(`/api/signup`, data);
+  const response = await axios.post(`http://211.206.94.24:9999/api/signup`, data);
   return response.data;
+};
+
+export const logout = () => {
+  // 로컬 스토리지에서 토큰 제거
+  localStorage.removeItem('access');
+  window.location.href = '/login';
 };
