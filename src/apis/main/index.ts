@@ -15,10 +15,10 @@ const fetchPosts = async ({ pageParam = 1, limit = 2 }: FetchParams): Promise<Li
   }
 
   const authAxios = getAuthAxios(access);
-
+  
   try {
     const response = await authAxios.get<List>(
-      `https://baa4852a-d5cb-4d7d-9716-715686200726.mock.pstmn.io/api/posts?page=${pageParam}&limit=${limit}`,
+      `/api/posts?page=${pageParam}&limit=${limit}`,
     );
     return response.data;
   } catch (error) {

@@ -2,14 +2,7 @@ import { getAuthAxios } from '../authAxios';
 
 // 좋아요 수 업데이트 구문
 const updateLike = async (postId: number): Promise<void> => {
-  const access = localStorage.getItem('access');
-
-  if (!access) {
-    console.error('Access token is missing or invalid');
-    throw new Error('Access token is missing or invalid');
-  }
-
-  const authAxios = getAuthAxios(access);
+  const authAxios = getAuthAxios();
 
   try {
     const response = await authAxios.post('/api/like', postId);

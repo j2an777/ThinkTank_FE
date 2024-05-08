@@ -7,10 +7,12 @@ import { User } from '@/types/auth.ts';
 
 const UserInfo = () => {
   const [userData, setUserData] = useState<User>({
-    nickname: 'Soohyun Kim',
-    profileImage: null,
-    email: 'soo@gmail.com',
-    introduce: 'hello',
+    email: '',
+    nickname: '',
+    github: '',
+    blog: '',
+    introduce: '',
+    profileImage: '',
   });
 
   useEffect(() => {
@@ -18,10 +20,12 @@ const UserInfo = () => {
       const data = await getMyPage();
       if (data) {
         setUserData({
-          nickname: data.nickname,
-          profileImage: data.profileImage,
           email: data.email,
+          nickname: data.nickname,
+          github: data.github,
+          blog: data.blog,
           introduce: data.introduce,
+          profileImage: data.profileImageResDto?.fileUrl,
         });
       }
     };

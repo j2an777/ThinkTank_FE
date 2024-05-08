@@ -1,10 +1,11 @@
 import { Login, SignUp } from '@/types/auth';
-import axios from 'axios';
+import { getAuthAxios } from './authAxios';
 
 /** LOGIN API **/
 export const postLogin = async ({ email, password }: Login) => {
   const data = { email, password };
-  const response = await axios.post(`/api/login`, data);
+  const authAxios = getAuthAxios();
+  const response = await authAxios.post('/api/login', data);
   return response.data;
 };
 
@@ -29,6 +30,13 @@ export const postSignup = async ({
     introduce,
     profileImage,
   };
-  const response = await axios.post(`/api/signup`, data);
+  const authAxios = getAuthAxios();
+  const response = await authAxios.post('/api/signup', data);
   return response.data;
+};
+
+export const logout = () => {
+  // 로컬 스토리지에서 토큰 제거
+  localStorage.removeItem('access');
+  window.location.href = '/login';
 };
