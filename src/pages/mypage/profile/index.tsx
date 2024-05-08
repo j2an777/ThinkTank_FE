@@ -1,5 +1,6 @@
 import { ProfileTable } from '@/components/mypage';
 import * as S from './styles';
+import { logout } from '@/apis/userapi';
 
 export default function index() {
   return (
@@ -11,6 +12,7 @@ export default function index() {
       <ProfileTable />
       <S.Block>
         <S.Logout>로그아웃</S.Logout>
+        <button onClick={logout}>logout</button>
       </S.Block>
       <S.Block>
         <S.Title>회원탈퇴</S.Title>

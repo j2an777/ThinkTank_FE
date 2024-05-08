@@ -1,34 +1,30 @@
 import axios from 'axios';
-import { getNewRefreshToken } from './refresh';
 
-export const getAuthAxios = (token: string) => {
+export const getAuthAxios = (accessToken: string) => {
   const authAxios = axios.create({
     baseURL: 'http://211.206.94.24:9999',
     headers: {
       'Content-Type': 'application/json',
-      access: `Bearer ${token}`,
+      access: `Bearer ${accessToken}`,
     },
+    withCredentials: true,
   });
 
-  authAxios.interceptors.response.use(
-    (response) => response, // 성공 응답은 그대로 반환
+  authAxios.interceptors.response.use(async (response) => {
+    if (response.status === 200) {
+      return response;
+    } else {
+      if (response.data && response.data.accessToken) {
+        const accessToken = response.data.accessToken;
+        localStorage.setItem('access', accessToken); // 새 토큰을 로컬 스토리지에 저장
+        console.log('access token 재발급');
 
-    async (error) => {
-      if (error.response && error.response.status === 401) {
-        try {
-          const { accessToken } = await getNewRefreshToken(); // 새로운 토큰 가져오기
-          error.config.headers['access'] = `Bearer ${accessToken}`;
-          localStorage.setItem('access', accessToken);
-          return authAxios(error.config);
-        } catch (refreshError) {
-          // 리프레시 토큰 실패 처리
-          console.error('Failed to refresh token:', refreshError);
-          return Promise.reject(refreshError);
-        }
+        // 헤더에 새 토큰 반영
+        //authAxios.defaults.headers.access = `Bearer ${accessToken}`;
       }
-      return Promise.reject(error); // 다른 모든 에러는 그대로 반환
-    },
-  );
+      return response;
+    }
+  });
 
   return authAxios;
 };

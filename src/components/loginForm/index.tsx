@@ -20,8 +20,8 @@ export default function LoginForm() {
   const onSubmit: SubmitHandler<Login> = async (data) => {
     try {
       const response = await postLogin(data);
-      const accessToken = response;
-      localStorage.setItem('access', accessToken); //refreshToken은 쿠키에..
+      const accessToken = response.accessToken;
+      localStorage.setItem('access', JSON.stringify(accessToken)); //refreshToken은 쿠키에..
       console.log('로그인 성공:', response);
       navigate('/mypage');
     } catch (error) {
