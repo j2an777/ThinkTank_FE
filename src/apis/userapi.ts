@@ -1,12 +1,11 @@
 import { Login, SignUp } from '@/types/auth';
-import axios from 'axios';
+import { getAuthAxios } from './authAxios';
 
 /** LOGIN API **/
 export const postLogin = async ({ email, password }: Login) => {
   const data = { email, password };
-  const response = await axios.post(`http://211.206.94.24:9999/api/login`, data, {
-    withCredentials: true,
-  });
+  const authAxios = getAuthAxios();
+  const response = await authAxios.post('/api/login', data);
   return response.data;
 };
 
@@ -31,7 +30,8 @@ export const postSignup = async ({
     introduce,
     profileImage,
   };
-  const response = await axios.post(`http://211.206.94.24:9999/api/signup`, data);
+  const authAxios = getAuthAxios();
+  const response = await authAxios.post('/api/signup', data);
   return response.data;
 };
 

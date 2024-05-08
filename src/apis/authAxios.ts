@@ -1,12 +1,18 @@
 import axios from 'axios';
 
-export const getAuthAxios = (accessToken: string) => {
+export const getAuthAxios = (accessToken?: string) => {
+  const headersOption = accessToken
+    ? {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      }
+    : {
+        'Content-Type': 'application/json',
+      };
+
   const authAxios = axios.create({
     baseURL: 'http://211.206.94.24:9999',
-    headers: {
-      'Content-Type': 'application/json',
-      access: `Bearer ${accessToken}`,
-    },
+    headers: headersOption,
     withCredentials: true,
   });
 

@@ -21,7 +21,7 @@ export default function LoginForm() {
     try {
       const response = await postLogin(data);
       const accessToken = response.accessToken;
-      localStorage.setItem('access', JSON.stringify(accessToken)); //refreshToken은 쿠키에..
+      localStorage.setItem('access', accessToken);
       console.log('로그인 성공:', response);
       navigate('/mypage');
     } catch (error) {
