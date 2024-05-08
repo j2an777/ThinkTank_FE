@@ -12,7 +12,7 @@ spec:
     - http:
         paths:
           - backend:
-              serviceName: frontend
+              serviceName: krampoline
               servicePort: 3000
             path: /
             pathType: Prefix
