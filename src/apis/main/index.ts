@@ -7,7 +7,15 @@ interface FetchParams {
 }
 
 const fetchPosts = async ({ pageParam = 1, limit = 2 }: FetchParams): Promise<List> => {
-  const authAxios = getAuthAxios();
+  const access = localStorage.getItem('access');
+
+  if (!access) {
+    console.error('Access token is missing or invalid');
+    throw new Error('Access token is missing or invalid');
+  }
+
+  const authAxios = getAuthAxios(access);
+  
   try {
     const response = await authAxios.get<List>(
       `/api/posts?page=${pageParam}&limit=${limit}`,

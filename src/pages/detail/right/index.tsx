@@ -1,7 +1,6 @@
 import { useModalContext } from '@/contexts/ModalContext';
 import { CodeBox } from '@/components/post';
 import { useNavigate } from 'react-router-dom';
-import { postFormStore } from '@/stores/post';
 import { Icon, StyledButton } from '@/components/shared';
 
 import * as S from './styles';
@@ -9,7 +8,6 @@ import * as S from './styles';
 const DetailRight = () => {
   const navigate = useNavigate();
   const { open } = useModalContext();
-  const postForm = postFormStore((state) => state.postForm);
   return (
     <S.Container>
       <Icon value="cancel" css={S.IconCss} onClick={() => navigate(-1)} />

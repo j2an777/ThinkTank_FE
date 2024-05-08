@@ -9,7 +9,7 @@ const CommentItem = ({ content, createdAt, user }: Comment) => {
     <S.Container>
       <UserCircle size={56} profileImage={user.profileImage} />
       <S.UserBox>
-        <Text ellipsis={100}>{user.nickName}</Text>
+        <Text ellipsis={100}>{user.nickname}</Text>
         <Text typography="t4" color="gray300">
           {getTimeDifference(createdAt)}
         </Text>
