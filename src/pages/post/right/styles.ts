@@ -16,12 +16,6 @@ export const IconCss = css`
 `;
 
 export const testButton = css`
-  font-size: 24px;
-  font-weight: bold;
   margin-top: 30px;
   align-self: end;
-  background-color: ${colors.yellow};
-  color: white;
-  padding: 10px 50px;
-  border-radius: 50px;
 `;

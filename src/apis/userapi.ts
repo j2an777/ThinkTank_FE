@@ -36,7 +36,21 @@ export const postSignup = async ({
 };
 
 export const logout = () => {
-  // 로컬 스토리지에서 토큰 제거
   localStorage.removeItem('access');
   window.location.href = '/login';
+};
+
+/** 유저정보 수정 */
+export const putUser = async () => {
+  const access = localStorage.getItem('access');
+
+  if (!access) {
+    console.error('Access token is missing or invalid');
+    throw new Error('Access token is missing or invalid');
+  }
+
+  const authAxios = getAuthAxios(access);
+  const response = await authAxios.put('/api/mypage/users');
+  console.log(response.data);
+  return response.data;
 };

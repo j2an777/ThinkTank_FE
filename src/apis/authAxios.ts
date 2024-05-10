@@ -12,10 +12,8 @@ export const getAuthAxios = (accessToken?: string) => {
 
   const authAxios = axios.create({
     baseURL: 'http://13.124.54.157:8080',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessToken}`,
-    },
+    headers: headersOption,
+    withCredentials: true,
   });
 
   authAxios.interceptors.response.use(async (response) => {

@@ -36,7 +36,7 @@ const PostRight = () => {
         }
         css={S.testButton}
       >
-        post
+        Post
       </StyledButton>
     </S.Container>
   );

@@ -35,19 +35,19 @@ export const Blank = styled.div`
 
 export const Signup = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  gap: 25px;
   margin: 30px 0;
   color: ${colors.gray300};
 
   p {
-    margin-left: 25px;
     color: ${colors.yellow};
   }
 `;
 
 export const Social = styled.div`
   ${layoutMap.flexCenter}
+  gap: 25px;
   margin: 20px 0;
   width: 70%;
   color: ${colors.gray300};
@@ -60,11 +60,12 @@ export const Social = styled.div`
 export const KakaoButton = styled.button`
   ${layoutMap.styledButton}
   background: ${colors.kakao};
-  padding: 16px;
-  margin: 25px 0;
+  border: 1px solid ${colors.kakao};
+  width: 100%;
 `;
 
 export const GoogleButton = styled.button`
   ${layoutMap.styledButton}
   border: 1px solid ${colors.gray};
+  width: 100%;
 `;

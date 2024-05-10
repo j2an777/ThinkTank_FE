@@ -19,11 +19,11 @@ export const layoutMap = {
 
   styledButton: css`
     padding: 15px;
-    width: 100%;
     border-radius: 2em;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: 700;
   `,
   scrollbarsNone: css`
     overflow: scroll;
