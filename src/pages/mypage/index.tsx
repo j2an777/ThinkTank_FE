@@ -1,12 +1,18 @@
 import { UserInfo, TabMenu } from '@/components/mypage';
-import { Container } from './styles';
+import * as S from './styles';
+import { MainContainer } from '../main/styles';
+import Nav from '@/components/nav/Nav';
 
 const MyPage = () => {
   return (
-    <Container>
-      <UserInfo />
-      <TabMenu />
-    </Container>
+    <MainContainer>
+      <Nav />
+      <S.Block>
+        <UserInfo />
+        <TabMenu />
+      </S.Block>
+      <S.Box />
+    </MainContainer>
   );
 };
 

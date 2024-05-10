@@ -16,6 +16,7 @@ export const fontStyles = css`
 
   body {
     font-family: 'Pretendard';
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 400;
   }
 `;
