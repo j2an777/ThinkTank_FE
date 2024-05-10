@@ -6,7 +6,7 @@ export interface PostForm {
   title: string;
   content: string;
   condition: string;
-  testCase: TestCase[];
+  testCases: TestCase[];
   language: LanguageValues;
   answer: string;
 }

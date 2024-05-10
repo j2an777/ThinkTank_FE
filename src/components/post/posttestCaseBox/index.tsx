@@ -9,10 +9,10 @@ const defalutValue = [{ example: '', result: '' }];
 
 const PostTestCaseBox = () => {
   const updatePostForm = postFormStore((state) => state.updatePostForm);
-  const [testCase, setTestCases] = useState<TestCase[]>(defalutValue);
+  const [testCases, setTestCases] = useState<TestCase[]>(defalutValue);
   useEffect(() => {
-    updatePostForm({ testCase });
-  }, [testCase, updatePostForm]);
+    updatePostForm({ testCases });
+  }, [testCases, updatePostForm]);
   const handleChange = ({
     index,
     event,
@@ -21,14 +21,14 @@ const PostTestCaseBox = () => {
     event: ChangeEvent<HTMLTextAreaElement>;
   }) => {
     const { value, name } = event.target;
-    const updateTestCase = testCase.map((testCase, i) => {
+    const updateTestCase = testCases.map((testCases, i) => {
       if (index === i) {
-        return { ...testCase, [name]: value };
+        return { ...testCases, [name]: value };
       }
-      return testCase;
+      return testCases;
     });
     setTestCases(updateTestCase);
-    updatePostForm({ testCase: updateTestCase });
+    updatePostForm({ testCases: updateTestCase });
   };
   return (
     <S.TestCaseContainer>
@@ -42,7 +42,7 @@ const PostTestCaseBox = () => {
       <S.ContentBox>
         <Text>Example</Text>
         <S.TestBlock>
-          {testCase.map((testCase, index) => (
+          {testCases.map((testCase, index) => (
             <textarea
               key={`example-${index}`}
               name="example"
@@ -53,7 +53,7 @@ const PostTestCaseBox = () => {
         </S.TestBlock>
         <Text>Return</Text>
         <S.TestBlock>
-          {testCase.map((testCase, index) => (
+          {testCases.map((testCase, index) => (
             <textarea
               key={`result-${index}`}
               name="result"

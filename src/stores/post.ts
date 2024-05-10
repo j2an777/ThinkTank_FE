@@ -2,7 +2,7 @@ import { PostForm } from '@/types/post';
 import { create } from 'zustand';
 
 interface PostFormState {
-  postForm: PostForm | object;
+  postForm: PostForm;
   updatePostForm: (value: Partial<PostForm>) => void;
 }
 const defaultPostForm = {
@@ -10,7 +10,9 @@ const defaultPostForm = {
   title: '',
   content: '',
   condition: '',
-  testCase: [],
+  testCases: [],
+  language: 'java',
+  answer: '',
 };
 export const postFormStore = create<PostFormState>((set) => ({
   postForm: defaultPostForm,

@@ -25,4 +25,13 @@ export const layoutMap = {
     justify-content: center;
     align-items: center;
   `,
+  scrollbarsNone: css`
+    overflow: scroll;
+    /* 웹킷 브라우저용 */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    /* 파이어폭스용 */
+    scrollbar-width: none;
+  `,
 };
