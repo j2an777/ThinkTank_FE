@@ -1,23 +1,26 @@
 import styled from '@emotion/styled';
-import { colors } from '@/styles/colorPalette';
+import { Colors, colors } from '@/styles/colorPalette';
+import { layoutMap } from '@/styles/layout';
+import { Typograph, typographyMap } from '@/styles/typography';
 
 interface ButtonProp {
   width?: string;
   background?: string;
-  color?: string;
+  color?: Colors;
+  typography?: Typograph;
+  hover?: Colors;
 }
 
 const StyledButton = styled.button<ButtonProp>`
-  padding: 15px;
-  width: ${({ width }) => width};
-  border-radius: 2em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: ${({ background }) => background || colors.yellow};
-  color: ${({ color }) => color || 'white'};
-  font-size: 20px;
-  font-weight: 700;
+  ${layoutMap.styledButton}
+  width: ${({ width = '300px' }) => width};
+  background: ${({ background = colors.yellow }) => background};
+  color: ${({ color = 'white' }) => color};
+  ${({ typography = 't1' }) => typographyMap[typography]}
+
+  &:hover {
+    background-color: ${({ hover = colors.yellowHover }) => hover};
+  }
 `;
 
 export default StyledButton;

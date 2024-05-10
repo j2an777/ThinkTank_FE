@@ -17,26 +17,31 @@ export const TitleBox = styled.div`
 
 export const ContentBox = styled.div`
   ${layoutMap.shadowBox}
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 30px 1fr;
-  grid-auto-flow: column;
+  display: flex;
   min-height: 150px;
   max-height: 200px;
   overflow: scroll;
   overflow-x: hidden;
-  grid-gap: 10px;
+  gap: 10px;
 `;
 
 export const TestBlock = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 10px;
 
   > textarea {
     resize: none;
     border: 1px solid ${colors.blue};
     border-radius: 8px;
-    outline-color: ${colors.yellowActive};
+    outline: none;
+    padding: 10px;
+  }
+
+  textarea:first-of-type {
+    flex: 2;
+  }
+  textarea:nth-of-type(2) {
+    flex: 1;
   }
 `;

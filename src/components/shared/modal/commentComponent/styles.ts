@@ -11,4 +11,5 @@ export const Container = styled.div`
   background-color: white;
   justify-content: space-between;
   border-radius: 0;
+  gap: 30px;
 `;

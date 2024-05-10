@@ -3,7 +3,8 @@ import { useModalContext } from '@/contexts/ModalContext';
 import { CodeBox } from '@/components/post';
 import { useNavigate } from 'react-router-dom';
 import { postFormStore } from '@/stores/post';
-import { Icon } from '@/components/shared';
+import { Icon, StyledButton } from '@/components/shared';
+import { postProblem } from '@/apis/post';
 
 const PostRight = () => {
   const navigate = useNavigate();
@@ -24,21 +25,19 @@ const PostRight = () => {
         }
       />
       <CodeBox />
-      <button
+      <StyledButton
         onClick={() =>
           open({
             title: '게시글을 올리겠습니까?',
-            onButtonClick: () => {
-              console.log(postForm);
-            },
+            onButtonClick: () => postProblem(postForm),
             hasCancelButton: true,
             buttonLabel: '확인',
           })
         }
         css={S.testButton}
       >
-        post
-      </button>
+        Post
+      </StyledButton>
     </S.Container>
   );
 };

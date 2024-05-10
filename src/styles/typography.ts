@@ -13,6 +13,13 @@ export const typographyMap = {
   t4: css`
     font-size: 16px;
   `,
+
+  semibold: css`
+    font-weight: 500;
+  `,
+  bold: css`
+    font-weight: 700;
+  `,
 };
 
 export type Typograph = keyof typeof typographyMap;

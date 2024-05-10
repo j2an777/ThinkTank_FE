@@ -4,8 +4,8 @@ import { Login } from '@/types/auth.ts';
 import { Icon, InputBox, StyledButton } from '../shared/index.ts';
 import { Link, useNavigate } from 'react-router-dom';
 import loginImage from '@/assets/images/loginImage.jpg';
-import { postLogin } from '@/apis/AuthAPI.ts';
 import { AxiosError } from 'axios';
+import { postLogin } from '@/apis/userapi.ts';
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -20,10 +20,10 @@ export default function LoginForm() {
   const onSubmit: SubmitHandler<Login> = async (data) => {
     try {
       const response = await postLogin(data);
-      const accessToken = response;
-      localStorage.setItem('access', accessToken); //refreshToken은 쿠키에..
+      const accessToken = response.accessToken;
+      localStorage.setItem('access', accessToken);
       console.log('로그인 성공:', response);
-      navigate('/mypage');
+      navigate(-1);
     } catch (error) {
       const axiosError = error as AxiosError<{ message: string }>;
       console.error('로그인 에러:', error);
@@ -83,7 +83,9 @@ export default function LoginForm() {
               <Link to="/signup/required">회원가입</Link>
             </p>
           </S.Signup>
-          <StyledButton width="100%">로그인</StyledButton>
+          <StyledButton width="100%" typography="t3">
+            로그인
+          </StyledButton>
         </S.Form>
         <S.Social>
           간편하게 로그인하세요!

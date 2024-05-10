@@ -1,5 +1,7 @@
-import { ForwardedRef, MouseEvent, RefAttributes, forwardRef, useState } from 'react';
-import { CategoryOption, CategoryValues } from '../../../consts/category';
+import { MouseEvent, useState } from 'react';
+import { CategoryOption, CategoryValues } from '@/consts/category';
+import { animationMap } from '@/styles/framerMotion';
+import { motion } from 'framer-motion';
 
 import * as S from './styles';
 
@@ -9,17 +11,18 @@ interface CategoryProps<T extends CategoryOption> {
   onChange?: (value: string) => void;
 }
 
-const InnerSelect = <T extends CategoryOption>(
-  { optionData, type = 'primary', onChange }: CategoryProps<T>,
-  ref: ForwardedRef<HTMLSelectElement>,
-) => {
+const Select = <T extends CategoryOption>({
+  optionData,
+  type = 'primary',
+  onChange,
+}: CategoryProps<T>) => {
   const [isExpand, setIsExpand] = useState<boolean>(false);
   const [selected, setSelected] = useState<CategoryValues>(optionData[0].value);
+
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsExpand((prev) => !prev);
   };
-
   return (
     <S.Container onBlur={() => setIsExpand(false)} onMouseDown={handleMouseDown}>
       <S.Select
@@ -30,7 +33,6 @@ const InnerSelect = <T extends CategoryOption>(
           const value = e.target.value as CategoryValues;
           setSelected(value);
         }}
-        ref={ref}
       >
         {optionData.length > 0 &&
           optionData.map(({ value, name }) => (
@@ -39,8 +41,13 @@ const InnerSelect = <T extends CategoryOption>(
             </option>
           ))}
       </S.Select>
-      {isExpand && (
-        <ul>
+
+      <motion.div
+        initial="exit"
+        animate={isExpand ? 'enter' : 'exit'}
+        variants={animationMap.subMenuAnimate}
+      >
+        <S.SelectList>
           {optionData.length > 0 &&
             optionData.map(({ value, name }, index) => {
               if (!index) {
@@ -60,19 +67,11 @@ const InnerSelect = <T extends CategoryOption>(
                 </li>
               );
             })}
-        </ul>
-      )}
+        </S.SelectList>
+      </motion.div>
     </S.Container>
   );
 };
-
-function fixedForwardRef<T, P = object>(
-  render: (props: P, ref: React.Ref<T>) => React.ReactNode,
-): (props: P & React.RefAttributes<T>) => React.ReactNode {
-  return forwardRef(render) as (props: P & RefAttributes<T>) => React.ReactNode;
-}
-
-const Select = fixedForwardRef(InnerSelect);
 
 export default Select;
 

@@ -1,9 +1,9 @@
 export const CATEGORY = [
   { value: '', name: '알고리즘' },
-  { value: 'Bubble Sort', name: '버블 정렬' },
-  { value: 'Insertion Sort', name: '삽입 정렬' },
-  { value: 'Selection Sort', name: '선택 정렬' },
-  { value: 'Quick Sort', name: '퀵 정렬' },
+  { value: 'graph', name: '그래프' },
+  { value: 'dfs', name: 'DFS' },
+  { value: 'SelectionSort', name: '선택 정렬' },
+  { value: 'QuickSort', name: '퀵 정렬' },
   { value: 'Merge Sort', name: '병합 정렬' },
   { value: 'Heap Sort', name: '힙 정렬' },
   { value: 'Radix Sort', name: '기수 정렬' },
