@@ -23,7 +23,7 @@ export default function LoginForm() {
       const accessToken = response.accessToken;
       localStorage.setItem('access', accessToken);
       console.log('로그인 성공:', response);
-      navigate('/mypage');
+      navigate(-1);
     } catch (error) {
       const axiosError = error as AxiosError<{ message: string }>;
       console.error('로그인 에러:', error);
