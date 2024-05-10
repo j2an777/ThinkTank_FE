@@ -11,7 +11,7 @@ export const getAuthAxios = (accessToken?: string) => {
       };
 
   const authAxios = axios.create({
-    baseURL: 'http://211.206.94.24:9999',
+    baseURL: 'http://13.124.54.157:8080',
     headers: headersOption,
     withCredentials: true,
   });
