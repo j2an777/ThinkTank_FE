@@ -4,7 +4,7 @@ import { TestCase } from '@/types/post';
 
 import * as S from './styles';
 
-const TestCaseBox = ({ testCase }: { testCase: TestCase[] }) => {
+const TestCaseBox = ({ testCases }: { testCases: TestCase[] }) => {
   const [isExpand, setIsExpand] = useState<boolean>(true);
   return (
     <S.TestCaseContainer>
@@ -29,7 +29,7 @@ const TestCaseBox = ({ testCase }: { testCase: TestCase[] }) => {
             <Text>Example</Text>
             <Text>Return</Text>
           </S.TestBlock>
-          {testCase.map(({ example, result }, index) => {
+          {testCases.map(({ example, result }, index) => {
             return (
               <S.TestBlock key={index}>
                 <textarea key={`example`} name="example" value={example} readOnly />
