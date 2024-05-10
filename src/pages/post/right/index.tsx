@@ -4,6 +4,7 @@ import { CodeBox } from '@/components/post';
 import { useNavigate } from 'react-router-dom';
 import { postFormStore } from '@/stores/post';
 import { Icon, StyledButton } from '@/components/shared';
+import { postProblem } from '@/apis/post';
 
 const PostRight = () => {
   const navigate = useNavigate();
@@ -28,9 +29,7 @@ const PostRight = () => {
         onClick={() =>
           open({
             title: '게시글을 올리겠습니까?',
-            onButtonClick: () => {
-              console.log(postForm);
-            },
+            onButtonClick: () => postProblem(postForm),
             hasCancelButton: true,
             buttonLabel: '확인',
           })

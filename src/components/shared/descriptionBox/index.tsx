@@ -6,7 +6,7 @@ import { TextareaField } from '@/components/post';
 import { CATEGORY } from '@/consts/category';
 import { ChangeEvent } from 'react';
 
-type DescriptonForm = Omit<PostForm, 'testCase' | 'language' | 'answer'>;
+type DescriptonForm = Omit<PostForm, 'testCases' | 'language' | 'answer'>;
 
 type DescriptionBoxProps = {
   page: 'post' | 'detail';

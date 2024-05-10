@@ -1,5 +1,6 @@
 import { MouseEvent, useState } from 'react';
 import { CategoryOption, CategoryValues } from '@/consts/category';
+import { animationMap } from '@/styles/framerMotion';
 import { motion } from 'framer-motion';
 
 import * as S from './styles';
@@ -9,26 +10,6 @@ interface CategoryProps<T extends CategoryOption> {
   type?: 'primary' | 'fill';
   onChange?: (value: string) => void;
 }
-
-const subMenuAnimate = {
-  enter: {
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-    },
-    display: 'block',
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      duration: 0.5,
-      delay: 0.1,
-    },
-    transitionEnd: {
-      display: 'none',
-    },
-  },
-};
 
 const Select = <T extends CategoryOption>({
   optionData,
@@ -64,7 +45,7 @@ const Select = <T extends CategoryOption>({
       <motion.div
         initial="exit"
         animate={isExpand ? 'enter' : 'exit'}
-        variants={subMenuAnimate}
+        variants={animationMap.subMenuAnimate}
       >
         <S.SelectList>
           {optionData.length > 0 &&

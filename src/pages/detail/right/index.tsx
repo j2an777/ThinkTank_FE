@@ -18,7 +18,7 @@ const DetailRight = () => {
             onClick={() =>
               open({
                 title: '게시글 작성을 그만두시겠습니까?',
-                onButtonClick: () => navigate(-1),
+                onButtonClick: () => {},
                 hasCancelButton: true,
                 buttonLabel: '뒤로가기',
                 type: 'comment',
@@ -29,7 +29,7 @@ const DetailRight = () => {
           </button>
         </div>
         <Icon value="question" {...{ css: S.questionCss }} />
-        <StyledButton onClick={() => console.log('제출하기')} css={S.testButton}>
+        <StyledButton onClick={() => navigate('/login')} css={S.testButton}>
           Submit
         </StyledButton>
       </S.ButtonBox>
