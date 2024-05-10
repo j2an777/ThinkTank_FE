@@ -1,8 +1,9 @@
-import { Icon, Text, UserCircle } from '@/components/shared';
+import { Icon, Text } from '@/components/shared';
 import { Comment } from '@/types/comment';
 import getTimeDifference from '@/utils/getTimeDifference';
 
 import * as S from './styles';
+import UserCircle from '@/components/shared/UserCircle';
 
 const CommentItem = ({ commentId, content, createdAt, user }: Comment) => {
   return (
