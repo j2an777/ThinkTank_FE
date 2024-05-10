@@ -1,12 +1,12 @@
 import { CodeEditor, Select, Text } from '@/components/shared';
-import { LANGUAGE } from '@/consts/language';
+import { LANGUAGE, LanguageValues } from '@/consts/language';
 
 import * as S from './styles';
 import useSetFormData from '@/hooks/post/useSetFormData';
 
 const CodeBox = () => {
   const { postForm, updatePostForm } = useSetFormData();
-  const handleChangeSelect = (value: string) => {
+  const handleChangeSelect = (value: LanguageValues) => {
     updatePostForm({ language: value });
   };
   return (
