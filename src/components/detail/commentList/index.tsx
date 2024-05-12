@@ -18,8 +18,8 @@ const CommentList = () => {
   const mock = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   return (
     <S.Container>
-      {mock.map(() => (
-        <CommentItem {...defaultComment} />
+      {mock.map((_, index) => (
+        <CommentItem key={index} {...defaultComment} />
       ))}
     </S.Container>
   );

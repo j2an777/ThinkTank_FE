@@ -1,6 +1,6 @@
 import { User } from './auth';
 
-export interface CommemtDate {
+export interface CommentDate {
   postId: number;
   comments: Comment[];
   pageInfo: Page;
