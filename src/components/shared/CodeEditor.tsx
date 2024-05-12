@@ -1,8 +1,10 @@
 import { DEFALUTCODE } from '@/consts/defaultCode';
 import { LanguageValues } from '@/consts/language';
 import useSetFormData from '@/hooks/post/useSetFormData';
+import getCode from '@/utils/getCode';
 import getCodeEditorOptions from '@/utils/getCodeEditorOptions';
 import Editor, { loader } from '@monaco-editor/react';
+import { useMemo } from 'react';
 
 interface CodeEditorProps {
   language: LanguageValues;
@@ -29,25 +31,24 @@ loader.init().then((monaco) => {
 // colors 관련 key 정보 https://github.com/microsoft/monaco-editor/issues/1631
 
 const CodeEditor = ({ language, readOnly = false, answer }: CodeEditorProps) => {
-  const { updatePostForm, postForm } = useSetFormData();
+  const { updatePostForm } = useSetFormData();
   const options = getCodeEditorOptions({ readOnly });
-  console.log(postForm);
+  const editorKey = useMemo(() => language, [language]);
   return (
     <Editor
+      key={editorKey}
       height="400px"
       options={options}
-      defaultLanguage="java"
+      defaultLanguage={editorKey}
       language={language}
-      defaultValue={DEFALUTCODE.java}
-      value={answer ?? postForm.answer}
-      onChange={(answer) => updatePostForm({ answer })}
+      defaultValue={DEFALUTCODE[language]}
+      value={answer}
+      onChange={(answer) =>
+        updatePostForm({ answer: getCode({ answer: answer as string, language }) })
+      }
       theme="myTheme"
     />
   );
 };
 
 export default CodeEditor;
-
-/**
- * 호출 시에 readOnly 속성만 주시고
- */

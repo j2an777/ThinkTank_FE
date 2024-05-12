@@ -16,15 +16,6 @@ export const layoutMap = {
     justify-content: center;
     align-items: center;
   `,
-
-  styledButton: css`
-    padding: 15px;
-    border-radius: 2em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-  `,
   scrollbarsNone: css`
     overflow: scroll;
     /* 웹킷 브라우저용 */

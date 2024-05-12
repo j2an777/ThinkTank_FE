@@ -1,7 +1,7 @@
 export const LANGUAGE = [
   { value: '', name: '언어선택' },
-  { value: 'javascript', name: 'Javascript' },
   { value: 'java', name: 'Java' },
+  { value: 'javascript', name: 'Javascript' },
 ];
 
 export type LanguageValues = (typeof LANGUAGE)[number]['value'];
