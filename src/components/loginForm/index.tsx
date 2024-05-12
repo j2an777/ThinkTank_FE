@@ -22,6 +22,7 @@ export default function LoginForm() {
       const response = await postLogin(data);
       const accessToken = response.accessToken;
       localStorage.setItem('access', accessToken);
+      localStorage.setItem('userId', data.email);
       console.log('로그인 성공:', response);
       navigate(-1);
     } catch (error) {
@@ -34,6 +35,8 @@ export default function LoginForm() {
             type: 'manual',
             message: '비밀번호가 일치하지 않습니다.',
           });
+        } else if (axiosError.status === 404) {
+          console.log(error);
         } else {
           setError('email', {
             type: 'manual',

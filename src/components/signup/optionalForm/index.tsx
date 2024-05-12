@@ -1,6 +1,6 @@
 import * as S from './styles.ts';
 import { InputBox, StyledButton, Icon } from '@/components/shared';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useModalContext } from '@/contexts/ModalContext.tsx';
 import { useNavigate } from 'react-router-dom';
 import useForm from '@/hooks/useForm.ts';
@@ -19,9 +19,18 @@ const OptionalForm = () => {
     }
   };
 
-  const handleSubmit = async () => {
-    navigate('/login');
-  };
+  useEffect(() => {
+    open({
+      title: '회원가입이 완료되었습니다.',
+      description:
+        '세부사항을 입력해주세요. 세부사항은 수정할 수 있습니다. 입력을 생략하시겠습니까?',
+      onButtonClick: () => {
+        navigate('/');
+      },
+      hasCancelButton: true,
+      buttonLabel: '확인',
+    });
+  }, []);
 
   return (
     <S.Container>
@@ -54,20 +63,8 @@ const OptionalForm = () => {
         />
         <S.TextLimit>{`${text.length}/150 자`}</S.TextLimit>
       </S.Inputs>
-      <StyledButton
-        width="100%"
-        onClick={() =>
-          open({
-            title: '회원가입이 완료되었습니다.',
-            onButtonClick: () => {
-              handleSubmit();
-            },
-            hasCancelButton: true,
-            buttonLabel: '확인',
-          })
-        }
-      >
-        회원 가입
+      <StyledButton width="100%" onClick={() => navigate('/')}>
+        확인
       </StyledButton>
     </S.Container>
   );
