@@ -1,4 +1,4 @@
-import { Text } from '../..';
+import { StyledButton, Text } from '../..';
 
 import * as S from './styles';
 
@@ -26,8 +26,14 @@ const AlertComponent = ({
       </Text>
       {description ?? <Text>{description}</Text>}
       <S.ButtonBox>
-        {hasCancelButton ? <button onClick={close}>취소</button> : null}
-        <button onClick={onButtonClick}>{buttonLabel}</button>
+        {hasCancelButton ? (
+          <StyledButton size="small" onClick={close} width="150px" buttonType="second">
+            취소
+          </StyledButton>
+        ) : null}
+        <StyledButton size="small" onClick={onButtonClick} width="150px">
+          {buttonLabel}
+        </StyledButton>
       </S.ButtonBox>
     </S.Container>
   );

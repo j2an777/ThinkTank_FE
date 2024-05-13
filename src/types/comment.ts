@@ -1,6 +1,6 @@
 import { User } from './auth';
 
-export interface CommemtDate {
+export interface CommentDate {
   postId: number;
   comments: Comment[];
   pageInfo: Page;
@@ -15,5 +15,5 @@ export interface Comment {
 
 export interface Page {
   pageIndex: number;
-  done: true;
+  isDone: true;
 }

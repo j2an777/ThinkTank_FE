@@ -5,7 +5,7 @@ import { DescriptionBox, TestCaseBox } from '@/components/shared';
 
 import * as S from './styles';
 
-const InnerDetailLeft = () => {
+const DetailLeft = () => {
   const {
     data: { testCases, ...postForm },
   } = useGetPost();
@@ -17,6 +17,5 @@ const InnerDetailLeft = () => {
     </S.Container>
   );
 };
-const DetailLeft = withSuspense(InnerDetailLeft, { fallback: <DetailFallback /> });
 
-export default DetailLeft;
+export default withSuspense(DetailLeft, { fallback: <DetailFallback /> });

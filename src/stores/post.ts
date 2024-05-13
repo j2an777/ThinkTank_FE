@@ -19,3 +19,13 @@ export const postFormStore = create<PostFormState>((set) => ({
   updatePostForm: (value) =>
     set(({ postForm }) => ({ postForm: { ...postForm, ...value } })),
 }));
+
+interface PostIdState {
+  postId: string;
+  updatePostId: (value: string) => void;
+}
+
+export const postIdStore = create<PostIdState>((set) => ({
+  postId: '',
+  updatePostId: (value) => set(() => ({ postId: value })),
+}));
