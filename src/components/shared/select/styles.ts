@@ -18,6 +18,14 @@ export const SelectList = styled.ul`
   overflow-x: hidden;
   z-index: var(--select-zindex);
   background-color: white;
+
+  > li {
+    padding: 5px;
+    border-radius: 10px;
+    :hover {
+      background-color: ${colors.gray50};
+    }
+  }
 `;
 
 export const Select = styled.select<{ type?: 'primary' | 'fill' }>`
