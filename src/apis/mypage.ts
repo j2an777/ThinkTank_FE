@@ -4,17 +4,17 @@ import instance from './instance';
 /** MYPAGE 게시글 조회 */
 export const getMypageArticles = async ({
   pageIndex,
-  done,
+  isDone,
   value,
-  userNickname,
+  email,
   loginUserId,
 }: MypagePosts) => {
   const response = await instance.get('/api/mypage/posts', {
     params: {
       pageIndex: pageIndex,
-      done: done,
+      isDone: isDone,
       value: value,
-      userNickname: userNickname,
+      email: email,
       loginUserId: loginUserId,
     },
   });

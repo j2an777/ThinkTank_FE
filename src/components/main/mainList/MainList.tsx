@@ -74,7 +74,7 @@ const MainList = () => {
       {isSuccess &&
         data?.pages.map((page, index) => (
           <React.Fragment key={index}>
-            {page.posts.map((item: Article) => (
+            {page.posts.map((item: ArticleType) => (
               <MainListItem key={item.postId} listItem={item} />
             ))}
           </React.Fragment>

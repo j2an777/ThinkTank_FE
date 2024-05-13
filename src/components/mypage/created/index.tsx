@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import * as S from './styles.ts';
 import { getMypageArticles } from '@/apis/mypage.ts';
-import { useNickname } from '@/stores/mypage.ts';
+import { useNickname } from '@/stores/mypage';
 import { useEffect, useRef } from 'react';
 import { ArticleItem } from '@/types/article.ts';
 

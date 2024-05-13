@@ -1,6 +1,7 @@
 import { colors } from '@/styles/colorPalette';
 import { layoutMap } from '@/styles/layout';
 import styled from '@emotion/styled';
+import { typographyMap } from '@/styles/typography';
 
 export const ArticleContainer = styled.div`
   ${layoutMap.shadowBox}
@@ -43,7 +44,7 @@ export const ArTopBox = styled.div`
 `;
 
 export const ArTitleBlock = styled.p`
-  ${typographyMap.t1}
+  font-size: ${typographyMap.t1};
   font-weight: 500;
   color: black;
 `;
