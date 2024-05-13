@@ -47,5 +47,6 @@
     "typescript-eslint": "^7.7.1",
     "vite": "^5.2.0",
     "vite-plugin-svgr": "^4.2.0"
-  }
+  },
+  "proxy": "http://13.124.54.146:8080"
 }
