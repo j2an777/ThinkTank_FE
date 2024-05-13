@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { StyledButton, Icon, InputBox } from '@/components/shared';
 import { useNavigate } from 'react-router-dom';
 //import { useSignupStore } from '@/stores/signupStore';
-import { postSignup } from '@/apis/userapi.ts';
+import { postLogin, postSignup } from '@/apis/userapi.ts';
 import { SignUp } from '@/types/auth.ts';
 import { AxiosError } from 'axios';
 
@@ -23,8 +23,15 @@ const SignupForm = () => {
     try {
       // 선택사항 빈 값으로 보냄
       const fullData = { ...data, github: '', blog: '', introduce: '' };
-      const response = await postSignup(fullData);
+      let response = await postSignup(fullData);
       console.log('회원가입 성공:', response);
+
+      // 자동 로그인
+      response = await postLogin(data);
+      const accessToken = response.accessToken;
+      localStorage.setItem('access', accessToken);
+      localStorage.setItem('userId', data.email);
+      console.log('로그인 성공:', response);
       navigate('/signup/optional');
     } catch (error) {
       const axiosError = error as AxiosError<{ message: string }>;
@@ -109,7 +116,7 @@ const SignupForm = () => {
           error={errors.checkPassword?.message}
         />
         <StyledButton width={'100%'} style={{ marginTop: '80px' }}>
-          확인
+          회원가입
         </StyledButton>
       </S.Form>
     </S.Container>

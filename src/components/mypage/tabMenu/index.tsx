@@ -17,7 +17,7 @@ const TabMenu = () => {
       <S.TabMenu>
         {tabs.map((tab) => (
           <S.TabBox key={tab.id} active={currentTab === tab.id}>
-            <Link to={`#${tab.id}`}>{tab.label}</Link>
+            <Link to={`?value=${tab.id}`}>{tab.label}</Link>
           </S.TabBox>
         ))}
       </S.TabMenu>

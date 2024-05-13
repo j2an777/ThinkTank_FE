@@ -7,10 +7,16 @@ export const Container = styled.div`
   align-items: start;
   margin: 70px 420px;
   text-align: left;
-  row-gap: 110px;
+  row-gap: 80px;
 `;
 
 export const Block = styled.div``;
+
+export const Box = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`;
 
 export const Title = styled.div`
   font-size: 30px;

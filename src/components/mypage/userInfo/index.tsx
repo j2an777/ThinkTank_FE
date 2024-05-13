@@ -5,15 +5,17 @@ import { useNavigate } from 'react-router-dom';
 import { getUserInfo } from '@/apis/mypage.ts';
 import { User } from '@/types/auth.ts';
 import { IconValues } from '@/components/shared/icon/index.tsx';
+import { useNickname } from '@/stores/mypage.ts';
 
 const UserInfo = () => {
   const navigate = useNavigate();
+  const { setNickname } = useNickname();
   const [userData, setUserData] = useState<User>({
-    email: 'email.com',
-    nickname: 'Soo',
+    email: 'email',
+    nickname: '',
     github: 'github',
     blog: 'blog',
-    introduce: 'ss',
+    introduce: '',
     profileImage: '',
   });
 
@@ -29,8 +31,7 @@ const UserInfo = () => {
           introduce: data.introduce,
           profileImage: data.profileImageResDto?.fileUrl,
         });
-      } else {
-        navigate('/login');
+        setNickname(data.nickname);
       }
     };
 
@@ -49,7 +50,7 @@ const UserInfo = () => {
         <UserCircle size={150} profileImage={userData.profileImage} />
       </S.LeftBox>
       <S.RightBox>
-        <S.Edit onClick={() => navigate('profile')}>
+        <S.Edit onClick={() => navigate('modify')}>
           <Icon value="settings" />
         </S.Edit>
         <S.UserName>{userData.nickname}</S.UserName>
