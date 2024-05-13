@@ -15,5 +15,5 @@ export interface Comment {
 
 export interface Page {
   pageIndex: number;
-  done: true;
+  isDone: true;
 }
