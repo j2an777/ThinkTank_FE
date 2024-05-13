@@ -1,12 +1,12 @@
+import { postFormStore } from '@/stores/post';
+import { postCheck } from '@/apis/post';
+import useGetPost from '@/hooks/post/useGetPost';
 import { useModalContext } from '@/contexts/ModalContext';
 import { CodeBox } from '@/components/post';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Icon, StyledButton } from '@/components/shared';
 
 import * as S from './styles';
-import { postFormStore } from '@/stores/post';
-import { submitProblem } from '@/apis/post';
-import useGetPost from '@/hooks/post/useGetPost';
 
 const DetailRight = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const DetailRight = () => {
   const handleSubmit = () => {
     const access = localStorage.getItem('access');
     if (access) {
-      submitProblem(
+      postCheck(
         { answer: postForm.answer, language: postForm.language },
         postId as string,
       );

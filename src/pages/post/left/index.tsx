@@ -11,6 +11,7 @@ const PostLeft = () => {
   return (
     <S.Container>
       <DescriptionBox
+        postNumber={postForm.postNumber}
         page="post"
         title={postForm.title}
         content={postForm.content}

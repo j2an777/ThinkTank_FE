@@ -1,12 +1,12 @@
 import { Line, Select, Text } from '@/components/shared';
-
-import * as S from './styles';
-import { PostForm } from '@/types/post';
 import { TextareaField } from '@/components/post';
 import { CATEGORY } from '@/consts/category';
 import { ChangeEvent } from 'react';
+import { ArticleDetail } from '@/types';
 
-type DescriptonForm = Omit<PostForm, 'testCases' | 'language' | 'answer'>;
+import * as S from './styles';
+
+type DescriptonForm = Omit<ArticleDetail, 'testCases' | 'language' | 'answer'>;
 
 type DescriptionBoxProps = {
   page: 'post' | 'detail';

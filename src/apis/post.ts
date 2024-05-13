@@ -1,18 +1,18 @@
-import { List, PostForm } from '@/types';
+import { ArticleDetail } from '@/types';
 import instance from './instance';
 
-export const postArticle = async (formData: PostForm) => {
+export const postArticle = async (formData: ArticleDetail) => {
   const response = await instance.post('/api/post', formData);
   return response.data;
 };
 
 export const getArticle = async (postId: string) => {
   const response = await instance.get(`/api/posts/${postId}`);
-  return response.data as PostForm;
+  return response.data as ArticleDetail;
 };
 
 export const postCheck = async (
-  formData: Pick<PostForm, 'language' | 'answer'>,
+  formData: Pick<ArticleDetail, 'language' | 'answer'>,
   postId: string,
 ) => {
   const newFormData = {

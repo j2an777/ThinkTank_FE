@@ -1,5 +1,5 @@
 import { postFormStore } from '@/stores/post';
-import { PostForm } from '@/types/post';
+import { ArticleDetail } from '@/types';
 import { ChangeEvent } from 'react';
 
 const useSetFormData = () => {
@@ -11,9 +11,9 @@ const useSetFormData = () => {
     updatePostForm(newValue);
   };
   return { postForm, handleChange, updatePostForm } as {
-    postForm: PostForm;
+    postForm: ArticleDetail;
     handleChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-    updatePostForm: (value: Partial<PostForm>) => void;
+    updatePostForm: (value: Partial<ArticleDetail>) => void;
   };
 };
 
