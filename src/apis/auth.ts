@@ -1,4 +1,4 @@
-import instance from './authAxios';
+import instance from './instance';
 
 export const getNewToken = async () => {
   const expiredToken = localStorage.getItem('access');

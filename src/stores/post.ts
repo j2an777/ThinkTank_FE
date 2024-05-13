@@ -1,9 +1,9 @@
-import { PostForm } from '@/types/post';
+import { ArticleDetail } from '@/types';
 import { create } from 'zustand';
 
 interface PostFormState {
-  postForm: PostForm;
-  updatePostForm: (value: Partial<PostForm>) => void;
+  postForm: ArticleDetail;
+  updatePostForm: (value: Partial<ArticleDetail>) => void;
 }
 const defaultPostForm = {
   category: '',
@@ -13,6 +13,7 @@ const defaultPostForm = {
   testCases: [],
   language: 'java',
   answer: '',
+  postNumber: 0,
 };
 export const postFormStore = create<PostFormState>((set) => ({
   postForm: defaultPostForm,

@@ -1,6 +1,6 @@
 import { ProfileTable } from '@/components/mypage';
 import * as S from './styles';
-import { logout } from '@/apis/userapi';
+import { logout } from '@/apis/user';
 import { Icon } from '@/components/shared';
 
 export default function index() {

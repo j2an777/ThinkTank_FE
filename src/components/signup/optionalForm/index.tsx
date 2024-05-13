@@ -13,8 +13,8 @@ const OptionalForm = () => {
   const { value: github, onChange: onChangeGithub } = useForm();
   const { value: blog, onChange: onChangeBlog } = useForm();
 
-  const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (event.target.value.length <= 150) {
+  const onChangeText = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (event.target.value.length <= 100) {
       setText(event.target.value);
     }
   };
@@ -59,7 +59,7 @@ const OptionalForm = () => {
           onBlur={() => setIsFocus(false)}
           placeholder="선택 입력 사항 입니다."
           value={text}
-          onChange={handleTextChange}
+          onChange={onChangeText}
         />
         <S.TextLimit>{`${text.length}/150 자`}</S.TextLimit>
       </S.Inputs>

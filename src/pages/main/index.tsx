@@ -1,7 +1,7 @@
-import MainExtra from "../../components/mainComp/mainExtra/MainExtra";
-import MainList from "../../components/mainComp/mainList/MainList";
-import Nav from "../../components/nav/Nav";
-import { MainContainer } from "./styles";
+import MainExtra from '../../components/main/mainExtra/MainExtra';
+import MainList from '../../components/main/mainList/MainList';
+import Nav from '../../components/nav/Nav';
+import { MainContainer } from './styles';
 
 const MainPage = () => {
   return (

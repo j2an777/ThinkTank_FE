@@ -1,23 +1,23 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import * as S from './styles.ts';
-import { getMypagePosts } from '@/apis/mypage.ts';
+import { getMypageArticles } from '@/apis/mypage.ts';
 import { useNickname } from '@/stores/mypage.ts';
 import { useEffect, useRef } from 'react';
 import { ArticleItem } from '@/types/article.ts';
 
 const CreatedMenu = () => {
   const loginUserId = localStorage.getItem('userId');
-  const { nickname } = useNickname();
+  const email = useNickname();
   const loader = useRef(null);
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
-    queryKey: ['created', nickname, loginUserId],
+    queryKey: ['created', email, loginUserId],
     queryFn: ({ pageParam }) =>
-      getMypagePosts({
+      getMypageArticles({
         pageIndex: pageParam,
-        done: false,
+        isDone: false,
         value: 'created',
-        userNickname: nickname,
+        email: email,
         loginUserId: loginUserId,
       }),
     initialPageParam: 1,

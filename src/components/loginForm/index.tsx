@@ -1,11 +1,11 @@
 import * as S from './styles.ts';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Login } from '@/types/auth.ts';
 import { Icon, InputBox, StyledButton } from '../shared/index.ts';
 import { Link, useNavigate } from 'react-router-dom';
 import loginImage from '@/assets/images/loginImage.jpg';
 import { AxiosError } from 'axios';
-import { postLogin } from '@/apis/userapi.ts';
+import { postLogin } from '@/apis/user.ts';
+import { Login } from '@/types/auth.ts';
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ export default function LoginForm() {
       const response = await postLogin(data);
       const accessToken = response.accessToken;
       localStorage.setItem('access', accessToken);
-      localStorage.setItem('userId', data.email);
+      localStorage.setItem('userEmail', data.email);
       console.log('로그인 성공:', response);
       navigate(-1);
     } catch (error) {

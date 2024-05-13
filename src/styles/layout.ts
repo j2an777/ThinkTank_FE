@@ -6,7 +6,7 @@ export const layoutMap = {
     flex-direction: column;
     border-radius: 15px;
     padding: 20px;
-    background: white;
+    background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   `,
 

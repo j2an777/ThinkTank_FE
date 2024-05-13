@@ -1,7 +1,7 @@
 export interface MypagePosts {
   pageIndex: number;
-  done: boolean;
+  isDone: boolean;
   value: 'created' | 'liked' | 'solved';
-  userNickname: string | null;
+  email: string | null;
   loginUserId: string | null;
 }
