@@ -1,11 +1,11 @@
-import { Article } from '@/types/article';
+import { ArticleType } from '@/types/article';
 import * as S from './styles';
 import React, { ReactNode } from 'react';
 import { Status } from '../infoStatus';
 import { useNavigate } from 'react-router-dom';
 
 // ArticleItem 타입에서 author 제외한 타입 정의
-type ArticleTypes = Omit<Article, 'user'>;
+type ArticleTypes = Omit<ArticleType, 'user'>;
 
 interface ArticleProps {
   article: ArticleTypes;

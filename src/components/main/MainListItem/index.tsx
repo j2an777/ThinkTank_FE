@@ -1,10 +1,10 @@
 import { Icon } from '@/components/shared';
 import * as S from './styles';
-import { Article } from '@/types/index';
 import Article from '@/components/shared/article';
+import { ArticleType } from '@/types';
 
 interface ListItemProps {
-  listItem: Article;
+  listItem: ArticleType;
 }
 
 const MainListItem = ({ listItem }: ListItemProps) => {

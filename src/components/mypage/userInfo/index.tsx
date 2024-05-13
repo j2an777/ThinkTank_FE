@@ -1,11 +1,12 @@
 import { Icon, UserCircle } from '@/components/shared';
-import * as S from './styles.';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getUserInfo } from '@/apis/mypage';
 import { User } from '@/types/auth.ts';
 import { IconValues } from '@/components/shared/icon';
 import { useNickname } from '@/stores/mypage';
+import { getUserInfo } from '@/apis/user';
+
+import * as S from './styles';
 
 const UserInfo = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const UserInfo = () => {
           github: data.github,
           blog: data.blog,
           introduce: data.introduce,
-          profileImage: data.profileImageResDto?.fileUrl,
+          profileImage: data.profileImage,
         });
         setNickname(data.nickname);
       }

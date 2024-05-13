@@ -1,9 +1,9 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import * as S from '../created/styles';
-import { getMypagePosts } from '@/apis/mypage.ts';
 import { useNickname } from '@/stores/mypage.ts';
 import { useEffect, useRef } from 'react';
-import { ArticleItem } from '@/types/article.ts';
+import { getMypageArticles } from '@/apis/mypage';
+import { ArticleType } from '@/types';
 
 const SolvedMenu = () => {
   const loginUserId = localStorage.getItem('userId');
@@ -13,11 +13,11 @@ const SolvedMenu = () => {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
     queryKey: ['liked', nickname, loginUserId],
     queryFn: ({ pageParam }) =>
-      getMypagePosts({
+      getMypageArticles({
         pageIndex: pageParam,
-        done: false,
+        isDone: false,
         value: 'liked',
-        userNickname: nickname,
+        email: nickname,
         loginUserId: loginUserId,
       }),
     initialPageParam: 1,
@@ -43,7 +43,7 @@ const SolvedMenu = () => {
   return (
     <S.Container>
       {data?.pages.map((page) =>
-        page.data.map((post: ArticleItem) => (
+        page.data.map((post: ArticleType) => (
           <div key={post.postId}>{/* 게시글 공통 컴포넌트로 표시 */}</div>
         )),
       )}
