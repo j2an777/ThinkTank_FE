@@ -1,5 +1,5 @@
-import { navItems } from './navItems';
-import { Icon, StyledButton } from '../shared';
+import { Icon, StyledButton } from '@/components/shared';
+import { navItems } from '@/consts/navItems';
 import { Link } from 'react-router-dom';
 
 import * as S from './styles';

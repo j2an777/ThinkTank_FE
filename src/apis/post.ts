@@ -1,18 +1,17 @@
-import { PostForm } from '@/types/post';
-import { getAuthAxios } from './authAxios';
+import { List, PostForm } from '@/types';
 import instance from './instance';
 
-export const postProblem = async (formData: PostForm) => {
+export const postArticle = async (formData: PostForm) => {
   const response = await instance.post('/api/post', formData);
   return response.data;
 };
 
-export const getProblem = async (postId: string) => {
+export const getArticle = async (postId: string) => {
   const response = await instance.get(`/api/posts/${postId}`);
   return response.data as PostForm;
 };
 
-export const submitProblem = async (
+export const postCheck = async (
   formData: Pick<PostForm, 'language' | 'answer'>,
   postId: string,
 ) => {
@@ -23,4 +22,30 @@ export const submitProblem = async (
   };
   const response = await instance.post('api/posts/submit', newFormData);
   return response.data;
+};
+
+interface FetchParams {
+  pageParam?: number;
+  limit: number;
+}
+
+export const getArticles = async ({
+  pageParam = 1,
+  limit = 2,
+  email,
+}: FetchParams): Promise<List> => {
+  try {
+    const response = await instance.get<List>(
+      `/api/posts?page=${pageParam}&limit=${limit}`,
+      {
+        params: {
+          email: email,
+        },
+      },
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Failed to fetch posts');
+  }
 };

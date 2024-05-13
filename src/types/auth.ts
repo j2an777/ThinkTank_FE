@@ -17,16 +17,8 @@ export interface Login {
 export interface User {
   email: string;
   nickname: string;
-  github?: string;
-  blog?: string;
-  introduce?: string;
-  profileImage: string;
-}
-
-export interface UserModify {
-  nickname: string;
-  github?: string;
-  blog?: string;
-  introduce?: string;
+  github: string;
+  blog: string;
+  introduce: string;
   profileImage: null | string;
 }

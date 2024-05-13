@@ -1,3 +1,4 @@
+import { Page } from '.';
 import { User } from './auth';
 
 export interface CommentDate {
@@ -11,9 +12,4 @@ export interface Comment {
   content: string;
   createdAt: Date;
   user: User;
-}
-
-export interface Page {
-  pageIndex: number;
-  isDone: true;
 }

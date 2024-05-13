@@ -1,11 +1,11 @@
-import { Icon, UserCircle } from '@/components/shared/index.ts';
-import * as S from './styles.ts';
+import { Icon, UserCircle } from '@/components/shared';
+import * as S from './styles.';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getUserInfo } from '@/apis/mypage.ts';
+import { getUserInfo } from '@/apis/mypage';
 import { User } from '@/types/auth.ts';
-import { IconValues } from '@/components/shared/icon/index.tsx';
-import { useNickname } from '@/stores/mypage.ts';
+import { IconValues } from '@/components/shared/icon';
+import { useNickname } from '@/stores/mypage';
 
 const UserInfo = () => {
   const navigate = useNavigate();

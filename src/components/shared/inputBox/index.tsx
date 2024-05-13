@@ -17,7 +17,7 @@ const InputBox = forwardRef<HTMLInputElement, InputBoxProps>(
     const [isFocus, setIsFocus] = useState(false);
 
     return (
-      <div>
+      <>
         <S.Label isFocus={isFocus}>{label}</S.Label>
         <S.Input
           name={name}
@@ -34,7 +34,7 @@ const InputBox = forwardRef<HTMLInputElement, InputBoxProps>(
           ref={ref}
         />
         {error && <S.Error>{error}</S.Error>}
-      </div>
+      </>
     );
   },
 );
