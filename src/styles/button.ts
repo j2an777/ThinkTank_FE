@@ -19,10 +19,14 @@ export const buttonColorMap = {
 
 export const buttonSizeMap = {
   small: css`
+    font-size: 16px;
+    padding: 8px 12px;
+  `,
+  medium: css`
     font-size: 20px;
     padding: 12px 18px;
   `,
-  medium: css`
+  large: css`
     font-size: 28px;
     padding: 15px 24px;
   `,
