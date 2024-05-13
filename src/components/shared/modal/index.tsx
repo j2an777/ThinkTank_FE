@@ -3,8 +3,10 @@ import AlertComponent from './alertComponent';
 import CommentComponent from './commentComponent';
 import Dimmed from './Dimmed';
 import { motion } from 'framer-motion';
+import QuestionComponent from './questionComponent/indext';
+import { LanguageNames } from '@/consts/language';
 
-type ModalType = 'alert' | 'comment';
+type ModalType = 'alert' | 'comment' | 'question';
 
 interface ModalProps {
   open?: boolean;
@@ -15,6 +17,8 @@ interface ModalProps {
   onButtonClick: () => void;
   close?: () => void;
   type?: ModalType;
+  answer?: string;
+  language?: LanguageNames;
 }
 
 const Modal = ({ open, type = 'alert', ...props }: ModalProps) => {
@@ -41,5 +45,7 @@ const renderComponent = ({ type, ...props }: Omit<ModalProps, 'open'>) => {
       return <AlertComponent {...props} />;
     case 'comment':
       return <CommentComponent {...props} />;
+    case 'question':
+      return <QuestionComponent {...props} />;
   }
 };

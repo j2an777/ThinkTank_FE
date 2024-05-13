@@ -1,7 +1,7 @@
 const getTimeDifference = (createdAt: Date) => {
   const currentDate = new Date();
-
-  const diff = currentDate.getTime() - createdAt.getTime();
+  const changedCreatedAt = new Date(createdAt);
+  const diff = currentDate.getTime() - changedCreatedAt.getTime();
 
   const seconds = diff / 1000;
   const minutes = seconds / 60;

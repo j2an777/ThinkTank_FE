@@ -83,9 +83,7 @@ export default function LoginForm() {
               <Link to="/signup/required">회원가입</Link>
             </p>
           </S.Signup>
-          <StyledButton width="100%" typography="t3">
-            로그인
-          </StyledButton>
+          <StyledButton width="100%">로그인</StyledButton>
         </S.Form>
         <S.Social>
           간편하게 로그인하세요!

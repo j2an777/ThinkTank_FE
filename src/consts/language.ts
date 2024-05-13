@@ -6,7 +6,7 @@ export const LANGUAGE = [
 
 export type LanguageValues = (typeof LANGUAGE)[number]['value'];
 
-type LanguageNames = (typeof LANGUAGE)[number]['name'];
+export type LanguageNames = (typeof LANGUAGE)[number]['name'];
 
 export interface LanguageOption {
   value: LanguageValues;

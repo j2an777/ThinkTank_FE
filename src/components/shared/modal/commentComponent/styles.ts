@@ -13,3 +13,12 @@ export const Container = styled.div`
   border-radius: 0;
   gap: 30px;
 `;
+
+export const InputBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  > button {
+    align-self: end;
+  }
+`;
