@@ -1,9 +1,10 @@
-import { Icon, Text, UserCircle } from '@/components/shared';
+import { Icon, Text } from '@/components/shared';
 import { Comment } from '@/types/comment';
 import getTimeDifference from '@/utils/getTimeDifference';
 import { ForwardedRef, forwardRef } from 'react';
 
 import * as S from './styles';
+import UserCircle from '@/components/shared/UserCircle';
 
 const CommentItem = forwardRef<HTMLDivElement, Comment>(
   ({ content, createdAt, user }: Comment, ref: ForwardedRef<HTMLDivElement>) => {
