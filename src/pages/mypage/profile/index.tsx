@@ -1,6 +1,7 @@
 import { ProfileTable } from '@/components/mypage';
 import * as S from './styles';
 import { logout } from '@/apis/userapi';
+import { Icon } from '@/components/shared';
 
 export default function index() {
   return (
@@ -11,11 +12,16 @@ export default function index() {
       </S.Block>
       <ProfileTable />
       <S.Block>
-        <S.Logout>로그아웃</S.Logout>
-        <button onClick={logout}>logout</button>
+        <S.Box>
+          <S.Logout>로그아웃</S.Logout>
+          <Icon value="logout" onClick={logout} />
+        </S.Box>
       </S.Block>
       <S.Block>
-        <S.Title>회원탈퇴</S.Title>
+        <S.Box>
+          <S.Title>회원탈퇴</S.Title>
+          <Icon value="quit" onClick={logout} />
+        </S.Box>
         <S.Subtitle>
           탈퇴 후 회원정보 및 개인형 서비스 이용기록은 모두 삭제됩니다. 탈퇴한 아이디는
           본인과 타인 모두 재사용 및 복구가 불가하오니 신중하게 선택하시기 바랍니다.

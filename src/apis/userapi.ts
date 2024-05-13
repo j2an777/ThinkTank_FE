@@ -1,15 +1,14 @@
 import { Login, SignUp } from '@/types/auth';
-import { getAuthAxios } from './authAxios';
+import instance from './authAxios';
 
-/** LOGIN API **/
+/** 로그인 **/
 export const postLogin = async ({ email, password }: Login) => {
   const data = { email, password };
-  const authAxios = getAuthAxios();
-  const response = await authAxios.post('/api/login', data);
+  const response = await instance.post('/api/login', data);
   return response.data;
 };
 
-/** SIGNUP API */
+/** 회원가입 */
 export const postSignup = async ({
   email,
   nickname,
@@ -30,27 +29,13 @@ export const postSignup = async ({
     introduce,
     profileImage,
   };
-  const authAxios = getAuthAxios();
-  const response = await authAxios.post('/api/signup', data);
+  const response = await instance.post('/api/signup', data);
   return response.data;
 };
 
+/** 로그아웃 */
 export const logout = () => {
   localStorage.removeItem('access');
-  window.location.href = '/login';
-};
-
-/** 유저정보 수정 */
-export const putUser = async () => {
-  const access = localStorage.getItem('access');
-
-  if (!access) {
-    console.error('Access token is missing or invalid');
-    throw new Error('Access token is missing or invalid');
-  }
-
-  const authAxios = getAuthAxios(access);
-  const response = await authAxios.put('/api/mypage/users');
-  console.log(response.data);
-  return response.data;
+  localStorage.removeItem('userId');
+  window.location.href = '/';
 };
