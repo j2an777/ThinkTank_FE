@@ -1,7 +1,7 @@
-import { getAuthAxios } from '../authAxios';
+import { getAuthAxios } from "../authAxios";
 
 // 좋아요 수 업데이트 구문
-const updateLike = async (postId: number): Promise<void> => {
+const updateLike = async (postId: number) => {
   const authAxios = getAuthAxios();
 
   try {

@@ -1,7 +1,7 @@
 import { Icon } from '@/components/shared';
 import * as S from './styles';
 import { colors } from '@/styles/colorPalette';
-import { bestMakers, mostSolvedProblems } from './MainExtraData';
+import { bestMakers, mostSolvedProblems } from './mainExtraData';
 
 const MainExtra = () => {
   return (

@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { getNewToken } from './refresh';
 
-export const getAuthAxios = (accessToken?: string) => {
+export const getAuthAxios = (accessToken?: string | null) => {
   const headersOption = accessToken
     ? {
         'Content-Type': 'application/json',
@@ -13,24 +14,29 @@ export const getAuthAxios = (accessToken?: string) => {
   const authAxios = axios.create({
     baseURL: 'http://13.124.54.157:8080',
     headers: headersOption,
-    withCredentials: true,
   });
 
-  authAxios.interceptors.response.use(async (response) => {
-    if (response.status === 200) {
-      return response;
-    } else {
-      if (response.data && response.data.accessToken) {
-        const accessToken = response.data.accessToken;
-        localStorage.setItem('access', accessToken); // 새 토큰을 로컬 스토리지에 저장
-        console.log('access token 재발급');
-
-        // 헤더에 새 토큰 반영
-        //authAxios.defaults.headers.access = `Bearer ${accessToken}`;
+  authAxios.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+      const originalRequest = error.config;
+      if (error.response && error.response.status === 401 && !originalRequest._retry) {
+        try {
+          originalRequest._retry = true; // 무한으로 요청되는 것 막음
+          const newAccessToken = await getNewToken();
+          if (newAccessToken) {
+            localStorage.setItem('access', newAccessToken);
+            originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+            return authAxios(originalRequest);
+          }
+        } catch (error) {
+          return console.log('토큰 재발급 실패:');
+        }
+      } else {
+        return console.log('error', error);
       }
-      return response;
-    }
-  });
+    },
+  );
 
   return authAxios;
 };

@@ -13,7 +13,7 @@ interface StatusProps {
 
 export const Status = ({ postId, likeCount, likeType, commentCount, answerCount }: StatusProps) => {
 
-  const { likeCount: updatedLikeCount, toggleLike, likeType: updatedLikeType } = useLike(postId, likeCount, likeType);
+  const { likeCount: updatedLikeCount, likeType: updatedLikeType, toggleLike } = useLike(postId, likeCount, likeType);
 
   // like 부분에서 likeType에 따라 yeslike, nolike IconValues 반환 위한 string 제공
   const iconValue: IconValues = updatedLikeType ? "yeslike" : "nolike";
@@ -36,7 +36,7 @@ interface InfoStatusProps {
     onClick?: (e: React.MouseEvent) => void;
 }
 
-const InfoStatus = ({ value, count, onClick }: InfoStatusProps) => {
+const InfoStatus = React.memo(({ value, count, onClick }: InfoStatusProps) => {
 
   return (
     <Container>
@@ -46,6 +46,6 @@ const InfoStatus = ({ value, count, onClick }: InfoStatusProps) => {
         <p>{count}</p>
     </Container>
   )
-}
+});
 
 export default InfoStatus

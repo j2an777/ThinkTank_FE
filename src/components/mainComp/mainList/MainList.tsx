@@ -9,6 +9,8 @@ import React, { useEffect, useRef } from 'react';
 const MainList = () => {
   const loadMoreRef = useRef(null);
 
+  const userId = localStorage.getItem('userId') || undefined;
+
   const {
     data,
     error,
@@ -22,7 +24,7 @@ const MainList = () => {
     queryFn: ({ pageParam = 1 }: QueryFunctionContext) => {
       // pageParam 타입 검증
       const pageNumber = typeof pageParam === 'number' ? pageParam : 1;
-      return fetchPosts({ pageParam: pageNumber, limit: 2 });
+      return fetchPosts({ pageParam: pageNumber, limit: 2, userId });
     },
     getNextPageParam: (lastPage) => {
       if (lastPage.pageInfo && !lastPage.pageInfo.done) {
@@ -76,8 +78,8 @@ const MainList = () => {
           ))}
         </React.Fragment>
       ))}
-      <div ref={loadMoreRef} style={{  width: '100%', height: '20px' }}>
-        {isFetchingNextPage && <Loading />}
+      <div ref={loadMoreRef} style={{  width: '100%', height: '50px' }}>
+        {isFetchingNextPage && <div>loading...</div>}
       </div>
     </S.MlContainer>
   );
