@@ -22,6 +22,7 @@ export default function LoginForm() {
       const response = await postLogin(data);
       const accessToken = response.accessToken;
       localStorage.setItem('access', accessToken);
+      localStorage.setItem('userId', data.email);
       console.log('로그인 성공:', response);
       navigate(-1);
     } catch (error) {
@@ -34,6 +35,8 @@ export default function LoginForm() {
             type: 'manual',
             message: '비밀번호가 일치하지 않습니다.',
           });
+        } else if (axiosError.status === 404) {
+          console.log(error);
         } else {
           setError('email', {
             type: 'manual',
@@ -83,9 +86,7 @@ export default function LoginForm() {
               <Link to="/signup/required">회원가입</Link>
             </p>
           </S.Signup>
-          <StyledButton width="100%" typography="t3">
-            로그인
-          </StyledButton>
+          <StyledButton width="100%">로그인</StyledButton>
         </S.Form>
         <S.Social>
           간편하게 로그인하세요!

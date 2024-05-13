@@ -7,6 +7,7 @@ import * as S from './styles';
 
 interface CategoryProps<T extends CategoryOption> {
   optionData: T[];
+  defaultValue?: boolean;
   type?: 'primary' | 'fill';
   onChange?: (value: string) => void;
 }
@@ -15,9 +16,12 @@ const Select = <T extends CategoryOption>({
   optionData,
   type = 'primary',
   onChange,
+  defaultValue = false,
 }: CategoryProps<T>) => {
   const [isExpand, setIsExpand] = useState<boolean>(false);
-  const [selected, setSelected] = useState<CategoryValues>(optionData[0].value);
+  const [selected, setSelected] = useState<CategoryValues>(
+    optionData[defaultValue ? 1 : 0].value,
+  );
 
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();

@@ -7,14 +7,12 @@ export const Container = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  padding: 32px 32px 48px;
-  background-color: white;
-  align-items: center;
+  width: 600px;
   gap: 20px;
 `;
 
-export const ButtonBox = styled.div`
-  display: flex;
+export const TitleBox = styled.div`
+  ${layoutMap.flexCenter}
+  flex-direction: row;
   justify-content: space-between;
-  gap: 40px;
 `;

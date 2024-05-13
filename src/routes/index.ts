@@ -22,12 +22,6 @@ export const routers = [
     isProtected: false,
   },
   {
-    // 유저 페이지 (컴포넌트 바꿀 것)
-    path: '/mp/:userId',
-    component: MainPage,
-    isProtected: true,
-  },
-  {
     // 나머지 경로에 대해서는 404페이지 전환
     path: '*',
     component: ErrorPage,
@@ -54,12 +48,12 @@ export const routers = [
     isProtected: false,
   },
   {
-    path: '/mypage',
+    path: '/users/profile',
     component: MyPage,
     isProtected: true,
   },
   {
-    path: '/mypage/profile',
+    path: '/users/profile/modify',
     component: Profile,
     isProtected: true,
   },

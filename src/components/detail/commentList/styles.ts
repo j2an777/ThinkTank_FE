@@ -6,5 +6,6 @@ export const Container = styled.div`
   flex-direction: column-reverse;
   gap: 10px;
   padding: 10px;
-  ${layoutMap.scrollbarsNone}
+  flex: 1;
+  ${layoutMap.scrollbarsNone};
 `;
