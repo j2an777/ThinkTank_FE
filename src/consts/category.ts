@@ -1,7 +1,7 @@
 export const CATEGORY = [
   { value: '', name: '알고리즘' },
   { value: 'graph', name: '그래프' },
-  { value: 'DFS', name: '깊이 우선 탐색' },
+  { value: 'dfs', name: '깊이 우선 탐색' },
   { value: 'BFS', name: '너비 우선 탐색' },
   { value: 'SelectionSort', name: '선택 정렬' },
   { value: 'QuickSort', name: '퀵 정렬' },

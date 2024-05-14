@@ -1,8 +1,8 @@
-import { ArticleDetail } from '@/types';
+import { ArticleDetail, ArticleList } from '@/types';
 import instance from './instance';
 
 export const postArticle = async (formData: ArticleDetail) => {
-  const response = await instance.post('/api/post', formData);
+  const response = await instance.post('/api/posts', formData);
   return response.data;
 };
 
@@ -29,23 +29,7 @@ interface FetchParams {
   limit: number;
 }
 
-export const getArticles = async ({
-  pageParam = 1,
-  limit = 2,
-  email,
-}: FetchParams): Promise<List> => {
-  try {
-    const response = await instance.get<List>(
-      `/api/posts?page=${pageParam}&limit=${limit}`,
-      {
-        params: {
-          email: email,
-        },
-      },
-    );
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    throw new Error('Failed to fetch posts');
-  }
+export const getArticles = async ({ pageParam = 1, limit }: FetchParams) => {
+  const response = await instance.get(`/api/posts?page=${pageParam}&limit=${limit}`);
+  return response.data as ArticleList;
 };

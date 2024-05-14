@@ -1,12 +1,12 @@
 import { create } from 'zustand';
 
 // 이거는 삭제될 것 같음
-interface Nickname {
+interface nickname {
   nickname: string | null;
-  setNickname: (nickname: string | null) => void;
+  setnickname: (nickname: string | null) => void;
 }
 
-export const useNickname = create<Nickname>((set) => ({
+export const usenickname = create<nickname>((set) => ({
   nickname: null,
-  setNickname: (nickname) => set({ nickname: nickname }),
+  setnickname: (nickname) => set({ nickname: nickname }),
 }));

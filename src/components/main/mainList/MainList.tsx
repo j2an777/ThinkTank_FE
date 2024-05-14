@@ -4,7 +4,7 @@ import { QueryFunctionContext, useInfiniteQuery } from '@tanstack/react-query';
 import { ArticleType, List } from '@/types/article';
 import Loading from '@/components/loader';
 import React, { useEffect, useRef } from 'react';
-import { getArticles } from '@/apis/post';
+import { getArticles } from '@/apis/article';
 
 const MainList = () => {
   const loadMoreRef = useRef(null);

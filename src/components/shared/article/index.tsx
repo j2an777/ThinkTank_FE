@@ -47,7 +47,7 @@ const Article = ({ article, threedot, statusFlag }: ArticleProps) => {
   const navigate = useNavigate();
 
   const toHandleDetail = () => {
-    navigate(`/detail/${article.postNumber}`);
+    navigate(`/detail/${article.postId}`);
   };
 
   return (

@@ -5,7 +5,7 @@ import { postFormStore } from '@/stores/post';
 import { Icon, StyledButton } from '@/components/shared';
 
 import * as S from './styles';
-import { postArticle } from '@/apis/post';
+import { postArticle } from '@/apis/article';
 
 const PostRight = () => {
   const navigate = useNavigate();
