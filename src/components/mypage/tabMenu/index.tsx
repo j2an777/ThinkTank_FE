@@ -1,15 +1,15 @@
 import { useLocation, Link } from 'react-router-dom';
-import { CreatedMenu, SolvedMenu, LikedMenu } from '@/components/mypage';
+import { ArticlesMenu, SolvedMenu } from '@/components/mypage';
 import * as S from './styles.ts';
 
 const TabMenu = () => {
   const location = useLocation();
-  const currentTab = location.hash.slice(1) || 'created';
+  const currentTab = new URLSearchParams(location.search).get('value') || 'created';
 
   const tabs = [
-    { id: 'created', label: '만든 문제', component: CreatedMenu },
+    { id: 'created', label: '만든 문제', component: ArticlesMenu },
     { id: 'solved', label: '맞은 문제', component: SolvedMenu },
-    { id: 'liked', label: '즐겨찾기', component: LikedMenu },
+    { id: 'liked', label: '즐겨찾기', component: ArticlesMenu },
   ];
 
   return (
@@ -22,7 +22,15 @@ const TabMenu = () => {
         ))}
       </S.TabMenu>
       <div>
-        {tabs.map((tab) => currentTab === tab.id && <tab.component key={tab.id} />)}
+        {tabs.map(
+          (tab) =>
+            currentTab === tab.id && (
+              <tab.component
+                key={tab.id}
+                value={tab.id as 'created' | 'liked' | 'solved'}
+              />
+            ),
+        )}
       </div>
     </S.Container>
   );
