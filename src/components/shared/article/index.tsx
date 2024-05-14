@@ -12,6 +12,7 @@ type ArticleTypes = Omit<ArticleType, 'user'>;
 interface ArticleProps {
   threedot?: ReactNode;
   statusFlag: string;
+  article: ArticleTypes;
 }
 
 // string에서 들여쓰기를 <br/>태그로 인식
