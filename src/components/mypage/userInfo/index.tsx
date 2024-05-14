@@ -1,14 +1,4 @@
 import { Icon, UserCircle } from '@/components/shared';
-<<<<<<< HEAD
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { User } from '@/types/auth.ts';
-import { IconValues } from '@/components/shared/icon';
-import { useNickname } from '@/stores/mypage';
-import { getUserInfo } from '@/apis/user';
-
-import * as S from './styles';
-=======
 import * as S from './styles';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +7,6 @@ import { User } from '@/types/auth.ts';
 import { IconValues } from '@/components/shared/icon';
 import { useEmail } from '@/stores/mypage';
 import { getUserInfo } from '@/apis/user';
->>>>>>> origin/dev
 
 const UserInfo = () => {
   const navigate = useNavigate();
