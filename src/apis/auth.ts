@@ -5,7 +5,6 @@ export const getNewToken = async () => {
   try {
     const response = await instance.post('/api/reissue', { expiredToken: expiredToken });
     const newAccessToken = response.data.accessToken;
-    localStorage.setItem('access', newAccessToken);
     console.log('토큰 재발급 성공', newAccessToken);
     return newAccessToken;
   } catch (error) {

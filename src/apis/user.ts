@@ -1,11 +1,19 @@
 import { Login, SignUp, User } from '@/types';
 import instance from './instance';
+import axios from 'axios';
 
 /** 로그인 **/
 export const postLogin = async ({ email, password }: Login) => {
   const data = { email, password };
-  const response = await instance.post('/api/login', data);
-  return response.data;
+  try {
+    const response = await instance.post('/api/login', data);
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response?.status === 401) {
+      throw error;
+    }
+    throw error;
+  }
 };
 
 /** 회원가입 */
@@ -31,13 +39,6 @@ export const postSignup = async ({
   };
   const response = await instance.post('/api/signup', data);
   return response.data;
-};
-
-/** 로그아웃 이거는 나중에 component 안에서 구현해주세요*/
-export const logout = () => {
-  localStorage.removeItem('access');
-  localStorage.removeItem('userId');
-  window.location.href = '/';
 };
 
 /** User 정보 불러오기 */
