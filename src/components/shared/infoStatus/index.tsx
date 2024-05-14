@@ -1,7 +1,9 @@
-import { ActiveBox, Container } from './styles';
 import Icon, { IconValues } from '../icon';
 import { useLike } from '@/hooks/like/useLike';
-import React from 'react';
+import { Text } from '..';
+
+import * as S from './styles';
+import { MouseEvent } from 'react';
 
 interface StatusProps {
   postNumber: number;
@@ -46,17 +48,19 @@ export const Status = ({
 interface InfoStatusProps {
   value: IconValues;
   count: number;
-  onClick?: (e: React.MouseEvent) => void;
+  $active?: boolean;
+  size?: number;
+  onClick?: (e: MouseEvent<HTMLDivElement>) => void;
 }
 
-const InfoStatus = ({ value, count, onClick }: InfoStatusProps) => {
+const InfoStatus = ({ count, size = 24, ...props }: InfoStatusProps) => {
   return (
-    <Container>
-      <ActiveBox value={value} onClick={onClick}>
-        <Icon value={value} size={24} />
-      </ActiveBox>
-      <p>{count}</p>
-    </Container>
+    <S.Container>
+      <Icon size={size} {...props} />
+      <Text typography="t3" color="gray300">
+        {count}
+      </Text>
+    </S.Container>
   );
 };
 
