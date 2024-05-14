@@ -58,14 +58,14 @@ export const Social = styled.div`
 `;
 
 export const KakaoButton = styled.button`
-  ${layoutMap.styledButton}
+  ${layoutMap.shadowBox}
   background: ${colors.kakao};
   border: 1px solid ${colors.kakao};
   width: 100%;
 `;
 
 export const GoogleButton = styled.button`
-  ${layoutMap.styledButton}
+  ${layoutMap.shadowBox}
   border: 1px solid ${colors.gray};
   width: 100%;
 `;

@@ -5,12 +5,20 @@ const ProfileTable = () => {
     <S.Container>
       <S.Table>
         <S.Thead>
-          <S.Th height={280}>프로필 사진</S.Th>
-          <S.Th height={120}>별명</S.Th>
+          <S.Th height={250}>프로필 사진</S.Th>
+          <S.Th height={100}>별명</S.Th>
+          <S.Th height={100}>깃허브</S.Th>
+          <S.Th height={100}>블로그</S.Th>
         </S.Thead>
         <S.Tbody>
-          <S.Td height={280}>프로필 사진</S.Td>
-          <S.Td height={120}>
+          <S.Td height={250}>프로필 사진</S.Td>
+          <S.Td height={100}>
+            <S.Input />
+          </S.Td>
+          <S.Td height={100}>
+            <S.Input />
+          </S.Td>
+          <S.Td height={100}>
             <S.Input />
           </S.Td>
         </S.Tbody>

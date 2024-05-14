@@ -12,9 +12,8 @@ export const Container = styled.div`
 
 export const Table = styled.div`
   display: flex;
-  height: 400px;
+  height: 550px;
   border-top: 1px solid ${colors.gray200};
-  border-bottom: 1px solid ${colors.gray200};
 `;
 
 export const Thead = styled.div`

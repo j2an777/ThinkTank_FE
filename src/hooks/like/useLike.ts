@@ -1,61 +1,54 @@
-import { updateLike } from "@/apis";
+import updateLike from '@/apis/like';
+import { useCallback } from 'react';
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useCallback, useState } from "react";
-
-type LikeData = {
-    likeCount: number;
-    likeType: boolean;
-};
 
 export const useLike = (postId: number, initialLikeCount: number, initialLikeType: boolean) => {
-    const queryClient = useQueryClient();
-    const [likeCount, setLikeCount] = useState(initialLikeCount);
-    const [likeType, setLikeType] = useState(initialLikeType);
-    const [jellyAnimation, setJellyAnimation] = useState(false);
+  const queryClient = useQueryClient();
 
-    const { mutate } = useMutation({
-        mutationFn: () => updateLike(postId),
-        onMutate: async () => {
-            await queryClient.cancelQueries({
-              queryKey: ['likes', postId]
-            });
-            const previousLikes = queryClient.getQueryData<LikeData>(['likes', postId]);
+  const mutation = useMutation({
+    mutationFn: async () => updateLike(postId),
+    onMutate: async () => {
+      const newLikeType = !initialLikeType;
+      const newLikeCount = newLikeType ? initialLikeCount + 1 : initialLikeCount - 1;
 
-            if (previousLikes) {
-                const newLikeCount = previousLikes.likeType ? previousLikes.likeCount - 1 : previousLikes.likeCount + 1;
-                const newLikeType = !previousLikes.likeType;
+      // 낙관적 업데이트
+      queryClient.setQueryData(['likes', postId], {
+        likeCount: newLikeCount,
+        likeType: newLikeType,
+      });
 
-                queryClient.setQueryData(['likes', postId], {
-                    likeCount: newLikeCount,
-                    likeType: newLikeType
-                });
+      return { previousLikeType: initialLikeType, previousLikeCount: initialLikeCount };
+    },
+    onError: (error, variables, context) => {
+      if (context) {
+        // 에러 발생 시 이전 상태로 되돌리기
+        queryClient.setQueryData(['likes', postId], {
+          likeCount: context.previousLikeCount,
+          likeType: context.previousLikeType,
+        });
+      }
+      console.error('좋아요 업데이트 실패', error);
+    },
+    onSettled: () => {
+        queryClient.invalidateQueries({
+            queryKey: ['posts']
+        });
+    },
+  });
 
-                setLikeCount(newLikeCount);
-                setLikeType(newLikeType);
+  const toggleLike = useCallback(() => {
+    if (typeof postId !== 'number') {
+      console.error('postId is undefined, toggleLike will not execute.');
+      return;
+    }
+    mutation.mutate();
+  }, [mutation, postId]);
 
-                return { previousLikes };
-            }
-        },
-        onError: (error, variables, context) => {
-          if (context?.previousLikes) {
-            queryClient.setQueryData(['likes', postId], context.previousLikes);
-            setLikeCount(context.previousLikes.likeCount);
-            setLikeType(context.previousLikes.likeType);
-          }
-          console.error('Error updating likes:', error);
-        },
-        onSettled: () => {
-          queryClient.invalidateQueries({
-            queryKey: ['likes', postId]
-          });
-        }
-    });
+  const currentLikeData = queryClient.getQueryData<{ likeCount: number; likeType: boolean }>(['likes', postId]);
 
-    const toggleLike = useCallback(() => {
-        setJellyAnimation(true);
-        setTimeout(() => setJellyAnimation(false), 100);
-        mutate();
-    }, [mutate]);
-
-    return { likeCount, likeType, jellyAnimation, toggleLike };
+  return { 
+    likeCount: currentLikeData?.likeCount ?? initialLikeCount, 
+    likeType: currentLikeData?.likeType ?? initialLikeType, 
+    toggleLike 
+  };
 };

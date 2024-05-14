@@ -1,3 +1,7 @@
+type CodeMap = {
+  [key: string]: string;
+};
+
 export const DEFALUTCODE = {
   java: [
     'import java.io.*;',
@@ -11,4 +15,10 @@ export const DEFALUTCODE = {
     '    }',
     '}',
   ].join('\n'),
-};
+  javascript: [
+    'function solution(str1) {',
+    '    const answer = 0;',
+    '    return answer;',
+    '}',
+  ].join('\n'),
+} as CodeMap;

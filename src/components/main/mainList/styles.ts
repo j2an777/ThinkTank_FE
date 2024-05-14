@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { colors } from "../../../styles/colorPalette";
 
 export const MlContainer = styled.div`
-    width : auto;
+    width : 700px;
     flex-grow : 1;
     height : 100%;
     padding : 0 50px;

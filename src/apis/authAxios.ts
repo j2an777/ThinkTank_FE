@@ -12,7 +12,7 @@ export const getAuthAxios = (accessToken?: string | null) => {
       };
 
   const authAxios = axios.create({
-    baseURL: 'http://13.124.54.157:8080',
+    baseURL: 'http://116.46.227.27:9999/',
     headers: headersOption,
   });
 

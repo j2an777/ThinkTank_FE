@@ -5,9 +5,9 @@ export const layoutMap = {
     display: flex;
     flex-direction: column;
     border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    background: white;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   `,
 
   flexCenter: css`
@@ -15,15 +15,6 @@ export const layoutMap = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  `,
-
-  styledButton: css`
-    padding: 15px;
-    border-radius: 2em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
   `,
   scrollbarsNone: css`
     overflow: scroll;

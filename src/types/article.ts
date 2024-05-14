@@ -1,27 +1,45 @@
-export type Author = {
-    userId: string;
-    nickName: string;
-    profileImage : string;
+import { CategoryValues } from '@/consts/category';
+import { LanguageValues } from '@/consts/language';
+import { User } from '.';
+
+// 스크롤 페이지 정보
+export interface Page {
+  pageIndex: number;
+  isDone: boolean;
 }
 
-export type ArticleItem = {
-    postId: number;
-    title: string;
-    category: string;
-    createdAt: string;
-    content: string;
-    commentCount: number;
-    likeCount: number;
-    answerCount: number;
-    likeType: boolean;
-    author: Author;
+// 게시글 정보 (유저, 게시글, 페이지)
+export interface ArticleType {
+  postId: number;
+  postNumber: number;
+  title: string;
+  category: string;
+  createdAt: Date;
+  content: string;
+  commentCount: number;
+  likeCount: number;
+  codeCount: number;
+  likeType: boolean;
+  user: Pick<User, 'email' | 'nickname' | 'profileImage'>;
 }
 
-export type List = {
-    posts: ArticleItem[],
-    // 인피니티 스크롤
-    pageInfo?: {
-        pageIndex: number;
-        done: boolean;
-    }
+export interface ArticleList {
+  posts: ArticleType[];
+  pageInfo: Page;
+}
+
+export interface ArticleDetail {
+  postNumber: number;
+  category: CategoryValues;
+  title: string;
+  content: string;
+  condition: string;
+  testCases: TestCase[];
+  language: LanguageValues;
+  answer: string;
+}
+
+export interface TestCase {
+  example: string;
+  result: string;
 }

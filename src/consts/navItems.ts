@@ -1,4 +1,4 @@
-import { IconValues } from '../shared/icon';
+import { IconValues } from '../components/shared/icon';
 
 interface NavItemsProps {
   icon: IconValues;
@@ -25,7 +25,7 @@ export const navItems: NavItemsProps[] = [
   {
     icon: 'profile',
     label: 'Profile',
-    path: '/mypage',
+    path: '/users/profile',
   },
   {
     icon: 'threedot',
