@@ -9,9 +9,13 @@ export const Container = styled.div`
   padding: 0 170px;
 `;
 
-export const Blank = styled.div`
+export const Block = styled.div`
   position: relative;
-  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  margin: 80px 0 60px;
+  gap: 25px;
 `;
 
 export const Inputs = styled.div`
@@ -40,10 +44,9 @@ export const TextArea = styled.textarea<{ isFocus: boolean }>`
 `;
 
 export const TextLimit = styled.div`
-  position: sticky;
+  position: absolute;
   color: ${colors.gray100};
-  bottom: 280px;
-  text-align: right;
-  margin-right: 15px;
+  bottom: 30px;
+  right: 20px;
   font-size: 15px;
 `;

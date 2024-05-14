@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colorPalette';
 import { layoutMap } from '@/styles/layout';
+import { buttonSizeMap } from '@/styles/button';
 
 export const Container = styled.div`
   display: flex;
@@ -58,14 +59,22 @@ export const Social = styled.div`
 `;
 
 export const KakaoButton = styled.button`
-  ${layoutMap.styledButton}
-  background: ${colors.kakao};
-  border: 1px solid ${colors.kakao};
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: ${colors.kakao};
+  border-radius: 2em;
+  border: 1px solid ${colors.kakao};
+  ${buttonSizeMap.medium}
 `;
 
 export const GoogleButton = styled.button`
-  ${layoutMap.styledButton}
-  border: 1px solid ${colors.gray};
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2em;
+  border: 1px solid ${colors.gray};
+  ${buttonSizeMap.medium}
 `;
