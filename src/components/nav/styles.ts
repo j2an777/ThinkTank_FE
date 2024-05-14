@@ -16,6 +16,17 @@ export const NavContainer = styled.div`
   justify-content: flex-start;
   gap: 50px;
   ${typographyMap.t1}
+
+  @media (max-width : 1050px) {
+    flex-direction: row;
+    padding : 20px 50px;
+    background-color: ${colors.white};
+    border-radius : 0 0 30px 30px;
+    box-shadow : 0 15px 20px rgba(0, 0, 0, 0.05);
+    width : 100%;
+    height : 150px;
+    z-index : 999;
+  }
 `;
 
 export const NavLogoBox = styled.div`
@@ -29,6 +40,10 @@ export const NavLogoBox = styled.div`
     width: 100%;
     height: 100%;
     object-fit: contain;
+  }
+
+  @media (max-width : 1050px) {
+    display : none;
   }
 `;
 
@@ -57,11 +72,31 @@ export const NavItemBox = styled.div`
     p {
       font-weight: 700;
       color: black;
+      ${typographyMap.t2};
     }
 
     &:hover {
       cursor: pointer;
       background-color: ${colors.gray50};
+    }
+  }
+
+  @media (max-width : 1050px) {
+    flex-direction: row;
+
+    a {
+      display : flex;
+      flex-direction: column;
+      width : 100%;
+      height : 100%;
+
+      p {
+        ${typographyMap.t4};
+      }
+
+      &:hover {
+        background-color : transparent;
+      }
     }
   }
 `;

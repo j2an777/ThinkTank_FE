@@ -12,4 +12,9 @@ export const MlContainer = styled.div`
     align-items : center;
     border-left : 1px solid ${colors.gray50};
     border-right : 1px solid ${colors.gray50};
+
+    @media (max-width : 1050px) {
+        border : none;
+        width : 75vw;
+    }
 `;
