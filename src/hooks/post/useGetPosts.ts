@@ -16,7 +16,7 @@ const useGetPosts = () => {
     queryFn: ({ pageParam = 0 }: QueryFunctionContext) => {
       // pageParam 타입 검증
       const pageNumber = typeof pageParam === 'number' ? pageParam : 0;
-      return getArticles({ pageParam: pageNumber, size: 2 });
+      return getArticles({ pageParam: pageNumber, size: 10 });
     },
     getNextPageParam: (lastPage) => {
       if (lastPage.pageInfo && !lastPage.pageInfo.isDone) {
