@@ -1,9 +1,9 @@
 import Icon, { IconValues } from '../icon';
 import { useLike } from '@/hooks/like/useLike';
 import { Text } from '..';
+import { MouseEvent } from 'react';
 
 import * as S from './styles';
-import { MouseEvent } from 'react';
 
 interface StatusProps {
   postNumber: number;
@@ -62,6 +62,6 @@ const InfoStatus = ({ count, size = 24, ...props }: InfoStatusProps) => {
       </Text>
     </S.Container>
   );
-});
+};
 
 export default InfoStatus;

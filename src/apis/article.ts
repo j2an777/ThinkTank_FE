@@ -1,14 +1,29 @@
 import { ArticleDetail, ArticleList } from '@/types';
 import instance from './instance';
 
-export const postArticle = async (formData: ArticleDetail) => {
-  const response = await instance.post('/api/posts', formData);
-  return response.data;
-};
-
 export const getArticle = async (postId: string) => {
   const response = await instance.get(`/api/posts/${postId}`);
   return response.data as ArticleDetail;
+};
+
+interface FetchParams {
+  pageParam?: number;
+  size: number;
+}
+
+export const getArticles = async ({ pageParam = 1, size }: FetchParams) => {
+  const response = await instance.get('/api/posts', {
+    params: {
+      page: pageParam,
+      size,
+    },
+  });
+  return response.data as ArticleList;
+};
+
+export const postArticle = async (formData: ArticleDetail) => {
+  const response = await instance.post('/api/posts', formData);
+  return response.data;
 };
 
 export const postCheck = async (
@@ -22,14 +37,4 @@ export const postCheck = async (
   };
   const response = await instance.post('api/posts/submit', newFormData);
   return response.data;
-};
-
-interface FetchParams {
-  pageParam?: number;
-  limit: number;
-}
-
-export const getArticles = async ({ pageParam = 1, limit }: FetchParams) => {
-  const response = await instance.get(`/api/posts?page=${pageParam}&limit=${limit}`);
-  return response.data as ArticleList;
 };

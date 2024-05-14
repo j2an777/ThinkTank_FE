@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { MouseEvent } from 'react';
 import { Colors, colors } from '@/styles/colorPalette';
 

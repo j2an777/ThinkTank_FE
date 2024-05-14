@@ -1,12 +1,16 @@
-import updateLike from '@/apis/like';
 import { useCallback } from 'react';
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { postLike } from '@/apis/like';
 
-export const useLike = (postId: number, initialLikeCount: number, initialLikeType: boolean) => {
+export const useLike = (
+  postId: number,
+  initialLikeCount: number,
+  initialLikeType: boolean,
+) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: async () => updateLike(postId),
+    mutationFn: async () => postLike(postId),
     onMutate: async () => {
       const newLikeType = !initialLikeType;
       const newLikeCount = newLikeType ? initialLikeCount + 1 : initialLikeCount - 1;
@@ -30,9 +34,9 @@ export const useLike = (postId: number, initialLikeCount: number, initialLikeTyp
       console.error('좋아요 업데이트 실패', error);
     },
     onSettled: () => {
-        queryClient.invalidateQueries({
-            queryKey: ['posts']
-        });
+      queryClient.invalidateQueries({
+        queryKey: ['posts'],
+      });
     },
   });
 
@@ -44,11 +48,14 @@ export const useLike = (postId: number, initialLikeCount: number, initialLikeTyp
     mutation.mutate();
   }, [mutation, postId]);
 
-  const currentLikeData = queryClient.getQueryData<{ likeCount: number; likeType: boolean }>(['likes', postId]);
+  const currentLikeData = queryClient.getQueryData<{
+    likeCount: number;
+    likeType: boolean;
+  }>(['likes', postId]);
 
-  return { 
-    likeCount: currentLikeData?.likeCount ?? initialLikeCount, 
-    likeType: currentLikeData?.likeType ?? initialLikeType, 
-    toggleLike 
+  return {
+    likeCount: currentLikeData?.likeCount ?? initialLikeCount,
+    likeType: currentLikeData?.likeType ?? initialLikeType,
+    toggleLike,
   };
 };

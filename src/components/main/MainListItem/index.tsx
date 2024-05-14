@@ -2,20 +2,15 @@ import { Icon } from '@/components/shared';
 import * as S from './styles';
 import Article from '@/components/shared/article';
 import { ArticleType } from '@/types';
+import getTimeDifference from '@/utils/getTimeDifference';
 
 interface ListItemProps {
-  listItem: ArticleType;
   listItem: ArticleType;
 }
 
 const MainListItem = ({ listItem }: ListItemProps) => {
   // 구조 분해 할당으로 author과 그 외 나머지 정보들로 분리
   const { user, ...articleDetails } = listItem;
-
-  useEffect(() => {
-    console.log(listItem);
-  }, []);
-
   const createDate = getTimeDifference(listItem.createdAt);
 
   return (

@@ -1,9 +1,9 @@
 import * as S from './styles';
 import { ArticleType } from '@/types/article';
 import React from 'react';
-import MainListItem from '../mainListItem';
 import Loading from '@/components/loader';
 import useGetPosts from '@/hooks/post/useGetPosts';
+import MainListItem from '../MainListItem';
 
 const MainList = () => {
   const { data, ref, isFetchingNextPage } = useGetPosts();

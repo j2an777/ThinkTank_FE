@@ -23,7 +23,6 @@ const DetailRight = () => {
     const access = localStorage.getItem('access');
     if (access) {
       postCheck(
-      postCheck(
         { answer: postForm.answer, language: postForm.language },
         postId as string,
       );
