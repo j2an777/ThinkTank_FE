@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { colors } from "../../../styles/colorPalette";
+import { colors } from "@/styles/colorPalette";
 
 
 export const MeContainer = styled.div`
@@ -15,6 +15,10 @@ export const MeContainer = styled.div`
     align-items : center;
     justify-content : flex-start;
     gap : 30px;
+
+    @media (max-width: 1300px) {
+        display : none;
+    }
 `;
 
 export const SearchBox = styled.div`

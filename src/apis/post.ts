@@ -1,18 +1,18 @@
-import { List, PostForm } from '@/types';
+import { ArticleList, ArticleDetail } from '@/types';
 import instance from './instance';
 
-export const postArticle = async (formData: PostForm) => {
-  const response = await instance.post('/api/post', formData);
+export const postArticle = async (formData: ArticleDetail) => {
+  const response = await instance.post('/api/posts', formData);
   return response.data;
 };
 
 export const getArticle = async (postId: string) => {
   const response = await instance.get(`/api/posts/${postId}`);
-  return response.data as PostForm;
+  return response.data as ArticleDetail;
 };
 
 export const postCheck = async (
-  formData: Pick<PostForm, 'language' | 'answer'>,
+  formData: Pick<ArticleDetail, 'language' | 'answer'>,
   postId: string,
 ) => {
   const newFormData = {
@@ -25,27 +25,19 @@ export const postCheck = async (
 };
 
 interface FetchParams {
-  pageParam?: number;
-  limit: number;
+  pageParam: number;
+  size: number;
 }
 
 export const getArticles = async ({
   pageParam = 1,
-  limit = 2,
-  email,
-}: FetchParams): Promise<List> => {
-  try {
-    const response = await instance.get<List>(
-      `/api/posts?page=${pageParam}&limit=${limit}`,
-      {
-        params: {
-          email: email,
-        },
-      },
-    );
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    throw new Error('Failed to fetch posts');
-  }
+  size,
+}: FetchParams) => {
+  const response = await instance.get(`/api/posts`, {
+    params: {
+      size: size,
+      page: pageParam,
+    }
+  });
+  return response.data as ArticleList;
 };

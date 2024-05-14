@@ -6,7 +6,7 @@ import { typographyMap } from '@/styles/typography';
 export const ArticleContainer = styled.div`
   ${layoutMap.shadowBox}
   box-sizing: border-box;
-  width: 100%;
+  width: 620px;
   height: 380px;
   margin: 0;
   justify-content: space-between;
@@ -50,7 +50,6 @@ export const ArTitleBlock = styled.p`
 `;
 
 export const ArContentBlock = styled.p`
-  width: 100%;
   height: 200px;
   font-size: 16px;
   font-weight: 500;

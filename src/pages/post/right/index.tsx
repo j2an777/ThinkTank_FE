@@ -3,7 +3,6 @@ import { CodeBox } from '@/components/post';
 import { useNavigate } from 'react-router-dom';
 import { postFormStore } from '@/stores/post';
 import { Icon, StyledButton } from '@/components/shared';
-import { postProblem } from '@/apis/post';
 
 import * as S from './styles';
 

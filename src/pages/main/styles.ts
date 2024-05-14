@@ -9,4 +9,9 @@ export const MainContainer = styled.div`
     align-items : flex-start;
     margin : 0;
     padding : 0;
+
+    @media (max-width : 1050px) {
+        flex-direction : column;
+        align-items : center;
+    }
 `;

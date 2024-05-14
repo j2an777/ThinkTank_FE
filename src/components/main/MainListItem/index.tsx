@@ -1,15 +1,23 @@
 import { Icon } from '@/components/shared';
 import * as S from './styles';
-import { Article } from '@/types/index';
+import { ArticleType } from '@/types/index';
 import Article from '@/components/shared/article';
+import getTimeDifference from '@/utils/getTimeDifference';
+import { useEffect } from 'react';
 
 interface ListItemProps {
-  listItem: Article;
+  listItem: ArticleType;
 }
 
 const MainListItem = ({ listItem }: ListItemProps) => {
   // 구조 분해 할당으로 author과 그 외 나머지 정보들로 분리
   const { user, ...articleDetails } = listItem;
+
+  useEffect(() => {
+    console.log(listItem);
+  }, []);
+
+  const createDate = getTimeDifference(listItem.createdAt);
 
   return (
     <S.MltContainer>
@@ -23,7 +31,7 @@ const MainListItem = ({ listItem }: ListItemProps) => {
         </S.AvatarBlock>
         <S.MlInfoBlock>
           <h3>{user.nickname}</h3>
-          <p>{listItem.createdAt}</p>
+          <p>{createDate}</p>
         </S.MlInfoBlock>
       </S.MlUserBox>
       <Article article={articleDetails} statusFlag="open" />
