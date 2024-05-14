@@ -17,6 +17,21 @@ export const buttonColorMap = {
   `,
 };
 
+export const buttonActiveMap = {
+  primary: css`
+    background-color: ${colors.yellowHover};
+    color: ${colors.white};
+  `,
+  reverse: css`
+    background-color: ${colors.white};
+    color: ${colors.yellow};
+  `,
+  second: css`
+    background-color: ${colors.gray50};
+    color: ${colors.white};
+  `,
+};
+
 export const buttonSizeMap = {
   small: css`
     font-size: 16px;

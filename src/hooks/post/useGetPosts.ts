@@ -1,4 +1,4 @@
-import { getArticles } from '@/apis/post';
+import { getArticles } from '@/apis/article';
 import { ArticleList } from '@/types';
 import { QueryFunctionContext, useSuspenseInfiniteQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
@@ -7,11 +7,10 @@ import { useInView } from 'react-intersection-observer';
 const useGetPosts = () => {
   const { ref, inView } = useInView();
 
-  const { 
-    data, 
-    fetchNextPage, 
-    isFetchingNextPage 
-  } = useSuspenseInfiniteQuery<ArticleList, Error>({
+  const { data, fetchNextPage, isFetchingNextPage } = useSuspenseInfiniteQuery<
+    ArticleList,
+    Error
+  >({
     queryKey: ['posts'],
     queryFn: ({ pageParam = 0 }: QueryFunctionContext) => {
       // pageParam 타입 검증
@@ -30,13 +29,13 @@ const useGetPosts = () => {
     refetchOnWindowFocus: false,
     select: (data) => {
       return {
-        pages: data.pages.map(page => ({
+        pages: data.pages.map((page) => ({
           ...page,
-          posts: page.posts.map(post => ({
+          posts: page.posts.map((post) => ({
             ...post,
-          }))
+          })),
         })),
-        pageParams: data.pageParams // 이전 페이지 파라미터를 유지
+        pageParams: data.pageParams, // 이전 페이지 파라미터를 유지
       };
     },
   });

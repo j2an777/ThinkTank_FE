@@ -1,24 +1,36 @@
 import { useState } from 'react';
 import { Icon, Text } from '@/components/shared';
-import { TestCase } from '@/types/post';
+import { TestCase } from '@/types';
+import { animationMap } from '@/styles/framerMotion';
 
 import * as S from './styles';
 
 const TestCaseBox = ({ testCases }: { testCases: TestCase[] }) => {
   const [isExpand, setIsExpand] = useState<boolean>(true);
   return (
-    <S.TestCaseContainer>
+    <S.TestCaseContainer
+      key="parent"
+      variants={animationMap.testContainerAnimation}
+      initial="open"
+      animate={isExpand ? 'open' : 'close'}
+    >
       <S.TitleBox>
         <Text typography="t2">테스트 케이스</Text>
         <Icon
           value="arrow"
+          $active={false}
           $rotate={isExpand}
           onClick={() => setIsExpand((prev) => !prev)}
         />
       </S.TitleBox>
       {isExpand && (
-        <S.ContentBox>
-          {/* 여기부분을 어떻게 행야할지 잘 모르겠음..ㅠㅜ */}
+        <S.ContentBox
+          key="children"
+          variants={animationMap.testContneBoxAnimation}
+          initial="close"
+          animate={isExpand ? 'open' : 'close'}
+          exit="exit"
+        >
           <S.TestBlock
             style={{
               display: 'flex',

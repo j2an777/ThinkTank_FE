@@ -54,7 +54,7 @@ const Article = ({ article, threedot, statusFlag }: ArticleProps) => {
       : formatContent(article.content);
 
   const toHandleDetail = () => {
-    navigate(`/detail/${article.postNumber}`);
+    navigate(`/detail/${article.postId}`);
   };
 
   return (

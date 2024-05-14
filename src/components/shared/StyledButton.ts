@@ -1,6 +1,12 @@
 import styled from '@emotion/styled';
-import { Colors, colors } from '@/styles/colorPalette';
-import { ButtonColor, ButtonSize, buttonColorMap, buttonSizeMap } from '@/styles/button';
+import { Colors } from '@/styles/colorPalette';
+import {
+  ButtonColor,
+  ButtonSize,
+  buttonActiveMap,
+  buttonColorMap,
+  buttonSizeMap,
+} from '@/styles/button';
 
 interface ButtonProp {
   width?: string;
@@ -20,7 +26,11 @@ const StyledButton = styled.button<ButtonProp>`
   width: ${({ width = '300px' }) => width};
 
   &:hover {
-    background-color: ${({ hover = colors.yellowHover }) => hover};
+    ${({ buttonType = 'primary' }) => buttonActiveMap[buttonType]}
+  }
+  transition: all 0.1s ease;
+  &:active {
+    transform: scale(0.95);
   }
 `;
 

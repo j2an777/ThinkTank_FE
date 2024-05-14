@@ -1,20 +1,22 @@
+import { postFormStore } from '@/stores/post';
+import { postCheck } from '@/apis/article';
+import useGetPost from '@/hooks/post/useGetPost';
 import { useModalContext } from '@/contexts/ModalContext';
 import { CodeBox } from '@/components/post';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Icon, StyledButton } from '@/components/shared';
+import InfoStatus from '@/components/shared/infoStatus';
 
 import * as S from './styles';
-import { postFormStore } from '@/stores/post';
-import useGetPost from '@/hooks/post/useGetPost';
-import { postCheck } from '@/apis/post';
+import { layoutMap } from '@/styles/layout';
 
 const DetailRight = () => {
   const navigate = useNavigate();
   const { open } = useModalContext();
-  const postForm = postFormStore((state) => state.postForm);
   const { postId } = useParams();
+  const postForm = postFormStore((state) => state.postForm);
   const {
-    data: { answer, language },
+    data: { answer, language, commentCount },
   } = useGetPost();
 
   const handleSubmit = () => {
@@ -37,24 +39,22 @@ const DetailRight = () => {
       <Icon value="cancel" css={S.IconCss} onClick={() => navigate(-1)} />
       <CodeBox />
       <S.ButtonBox>
-        <div>
-          <button
-            onClick={() =>
-              open({
-                title: '게시글 작성을 그만두시겠습니까?',
-                onButtonClick: () => {},
-                hasCancelButton: true,
-                buttonLabel: '뒤로가기',
-                type: 'comment',
-              })
-            }
-          >
-            댓글
-          </button>
-        </div>
+        <InfoStatus
+          value="comment"
+          count={commentCount}
+          onClick={() =>
+            open({
+              title: '게시글 작성을 그만두시겠습니까?',
+              onButtonClick: () => {},
+              hasCancelButton: true,
+              buttonLabel: '뒤로가기',
+              type: 'comment',
+            })
+          }
+        />
         <Icon
           value="question"
-          {...{ css: S.questionCss }}
+          css={layoutMap.borderCircleIcon}
           onClick={() =>
             open({
               title: '정답 코드',
@@ -64,6 +64,7 @@ const DetailRight = () => {
               language,
             })
           }
+          size={32}
         />
         <StyledButton onClick={handleSubmit} css={S.testButton}>
           Submit

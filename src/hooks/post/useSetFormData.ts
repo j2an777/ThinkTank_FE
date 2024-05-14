@@ -1,18 +1,23 @@
 import { postFormStore } from '@/stores/post';
 import { ArticleDetail } from '@/types';
+import { ArticleDetail } from '@/types';
 import { ChangeEvent } from 'react';
 
 const useSetFormData = () => {
   const postForm = postFormStore((state) => state.postForm);
   const updatePostForm = postFormStore((state) => state.updatePostForm);
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const onChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
     const { value, name } = e.target;
     const newValue = { ...postForm, [name]: value };
     updatePostForm(newValue);
   };
-  return { postForm, handleChange, updatePostForm } as {
+  return { postForm, onChange, updatePostForm } as {
     postForm: ArticleDetail;
-    handleChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+    onChange: (
+      e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+    ) => void;
     updatePostForm: (value: Partial<ArticleDetail>) => void;
   };
 };

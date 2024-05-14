@@ -5,6 +5,7 @@ import { postFormStore } from '@/stores/post';
 import { Icon, StyledButton } from '@/components/shared';
 
 import * as S from './styles';
+import { postArticle } from '@/apis/article';
 
 const PostRight = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const PostRight = () => {
         onClick={() =>
           open({
             title: '게시글을 올리겠습니까?',
-            onButtonClick: () => postProblem(postForm).then(() => navigate('/')),
+            onButtonClick: () => postArticle(postForm).then(() => navigate('/')),
             hasCancelButton: true,
             buttonLabel: '확인',
           })

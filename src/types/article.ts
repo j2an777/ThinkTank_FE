@@ -37,9 +37,17 @@ export interface ArticleDetail {
   testCases: TestCase[];
   language: LanguageValues;
   answer: string;
+  commentCount: number;
+  likeCount: number;
+  answerCount: number;
+  likeType: boolean;
 }
 
 export interface TestCase {
   example: string;
   result: string;
+}
+export interface ArticleList {
+  posts: ArticleType[];
+  pageInfo: Page;
 }

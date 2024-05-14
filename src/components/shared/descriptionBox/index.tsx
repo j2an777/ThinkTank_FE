@@ -1,17 +1,15 @@
-import { Line, Select, Text } from '@/components/shared';
+import { Line, Text } from '@/components/shared';
+import { TextareaField } from '@/components/post';
+import { ChangeEvent } from 'react';
+import { ArticleDetail } from '@/types';
 
 import * as S from './styles';
-import { PostForm } from '@/types/post';
-import { TextareaField } from '@/components/post';
-import { CATEGORY } from '@/consts/category';
-import { ChangeEvent } from 'react';
 
-type DescriptonForm = Omit<PostForm, 'testCases' | 'language' | 'answer'>;
+type DescriptonForm = Omit<ArticleDetail, 'testCases' | 'language' | 'answer'>;
 
 type DescriptionBoxProps = {
   page: 'post' | 'detail';
   onChange?: (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
-  categorySelect?: (value: string) => void;
 } & DescriptonForm;
 
 const DescriptionBox = (props: DescriptionBoxProps) => {
@@ -26,7 +24,6 @@ const renderComponent = ({
   content,
   condition,
   onChange,
-  categorySelect,
 }: DescriptionBoxProps) => {
   switch (page) {
     case 'detail':
@@ -45,34 +42,28 @@ const renderComponent = ({
       );
     case 'post':
       return (
-        <>
-          <Select
-            optionData={CATEGORY}
-            onChange={categorySelect as (value: string) => void}
+        <S.PostContentBox>
+          <S.Title
+            type="text"
+            placeholder="제목을 입력해주세요"
+            name="title"
+            value={title}
+            onChange={onChange as (event: ChangeEvent<HTMLInputElement>) => void}
           />
-          <S.PostContentBox>
-            <S.Title
-              type="text"
-              placeholder="제목을 입력해주세요"
-              name="title"
-              value={title}
-              onChange={onChange as (event: ChangeEvent<HTMLInputElement>) => void}
-            />
-            <TextareaField
-              label="본문 내용"
-              name="content"
-              value={content}
-              onChange={onChange as (event: ChangeEvent<HTMLTextAreaElement>) => void}
-            />
-            <Line />
-            <TextareaField
-              label="조건 내용"
-              name="condition"
-              value={condition}
-              onChange={onChange as (event: ChangeEvent<HTMLTextAreaElement>) => void}
-            />
-          </S.PostContentBox>
-        </>
+          <TextareaField
+            label="본문 내용"
+            name="content"
+            value={content}
+            onChange={onChange as (event: ChangeEvent<HTMLTextAreaElement>) => void}
+          />
+          <Line />
+          <TextareaField
+            label="조건 내용"
+            name="condition"
+            value={condition}
+            onChange={onChange as (event: ChangeEvent<HTMLTextAreaElement>) => void}
+          />
+        </S.PostContentBox>
       );
   }
 };

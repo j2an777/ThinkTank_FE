@@ -2,7 +2,7 @@ import { ArticleDetail } from '@/types';
 import { create } from 'zustand';
 
 interface PostFormState {
-  postForm: ArticleDetail;
+  postForm: Omit<ArticleDetail, 'postNumber'>;
   updatePostForm: (value: Partial<ArticleDetail>) => void;
 }
 const defaultPostForm = {
@@ -13,7 +13,6 @@ const defaultPostForm = {
   testCases: [],
   language: 'java',
   answer: '',
-  postNumber: 0,
 };
 export const postFormStore = create<PostFormState>((set) => ({
   postForm: defaultPostForm,

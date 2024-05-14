@@ -1,4 +1,4 @@
-import { getArticle } from '@/apis/post';
+import { getArticle } from '@/apis/article';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 

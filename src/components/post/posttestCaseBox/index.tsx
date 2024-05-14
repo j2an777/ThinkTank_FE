@@ -1,9 +1,9 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { Icon, Text } from '../../shared';
+import { postFormStore } from '@/stores/post';
+import { TestCase } from '@/types';
 
 import * as S from './styles';
-import { postFormStore } from '@/stores/post';
-import { TestCase } from '@/types/post';
 
 const defalutValue = [{ example: '', result: '' }];
 
