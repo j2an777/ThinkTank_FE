@@ -10,7 +10,6 @@ import { IconValues } from '../icon';
 type ArticleTypes = Omit<ArticleType, 'user'>;
 
 interface ArticleProps {
-  article: ArticleTypes;
   threedot?: ReactNode;
   statusFlag: string;
 }

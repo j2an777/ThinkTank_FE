@@ -1,9 +1,15 @@
 import { ProfileTable } from '@/components/mypage';
 import * as S from './styles';
-import { logout } from '@/apis/user';
 import { Icon } from '@/components/shared';
+import { useNavigate } from 'react-router-dom';
 
-export default function index() {
+const Profile = () => {
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.removeItem('access');
+    navigate('/');
+  };
+
   return (
     <S.Container>
       <S.Block>
@@ -29,4 +35,6 @@ export default function index() {
       </S.Block>
     </S.Container>
   );
-}
+};
+
+export default Profile;

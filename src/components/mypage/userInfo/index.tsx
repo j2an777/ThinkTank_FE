@@ -2,19 +2,20 @@ import { Icon, UserCircle } from '@/components/shared';
 import * as S from './styles';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { User } from '@/types/auth.ts';
 import { IconValues } from '@/components/shared/icon';
-import { useNickname } from '@/stores/mypage';
+import { useEmail } from '@/stores/mypage';
 import { getUserInfo } from '@/apis/user';
 
 const UserInfo = () => {
   const navigate = useNavigate();
-  const { setNickname } = useNickname();
-  const [userData, setUserData] = useState<User>({
-    email: 'email',
+  const { setEmail } = useEmail();
+  const [data, setData] = useState<User>({
+    email: '',
     nickname: '',
-    github: 'github',
-    blog: 'blog',
+    github: '',
+    blog: '',
     introduce: '',
     profileImage: '',
   });
@@ -23,7 +24,7 @@ const UserInfo = () => {
     const fetchUserData = async () => {
       const data = await getUserInfo();
       if (data) {
-        setUserData({
+        setData({
           email: data.email,
           nickname: data.nickname,
           github: data.github,
@@ -31,7 +32,7 @@ const UserInfo = () => {
           introduce: data.introduce,
           profileImage: data.profileImage,
         });
-        setNickname(data.nickname);
+        setEmail(data.email);
       }
     };
 
@@ -39,21 +40,21 @@ const UserInfo = () => {
   }, []);
 
   const contactInfo = [
-    { key: 'email', value: userData.email, icon: 'email' },
-    { key: 'github', value: userData.github, icon: 'github' },
-    { key: 'blog', value: userData.blog, icon: 'blog' },
+    { key: 'email', value: data.email, icon: 'email' },
+    { key: 'github', value: data.github, icon: 'github' },
+    { key: 'blog', value: data.blog, icon: 'blog' },
   ];
 
   return (
     <S.Container>
       <S.LeftBox>
-        <UserCircle size={150} profileImage={userData.profileImage} />
+        <UserCircle size={150} profileImage={data.profileImage} />
       </S.LeftBox>
       <S.RightBox>
         <S.Edit onClick={() => navigate('modify')}>
           <Icon value="settings" />
         </S.Edit>
-        <S.UserName>{userData.nickname}</S.UserName>
+        <S.UserName>{data.nickname}</S.UserName>
         <S.Contact>
           {contactInfo.map(
             (info) =>
@@ -65,7 +66,7 @@ const UserInfo = () => {
               ),
           )}
         </S.Contact>
-        <S.UserIntro>{userData.introduce}</S.UserIntro>
+        <S.UserIntro>{data.introduce}</S.UserIntro>
       </S.RightBox>
     </S.Container>
   );

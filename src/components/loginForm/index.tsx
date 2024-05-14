@@ -3,7 +3,6 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { Icon, InputBox, StyledButton } from '../shared/index.ts';
 import { Link, useNavigate } from 'react-router-dom';
 import loginImage from '@/assets/images/loginImage.jpg';
-import { AxiosError } from 'axios';
 import { postLogin } from '@/apis/user.ts';
 import { Login } from '@/types/auth.ts';
 
@@ -17,33 +16,19 @@ export default function LoginForm() {
   } = useForm<Login>({
     mode: 'onChange',
   });
+
   const onSubmit: SubmitHandler<Login> = async (data) => {
     try {
       const response = await postLogin(data);
       const accessToken = response.accessToken;
       localStorage.setItem('access', accessToken);
-      localStorage.setItem('userEmail', data.email);
       console.log('로그인 성공:', response);
       navigate(-1);
     } catch (error) {
-      const axiosError = error as AxiosError<{ message: string }>;
-      console.error('로그인 에러:', error);
-      if (axiosError.response) {
-        const errorMessage = axiosError.response.data.message;
-        if (errorMessage.includes('[❎ ERROR] 비밀번호가 일치하지 않습니다.')) {
-          setError('password', {
-            type: 'manual',
-            message: '비밀번호가 일치하지 않습니다.',
-          });
-        } else if (axiosError.status === 404) {
-          console.log(error);
-        } else {
-          setError('email', {
-            type: 'manual',
-            message: '이메일이 존재하지 않거나 잘못되었습니다.',
-          });
-        }
-      }
+      setError('email', {
+        type: 'manual',
+        message: '이메일이 존재하지 않거나 비밀번호가 일치하지 않습니다.',
+      });
     }
   };
 

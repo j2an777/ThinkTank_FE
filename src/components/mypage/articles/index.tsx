@@ -1,26 +1,27 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import * as S from './styles.ts';
-import { getMypageArticles } from '@/apis/mypage.ts';
-import { useNickname } from '@/stores/mypage';
+import * as S from './styles';
+import { useEmail } from '@/stores/mypage';
 import { useEffect, useRef } from 'react';
-import { ArticleType } from '@/types/article.ts';
+import { getMypageArticles } from '@/apis/mypage';
+import { MypageArticles } from '@/types/mypage';
+import { ArticleType } from '@/types/article';
+import SkeletonBox from '@/components/loader/skeleton';
+import Article from '@/components/shared/article';
 
-const CreatedMenu = () => {
-  const loginUserId = localStorage.getItem('userId');
-  const email = useNickname();
+const ArticlesMenu = ({ value }: Pick<MypageArticles, 'value'>) => {
+  const { email } = useEmail();
   const loader = useRef(null);
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
-    queryKey: ['created', email, loginUserId],
+    queryKey: [value, email],
     queryFn: ({ pageParam }) =>
       getMypageArticles({
-        pageIndex: pageParam,
-        isDone: false,
-        value: 'created',
+        page: pageParam,
+        size: 10,
+        value: value,
         email: email,
-        loginUserId: loginUserId,
       }),
-    initialPageParam: 1,
+    initialPageParam: 0,
     getNextPageParam: (lastPage) => lastPage.nextPage,
     staleTime: 1000 * 60 * 5, // 5분
   });
@@ -42,14 +43,20 @@ const CreatedMenu = () => {
 
   return (
     <S.Container>
-      {data?.pages.map((page) =>
-        page.data.map((post: ArticleType) => (
-          <div key={post.postId}>{/* 게시글 공통 컴포넌트로 표시 */}</div>
-        )),
+      {isFetchingNextPage ? (
+        <SkeletonBox />
+      ) : (
+        data?.pages.map((page) =>
+          page.data.map((post: ArticleType) => (
+            <div key={post.postId}>
+              <Article article={post} statusFlag="open" />
+            </div>
+          )),
+        )
       )}
       <div ref={loader} style={{ height: '100px' }} />
     </S.Container>
   );
 };
 
-export default CreatedMenu;
+export default ArticlesMenu;

@@ -1,25 +1,23 @@
-import { MypagePosts } from '@/types/mypage';
+import { MypageArticles } from '@/types/mypage';
 import instance from './instance';
 
 /** MYPAGE 게시글 조회 */
 export const getMypageArticles = async ({
-  pageIndex,
-  isDone,
+  page = 0,
+  size = 10,
   value,
   email,
-  loginUserId,
-}: MypagePosts) => {
-  const response = await instance.get('/api/mypage/posts', {
+}: MypageArticles) => {
+  const response = await instance.get('/api/users/profile', {
     params: {
-      pageIndex: pageIndex,
-      isDone: isDone,
-      value: value,
-      email: email,
-      loginUserId: loginUserId,
+      page,
+      size,
+      value,
+      email,
     },
   });
 
   const data = response.data.posts;
-  const nextPage = response.data.pageInfo.done ? null : pageIndex + 1;
+  const nextPage = response.data.pageInfo.isDone ? null : page + 1;
   return { data, nextPage };
 };

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useModalContext } from '@/contexts/ModalContext.tsx';
 import { useNavigate } from 'react-router-dom';
 import useForm from '@/hooks/useForm.ts';
+import React from 'react';
 
 const OptionalForm = () => {
   const navigate = useNavigate();
@@ -35,34 +36,38 @@ const OptionalForm = () => {
   return (
     <S.Container>
       <Icon value="logo" />
-      <S.Inputs>
-        <InputBox
-          label="깃허브"
-          type="text"
-          placeholder="선택 입력 사항 입니다."
-          value={github}
-          onChange={onChangeGithub}
-        />
-        <S.Blank />
-        <InputBox
-          label="블로그"
-          type="text"
-          placeholder="선택 입력 사항 입니다."
-          value={blog}
-          onChange={onChangeBlog}
-        />
-        <S.Blank />
-        <S.Label isFocus={isFocus}>자기소개</S.Label>
-        <S.TextArea
-          isFocus={isFocus}
-          onFocus={() => setIsFocus(true)}
-          onBlur={() => setIsFocus(false)}
-          placeholder="선택 입력 사항 입니다."
-          value={text}
-          onChange={onChangeText}
-        />
-        <S.TextLimit>{`${text.length}/150 자`}</S.TextLimit>
-      </S.Inputs>
+      <S.Block>
+        <div>
+          <InputBox
+            label="깃허브"
+            type="text"
+            placeholder="선택 입력 사항 입니다."
+            value={github}
+            onChange={onChangeGithub}
+          />
+        </div>
+        <div>
+          <InputBox
+            label="블로그"
+            type="text"
+            placeholder="선택 입력 사항 입니다."
+            value={blog}
+            onChange={onChangeBlog}
+          />
+        </div>
+        <div>
+          <S.Label isFocus={isFocus}>자기소개</S.Label>
+          <S.TextArea
+            isFocus={isFocus}
+            onFocus={() => setIsFocus(true)}
+            onBlur={() => setIsFocus(false)}
+            placeholder="선택 입력 사항 입니다."
+            value={text}
+            onChange={onChangeText}
+          />
+          <S.TextLimit>{`${text.length}/100 자`}</S.TextLimit>
+        </div>
+      </S.Block>
       <StyledButton width="100%" onClick={() => navigate('/')}>
         확인
       </StyledButton>
