@@ -62,6 +62,6 @@ const InfoStatus = ({ count, size = 24, ...props }: InfoStatusProps) => {
       </Text>
     </S.Container>
   );
-};
+});
 
 export default InfoStatus;

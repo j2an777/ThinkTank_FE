@@ -1,42 +1,54 @@
 import updateLike from '@/apis/like';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-export const useLike = (
-  postId: number,
-  initialLikeCount: number,
-  initialLikeType: boolean,
-) => {
-  // 캐시 데이터 -> 지역 데이터로 관리이기 때문에 리액트 쿼리를 활용하여 캐시데이터로 관리 및 바로 db로 업데이트 시키도록 구현
-  const [likeCount, setLikeCount] = useState(initialLikeCount);
-  const [likeType, setLikeType] = useState(initialLikeType);
-  const [jellyAnimation, setJellyAnimation] = useState(false);
+export const useLike = (postId: number, initialLikeCount: number, initialLikeType: boolean) => {
+  const queryClient = useQueryClient();
 
-  const toggleLike = useCallback(async () => {
+  const mutation = useMutation({
+    mutationFn: async () => updateLike(postId),
+    onMutate: async () => {
+      const newLikeType = !initialLikeType;
+      const newLikeCount = newLikeType ? initialLikeCount + 1 : initialLikeCount - 1;
+
+      // 낙관적 업데이트
+      queryClient.setQueryData(['likes', postId], {
+        likeCount: newLikeCount,
+        likeType: newLikeType,
+      });
+
+      return { previousLikeType: initialLikeType, previousLikeCount: initialLikeCount };
+    },
+    onError: (error, variables, context) => {
+      if (context) {
+        // 에러 발생 시 이전 상태로 되돌리기
+        queryClient.setQueryData(['likes', postId], {
+          likeCount: context.previousLikeCount,
+          likeType: context.previousLikeType,
+        });
+      }
+      console.error('좋아요 업데이트 실패', error);
+    },
+    onSettled: () => {
+        queryClient.invalidateQueries({
+            queryKey: ['posts']
+        });
+    },
+  });
+
+  const toggleLike = useCallback(() => {
     if (typeof postId !== 'number') {
       console.error('postId is undefined, toggleLike will not execute.');
       return;
     }
+    mutation.mutate();
+  }, [mutation, postId]);
 
-    // 선 렌더링 (animation, 좋아요 변화 반영)
-    const newLikeType = !likeType;
-    setLikeType(newLikeType);
-    setLikeCount((prev) => (newLikeType ? prev + 1 : prev - 1));
-    setJellyAnimation((prev) => !prev);
+  const currentLikeData = queryClient.getQueryData<{ likeCount: number; likeType: boolean }>(['likes', postId]);
 
-    setTimeout(() => {
-      setJellyAnimation((prev) => !prev);
-    }, 100);
-
-    // 상태 업데이트
-    try {
-      await updateLike(postId);
-    } catch (error) {
-      console.log(error);
-      // setLikeType(likeType);
-      // setLikeCount((prev) => (newLikeType ? prev - 1 : prev + 1));
-    }
-    // likeType과 postId값이 변하지 않는 이상 함수는 재생성 x
-  }, [likeType, postId]);
-
-  return { likeCount, likeType, jellyAnimation, toggleLike };
+  return { 
+    likeCount: currentLikeData?.likeCount ?? initialLikeCount, 
+    likeType: currentLikeData?.likeType ?? initialLikeType, 
+    toggleLike 
+  };
 };

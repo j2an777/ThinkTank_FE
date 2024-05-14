@@ -1,7 +1,6 @@
 import { colors } from "@/styles/colorPalette";
 import styled from "@emotion/styled";
 
-
 export const MltContainer = styled.div`
     width : 100%;
     max-height : 500px;
