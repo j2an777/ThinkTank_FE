@@ -1,3 +1,4 @@
+import { animationMap } from '@/styles/framerMotion';
 import { StyledButton, Text } from '../..';
 
 import * as S from './styles';
@@ -5,6 +6,7 @@ import * as S from './styles';
 interface AlertComponentProps {
   title: React.ReactNode;
   description?: React.ReactNode;
+  open: boolean;
   buttonLabel?: string;
   hasCancelButton?: boolean;
   onButtonClick: () => void;
@@ -18,9 +20,15 @@ const AlertComponent = ({
   description,
   hasCancelButton = false,
   close,
+  open,
 }: AlertComponentProps) => {
   return (
-    <S.Container>
+    <S.Container
+      variants={animationMap.fadeInOut}
+      initial="close"
+      animate={open ? 'open' : 'close'}
+      exit="close"
+    >
       <Text typography="t1" bold>
         {title}
       </Text>

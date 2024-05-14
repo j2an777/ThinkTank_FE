@@ -1,14 +1,15 @@
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colorPalette';
 import { css } from '@emotion/react';
+import { layoutMap } from '@/styles/layout';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  min-width: 800px;
-  position: relative;
-  height: 100vh;
   border-right: 1px solid ${colors.gray50};
+  min-width: 800px;
+  height: 100vh;
+  position: relative;
 `;
 
 export const fallbackContentCss = css`
@@ -18,10 +19,8 @@ export const fallbackContentCss = css`
 `;
 
 export const ContentBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
+  ${layoutMap.shadowBox}
   flex: 1;
-  border-bottom: 1px solid ${colors.gray50};
+  padding: 20px;
   gap: 30px;
 `;

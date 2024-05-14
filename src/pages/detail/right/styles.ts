@@ -1,5 +1,4 @@
 import { colors } from '@/styles/colorPalette';
-import { layoutMap } from '@/styles/layout';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -29,17 +28,11 @@ export const testButton = css`
 export const ButtonBox = styled.div`
   display: flex;
   margin-top: 60px;
+  align-items: center;
+  flex-direction: row;
   justify-content: end;
   gap: 20px;
   > div:first-of-type {
     margin-right: auto;
   }
-`;
-
-export const questionCss = css`
-  ${layoutMap.shadowBox}
-  border-radius: 100%;
-  padding: 10px;
-  width: 48px;
-  height: 48px;
 `;

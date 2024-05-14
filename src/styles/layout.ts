@@ -25,4 +25,11 @@ export const layoutMap = {
     /* 파이어폭스용 */
     scrollbar-width: none;
   `,
+  borderCircleIcon: css`
+    display: flex;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 100%;
+    padding: 5px;
+  `,
 };

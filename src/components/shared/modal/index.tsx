@@ -1,8 +1,6 @@
-import { animationMap } from '@/styles/framerMotion';
 import AlertComponent from './alertComponent';
 import CommentComponent from './commentComponent';
 import Dimmed from './Dimmed';
-import { motion } from 'framer-motion';
 import QuestionComponent from './questionComponent/indext';
 import { LanguageNames } from '@/consts/language';
 
@@ -24,28 +22,18 @@ interface ModalProps {
 const Modal = ({ open, type = 'alert', ...props }: ModalProps) => {
   if (!open) return null;
 
-  return (
-    <Dimmed>
-      <motion.div
-        initial="exit"
-        animate={open ? 'enter' : 'exit'}
-        variants={animationMap.subMenuAnimate}
-      >
-        {renderComponent({ type, ...props })}
-      </motion.div>
-    </Dimmed>
-  );
+  return <Dimmed>{renderComponent({ type, open, ...props })}</Dimmed>;
 };
 
 export default Modal;
 
-const renderComponent = ({ type, ...props }: Omit<ModalProps, 'open'>) => {
+const renderComponent = ({ type, open, ...props }: ModalProps) => {
   switch (type) {
     case 'alert':
-      return <AlertComponent {...props} />;
+      return <AlertComponent open={open as boolean} {...props} />;
     case 'comment':
-      return <CommentComponent {...props} />;
+      return <CommentComponent open={open as boolean} {...props} />;
     case 'question':
-      return <QuestionComponent {...props} />;
+      return <QuestionComponent open={open as boolean} {...props} />;
   }
 };

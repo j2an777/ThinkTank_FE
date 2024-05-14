@@ -1,7 +1,8 @@
 import { layoutMap } from '@/styles/layout';
 import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
   ${layoutMap.shadowBox}
   position: absolute;
   right: 0;

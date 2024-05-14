@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion';
 import Modal from '../components/shared/modal';
 import {
   ComponentProps,
@@ -51,7 +52,14 @@ export const ModalContextProvider = ({ children }: PropsWithChildren) => {
   return (
     <Context.Provider value={values}>
       {children}
-      {$portal_root ? createPortal(<Modal {...modalState} />, $portal_root) : null}
+      {$portal_root
+        ? createPortal(
+            <AnimatePresence>
+              {modalState.open && <Modal {...modalState} />}
+            </AnimatePresence>,
+            $portal_root,
+          )
+        : null}
     </Context.Provider>
   );
 };

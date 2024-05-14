@@ -1,7 +1,5 @@
 import { MouseEvent, useState } from 'react';
 import { CategoryOption, CategoryValues } from '@/consts/category';
-import { animationMap } from '@/styles/framerMotion';
-import { motion } from 'framer-motion';
 
 import * as S from './styles';
 
@@ -27,6 +25,7 @@ const Select = <T extends CategoryOption>({
     e.preventDefault();
     setIsExpand((prev) => !prev);
   };
+  console.log(isExpand);
   return (
     <S.Container onBlur={() => setIsExpand(false)} onMouseDown={handleMouseDown}>
       <S.Select
@@ -45,12 +44,14 @@ const Select = <T extends CategoryOption>({
             </option>
           ))}
       </S.Select>
-
-      <motion.div
-        initial="exit"
-        animate={isExpand ? 'enter' : 'exit'}
-        variants={animationMap.subMenuAnimate}
-      >
+      <S.SelectIcon
+        color="gray400"
+        value="arrow"
+        $active={false}
+        $rotate={isExpand}
+        size={24}
+      />
+      {isExpand && (
         <S.SelectList>
           {optionData.length > 0 &&
             optionData.map(({ value, name }, index) => {
@@ -72,7 +73,7 @@ const Select = <T extends CategoryOption>({
               );
             })}
         </S.SelectList>
-      </motion.div>
+      )}
     </S.Container>
   );
 };

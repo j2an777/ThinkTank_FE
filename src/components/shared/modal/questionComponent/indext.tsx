@@ -3,8 +3,10 @@ import { Icon, Text } from '../..';
 import { LanguageNames } from '@/consts/language';
 
 import * as S from './styles';
+import { animationMap } from '@/styles/framerMotion';
 
 interface QuestionComponentProps {
+  open: boolean;
   title: React.ReactNode;
   close?: () => void;
   answer?: string;
@@ -12,13 +14,19 @@ interface QuestionComponentProps {
 }
 
 const QuestionComponent = ({
+  open,
   close,
   title,
   answer,
   language,
 }: QuestionComponentProps) => {
   return (
-    <S.Container>
+    <S.Container
+      initial="close"
+      animate={open ? 'open' : 'close'}
+      variants={animationMap.fadeInOut}
+      exit="close"
+    >
       <S.TitleBox>
         <Text bold>{title}</Text>
         <Icon value="cancel" onClick={close} />
