@@ -42,7 +42,7 @@ export const buttonSizeMap = {
     padding: 12px 18px;
   `,
   large: css`
-    font-size: 28px;
+    font-size: 44px;
     padding: 15px 24px;
   `,
 };
