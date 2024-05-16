@@ -6,7 +6,7 @@ const MainExtra = () => {
   return (
     <S.MeContainer>
       <S.SearchBox>
-        <Icon value="search" size={24} color='gray50' $active={false}/>
+        <Icon value="search" size={24} color='gray100' $active={false}/>
         <input type="text" placeholder="유저 검색" />
       </S.SearchBox>
       <S.MeBox>

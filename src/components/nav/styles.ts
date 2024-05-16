@@ -55,7 +55,6 @@ export const NavItemBox = styled.div`
   align-items: center;
   justify-content: center;
   gap: 30px;
-  background-color: white;
 
   a {
     text-decoration: none;
@@ -68,12 +67,6 @@ export const NavItemBox = styled.div`
     justify-content: flex-start;
     gap: 20px;
     transition: all 0.1s ease;
-
-    p {
-      font-weight: 700;
-      color: black;
-      ${typographyMap.t2};
-    }
 
     &:hover {
       cursor: pointer;

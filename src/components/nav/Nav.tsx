@@ -1,4 +1,4 @@
-import { Icon, StyledButton } from '@/components/shared';
+import { Icon, StyledButton, Text } from '@/components/shared';
 import { navItems } from '@/consts/navItems';
 import { Link } from 'react-router-dom';
 
@@ -15,8 +15,8 @@ const Nav = () => {
       <S.NavItemBox>
         {navItems.map((item) => (
           <Link to={item.path} key={item.label}>
-            <Icon value={item.icon} size={48} />
-            <p>{item.label}</p>
+            <Icon value={item.icon} size={48}/>
+            <Text typography='t1' bold='bold' color='black'>{item.label}</Text>
           </Link>
         ))}
       </S.NavItemBox>
