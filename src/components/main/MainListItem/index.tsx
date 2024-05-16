@@ -20,7 +20,7 @@ const MainListItem = ({ listItem }: ListItemProps) => {
           {user.profileImage ? (
             <img src={user.profileImage} />
           ) : (
-            <Icon value="user" size={105} />
+            <Icon value="user" size={105} $active={false}/>
           )}
         </S.AvatarBlock>
         <S.MlInfoBlock>
