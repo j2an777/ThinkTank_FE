@@ -8,7 +8,7 @@ export const UserBox = styled.div`
     align-items : center;
     justify-content : flex-start;
     gap : 20px;
-    margin: 30px 0 0 0;
+    margin: 50px 0 0 0;
 `;
 
 export const AvatarBlock = styled.div`
@@ -25,7 +25,7 @@ export const AvatarBlock = styled.div`
 
 export const InfoBlock = styled.div`
     width : 100%;
-    height : 50px;
+    height : 100px;
     display : flex;
     flex-direction : column;
     justify-content : space-between;
@@ -44,5 +44,5 @@ export const InfoBlock = styled.div`
 `;
 
 export const ContentBox = styled.div`
-    margin : 30px 0 0 0;
+    margin : 50px 0 0 0;
 `;

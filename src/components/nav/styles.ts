@@ -30,8 +30,8 @@ export const NavContainer = styled.div`
 `;
 
 export const NavLogoBox = styled.div`
-  width: 100%;
-  height: 40px;
+  width : 100%;
+  height : 150px;
   display: flex;
   align-items: center;
   justify-content: center;

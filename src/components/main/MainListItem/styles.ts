@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 export const MltContainer = styled.div`
     width : 100%;
-    max-height : 500px;
+    min-height : 500px;
     padding : 20px;
     box-sizing : border-box;
     display : flex;
@@ -15,7 +15,7 @@ export const MltContainer = styled.div`
 
 export const MlUserBox = styled.div`
     width : 100%;
-    height : 50px;
+    height : 110px;
     display : flex;
     align-items : center;
     justify-content : flex-start;
@@ -26,16 +26,10 @@ export const AvatarBlock = styled.div`
     display : flex;
     align-items : center;
     justify-content : center;
-    border : 2px solid ${colors.gray};
-    border-radius : 50%;
-`;
-
-export const MlProfile = styled.img`
-    width : 50px;
-    height : 50px;
-    object-fit : contain;
-    border-radius : 50%;
     border : 3px solid ${colors.gray};
+    border-radius : 50%;
+    padding : 5px;
+    box-sizing : border-box;
 `;
 
 export const MlInfoBlock = styled.div`
@@ -44,16 +38,4 @@ export const MlInfoBlock = styled.div`
     display : flex;
     flex-direction : column;
     justify-content : space-between;
-
-    h3 {
-        font-size : 20px;
-        font-weight : 500;
-        color : black;
-    }
-
-    p {
-        font-size : 16px;
-        font-weight : 500;
-        color : ${colors.gray200};
-    }
 `;

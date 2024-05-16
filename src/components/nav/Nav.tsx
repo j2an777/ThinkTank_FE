@@ -20,7 +20,7 @@ const Nav = () => {
           </Link>
         ))}
       </S.NavItemBox>
-      <StyledButton>
+      <StyledButton size='large'>
         <Link to="/post">Post</Link>
       </StyledButton>
     </S.NavContainer>

@@ -1,4 +1,4 @@
-import { Icon } from '@/components/shared';
+import { Icon, Text } from '@/components/shared';
 import * as S from './styles';
 import Article from '@/components/shared/article';
 import { ArticleType } from '@/types';
@@ -20,12 +20,12 @@ const MainListItem = ({ listItem }: ListItemProps) => {
           {user.profileImage ? (
             <img src={user.profileImage} />
           ) : (
-            <Icon value="user" size={50} />
+            <Icon value="user" size={105} />
           )}
         </S.AvatarBlock>
         <S.MlInfoBlock>
-          <h3>{user.nickname}</h3>
-          <p>{createDate}</p>
+          <Text typography='t2' bold='semibold' color='black'>{user.nickname}</Text>
+          <Text typography='t4' bold='semibold' color='gray200'>{createDate}</Text>
         </S.MlInfoBlock>
       </S.MlUserBox>
       <Article article={articleDetails} statusFlag="open" />
