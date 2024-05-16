@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getNewToken } from './refresh';
+import getNewToken from './auth';
 
 const instance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
