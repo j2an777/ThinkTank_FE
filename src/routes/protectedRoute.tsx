@@ -7,7 +7,7 @@ interface ProtectedRouteProps {
 
 // 보호된 라우트 완성짓기
 const ProtectedRoute = ({ element }: ProtectedRouteProps) => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = localStorage.getItem('access');
 
   // accessToken이 없다면 로그인 페이지로 리디렉트
   return accessToken ? element : <Navigate to="/login" replace={true} />;
