@@ -6,7 +6,7 @@ export const NavContainer = styled.div`
   position: sticky;
   top: 0;
   left: 0;
-  width: 400px;
+  width: 420px;
   height: 100%;
   padding: 50px 50px;
   box-sizing: border-box;

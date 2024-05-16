@@ -8,9 +8,7 @@ const Nav = () => {
   return (
     <S.NavContainer>
       <S.NavLogoBox>
-        <Link to="/">
-          <Icon value="logo" size={250} />
-        </Link>
+        <Icon value="logo" size={250} $active={false}/>
       </S.NavLogoBox>
       <S.NavItemBox>
         {navItems.map((item) => (

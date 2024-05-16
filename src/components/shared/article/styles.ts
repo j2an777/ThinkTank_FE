@@ -7,7 +7,7 @@ export const ArticleContainer = styled.div`
   ${layoutMap.shadowBox}
   box-sizing: border-box;
   width: 100%;
-  height: 500px;
+  height: 572px;
   justify-content: space-between;
   gap: 30px;
   overflow-y: auto;
