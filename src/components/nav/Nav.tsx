@@ -8,17 +8,21 @@ const Nav = () => {
   return (
     <S.NavContainer>
       <S.NavLogoBox>
-        <Icon value="logo" size={250} $active={false}/>
+        <Link to="/">
+          <Icon value="logo" size={250} $active={false} />
+        </Link>
       </S.NavLogoBox>
       <S.NavItemBox>
         {navItems.map((item) => (
           <Link to={item.path} key={item.label}>
-            <Icon value={item.icon} size={48}/>
-            <Text typography='t1' bold='bold' color='black'>{item.label}</Text>
+            <Icon value={item.icon} size={48} />
+            <Text typography="t1" bold="bold" color="black">
+              {item.label}
+            </Text>
           </Link>
         ))}
       </S.NavItemBox>
-      <StyledButton size='large'>
+      <StyledButton size="large">
         <Link to="/post">Post</Link>
       </StyledButton>
     </S.NavContainer>

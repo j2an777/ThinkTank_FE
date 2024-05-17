@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 import { Component, PropsWithChildren } from 'react';
 
 interface ErrorBoundaryState {
-  error: Error | AxiosError<{ message: string }> | null;
+  error: Error | AxiosError | null;
   errorCase: 'unauthorized' | 'get' | 'Bad Request' | null;
 }
 

@@ -29,7 +29,7 @@ const AlertComponent = ({
       animate={open ? 'open' : 'close'}
       exit="close"
     >
-      <Text typography="t1" bold>
+      <Text typography="t1" bold="bold">
         {title}
       </Text>
       {description ?? <Text>{description}</Text>}

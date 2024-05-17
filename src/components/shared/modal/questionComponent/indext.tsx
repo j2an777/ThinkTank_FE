@@ -28,7 +28,7 @@ const QuestionComponent = ({
       exit="close"
     >
       <S.TitleBox>
-        <Text bold>{title}</Text>
+        <Text bold="bold">{title}</Text>
         <Icon value="cancel" onClick={close} />
       </S.TitleBox>
       <CodeBox layout={false} readOnly code={code} language={language} />

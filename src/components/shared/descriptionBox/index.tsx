@@ -5,7 +5,7 @@ import { ArticleDetail } from '@/types';
 
 import * as S from './styles';
 
-type DescriptonForm = Omit<ArticleDetail, 'testCases' | 'language' | 'code'>;
+type DescriptonForm = Pick<ArticleDetail, 'category' | 'title' | 'content' | 'condition'>;
 
 type DescriptionBoxProps = {
   page: 'post' | 'detail';
@@ -31,7 +31,7 @@ const renderComponent = ({
         <>
           <Text typography="t2">{`${category} > ${title}`}</Text>
           <S.DetailContentBox>
-            <Text typography="t3" bold>
+            <Text typography="t3" bold="bold">
               {title}
             </Text>
             <textarea readOnly={true} value={content} />

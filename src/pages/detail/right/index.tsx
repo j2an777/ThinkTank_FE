@@ -9,6 +9,7 @@ import InfoStatus from '@/components/shared/infoStatus';
 
 import * as S from './styles';
 import { layoutMap } from '@/styles/layout';
+import { getAccess } from '@/hooks/auth/useLocalStorage';
 
 const DetailRight = () => {
   const navigate = useNavigate();
@@ -20,12 +21,9 @@ const DetailRight = () => {
   } = useGetPost();
 
   const handleSubmit = () => {
-    const access = localStorage.getItem('access');
+    const access = getAccess();
     if (access) {
-      postCheck(
-        { code: postForm.code, language: postForm.language },
-        postId as string,
-      );
+      postCheck({ code: postForm.code, language: postForm.language }, postId as string);
     } else {
       open({
         title: '로그인이 필요한 서비스입니다.',

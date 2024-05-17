@@ -12,13 +12,17 @@ function App() {
       <Suspense fallback={<>loading</>}>
         <Routes>
           <Route path="/" element={<Layout />}>
-          {routers.map(({path, element: Component}) => (
-            route.isProtected ? (
-              <Route key={path} path={path} element={<ProtectedRoute element={<Component />} />} />
-            ) : (
-              <Route key={path} path={path} element={<Component />} />
-            )
-          ))}
+            {routers.map(({ path, element: Component, isProtected }) =>
+              isProtected ? (
+                <Route
+                  key={path}
+                  path={path}
+                  element={<ProtectedRoute element={<Component />} />}
+                />
+              ) : (
+                <Route key={path} path={path} element={<Component />} />
+              ),
+            )}
           </Route>
         </Routes>
       </Suspense>

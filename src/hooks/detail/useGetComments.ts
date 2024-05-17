@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 const useGetComments = (postId: string) => {
   const { ref, inView } = useInView();
   const { data, fetchNextPage } = useInfiniteQuery({
-    queryKey: ['comments'],
+    queryKey: ['comments', postId],
     queryFn: () => getComments(postId as string),
     initialPageParam: 0,
     getNextPageParam: (lastPageParam) => lastPageParam + 1,

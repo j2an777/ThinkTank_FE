@@ -6,7 +6,7 @@ import { CATEGORY } from '@/consts/category';
 
 const PostLeft = () => {
   const {
-    postForm: { postNumber, title, content, condition },
+    postForm: { title, content, condition },
     onChange,
     updatePostForm,
   } = useSetFormData();
@@ -17,7 +17,6 @@ const PostLeft = () => {
     <S.Container>
       <Select optionData={CATEGORY} onChange={onChangeSelect} />
       <DescriptionBox
-        postNumber={postNumber}
         page="post"
         title={title}
         content={content}
