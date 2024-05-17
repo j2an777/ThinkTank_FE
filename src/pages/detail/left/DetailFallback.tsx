@@ -9,9 +9,7 @@ const DetailFallback = () => {
       <S.ContentBox>
         <Text typography="t2">{`category > title`}</Text>
         <ShadowBox css={S.fallbackContentCss}>
-          <Text typography="t3" bold>
-            title
-          </Text>
+          <Text typography="t3">title</Text>
           <CircleLoader />
         </ShadowBox>
       </S.ContentBox>
