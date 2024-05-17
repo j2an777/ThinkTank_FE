@@ -1,10 +1,9 @@
-import { useLocation, Link } from 'react-router-dom';
 import { ArticlesMenu, SolvedMenu } from '@/components/mypage';
 import * as S from './styles.ts';
+import { useState } from 'react';
 
 const TabMenu = () => {
-  const location = useLocation();
-  const currentTab = new URLSearchParams(location.search).get('value') || 'created';
+  const [currentTab, setCurrentTab] = useState('created');
 
   const tabs = [
     { id: 'created', label: '만든 문제', component: ArticlesMenu },
@@ -16,8 +15,12 @@ const TabMenu = () => {
     <S.Container>
       <S.TabMenu>
         {tabs.map((tab) => (
-          <S.TabBox key={tab.id} active={currentTab === tab.id}>
-            <Link to={`?value=${tab.id}`}>{tab.label}</Link>
+          <S.TabBox
+            key={tab.id}
+            active={currentTab === tab.id}
+            onClick={() => setCurrentTab(tab.id)}
+          >
+            {tab.label}
           </S.TabBox>
         ))}
       </S.TabMenu>
