@@ -1,4 +1,5 @@
 
+
 import { getAccess } from '@/hooks/auth/useLocalStorage';
 import instance from './instance';
 
@@ -16,4 +17,3 @@ export const getNewToken = async () => {
   }
 };
 
-export default getNewToken;

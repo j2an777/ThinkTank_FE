@@ -25,7 +25,6 @@ const Select = <T extends CategoryOption>({
     e.preventDefault();
     setIsExpand((prev) => !prev);
   };
-  console.log(isExpand);
   return (
     <S.Container onBlur={() => setIsExpand(false)} onMouseDown={handleMouseDown}>
       <S.Select
@@ -48,7 +47,7 @@ const Select = <T extends CategoryOption>({
         color="gray400"
         value="arrow"
         $active={false}
-        $rotate={isExpand}
+        $rotate={!isExpand}
         size={24}
       />
       {isExpand && (

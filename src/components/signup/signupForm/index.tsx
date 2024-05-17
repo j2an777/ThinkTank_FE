@@ -1,4 +1,3 @@
-import * as S from './styles.ts';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { StyledButton, Icon, InputBox } from '@/components/shared';
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +5,8 @@ import { postLogin, postSignup } from '@/apis/user';
 import { SignUp } from '@/types/auth.ts';
 import { setAccess } from '@/hooks/auth/useLocalStorage.ts';
 import { AxiosError } from 'axios';
+
+import * as S from './styles.ts';
 
 const SignupForm = () => {
   const navigate = useNavigate();
@@ -25,7 +26,6 @@ const SignupForm = () => {
       // 선택사항 빈 값으로 보냄
       const fullData = { ...data, github: '', blog: '', introduce: '' };
       const signupResponse = await postSignup(fullData);
-
       if (signupResponse) {
         // 자동 로그인
         const loginResponse = await postLogin(data);
@@ -35,6 +35,7 @@ const SignupForm = () => {
           state: { nickname: data.nickname },
         });
       }
+
     } catch (error) {
       const axiosError = error as AxiosError<{ message: string }>;
       if (axiosError.response) {
@@ -56,6 +57,7 @@ const SignupForm = () => {
           });
         }
       }
+      throw error;
     }
   };
 

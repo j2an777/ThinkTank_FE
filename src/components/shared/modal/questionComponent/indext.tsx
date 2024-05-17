@@ -9,7 +9,7 @@ interface QuestionComponentProps {
   open: boolean;
   title: React.ReactNode;
   close?: () => void;
-  answer?: string;
+  code?: string;
   language?: LanguageNames;
 }
 
@@ -17,7 +17,7 @@ const QuestionComponent = ({
   open,
   close,
   title,
-  answer,
+  code,
   language,
 }: QuestionComponentProps) => {
   return (
@@ -31,7 +31,7 @@ const QuestionComponent = ({
         <Text bold>{title}</Text>
         <Icon value="cancel" onClick={close} />
       </S.TitleBox>
-      <CodeBox layout={false} readOnly answer={answer} language={language} />
+      <CodeBox layout={false} readOnly code={code} language={language} />
     </S.Container>
   );
 };

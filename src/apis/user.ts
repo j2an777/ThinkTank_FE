@@ -11,7 +11,7 @@ export const postLogin = async ({ email, password }: Login) => {
 /** 회원가입 */
 export const postSignup = async (data: SignUp) => {
   const response = await instance.post('/api/signup', data);
-  return response.data;
+  return response?.data;
 };
 
 /** User 정보 불러오기 */

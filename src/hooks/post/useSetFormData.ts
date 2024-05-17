@@ -1,6 +1,5 @@
 import { postFormStore } from '@/stores/post';
 import { ArticleDetail } from '@/types';
-import { ArticleDetail } from '@/types';
 import { ChangeEvent } from 'react';
 
 const useSetFormData = () => {

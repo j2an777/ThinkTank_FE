@@ -22,8 +22,9 @@ instance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
+    const access = getAccess();
+    if (error.response?.status === 401 && !originalRequest._alreadyRefreshed && access) {
 
-    if (error.response?.status === 401 && !originalRequest._alreadyRefreshed) {
       originalRequest._alreadyRefreshed = true; // 무한 요청 방지
       try {
         const newAccessToken = await getNewToken();
@@ -34,7 +35,8 @@ instance.interceptors.response.use(
         }
       } catch (refreshError) {
         console.error('토큰 발급 실패', refreshError);
-        window.location.href = '/login';
+        // window.location.href = '/login';
+        throw refreshError;
       }
     }
     throw error;

@@ -1,25 +1,28 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { routers } from './routes';
 import Layout from './routes/Layout';
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
+import { ErrorBoundary } from './components/shared';
 import ProtectedRoute from './routes/protectedRoute';
+
 function App() {
+  const navigate = useNavigate();
   return (
-    <Suspense fallback={<>loading</>}>
-      <BrowserRouter>
+    <ErrorBoundary navigate={navigate}>
+      <Suspense fallback={<>loading</>}>
         <Routes>
           <Route path="/" element={<Layout />}>
-          {routers.map((route) => (
+          {routers.map(({path, element: Component}) => (
             route.isProtected ? (
-              <Route key={route.path} path={route.path} element={<ProtectedRoute element={React.createElement(route.component)} />} />
+              <Route key={path} path={path} element={<ProtectedRoute element={<Component />} />} />
             ) : (
-              <Route key={route.path} path={route.path} element={React.createElement(route.component)} />
+              <Route key={path} path={path} element={<Component />} />
             )
           ))}
           </Route>
         </Routes>
-      </BrowserRouter>
-    </Suspense>
+      </Suspense>
+    </ErrorBoundary>
   );
 }
 

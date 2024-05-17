@@ -36,7 +36,7 @@ export interface ArticleDetail {
   condition: string;
   testCases: TestCase[];
   language: LanguageValues;
-  answer: string;
+  code: string;
   commentCount: number;
   likeCount: number;
   answerCount: number;
