@@ -7,6 +7,7 @@ import Loading from '@/components/loader';
 const MainPage = () => {
 
   const Main = React.lazy(() => import('../../components/main/mainList/MainList'));
+
   return (
     <MainContainer>
       <Nav />

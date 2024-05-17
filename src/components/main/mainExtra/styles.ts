@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
 import { colors } from "@/styles/colorPalette";
+import { typographyMap } from "@/styles/typography";
 
 
 export const MeContainer = styled.div`
     position : sticky;
     top : 0;
     left : 0;
-    width : 350px;
+    width : 380px;
     height : 100%;
     padding : 30px;
     box-sizing : border-box;
@@ -23,7 +24,7 @@ export const MeContainer = styled.div`
 
 export const SearchBox = styled.div`
     width : 100%;
-    height : 40px;
+    height : 50px;
     border-radius : 999px;
     background-color : ${colors.gray50};
     display : flex;
@@ -38,8 +39,8 @@ export const SearchBox = styled.div`
         border : none;
         outline : none;
         background-color : transparent;
-        font-size : 16px;
-        font-weight : 500;
+        ${typographyMap.t5};
+        ${typographyMap.regular};
         color : ${colors.gray300};
         padding : 0 10px;
         box-sizing : border-box;
@@ -53,7 +54,7 @@ export const SearchBox = styled.div`
 export const MeBox = styled.div`
     width : 100%;
     height : auto;
-    margin : 0 0 30px 0;
+    margin : 50px 0 30px 0;
     padding : 0 20px;
     box-sizing : border-box;
     display : flex;
@@ -76,11 +77,6 @@ export const MeTitleBlock = styled.div`
         object-fit : contain;
     }
 
-    p {
-        font-size : 28px;
-        font-weight : 700;
-        color : black;
-    }
 `;
 
 export const MeContentBlock = styled.div`
@@ -88,10 +84,4 @@ export const MeContentBlock = styled.div`
     display : flex;
     flex-direction : column;
     gap : 10px;
-
-    p {
-        font-size : 18px;
-        font-weight : 600;
-        color : ${colors.gray300};
-    }
 `;

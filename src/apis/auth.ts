@@ -1,8 +1,10 @@
+
 import { getAccess } from '@/hooks/auth/useLocalStorage';
 import instance from './instance';
 
 export const getNewToken = async () => {
   const expiredToken = getAccess();
+
   try {
     const response = await instance.post('/api/reissue', { expiredToken: expiredToken });
     const newAccessToken = response.data.accessToken;

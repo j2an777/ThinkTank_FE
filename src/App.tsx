@@ -1,16 +1,21 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { routers } from './routes';
 import Layout from './routes/Layout';
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
+import ProtectedRoute from './routes/protectedRoute';
 function App() {
   return (
     <Suspense fallback={<>loading</>}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            {routers.map(({ path, component }) => (
-              <Route key={path} path={path} Component={component} />
-            ))}
+          {routers.map((route) => (
+            route.isProtected ? (
+              <Route key={route.path} path={route.path} element={<ProtectedRoute element={React.createElement(route.component)} />} />
+            ) : (
+              <Route key={route.path} path={route.path} element={React.createElement(route.component)} />
+            )
+          ))}
           </Route>
         </Routes>
       </BrowserRouter>

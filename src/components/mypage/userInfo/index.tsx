@@ -57,7 +57,7 @@ const UserInfo = () => {
             (info) =>
               info.value && (
                 <S.Block key={info.key}>
-                  <Icon value={info.icon as IconValues} />
+                  <Icon value={info.icon as IconValues} $active={false}/>
                   {info.value}
                 </S.Block>
               ),

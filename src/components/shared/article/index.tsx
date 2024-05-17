@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { ArticleType } from '@/types';
 import { useLike } from '@/hooks/like/useLike';
 import { IconValues } from '../icon';
+import Text from '../Text';
 
 // ArticleItem 타입에서 author 제외한 타입 정의
 type ArticleTypes = Omit<ArticleType, 'user'>;
@@ -50,7 +51,7 @@ const Article = ({ article, threedot, statusFlag }: ArticleProps) => {
   // statusFlag가 open인 경우(상세페이지인 경우) 문제 내용 그대로, 나머지 경우에서는 10번째 라인까지 제한
   const contentNode =
     statusFlag === 'open'
-      ? formatContent(article.content, 10)
+      ? formatContent(article.content, 8)
       : formatContent(article.content);
 
   const toHandleDetail = () => {
@@ -60,7 +61,7 @@ const Article = ({ article, threedot, statusFlag }: ArticleProps) => {
   return (
     <S.ArticleContainer onClick={toHandleDetail}>
       <S.ArTopBox>
-        <S.ArTitleBlock>{article.title}</S.ArTitleBlock>
+        <Text typography='t1' bold='regular' color='black'>{article.title}</Text>
         {/* 마이페이지에서는 threedot 위치 입니다. */}
         {threedot}
       </S.ArTopBox>
@@ -76,8 +77,8 @@ const Article = ({ article, threedot, statusFlag }: ArticleProps) => {
                 toggleLike();
               }}
             />
-            <InfoStatus value="comment" count={article.commentCount} />
-            <InfoStatus value="check" count={article.codeCount} />
+            <InfoStatus value="comment" count={article.commentCount} $active={false}/>
+            <InfoStatus value="check" count={article.codeCount} $active={false}/>
           </>
         )}
       </S.ArDataBlock>
