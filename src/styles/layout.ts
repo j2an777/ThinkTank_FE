@@ -5,7 +5,7 @@ export const layoutMap = {
     display: flex;
     flex-direction: column;
     border-radius: 15px;
-    padding: 20px;
+    padding: 30px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   `,

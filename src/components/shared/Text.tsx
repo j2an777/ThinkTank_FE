@@ -5,14 +5,14 @@ import { css } from '@emotion/react';
 
 interface TextProps {
   typography?: Typograph;
-  bold?: boolean;
+  bold?: Typograph;
   color?: Colors;
   ellipsis?: number;
 }
 
 const Text = styled.p<TextProps>`
-  ${({ typography = 't3' }) => typographyMap[typography]}
-  font-weight: ${({ bold = false }) => (bold ? 'bold' : null)};
+  ${({ typography = 't3' }) => typographyMap[typography]};
+  ${({ bold = 'semibold' }) => typographyMap[bold]};
   color: ${({ color = 'black' }) => colors[color]};
   ${({ ellipsis }) => css`
     overflow: hidden;
