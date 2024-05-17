@@ -14,11 +14,11 @@ import { createPortal } from 'react-dom';
 type ModalProps = ComponentProps<typeof Modal>;
 type ModalOptions = Omit<ModalProps, 'open'>;
 
-interface ModalContextValue {
+export interface ModalContextValue {
   open: (option: ModalOptions) => void;
 }
 
-const Context = createContext<ModalContextValue | undefined>(undefined);
+export const ModalContext = createContext<ModalContextValue | undefined>(undefined);
 
 const defaultValue: ModalProps = {
   open: false,
@@ -50,7 +50,7 @@ export const ModalContextProvider = ({ children }: PropsWithChildren) => {
   );
   const values = useMemo(() => ({ open }), [open]);
   return (
-    <Context.Provider value={values}>
+    <ModalContext.Provider value={values}>
       {children}
       {$portal_root
         ? createPortal(
@@ -60,12 +60,12 @@ export const ModalContextProvider = ({ children }: PropsWithChildren) => {
             $portal_root,
           )
         : null}
-    </Context.Provider>
+    </ModalContext.Provider>
   );
 };
 
 export const useModalContext = () => {
-  const values = useContext(Context);
+  const values = useContext(ModalContext);
 
   if (values == null) {
     throw new Error('use in ModalContext');
