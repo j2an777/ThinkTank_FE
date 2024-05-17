@@ -7,11 +7,11 @@ import * as S from './styles';
 interface CodeBoxProps {
   layout?: boolean;
   readOnly?: boolean;
-  answer?: string;
+  code?: string;
   language?: LanguageNames;
 }
 
-const CodeBox = ({ layout = true, readOnly = false, answer, language }: CodeBoxProps) => {
+const CodeBox = ({ layout = true, readOnly = false, code, language }: CodeBoxProps) => {
   const { postForm, updatePostForm } = useSetFormData();
   const handleChangeSelect = (value: LanguageValues) => {
     updatePostForm({ language: value });
@@ -31,7 +31,7 @@ const CodeBox = ({ layout = true, readOnly = false, answer, language }: CodeBoxP
           />
         )}
       </S.LanguageBox>
-      <CodeEditor language={postForm.language} readOnly={readOnly} answer={answer} />
+      <CodeEditor language={postForm.language} readOnly={readOnly} code={code} />
     </S.Container>
   );
 };

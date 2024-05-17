@@ -5,7 +5,7 @@ import { ArticleDetail } from '@/types';
 
 import * as S from './styles';
 
-type DescriptonForm = Omit<ArticleDetail, 'testCases' | 'language' | 'answer'>;
+type DescriptonForm = Omit<ArticleDetail, 'testCases' | 'language' | 'code'>;
 
 type DescriptionBoxProps = {
   page: 'post' | 'detail';

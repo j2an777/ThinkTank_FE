@@ -21,17 +21,22 @@ export const getArticles = async ({ pageParam = 1, size }: FetchParams) => {
   return response.data as ArticleList;
 };
 
-export const postArticle = async (formData: ArticleDetail) => {
+export const postArticle = async (
+  formData: Omit<
+    ArticleDetail,
+    'postNumber' | 'commentCount' | 'likeCount' | 'answerCount' | 'likeType'
+  >,
+) => {
   const response = await instance.post('/api/posts', formData);
-  return response.data;
+  return response?.data;
 };
 
 export const postCheck = async (
-  formData: Pick<ArticleDetail, 'language' | 'answer'>,
+  formData: Pick<ArticleDetail, 'language' | 'code'>,
   postId: string,
 ) => {
   const newFormData = {
-    code: formData.answer,
+    code: formData.code,
     language: formData.language,
     postId,
   };

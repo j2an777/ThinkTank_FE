@@ -16,14 +16,14 @@ const DetailRight = () => {
   const { postId } = useParams();
   const postForm = postFormStore((state) => state.postForm);
   const {
-    data: { answer, language, commentCount },
+    data: { code, language, commentCount },
   } = useGetPost();
 
   const handleSubmit = () => {
     const access = localStorage.getItem('access');
     if (access) {
       postCheck(
-        { answer: postForm.answer, language: postForm.language },
+        { code: postForm.code, language: postForm.language },
         postId as string,
       );
     } else {
@@ -60,7 +60,7 @@ const DetailRight = () => {
               title: '정답 코드',
               onButtonClick: () => {},
               type: 'question',
-              answer,
+              code,
               language,
             })
           }

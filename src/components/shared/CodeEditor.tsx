@@ -9,7 +9,7 @@ import { useMemo } from 'react';
 interface CodeEditorProps {
   language: LanguageValues;
   readOnly?: boolean;
-  answer?: string;
+  code?: string;
 }
 
 loader.config({
@@ -30,7 +30,7 @@ loader.init().then((monaco) => {
 });
 // colors 관련 key 정보 https://github.com/microsoft/monaco-editor/issues/1631
 
-const CodeEditor = ({ language, readOnly = false, answer }: CodeEditorProps) => {
+const CodeEditor = ({ language, readOnly = false, code }: CodeEditorProps) => {
   const { updatePostForm } = useSetFormData();
   const options = getCodeEditorOptions({ readOnly });
   const editorKey = useMemo(() => language, [language]);
@@ -42,9 +42,9 @@ const CodeEditor = ({ language, readOnly = false, answer }: CodeEditorProps) => 
       defaultLanguage={editorKey}
       language={language}
       defaultValue={DEFALUTCODE[language]}
-      value={answer}
-      onChange={(answer) =>
-        updatePostForm({ answer: getCode({ answer: answer as string, language }) })
+      value={code}
+      onChange={(code) =>
+        updatePostForm({ code: getCode({ code: code as string, language }) })
       }
       theme="myTheme"
     />

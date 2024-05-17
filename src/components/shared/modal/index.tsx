@@ -15,7 +15,7 @@ interface ModalProps {
   onButtonClick: () => void;
   close?: () => void;
   type?: ModalType;
-  answer?: string;
+  code?: string;
   language?: LanguageNames;
 }
 
