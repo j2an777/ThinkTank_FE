@@ -33,6 +33,7 @@ export const Container = styled.div<IconContainerProps>`
       ? css`
           &:hover {
             transform: scale(1.1);
+            cursor: pointer;
           }
           &:active {
             transform: scale(0.9);
@@ -40,7 +41,6 @@ export const Container = styled.div<IconContainerProps>`
         `
       : null}
 
-  cursor: pointer;
   svg {
     width: 100%;
     height: 100%;

@@ -18,4 +18,5 @@ export const TabBox = styled.li<{ active: boolean }>`
   padding: 0 80px 16px;
   border-bottom: ${({ active }) => (active ? `8px solid ${colors.yellow}` : 'none')};
   color: ${({ active }) => (active ? `${colors.yellowActive}` : 'black')};
+  cursor: pointer;
 `;

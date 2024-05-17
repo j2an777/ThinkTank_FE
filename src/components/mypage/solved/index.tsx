@@ -1,28 +1,29 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import * as S from '../articles/styles';
 import { getMypageArticles } from '@/apis/mypage';
-import { useEmail } from '@/stores/mypage';
 import { useEffect, useRef } from 'react';
-import { ArticleType, MypageArticles } from '@/types';
+import { MypageArticles, SolvedArticles } from '@/types';
 import SkeletonBox from '@/components/loader/skeleton';
+import SolvedBox from './SolvedBox';
 
 const SolvedMenu = ({ value }: Pick<MypageArticles, 'value'>) => {
-  const { email } = useEmail();
+  const queryEmail = new URLSearchParams(location.search).get('user');
   const loader = useRef(null);
 
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
-    queryKey: [value, email],
-    queryFn: ({ pageParam }) =>
-      getMypageArticles({
-        page: pageParam,
-        size: 10,
-        value: value,
-        email: email,
-      }),
-    initialPageParam: 0,
-    getNextPageParam: (lastPage) => lastPage.nextPage,
-    staleTime: 1000 * 60 * 5, // 5분
-  });
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
+    useInfiniteQuery({
+      queryKey: [value, queryEmail],
+      queryFn: ({ pageParam }) =>
+        getMypageArticles({
+          page: pageParam,
+          size: 10,
+          value: value,
+          email: queryEmail,
+        }),
+      initialPageParam: 0,
+      getNextPageParam: (lastPage) => lastPage.nextPage,
+      staleTime: 1000 * 60 * 5, // 5분
+    });
 
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -41,12 +42,14 @@ const SolvedMenu = ({ value }: Pick<MypageArticles, 'value'>) => {
 
   return (
     <S.Container>
-      {isFetchingNextPage ? (
+      {isLoading ? (
         <SkeletonBox />
       ) : (
         data?.pages.map((page) =>
-          page.data.map((post: ArticleType) => (
-            <div key={post.postId}>{/* solved list component */}</div>
+          page.posts.map((post: SolvedArticles) => (
+            <div key={post.postId}>
+              <SolvedBox data={post} />
+            </div>
           )),
         )
       )}

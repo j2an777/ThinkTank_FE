@@ -6,11 +6,10 @@ import { typographyMap } from '@/styles/typography';
 export const ArticleContainer = styled.div`
   ${layoutMap.shadowBox}
   box-sizing: border-box;
-  width: 620px;
-  height: 380px;
-  margin: 0;
+  width: 100%;
+  height: 572px;
   justify-content: space-between;
-  gap: 10px;
+  gap: 30px;
   overflow-y: auto;
   transition: all 0.3s ease;
 
@@ -43,16 +42,10 @@ export const ArTopBox = styled.div`
   justify-content: space-between;
 `;
 
-export const ArTitleBlock = styled.p`
-  font-size: ${typographyMap.t1};
-  font-weight: 500;
-  color: black;
-`;
-
 export const ArContentBlock = styled.p`
-  height: 200px;
-  font-size: 16px;
-  font-weight: 500;
+  flex-grow : 1;
+  ${typographyMap.t4};
+  ${typographyMap.regular};
   color: black;
 `;
 
@@ -62,5 +55,5 @@ export const ArDataBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 15px;
+  gap: 20px;
 `;

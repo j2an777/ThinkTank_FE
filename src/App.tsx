@@ -3,6 +3,8 @@ import { routers } from './routes';
 import Layout from './routes/Layout';
 import { Suspense } from 'react';
 import { ErrorBoundary } from './components/shared';
+import ProtectedRoute from './routes/protectedRoute';
+
 function App() {
   const navigate = useNavigate();
   return (
@@ -10,9 +12,13 @@ function App() {
       <Suspense fallback={<>loading</>}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            {routers.map(({ path, element: Component }) => (
+          {routers.map(({path, element: Component}) => (
+            route.isProtected ? (
+              <Route key={path} path={path} element={<ProtectedRoute element={<Component />} />} />
+            ) : (
               <Route key={path} path={path} element={<Component />} />
-            ))}
+            )
+          ))}
           </Route>
         </Routes>
       </Suspense>

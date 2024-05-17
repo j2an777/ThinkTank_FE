@@ -1,12 +1,14 @@
-import * as S from './styles.ts';
+import * as S from './styles';
 import { InputBox, StyledButton, Icon } from '@/components/shared';
 import { useEffect, useState } from 'react';
-import { useModalContext } from '@/contexts/ModalContext.tsx';
+import { useModalContext } from '@/contexts/ModalContext';
 import { useNavigate } from 'react-router-dom';
-import useForm from '@/hooks/useForm.ts';
+import useForm from '@/hooks/useForm';
 import React from 'react';
+import { User } from '@/types/auth';
+import { putUser } from '@/apis/user';
 
-const OptionalForm = () => {
+const OptionalForm = ({ nickname }: Pick<User, 'nickname'>) => {
   const navigate = useNavigate();
   const { open } = useModalContext();
   const [isFocus, setIsFocus] = useState(false);
@@ -32,6 +34,19 @@ const OptionalForm = () => {
       buttonLabel: '확인',
     });
   }, []);
+
+  const onSubmit = () => {
+    const data = {
+      nickname: nickname,
+      github: github,
+      blog: blog,
+      introduce: text,
+      profileImage: '',
+    };
+    const response = putUser(data);
+    console.log('정보 수정', response);
+    navigate('/');
+  };
 
   return (
     <S.Container>
@@ -68,7 +83,7 @@ const OptionalForm = () => {
           <S.TextLimit>{`${text.length}/100 자`}</S.TextLimit>
         </div>
       </S.Block>
-      <StyledButton width="100%" onClick={() => navigate('/')}>
+      <StyledButton width="100%" onClick={onSubmit}>
         확인
       </StyledButton>
     </S.Container>
