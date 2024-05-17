@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colorPalette';
 import { layoutMap } from '@/styles/layout';
+import { buttonSizeMap } from '@/styles/button';
 
 export const Container = styled.div`
   display: flex;
@@ -35,19 +36,19 @@ export const Blank = styled.div`
 
 export const Signup = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  gap: 25px;
   margin: 30px 0;
   color: ${colors.gray300};
 
   p {
-    margin-left: 25px;
     color: ${colors.yellow};
   }
 `;
 
 export const Social = styled.div`
   ${layoutMap.flexCenter}
+  gap: 25px;
   margin: 20px 0;
   width: 70%;
   color: ${colors.gray300};
@@ -58,13 +59,22 @@ export const Social = styled.div`
 `;
 
 export const KakaoButton = styled.button`
-  ${layoutMap.styledButton}
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: ${colors.kakao};
-  padding: 16px;
-  margin: 25px 0;
+  border-radius: 2em;
+  border: 1px solid ${colors.kakao};
+  ${buttonSizeMap.medium}
 `;
 
 export const GoogleButton = styled.button`
-  ${layoutMap.styledButton}
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2em;
   border: 1px solid ${colors.gray};
+  ${buttonSizeMap.medium}
 `;

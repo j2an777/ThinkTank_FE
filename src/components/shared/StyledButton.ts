@@ -1,23 +1,37 @@
 import styled from '@emotion/styled';
-import { Colors, colors } from '@/styles/colorPalette';
+import { Colors } from '@/styles/colorPalette';
+import {
+  ButtonColor,
+  ButtonSize,
+  buttonActiveMap,
+  buttonColorMap,
+  buttonSizeMap,
+} from '@/styles/button';
 
 interface ButtonProp {
   width?: string;
-  background?: string;
-  color?: Colors;
+  buttonType?: ButtonColor;
+  size?: ButtonSize;
+  bold?: boolean;
+  hover?: Colors;
 }
 
 const StyledButton = styled.button<ButtonProp>`
-  padding: 15px;
-  width: ${({ width }) => width};
-  border-radius: 2em;
   display: flex;
+  ${({ size = 'medium' }) => buttonSizeMap[size]}
+  ${({ buttonType = 'primary' }) => buttonColorMap[buttonType]}
+  font-weight: ${({ bold = true }) => (bold ? 'bold' : null)};
+  border-radius: 2em;
   justify-content: center;
-  align-items: center;
-  background: ${({ background = colors.yellow }) => background};
-  color: ${({ color = 'white' }) => color};
-  font-size: 20px;
-  font-weight: 700;
+  width: ${({ width = '300px' }) => width};
+
+  &:hover {
+    ${({ buttonType = 'primary' }) => buttonActiveMap[buttonType]}
+  }
+  transition: all 0.1s ease;
+  &:active {
+    transform: scale(0.95);
+  }
 `;
 
 export default StyledButton;

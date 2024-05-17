@@ -1,23 +1,28 @@
 import { PostTestCaseBox } from '@/components/post';
 import * as S from './styles';
-import { DescriptionBox } from '@/components/shared';
+import { DescriptionBox, Select } from '@/components/shared';
 import useSetFormData from '@/hooks/post/useSetFormData';
+import { CATEGORY } from '@/consts/category';
 
 const PostLeft = () => {
-  const { postForm, handleChange, updatePostForm } = useSetFormData();
-  const handleCategurySelect = (value: string) => {
+  const {
+    postForm: { title, content, condition },
+    onChange,
+    updatePostForm,
+  } = useSetFormData();
+  const onChangeSelect = (value: string) => {
     updatePostForm({ category: value });
   };
   return (
     <S.Container>
+      <Select optionData={CATEGORY} onChange={onChangeSelect} />
       <DescriptionBox
         page="post"
-        title={postForm.title}
-        content={postForm.content}
-        condition={postForm.condition}
+        title={title}
+        content={content}
+        condition={condition}
         category="category"
-        onChange={handleChange}
-        categorySelect={handleCategurySelect}
+        onChange={onChange}
       />
       <PostTestCaseBox />
     </S.Container>

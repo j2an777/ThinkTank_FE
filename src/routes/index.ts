@@ -13,54 +13,48 @@ import ErrorPage from '../pages/error';
 export const routers = [
   {
     path: '/',
-    component: MainPage,
+    element: MainPage,
     isProtected: false,
   },
   {
     path: '/login',
-    component: LoginPage,
+    element: LoginPage,
     isProtected: false,
-  },
-  {
-    // 유저 페이지 (컴포넌트 바꿀 것)
-    path: '/mp/:userId',
-    component: MainPage,
-    isProtected: true,
   },
   {
     // 나머지 경로에 대해서는 404페이지 전환
     path: '*',
-    component: ErrorPage,
+    element: ErrorPage,
     isProtected: false,
   },
   {
     path: '/signup/required',
-    component: SignupRequiredPage,
+    element: SignupRequiredPage,
     isProtected: false,
   },
   {
     path: '/signup/optional',
-    component: SignupOptionalPage,
+    element: SignupOptionalPage,
     isProtected: false,
   },
   {
     path: '/post',
-    component: PostPage,
+    element: PostPage,
     isProtected: true,
   },
   {
     path: '/detail/:postId',
-    component: DetailPage,
+    element: DetailPage,
     isProtected: false,
   },
   {
-    path: '/mypage',
-    component: MyPage,
+    path: '/users/profile',
+    element: MyPage,
     isProtected: true,
   },
   {
-    path: '/mypage/profile',
-    component: Profile,
+    path: '/users/profile/modify',
+    element: Profile,
     isProtected: true,
   },
 ];

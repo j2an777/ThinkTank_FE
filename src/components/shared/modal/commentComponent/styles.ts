@@ -1,7 +1,8 @@
 import { layoutMap } from '@/styles/layout';
 import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
   ${layoutMap.shadowBox}
   position: absolute;
   right: 0;
@@ -11,4 +12,14 @@ export const Container = styled.div`
   background-color: white;
   justify-content: space-between;
   border-radius: 0;
+  gap: 30px;
+`;
+
+export const InputBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  > button {
+    align-self: end;
+  }
 `;

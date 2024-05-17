@@ -1,21 +1,37 @@
 import { CodeEditor, Select, Text } from '@/components/shared';
-import { LANGUAGE } from '@/consts/language';
-
-import * as S from './styles';
+import { LANGUAGE, LanguageNames, LanguageValues } from '@/consts/language';
 import useSetFormData from '@/hooks/post/useSetFormData';
 
-const CodeBox = () => {
+import * as S from './styles';
+
+interface CodeBoxProps {
+  layout?: boolean;
+  readOnly?: boolean;
+  code?: string;
+  language?: LanguageNames;
+}
+
+const CodeBox = ({ layout = true, readOnly = false, code, language }: CodeBoxProps) => {
   const { postForm, updatePostForm } = useSetFormData();
-  const handleChangeSelect = (value: string) => {
+  const handleChangeSelect = (value: LanguageValues) => {
     updatePostForm({ language: value });
   };
   return (
-    <S.Container>
+    <S.Container layout={layout}>
       <S.LanguageBox>
         <Text typography="t4">언어</Text>
-        <Select optionData={LANGUAGE} type="fill" onChange={handleChangeSelect} />
+        {language ? (
+          <>{language}</>
+        ) : (
+          <Select
+            optionData={LANGUAGE}
+            defaultValue
+            type="fill"
+            onChange={handleChangeSelect}
+          />
+        )}
       </S.LanguageBox>
-      <CodeEditor language={postForm.language} />
+      <CodeEditor language={postForm.language} readOnly={readOnly} code={code} />
     </S.Container>
   );
 };

@@ -1,8 +1,9 @@
 import { colors } from '@/styles/colorPalette';
 import { layoutMap } from '@/styles/layout';
 import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 
-export const TestCaseContainer = styled.div`
+export const TestCaseContainer = styled(motion.div)`
   width: 800px;
   padding: 20px;
   bottom: 0;
@@ -15,7 +16,7 @@ export const TitleBox = styled.div`
   margin-bottom: 10px;
 `;
 
-export const ContentBox = styled.div`
+export const ContentBox = styled(motion.div)`
   ${layoutMap.shadowBox}
   display: flex;
   min-height: 150px;

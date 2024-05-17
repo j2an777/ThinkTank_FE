@@ -1,11 +1,14 @@
-import * as S from './styles.ts';
+import * as S from './styles';
 import { InputBox, StyledButton, Icon } from '@/components/shared';
-import { useState } from 'react';
-import { useModalContext } from '@/contexts/ModalContext.tsx';
+import { useEffect, useState } from 'react';
+import { useModalContext } from '@/contexts/ModalContext';
 import { useNavigate } from 'react-router-dom';
-import useForm from '@/hooks/useForm.ts';
+import useForm from '@/hooks/useForm';
+import React from 'react';
+import { User } from '@/types/auth';
+import { putUser } from '@/apis/user';
 
-const OptionalForm = () => {
+const OptionalForm = ({ nickname }: Pick<User, 'nickname'>) => {
   const navigate = useNavigate();
   const { open } = useModalContext();
   const [isFocus, setIsFocus] = useState(false);
@@ -13,61 +16,75 @@ const OptionalForm = () => {
   const { value: github, onChange: onChangeGithub } = useForm();
   const { value: blog, onChange: onChangeBlog } = useForm();
 
-  const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (event.target.value.length <= 150) {
+  const onChangeText = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (event.target.value.length <= 100) {
       setText(event.target.value);
     }
   };
 
-  const handleSubmit = async () => {
-    navigate('/login');
+  useEffect(() => {
+    open({
+      title: '회원가입이 완료되었습니다.',
+      description:
+        '세부사항을 입력해주세요. 세부사항은 수정할 수 있습니다. 입력을 생략하시겠습니까?',
+      onButtonClick: () => {
+        navigate('/');
+      },
+      hasCancelButton: true,
+      buttonLabel: '확인',
+    });
+  }, []);
+
+  const onSubmit = () => {
+    const data = {
+      nickname: nickname,
+      github: github,
+      blog: blog,
+      introduce: text,
+      profileImage: '',
+    };
+    const response = putUser(data);
+    console.log('정보 수정', response);
+    navigate('/');
   };
 
   return (
     <S.Container>
       <Icon value="logo" />
-      <S.Inputs>
-        <InputBox
-          label="깃허브"
-          type="text"
-          placeholder="선택 입력 사항 입니다."
-          value={github}
-          onChange={onChangeGithub}
-        />
-        <S.Blank />
-        <InputBox
-          label="블로그"
-          type="text"
-          placeholder="선택 입력 사항 입니다."
-          value={blog}
-          onChange={onChangeBlog}
-        />
-        <S.Blank />
-        <S.Label isFocus={isFocus}>자기소개</S.Label>
-        <S.TextArea
-          isFocus={isFocus}
-          onFocus={() => setIsFocus(true)}
-          onBlur={() => setIsFocus(false)}
-          placeholder="선택 입력 사항 입니다."
-          value={text}
-          onChange={handleTextChange}
-        />
-        <S.TextLimit>{`${text.length}/150 자`}</S.TextLimit>
-      </S.Inputs>
-      <StyledButton
-        width="100%"
-        onClick={() =>
-          open({
-            title: '회원가입이 완료되었습니다.',
-            onButtonClick: () => {
-              handleSubmit();
-            },
-            hasCancelButton: true,
-            buttonLabel: '확인',
-          })
-        }
-      >
-        회원 가입
+      <S.Block>
+        <div>
+          <InputBox
+            label="깃허브"
+            type="text"
+            placeholder="선택 입력 사항 입니다."
+            value={github}
+            onChange={onChangeGithub}
+          />
+        </div>
+        <div>
+          <InputBox
+            label="블로그"
+            type="text"
+            placeholder="선택 입력 사항 입니다."
+            value={blog}
+            onChange={onChangeBlog}
+          />
+        </div>
+        <div>
+          <S.Label isFocus={isFocus}>자기소개</S.Label>
+          <S.TextArea
+            isFocus={isFocus}
+            onFocus={() => setIsFocus(true)}
+            onBlur={() => setIsFocus(false)}
+            placeholder="선택 입력 사항 입니다."
+            value={text}
+            onChange={onChangeText}
+          />
+          <S.TextLimit>{`${text.length}/100 자`}</S.TextLimit>
+        </div>
+      </S.Block>
+      <StyledButton width="100%" onClick={onSubmit}>
+        확인
       </StyledButton>
     </S.Container>
   );

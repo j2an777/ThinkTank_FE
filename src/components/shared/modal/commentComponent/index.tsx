@@ -1,44 +1,45 @@
 import { TextareaField } from '@/components/post';
-import { Icon } from '../..';
+import { Icon, StyledButton } from '../..';
+import { CommentList } from '@/components/detail';
 import { useState } from 'react';
-import { CommentItem } from '@/components/detail';
-import { Comment } from '@/types/comment';
+import { postComment } from '@/apis/comment';
+import { postIdStore } from '@/stores/post';
+import { animationMap } from '@/styles/framerMotion';
 
 import * as S from './styles';
 
 interface AlertComponentProps {
   onButtonClick: () => void;
-  close?: () => void;
+  open: boolean;
 }
 
-const defaultComment = {
-  commentId: 1,
-  createdAt: new Date('2024-05-02'),
-  content:
-    'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf',
-  user: {
-    nickname: '아브라카타브라마이마이마이',
-    profileImage: null,
-  },
-} as Comment;
-
-const CommentComponent = ({ onButtonClick, close }: AlertComponentProps) => {
-  const [value, setValue] = useState<string>('');
+const CommentComponent = ({ onButtonClick, open }: AlertComponentProps) => {
+  const [comment, setComment] = useState<string>('');
+  const postId = postIdStore((state) => state.postId);
   return (
-    <S.Container>
-      <Icon value="cancel" onClick={close} />
-      <div>
-        <CommentItem {...defaultComment} />
-      </div>
-      <div>
+    <S.Container
+      variants={animationMap.commetnContainerAnimation}
+      initial="close"
+      animate={open ? 'open' : 'close'}
+      exit="close"
+    >
+      <Icon value="cancel" onClick={onButtonClick} />
+      <CommentList />
+      <S.InputBox>
         <TextareaField
           label="Comment"
           name="comment"
-          onChange={(e) => setValue(e.target.value)}
-          value={value}
+          onChange={(e) => setComment(e.target.value)}
+          value={comment}
         />
-        <button onClick={onButtonClick}>등록</button>
-      </div>
+        <StyledButton
+          width="100px"
+          size="small"
+          onClick={() => postComment(comment, postId)}
+        >
+          등록
+        </StyledButton>
+      </S.InputBox>
     </S.Container>
   );
 };

@@ -1,42 +1,25 @@
 import { MouseEvent, useState } from 'react';
 import { CategoryOption, CategoryValues } from '@/consts/category';
-import { motion } from 'framer-motion';
 
 import * as S from './styles';
 
 interface CategoryProps<T extends CategoryOption> {
   optionData: T[];
+  defaultValue?: boolean;
   type?: 'primary' | 'fill';
   onChange?: (value: string) => void;
 }
-
-const subMenuAnimate = {
-  enter: {
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-    },
-    display: 'block',
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      duration: 0.5,
-      delay: 0.1,
-    },
-    transitionEnd: {
-      display: 'none',
-    },
-  },
-};
 
 const Select = <T extends CategoryOption>({
   optionData,
   type = 'primary',
   onChange,
+  defaultValue = false,
 }: CategoryProps<T>) => {
   const [isExpand, setIsExpand] = useState<boolean>(false);
-  const [selected, setSelected] = useState<CategoryValues>(optionData[0].value);
+  const [selected, setSelected] = useState<CategoryValues>(
+    optionData[defaultValue ? 1 : 0].value,
+  );
 
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -60,12 +43,14 @@ const Select = <T extends CategoryOption>({
             </option>
           ))}
       </S.Select>
-
-      <motion.div
-        initial="exit"
-        animate={isExpand ? 'enter' : 'exit'}
-        variants={subMenuAnimate}
-      >
+      <S.SelectIcon
+        color="gray400"
+        value="arrow"
+        $active={false}
+        $rotate={!isExpand}
+        size={24}
+      />
+      {isExpand && (
         <S.SelectList>
           {optionData.length > 0 &&
             optionData.map(({ value, name }, index) => {
@@ -87,7 +72,7 @@ const Select = <T extends CategoryOption>({
               );
             })}
         </S.SelectList>
-      </motion.div>
+      )}
     </S.Container>
   );
 };

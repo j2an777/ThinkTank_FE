@@ -9,11 +9,11 @@ export const Container = styled.div`
   padding: 0 170px;
 `;
 
-export const Blank = styled.div`
-  margin: 25px;
-`;
-
-export const Form = styled.form`
+export const Block = styled.form`
+  position: relative;
+  display: flex;
+  flex-direction: column;
   width: 600px;
-  margin: 80px 0;
+  margin: 80px 0 60px;
+  gap: 25px;
 `;

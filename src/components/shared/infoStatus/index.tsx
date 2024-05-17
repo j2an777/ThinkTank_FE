@@ -1,51 +1,26 @@
-import { ActiveBox, Container } from './styles'
 import Icon, { IconValues } from '../icon';
-import { useLike } from '@/hooks/like/useLike';
-import React from 'react';
+import { Text } from '..';
+import { MouseEvent } from 'react';
 
-interface StatusProps {
-  postId: number;
-  likeCount : number;
-  likeType : boolean;
-  commentCount : number;
-  answerCount : number;
+import * as S from './styles';
+
+interface InfoStatusProps {
+  value: IconValues;
+  count: number;
+  $active?: boolean;
+  size?: number;
+  onClick?: (e: MouseEvent<HTMLDivElement>) => void;
 }
 
-export const Status = ({ postId, likeCount, likeType, commentCount, answerCount }: StatusProps) => {
-
-  const { likeCount: updatedLikeCount, toggleLike, likeType: updatedLikeType } = useLike(postId, likeCount, likeType);
-
-  // like 부분에서 likeType에 따라 yeslike, nolike IconValues 반환 위한 string 제공
-  const iconValue: IconValues = updatedLikeType ? "yeslike" : "nolike";
-
+const InfoStatus = ({ count, size = 36, ...props }: InfoStatusProps) => {
   return (
-    <>
-      <InfoStatus value={iconValue} count={updatedLikeCount} onClick={(e) => {
-        e.stopPropagation();
-        toggleLike();
-      }} />
-      <InfoStatus value='comment' count={commentCount} />
-      <InfoStatus value='check' count={answerCount} />
-    </>
+    <S.Container>
+      <Icon size={size} {...props} />
+      <Text typography="t3" color="gray300">
+        {count}
+      </Text>
+    </S.Container>
   );
 };
 
-interface InfoStatusProps {
-    value: IconValues;
-    count: number;
-    onClick?: (e: React.MouseEvent) => void;
-}
-
-const InfoStatus = ({ value, count, onClick }: InfoStatusProps) => {
-
-  return (
-    <Container>
-      <ActiveBox value={value} onClick={onClick}>
-        <Icon value={value} size={24}/>
-      </ActiveBox>
-        <p>{count}</p>
-    </Container>
-  )
-}
-
-export default InfoStatus
+export default InfoStatus;

@@ -1,9 +1,15 @@
+import { DEFALUTCODE } from '@/consts/defaultCode';
 import { LanguageValues } from '@/consts/language';
 import useSetFormData from '@/hooks/post/useSetFormData';
+import getCode from '@/utils/getCode';
+import getCodeEditorOptions from '@/utils/getCodeEditorOptions';
 import Editor, { loader } from '@monaco-editor/react';
+import { useMemo } from 'react';
 
 interface CodeEditorProps {
   language: LanguageValues;
+  readOnly?: boolean;
+  code?: string;
 }
 
 loader.config({
@@ -24,22 +30,22 @@ loader.init().then((monaco) => {
 });
 // colors 관련 key 정보 https://github.com/microsoft/monaco-editor/issues/1631
 
-const CodeEditor = ({ language }: CodeEditorProps) => {
-  const { updatePostForm, postForm } = useSetFormData();
+const CodeEditor = ({ language, readOnly = false, code }: CodeEditorProps) => {
+  const { updatePostForm } = useSetFormData();
+  const options = getCodeEditorOptions({ readOnly });
+  const editorKey = useMemo(() => language, [language]);
   return (
     <Editor
+      key={editorKey}
       height="400px"
-      options={{
-        readOnly: false,
-        minimap: { enabled: false },
-        scrollbar: { vertical: 'hidden' },
-        fontSize: 12,
-      }}
-      defaultLanguage="java"
+      options={options}
+      defaultLanguage={editorKey}
       language={language}
-      defaultValue="// some comment"
-      value={postForm.answer}
-      onChange={(value) => updatePostForm({ answer: value })}
+      defaultValue={DEFALUTCODE[language]}
+      value={code}
+      onChange={(code) =>
+        updatePostForm({ code: getCode({ code: code as string, language }) })
+      }
       theme="myTheme"
     />
   );

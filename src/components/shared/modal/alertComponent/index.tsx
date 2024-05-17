@@ -1,10 +1,12 @@
-import { Text } from '../..';
+import { animationMap } from '@/styles/framerMotion';
+import { StyledButton, Text } from '../..';
 
 import * as S from './styles';
 
 interface AlertComponentProps {
   title: React.ReactNode;
   description?: React.ReactNode;
+  open: boolean;
   buttonLabel?: string;
   hasCancelButton?: boolean;
   onButtonClick: () => void;
@@ -18,16 +20,28 @@ const AlertComponent = ({
   description,
   hasCancelButton = false,
   close,
+  open,
 }: AlertComponentProps) => {
   return (
-    <S.Container>
-      <Text typography="t1" bold>
+    <S.Container
+      variants={animationMap.fadeInOut}
+      initial="close"
+      animate={open ? 'open' : 'close'}
+      exit="close"
+    >
+      <Text typography="t1" bold="bold">
         {title}
       </Text>
       {description ?? <Text>{description}</Text>}
       <S.ButtonBox>
-        {hasCancelButton ? <button onClick={close}>취소</button> : null}
-        <button onClick={onButtonClick}>{buttonLabel}</button>
+        {hasCancelButton ? (
+          <StyledButton size="small" onClick={close} width="150px" buttonType="second">
+            취소
+          </StyledButton>
+        ) : null}
+        <StyledButton size="small" onClick={onButtonClick} width="150px">
+          {buttonLabel}
+        </StyledButton>
       </S.ButtonBox>
     </S.Container>
   );

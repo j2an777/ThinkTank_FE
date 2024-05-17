@@ -1,12 +1,13 @@
 import { colors } from '@/styles/colorPalette';
+import { typographyMap } from '@/styles/typography';
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
   position: relative;
   display: flex;
-  padding: 50px 80px;
+  padding: 50px 150px;
   width: 100%;
-  min-height: 320px;
+  min-height: 300px;
 `;
 
 export const LeftBox = styled.div`
@@ -25,27 +26,36 @@ export const ProfileImage = styled.img`
 `;
 
 export const UserName = styled.div`
-  font-size: 36px;
-  font-weight: 700;
+  ${typographyMap.t1}
+  ${typographyMap.bold}
+`;
+
+export const Contact = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  gap: 20px;
+`;
+
+export const Block = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
 `;
 
 export const UserEmail = styled.div`
-  font-size: 20px;
-  color: ${colors.gray200};
+  ${typographyMap.t3}
+  color: ${colors.gray};
 `;
 
 export const UserIntro = styled.div`
-  margin-top: 50px;
-  font-size: 25px;
+  margin-top: 28px;
+  ${typographyMap.t2}
   color: ${colors.gray300};
 `;
 
 export const Edit = styled.button`
+  display: relative;
   position: absolute;
-  right: 60px;
-  padding: 5px 25px;
-  background-color: ${colors.gray100};
-  border-radius: 30px;
-  font-size: 20px;
-  font-weight: 700;
+  right: 150px;
 `;

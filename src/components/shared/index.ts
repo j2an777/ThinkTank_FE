@@ -12,3 +12,4 @@ export { default as ShadowBox } from './ShadowBox';
 export { default as UserCircle } from './UserCircle';
 export { default as CodeEditor } from './CodeEditor';
 export { default as StyledButton } from './StyledButton';
+export { default as ErrorBoundary } from './ErrorBoundary';
