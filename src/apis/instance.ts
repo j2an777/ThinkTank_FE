@@ -1,5 +1,7 @@
 import axios from 'axios';
-import getNewToken from './auth';
+import { getNewToken } from './auth';
+import { getAccess, setAccess } from '@/hooks/auth/useLocalStorage';
+
 
 const instance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
@@ -9,7 +11,7 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use(async (config) => {
-  const access = localStorage.getItem('access');
+  const access = getAccess();
   if (access) {
     config.headers['Authorization'] = `Bearer ${access}`;
   }
@@ -20,12 +22,13 @@ instance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
+
     if (error.response?.status === 401 && !originalRequest._alreadyRefreshed) {
       originalRequest._alreadyRefreshed = true; // 무한 요청 방지
       try {
         const newAccessToken = await getNewToken();
         if (newAccessToken) {
-          localStorage.setItem('access', newAccessToken);
+          setAccess(newAccessToken);
           originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
           return instance(originalRequest);
         }
@@ -34,6 +37,7 @@ instance.interceptors.response.use(
         window.location.href = '/login';
       }
     }
+    throw error;
   },
 );
 

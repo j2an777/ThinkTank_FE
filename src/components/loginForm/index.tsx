@@ -1,10 +1,11 @@
-import * as S from './styles.ts';
+import * as S from './styles';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Icon, InputBox, StyledButton } from '../shared/index.ts';
+import { Icon, InputBox, StyledButton } from '../shared/index';
 import { Link, useNavigate } from 'react-router-dom';
 import loginImage from '@/assets/images/loginImage.jpg';
-import { postLogin } from '@/apis/user.ts';
-import { Login } from '@/types/auth.ts';
+import { postLogin } from '@/apis/user';
+import { Login } from '@/types/auth';
+import { setAccess } from '@/hooks/auth/useLocalStorage';
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function LoginForm() {
     try {
       const response = await postLogin(data);
       const accessToken = response.accessToken;
-      localStorage.setItem('access', accessToken);
+      setAccess(accessToken);
       console.log('로그인 성공:', response);
       navigate(-1);
     } catch (error) {
@@ -79,10 +80,6 @@ export default function LoginForm() {
             <Icon value="kakao" />
             <p>카카오 로그인</p>
           </S.KakaoButton>
-          <S.GoogleButton>
-            <Icon value="google" />
-            <p>Google 로그인</p>
-          </S.GoogleButton>
         </S.Social>
       </S.RightBox>
     </S.Container>

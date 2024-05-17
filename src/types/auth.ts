@@ -3,9 +3,9 @@ export interface SignUp {
   nickname: string;
   password: string;
   checkPassword: string;
-  github?: string;
-  blog?: string;
-  introduce?: string;
+  github: string;
+  blog: string;
+  introduce: string;
   profileImage: null | string;
 }
 
