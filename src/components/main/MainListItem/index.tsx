@@ -31,7 +31,7 @@ const MainListItem = ({ listItem }: ListItemProps) => {
           <Text typography='t4' bold='semibold' color='gray200'>{createDate}</Text>
         </S.MlInfoBlock>
       </S.MlUserBox>
-      <Article article={articleDetails} statusFlag="open" />
+      <Article article={articleDetails} />
     </S.MltContainer>
   );
 };

@@ -13,7 +13,7 @@ type ArticleTypes = Omit<ArticleType, 'user'>;
 
 interface ArticleProps {
   threedot?: ReactNode;
-  statusFlag: string;
+  statusFlag?: string;
   article: ArticleTypes;
 }
 
