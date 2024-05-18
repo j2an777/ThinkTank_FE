@@ -31,6 +31,13 @@ export const postArticle = async (
   return response?.data;
 };
 
+export const deleteArticle = async (postId: number): Promise<void> => {
+  const response = await instance.delete('/api/posts', {
+    data: { postId: postId },
+  });
+  console.log(response);
+}
+
 export const postCheck = async (
   formData: Pick<ArticleDetail, 'language' | 'code'>,
   postId: string,

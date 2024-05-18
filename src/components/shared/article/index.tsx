@@ -4,10 +4,11 @@ import InfoStatus from '../infoStatus';
 import { useNavigate } from 'react-router-dom';
 import { ArticleType } from '@/types';
 import { useLike } from '@/hooks/like/useLike';
-import { IconValues } from '../icon';
+import Icon, { IconValues } from '../icon';
 import Text from '../Text';
+import { useModalContext } from '@/contexts/ModalContext';
+import { deleteArticle } from '@/apis/article';
 
-// ArticleItem 타입에서 author 제외한 타입 정의
 type ArticleTypes = Omit<ArticleType, 'user'>;
 
 interface ArticleProps {
@@ -16,7 +17,6 @@ interface ArticleProps {
   article: ArticleTypes;
 }
 
-// string에서 들여쓰기를 <br/>태그로 인식
 const formatContent = (content: string, maxLines: number = Infinity): ReactNode => {
   const lines = content.split('\n');
   const limitedLines = lines.slice(0, maxLines);
@@ -40,15 +40,14 @@ const formatContent = (content: string, maxLines: number = Infinity): ReactNode 
   );
 };
 
-// 게시글 컴포넌트 (마이페이지에서 활용 가능)
-const Article = ({ article, threedot, statusFlag }: ArticleProps) => {
+const Article = ({ article, statusFlag }: ArticleProps) => {
   const navigate = useNavigate();
+  const { open } = useModalContext();
 
   const { likeCount, likeType, toggleLike } = useLike(article.postId, article.likeCount, article.likeType);
 
   const iconValue: IconValues = likeType ? 'yeslike' : 'nolike';
 
-  // statusFlag가 open인 경우(상세페이지인 경우) 문제 내용 그대로, 나머지 경우에서는 10번째 라인까지 제한
   const contentNode =
     statusFlag === 'open'
       ? formatContent(article.content, 8)
@@ -58,29 +57,44 @@ const Article = ({ article, threedot, statusFlag }: ArticleProps) => {
     navigate(`/detail/${article.postId}`);
   };
 
+  const onHandleSetting = (e: React.MouseEvent) => {
+    e.stopPropagation();
+
+    open({
+      title: '설정',
+      type: 'setting',
+      buttonLabel: '삭제',
+      onButtonClick: async () => {
+        try {
+          await deleteArticle(article.postId);
+        } catch (error) {
+          console.error(error);
+        }
+      },
+    });
+  }
+  
+
   return (
     <S.ArticleContainer onClick={toHandleDetail}>
       <S.ArTopBox>
         <Text typography='t1' bold='regular' color='black'>{article.title}</Text>
-        {/* 마이페이지에서는 threedot 위치 입니다. */}
-        {threedot}
+        {statusFlag === 'open' && (
+          <Icon value='threedot' color='black' onClick={(e) => onHandleSetting(e)}/>
+        )}
       </S.ArTopBox>
       <S.ArContentBlock>{contentNode}</S.ArContentBlock>
       <S.ArDataBlock>
-      {statusFlag === 'open' && (
-          <>
-            <InfoStatus
-              value={iconValue}
-              count={likeCount}
-              onClick={(e) => {
-                e.stopPropagation();
-                toggleLike();
-              }}
-            />
-            <InfoStatus value="comment" count={article.commentCount} $active={false}/>
-            <InfoStatus value="check" count={article.codeCount} $active={false}/>
-          </>
-        )}
+        <InfoStatus
+          value={iconValue}
+          count={likeCount}
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleLike();
+          }}
+        />
+        <InfoStatus value="comment" count={article.commentCount} $active={false}/>
+        <InfoStatus value="check" count={article.codeCount} $active={false}/>
       </S.ArDataBlock>
     </S.ArticleContainer>
   );
