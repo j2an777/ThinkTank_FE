@@ -8,7 +8,7 @@ export const NavContainer = styled.div`
   left: 0;
   width: 420px;
   height: 100%;
-  padding: 50px 50px;
+  padding: 0 50px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

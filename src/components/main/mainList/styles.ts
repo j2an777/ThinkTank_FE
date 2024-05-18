@@ -3,7 +3,7 @@ import { colors } from "../../../styles/colorPalette";
 
 export const MlContainer = styled.div`
     flex-grow : 1;
-    padding : 0 50px;
+    padding : 20px 50px;
     box-sizing : border-box;
     display : flex;
     flex-direction : column;

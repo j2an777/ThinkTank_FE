@@ -20,6 +20,7 @@ export const MlUserBox = styled.div`
     align-items : center;
     justify-content : flex-start;
     gap : 20px;
+    margin : 15px 0 0 0;
 `;
 
 export const AvatarBlock = styled.div`

@@ -9,7 +9,7 @@ export const MeContainer = styled.div`
     left : 0;
     width : 380px;
     height : 100%;
-    padding : 30px;
+    padding : 50px 30px;
     box-sizing : border-box;
     display : flex;
     flex-direction : column;
@@ -55,7 +55,7 @@ export const MeBox = styled.div`
     width : 100%;
     height : auto;
     margin : 50px 0 30px 0;
-    padding : 0 20px;
+    padding : 0 5px;
     box-sizing : border-box;
     display : flex;
     flex-direction : column;
