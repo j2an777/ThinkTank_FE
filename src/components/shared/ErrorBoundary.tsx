@@ -52,7 +52,7 @@ class ErrorBoundary extends Component<
         open({
           onButtonClick: () => this.resetErrorBoundary(),
           title: '빈 값을 확인해주세요',
-          description: error?.data.message,
+          description: error?.message,
           type: 'alert',
           buttonLabel: '확인',
         });

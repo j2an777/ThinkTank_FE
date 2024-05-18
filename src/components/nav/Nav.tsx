@@ -8,9 +8,7 @@ const Nav = () => {
   return (
     <S.NavContainer>
       <S.NavLogoBox>
-        <Link to="/">
-          <Icon value="logo" size={250} $active={false} />
-        </Link>
+        <Icon value="logo" size={250} $active={false} />
       </S.NavLogoBox>
       <S.NavItemBox>
         {navItems.map((item) => (
@@ -22,9 +20,11 @@ const Nav = () => {
           </Link>
         ))}
       </S.NavItemBox>
-      <StyledButton size="large">
-        <Link to="/post">Post</Link>
-      </StyledButton>
+      <Link to="/post">
+        <StyledButton size="large">
+          Post
+        </StyledButton>
+      </Link>
     </S.NavContainer>
   );
 };

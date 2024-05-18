@@ -3,6 +3,7 @@ import * as S from './styles';
 import Article from '@/components/shared/article';
 import { ArticleType } from '@/types';
 import getTimeDifference from '@/utils/getTimeDifference';
+import { Link } from 'react-router-dom';
 
 interface ListItemProps {
   listItem: ArticleType;
@@ -24,7 +25,9 @@ const MainListItem = ({ listItem }: ListItemProps) => {
           )}
         </S.AvatarBlock>
         <S.MlInfoBlock>
-          <Text typography='t2' bold='semibold' color='black'>{user.nickname}</Text>
+          <Link to={`/users/profile?user=${user.email}`}>
+            <Text typography="t2" bold="semibold" color="black">{user.nickname}</Text>
+          </Link>
           <Text typography='t4' bold='semibold' color='gray200'>{createDate}</Text>
         </S.MlInfoBlock>
       </S.MlUserBox>
