@@ -9,9 +9,9 @@ const CommentList = () => {
   const { data, ref } = useGetComments(postId);
   return (
     <S.Container>
-      {data?.pages.comments.map((comment, index) => {
-        const commentLength = data.pages.comments.length;
-        if (commentLength - 2 === index && !data.pages.pageInfo.isDone) {
+      {data?.pages.map((comment, index) => {
+        const commentLength = data.pages.length;
+        if (commentLength - 2 === index && !data.pageParams.isDone) {
           return <CommentItem key={index} {...comment} ref={ref} />;
         } else {
           return <CommentItem key={index} {...comment} />;

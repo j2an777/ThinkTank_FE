@@ -7,6 +7,7 @@ import { postIdStore } from '@/stores/post';
 import { animationMap } from '@/styles/framerMotion';
 
 import * as S from './styles';
+import { useQueryClient } from '@tanstack/react-query';
 
 interface AlertComponentProps {
   onButtonClick: () => void;
@@ -15,6 +16,7 @@ interface AlertComponentProps {
 
 const CommentComponent = ({ onButtonClick, open }: AlertComponentProps) => {
   const [comment, setComment] = useState<string>('');
+  const queryClient = useQueryClient();
   const postId = postIdStore((state) => state.postId);
   return (
     <S.Container
@@ -35,7 +37,12 @@ const CommentComponent = ({ onButtonClick, open }: AlertComponentProps) => {
         <StyledButton
           width="100px"
           size="small"
-          onClick={() => postComment(comment, postId)}
+          onClick={() =>
+            postComment(comment, postId).then(() => {
+              queryClient.invalidateQueries({ queryKey: ['comments', postId] });
+              setComment('');
+            })
+          }
         >
           등록
         </StyledButton>
