@@ -17,14 +17,24 @@ export const NavContainer = styled.div`
   gap: 50px;
   ${typographyMap.t1}
 
-  @media (max-width : 1050px) {
+  @media (max-width : 900px) {
+    top : 60px;
+    left : 30px;
+    width : 100px;
+    padding : 0 20px;
+    gap : 30px;
+  }
+
+  @media (max-width : 570px) {
+    position : fixed;
+    top : 0;
+    left : 0;
     flex-direction: row;
-    padding : 20px 50px;
     background-color: ${colors.white};
     border-radius : 0 0 30px 30px;
     box-shadow : 0 15px 20px rgba(0, 0, 0, 0.05);
     width : 100%;
-    height : 150px;
+    height : 80px;
     z-index : 999;
   }
 `;
@@ -35,14 +45,9 @@ export const NavLogoBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right : 50px;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  @media (max-width : 1050px) {
+  @media (max-width : 900px) {
     display : none;
   }
 `;
@@ -60,13 +65,13 @@ export const NavItemBox = styled.div`
     text-decoration: none;
     width: 100%;
     height: 50px;
-    padding: 0 0 0 30px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 20px;
     transition: all 0.1s ease;
+    border-radius : 50px;
 
     &:hover {
       cursor: pointer;
@@ -74,7 +79,20 @@ export const NavItemBox = styled.div`
     }
   }
 
-  @media (max-width : 1050px) {
+  @media (max-width : 900px) {
+    a {
+      margin : 0;
+      p {
+        display : none;
+      }
+
+      &:hover {
+        background-color : transparent;
+      }
+    }
+  }
+
+  @media (max-width : 570px) {
     flex-direction: row;
 
     a {
@@ -84,11 +102,7 @@ export const NavItemBox = styled.div`
       height : 100%;
 
       p {
-        ${typographyMap.t4};
-      }
-
-      &:hover {
-        background-color : transparent;
+        ${typographyMap.t6};
       }
     }
   }

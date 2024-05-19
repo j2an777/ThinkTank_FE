@@ -11,8 +11,9 @@ export const MlContainer = styled.div`
     border-left : 1px solid ${colors.gray50};
     border-right : 1px solid ${colors.gray50};
 
-    @media (max-width : 1050px) {
+    @media (max-width : 1300px) {
         border : none;
-        width : 75vw;
+        width : 95vw;
+        overflow-x : hidden;
     }
 `;

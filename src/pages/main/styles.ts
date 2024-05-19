@@ -10,7 +10,7 @@ export const MainContainer = styled.div`
     margin : 0;
     padding : 0;
 
-    @media (max-width : 1050px) {
+    @media (max-width : 570px) {
         flex-direction : column;
         align-items : center;
     }
