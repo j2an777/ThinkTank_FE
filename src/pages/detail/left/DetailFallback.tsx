@@ -1,7 +1,7 @@
 import { ShadowBox, TestCaseBox, Text } from '@/components/shared';
+import CircleLoader from '@/components/loader/circleLoader';
 
 import * as S from './styles';
-import CircleLoader from '@/components/loader/circleLoader';
 
 const DetailFallback = () => {
   return (

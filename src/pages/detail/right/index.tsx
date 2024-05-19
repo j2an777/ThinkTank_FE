@@ -4,37 +4,50 @@ import useGetPost from '@/hooks/post/useGetPost';
 import { useModalContext } from '@/contexts/ModalContext';
 import { CodeBox } from '@/components/post';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Icon, StyledButton } from '@/components/shared';
+import { StyledButton } from '@/components/shared';
 import InfoStatus from '@/components/shared/infoStatus';
+import { getAccess } from '@/hooks/auth/useLocalStorage';
+import withSuspense from '@/hooks/withSuspense';
 
 import * as S from './styles';
-import { layoutMap } from '@/styles/layout';
-import { getAccess } from '@/hooks/auth/useLocalStorage';
+import { useState } from 'react';
 
 const DetailRight = () => {
   const navigate = useNavigate();
   const { open } = useModalContext();
   const { postId } = useParams();
-  const postForm = postFormStore((state) => state.postForm);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { code, language } = postFormStore((state) => state.postForm);
   const {
-    data: { code, language, commentCount },
+    data: { commentCount, code: answer, language: answerAnswer },
   } = useGetPost();
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    setIsLoading(true);
     const access = getAccess();
-    if (access) {
-      postCheck({ code: postForm.code, language: postForm.language }, postId as string);
+    if (access && postId) {
+      await postCheck({ code, language, postId }).then(() =>
+        open({
+          title: '정답입니다',
+          onButtonClick: () => {},
+          buttonLabel: '확인',
+        }),
+      );
     } else {
       open({
-        title: '로그인이 필요한 서비스입니다.',
         onButtonClick: () => navigate('/login'),
-        buttonLabel: '로그인하기',
+        title: '로그인 페이지 이동',
+        description: '로그인 후 이용 가능한 서비스입니다.',
+        type: 'alert',
+        buttonLabel: '이동',
+        hasCancelButton: true,
       });
     }
+    setIsLoading(false);
   };
   return (
     <S.Container>
-      <Icon value="cancel" css={S.IconCss} onClick={() => navigate(-1)} />
+      <S.CancelIcon value="cancel" onClick={() => navigate(-1)} />
       <CodeBox />
       <S.ButtonBox>
         <InfoStatus
@@ -50,21 +63,20 @@ const DetailRight = () => {
             })
           }
         />
-        <Icon
+        <S.QuestionIcon
           value="question"
-          css={layoutMap.borderCircleIcon}
           onClick={() =>
             open({
               title: '정답 코드',
               onButtonClick: () => {},
               type: 'question',
-              code,
-              language,
+              code: answer,
+              language: answerAnswer,
             })
           }
           size={32}
         />
-        <StyledButton onClick={handleSubmit} css={S.testButton}>
+        <StyledButton onClick={handleSubmit} disabled={isLoading}>
           Submit
         </StyledButton>
       </S.ButtonBox>
@@ -72,4 +84,4 @@ const DetailRight = () => {
   );
 };
 
-export default DetailRight;
+export default withSuspense(DetailRight, { fallback: <>suspense</> });
