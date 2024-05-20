@@ -68,7 +68,11 @@ const UserInfo = () => {
             (info) =>
               info.value && (
                 <S.Block key={info.key}>
-                  <Icon value={info.icon as IconValues} $active={false} />
+                  <Icon
+                    value={info.icon as IconValues}
+                    $active={false}
+                    css={{ width: '30px' }}
+                  />
                   <S.Info>{info.value}</S.Info>
                 </S.Block>
               ),
