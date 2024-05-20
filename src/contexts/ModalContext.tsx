@@ -1,4 +1,5 @@
 import { AnimatePresence } from 'framer-motion';
+import { createPortal } from 'react-dom';
 import Modal from '../components/shared/modal';
 import {
   ComponentProps,
@@ -9,7 +10,6 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { createPortal } from 'react-dom';
 
 type ModalProps = ComponentProps<typeof Modal>;
 type ModalOptions = Omit<ModalProps, 'open'>;
@@ -31,6 +31,7 @@ const defaultValue: ModalProps = {
 export const ModalContextProvider = ({ children }: PropsWithChildren) => {
   const [modalState, setModalState] = useState<ModalProps>(defaultValue);
   const $portal_root = document.getElementById('root-portal');
+
   const close = useCallback(() => {
     setModalState(defaultValue);
   }, []);
