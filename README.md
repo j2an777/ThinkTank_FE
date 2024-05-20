@@ -9,8 +9,8 @@
 🎬 [시연 영상 보러가기 ]()
 
 ## 🧑‍🧑‍🧒‍🧒 Front TEAMMATE 소개
-| ![하승진](https://github.com/j2an777.png) | ![강솔문](https://github.com/solmoonkang.png) | ![이지수](https://github.com/leedidoo.png) | ![심예은](https://github.com/hesener.png) |
-|----------------------------------------------|----------------------------------------------|-------------------------------------------|------------------------------------------|
-| [박창민](https://github.com/ChangMinPark2)      | [강솔문](https://github.com/solmoonkang)   | [이지수](https://github.com/leedidoo)   | [심예은](https://github.com/hesener)    |
-| **BackEnd**                                  | **BackEnd**                                   | **BackEnd**                                | **BackEnd**                               |
-| 체점(메인), 배포, BE 팀장                            | 회원 로그인, 회원가입, 마이페이지                    | 게시글, 좋아요                             | 댓글, 소셜 로그인                        |
+| ![강신범](https://github.com/kangsinbeom.png) | ![김수현](https://github.com/gamjatan9.png) | ![하승진](https://github.com/j2an777.png) |(https://github.com/hesener.png) |
+|----------------------------------------------|----------------------------------------------|-------------------------------------------|
+| [강신범](https://github.com/kangsinbeom)      | [김수현](https://github.com/gamjatan9)   | [하승진](https://github.com/j2an777)   |
+| **FrontEnd**                                  | **FrontEnd**                                   | **FrontEnd**                                |                              |
+| FE 팀장, 문제 생성 및 풀이, 배포                           | 로그인, 회원가입, 마이페이지                    | 메인, 라우팅, 메뉴, 좋아요                             |
