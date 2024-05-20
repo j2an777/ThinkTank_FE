@@ -16,9 +16,11 @@ export interface Login {
 
 export interface User {
   email: string;
-  nickname: string;
+  nickname: null | string;
   github: string;
   blog: string;
   introduce: string;
   profileImage: null | string;
 }
+
+export interface UserModify extends Omit<User, 'email'> {}

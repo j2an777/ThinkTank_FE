@@ -4,11 +4,17 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   ${layoutMap.flexCenter}
-  gap: 20px;
+  gap: 40px;
+  margin-top: 40px;
 `;
 
-export const Block = styled.div`
-  ${layoutMap.shadowBox}
+export const Box = styled.div`
+  @media (min-width: 1050px) {
+    min-width: 950px;
+  }
+  @media (max-width: 1049px) {
+    min-width: 750px;
+  }
 `;
 
 export const Title = styled.div`

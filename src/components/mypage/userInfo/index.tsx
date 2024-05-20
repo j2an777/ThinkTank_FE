@@ -10,6 +10,7 @@ import { getOthersProfile } from '@/apis/mypage';
 const UserInfo = () => {
   const navigate = useNavigate();
   const [data, setData] = useState<User | null>(null);
+  const [isOwner, setIsOwner] = useState(false);
 
   const updateUserData = (userData: User) => {
     setData(userData);
@@ -33,8 +34,13 @@ const UserInfo = () => {
         updateUserData(userData);
       }
     };
+
+    if (location.pathname.includes('mypage')) {
+      setIsOwner(true);
+    }
+
     fetchUserData();
-  }, [location.search, navigate]);
+  }, []);
 
   const contactInfo = [
     { key: 'email', value: data?.email, icon: 'email' },
@@ -48,17 +54,19 @@ const UserInfo = () => {
         <UserCircle size={150} profileImage={data?.profileImage} />
       </S.LeftBox>
       <S.RightBox>
-        <S.Edit onClick={() => navigate('modify')}>
-          <Icon value="settings" />
-        </S.Edit>
+        {isOwner && (
+          <S.Edit onClick={() => navigate('modify')}>
+            <Icon value="settings" />
+          </S.Edit>
+        )}
         <S.UserName>{data?.nickname}</S.UserName>
         <S.Contact>
           {contactInfo.map(
             (info) =>
               info.value && (
                 <S.Block key={info.key}>
-                  <Icon value={info.icon as IconValues} $active={false}/>
-                  {info.value}
+                  <Icon value={info.icon as IconValues} $active={false} />
+                  <S.Info>{info.value}</S.Info>
                 </S.Block>
               ),
           )}

@@ -12,6 +12,7 @@ export const Container = styled.div`
 
 export const LeftBox = styled.div`
   flex: 1;
+  margin-right: 30px;
 `;
 
 export const RightBox = styled.div`
@@ -41,17 +42,17 @@ export const Block = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  ${typographyMap.t5};
 `;
 
-export const UserEmail = styled.div`
-  ${typographyMap.t3}
-  color: ${colors.gray};
+export const Info = styled.div`
+  margin-bottom: 5px;
 `;
 
 export const UserIntro = styled.div`
   margin-top: 28px;
   ${typographyMap.t2}
-  color: ${colors.gray300};
+  color: ${colors.gray400};
 `;
 
 export const Edit = styled.button`
