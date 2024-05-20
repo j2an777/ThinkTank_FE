@@ -421,16 +421,16 @@ const renderIcon = (value: IconValues, color: Colors) => {
           <path
             d="M19.9258 6.63965C21.3939 7.89825 22.3936 9.50166 22.7985 11.2471C23.2034 12.9926 22.9952 14.8018 22.2004 16.4459C21.4056 18.09 20.0598 19.4953 18.3331 20.4839C16.6065 21.4726 14.5766 22.0003 12.5 22.0003C10.4234 22.0003 8.39351 21.4726 6.66687 20.4839C4.94023 19.4953 3.59442 18.09 2.7996 16.4459C2.00478 14.8018 1.79664 12.9926 2.20151 11.2471C2.60638 9.50166 3.60606 7.89825 5.07417 6.63965"
             stroke="#6E6E6E"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M12.5059 2V11.9985"
             stroke="#6E6E6E"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       );

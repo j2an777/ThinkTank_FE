@@ -25,7 +25,7 @@ export const navItems: NavItemsProps[] = [
   {
     icon: 'profile',
     label: 'Profile',
-    path: '/users/profile',
+    path: '/mypage',
   },
   {
     icon: 'threedot',
