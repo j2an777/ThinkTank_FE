@@ -19,7 +19,6 @@
 - 소셜 플랫폼을 기반한 서비스 구조로 친숙하게 서로간 문제를 공유 및 피드백 가능합니다.
 <br/>
 <br/>
-<br/>
 
 ## 🧑‍🧑‍🧒‍🧒 Front TEAMMATE 소개
 | ![강신범](https://github.com/kangsinbeom.png) | ![김수현](https://github.com/gamjatan9.png) | ![하승진](https://github.com/j2an777.png) |
@@ -28,8 +27,14 @@
 | **FrontEnd**                                  | **FrontEnd**                                   | **FrontEnd**                                |                              |
 | FE 팀장, 문제 생성 및 풀이, 배포                           | 로그인, 회원가입, 마이페이지                    | 메인페이지, 라우팅, 메뉴, 좋아요                             |
 
+<br/>
+<br/>
+
 ## 아키텍처
 <img width="833" alt="architecture" src="https://github.com/j2an777/ThinkTank_FE/assets/110087099/6623c7cb-e595-45b6-a970-df7e1d5cb0f9">
+
+<br/>
+<br/>
 
 ### 📦 Skills
 ![스크린샷 2024-04-29 오전 9 30 50(2)](https://github.com/Goorm-Lucky7/ThinkTank_FE/assets/83047601/ba2b9c2e-0b30-4d03-9e4f-c86980f2a171)
