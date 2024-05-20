@@ -1,11 +1,12 @@
-import { Icon, UserCircle } from '@/components/shared';
-import * as S from './styles';
+import { Icon, UserCircle, Text } from '@/components/shared';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User } from '@/types/auth.ts';
 import { IconValues } from '@/components/shared/icon';
 import { getUserInfo } from '@/apis/user';
 import { getOthersProfile } from '@/apis/mypage';
+
+import * as S from './styles';
 
 const UserInfo = () => {
   const navigate = useNavigate();
@@ -59,7 +60,9 @@ const UserInfo = () => {
             <Icon value="settings" />
           </S.Edit>
         )}
-        <S.UserName>{data?.nickname}</S.UserName>
+        <Text typography="t2" color="black" bold="bold">
+          {data?.nickname}
+        </Text>
         <S.Contact>
           {contactInfo.map(
             (info) =>

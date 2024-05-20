@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import * as S from './styles';
-import { getUserInfo, putUser } from '@/apis/user'; // uploadProfileImage API 추가
+import { getUserInfo, putUser } from '@/apis/user';
 import { UserCircle } from '@/components/shared';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { UserModify } from '@/types';
@@ -11,7 +11,6 @@ import { AxiosError } from 'axios';
 const ProfileTable = () => {
   const { register, handleSubmit, reset } = useForm<UserModify>({});
   const initialValues = useRef<UserModify | null>(null);
-  const [profileImage, setProfileImage] = useState<string | ArrayBuffer | null>(null);
   const { open } = useModalContext();
 
   const { data: userData } = useQuery({
@@ -27,37 +26,13 @@ const ProfileTable = () => {
     if (userData) {
       initialValues.current = userData as UserModify;
       reset(userData as UserModify);
-
-      if (userData.profileImage) {
-        setProfileImage(`${import.meta.env.BASE_URL}${userData.profileImage}`);
-      }
     }
   }, [userData, reset]);
-
-  const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setProfileImage(reader.result);
-      };
-      reader.readAsDataURL(e.target.files[0]);
-    }
-  };
 
   const onSubmit: SubmitHandler<UserModify> = async (data: UserModify) => {
     if (initialValues.current?.nickname === data.nickname) {
       data.nickname = null;
     }
-    // const formData = new FormData();
-    // if (data.nickname !== null) formData.append('nickname', data.nickname);
-    // formData.append('github', data.github ?? '');
-    // formData.append('blog', data.blog ?? '');
-    // formData.append('introduce', data.introduce ?? '');
-
-    // // Add selected file if it exists
-    // if (selectedFile) {
-    //   formData.append('profileImage', selectedFile);
-    // }
 
     try {
       await putUser(data);
@@ -100,13 +75,7 @@ const ProfileTable = () => {
         <S.Tbody>
           <div>
             <S.Td height={250}>
-              <UserCircle size={150} profileImage={profileImage as string} />
-              <input
-                css={{ marginLeft: '30px' }}
-                type="file"
-                accept="image/*"
-                onChange={onFileChange}
-              />
+              <UserCircle size={150} profileImage={userData?.profileImage} />
             </S.Td>
             <S.Td height={100}>
               <S.Input {...register('nickname')} />
@@ -127,7 +96,6 @@ const ProfileTable = () => {
         <S.Button onClick={handleSubmit(onSubmit)}>적용</S.Button>
         <S.Button onClick={() => reset(userData)}>취소</S.Button>
       </S.Block>
-      <div></div>
     </S.Container>
   );
 };

@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { Icon, InputBox, StyledButton } from '../shared/index';
 import { Link, useNavigate } from 'react-router-dom';
 import loginImage from '@/assets/images/loginImage.jpg';
-import { getKakaoLogin, postLogin } from '@/apis/user';
+import { postLogin } from '@/apis/user';
 import { Login } from '@/types/auth';
 import { setAccess } from '@/hooks/auth/useLocalStorage';
 import { AxiosError } from 'axios';
@@ -24,7 +24,6 @@ export default function LoginForm() {
       const response = await postLogin(data);
       const accessToken = response.accessToken;
       setAccess(accessToken);
-      console.log('로그인 성공:', response);
       navigate(-1);
     } catch (error) {
       if (error instanceof AxiosError && error.response) {
@@ -45,18 +44,18 @@ export default function LoginForm() {
     }
   };
 
-  const kakaoLogin = async () => {
-    window.open(import.meta.env.VITE_KAKAO_URL);
-    try {
-      const response = await getKakaoLogin();
-      const accessToken = response.accessToken;
-      setAccess(accessToken);
-      console.log('로그인 성공:', response);
-      navigate(-1);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const kakaoLogin = async () => {
+  //   window.open(import.meta.env.VITE_KAKAO_URL);
+  //   try {
+  //     const response = await getKakaoLogin();
+  //     const accessToken = response.accessToken;
+  //     setAccess(accessToken);
+  //     console.log('로그인 성공:', response);
+  //     navigate(-1);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <S.Container>
@@ -90,13 +89,13 @@ export default function LoginForm() {
           </S.Signup>
           <StyledButton width="100%">로그인</StyledButton>
         </S.Form>
-        <S.Social>
+        {/* <S.Social>
           간편하게 로그인하세요!
           <S.KakaoButton onClick={kakaoLogin}>
             <Icon value="kakao" />
             <p>카카오 로그인</p>
           </S.KakaoButton>
-        </S.Social>
+        </S.Social> */}
       </S.RightBox>
     </S.Container>
   );

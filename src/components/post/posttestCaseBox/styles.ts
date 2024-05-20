@@ -2,7 +2,6 @@ import { layoutMap } from '@/styles/layout';
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-  width: 800px;
   padding: 20px;
   bottom: 0;
 `;

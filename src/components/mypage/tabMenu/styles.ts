@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   width: 100%;
+  height: 100vh;
 `;
 
 export const TabMenu = styled.ul`
@@ -12,6 +13,14 @@ export const TabMenu = styled.ul`
   justify-content: space-around;
   border-bottom: 1px solid ${colors.gray};
   ${typographyMap.t2}
+
+  @media (max-width: 900px) {
+    ${typographyMap.t4}
+  }
+
+  @media (max-width: 570px) {
+    ${typographyMap.t4}
+  }
 `;
 
 export const TabBox = styled.li<{ active: boolean }>`

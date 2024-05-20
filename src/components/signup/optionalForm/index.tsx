@@ -42,8 +42,7 @@ const OptionalForm = () => {
       introduce: text,
       profileImage: null,
     };
-    const response = putUser(data);
-    console.log('정보 수정', response);
+    putUser(data);
     navigate('/');
   };
 

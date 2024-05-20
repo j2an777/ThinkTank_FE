@@ -44,7 +44,11 @@ const Article = ({ article, statusFlag }: ArticleProps) => {
   const navigate = useNavigate();
   const { open } = useModalContext();
 
-  const { likeCount, likeType, toggleLike } = useLike(article.postId, article.likeCount, article.likeType);
+  const { likeCount, likeType, toggleLike } = useLike(
+    article.postId,
+    article.likeCount,
+    article.likeType,
+  );
 
   const iconValue: IconValues = likeType ? 'yeslike' : 'nolike';
 
@@ -72,15 +76,16 @@ const Article = ({ article, statusFlag }: ArticleProps) => {
         }
       },
     });
-  }
-  
+  };
 
   return (
     <S.ArticleContainer onClick={toHandleDetail}>
       <S.ArTopBox>
-        <Text typography='t1' bold='regular' color='black'>{article.title}</Text>
+        <Text typography="t1" bold="regular" color="black">
+          {article.title}
+        </Text>
         {statusFlag === 'open' && (
-          <Icon value='threedot' color='black' onClick={(e) => onHandleSetting(e)}/>
+          <Icon value="threedot" color="black" onClick={(e) => onHandleSetting(e)} />
         )}
       </S.ArTopBox>
       <S.ArContentBlock>{contentNode}</S.ArContentBlock>
@@ -93,8 +98,8 @@ const Article = ({ article, statusFlag }: ArticleProps) => {
             toggleLike();
           }}
         />
-        <InfoStatus value="comment" count={article.commentCount} $active={false}/>
-        <InfoStatus value="check" count={article.codeCount} $active={false}/>
+        <InfoStatus value="comment" count={article.commentCount} $active={false} />
+        <InfoStatus value="check" count={article.codeCount} $active={false} />
       </S.ArDataBlock>
     </S.ArticleContainer>
   );

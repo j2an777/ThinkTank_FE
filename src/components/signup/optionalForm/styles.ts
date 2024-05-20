@@ -1,4 +1,5 @@
 import { colors } from '@/styles/colorPalette';
+import { typographyMap } from '@/styles/typography';
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
@@ -25,6 +26,8 @@ export const Inputs = styled.div`
 
 export const Label = styled.div<{ isFocus: boolean }>`
   color: ${(props) => (props.isFocus ? `${colors.yellow}` : `${colors.gray100}`)};
+  ${typographyMap.t5}
+  ${typographyMap.medium}
 `;
 
 export const TextArea = styled.textarea<{ isFocus: boolean }>`
@@ -41,6 +44,7 @@ export const TextArea = styled.textarea<{ isFocus: boolean }>`
   ::placeholder {
     color: ${colors.gray100};
   }
+  ${typographyMap.t5}
 `;
 
 export const TextLimit = styled.div`

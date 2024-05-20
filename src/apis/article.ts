@@ -1,6 +1,5 @@
 import { ArticleDetail, ArticleList } from '@/types';
 import instance from './instance';
-
 export const getArticle = async (postId: string) => {
   const response = await instance.get(`/api/posts/${postId}`);
   return response.data as ArticleDetail;
@@ -39,5 +38,12 @@ interface postCheckState {
 
 export const postCheck = async (formData: postCheckState) => {
   const response = await instance.post('api/posts/submit', formData);
+  return response.data;
+};
+
+export const deleteArticle = async (postId: number): Promise<void> => {
+  const response = await instance.delete('/api/posts', {
+    data: { postId: postId },
+  });
   return response.data;
 };

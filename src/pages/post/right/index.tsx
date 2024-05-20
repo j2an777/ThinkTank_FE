@@ -45,6 +45,7 @@ const PostRight = () => {
         }
         css={S.testButton}
         disabled={isLoading}
+        size="large"
       >
         Post
       </StyledButton>

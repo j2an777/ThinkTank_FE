@@ -132,7 +132,7 @@ const SignupForm = () => {
             error={errors.checkPassword?.message}
           />
         </div>
-        <StyledButton width={'100%'} style={{ marginTop: '80px' }}>
+        <StyledButton width={'100%'} style={{ marginTop: '50px' }}>
           회원가입
         </StyledButton>
       </S.Block>

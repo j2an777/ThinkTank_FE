@@ -76,7 +76,7 @@ const DetailRight = () => {
           }
           size={32}
         />
-        <StyledButton onClick={handleSubmit} disabled={isLoading}>
+        <StyledButton onClick={handleSubmit} disabled={isLoading} size="large">
           Submit
         </StyledButton>
       </S.ButtonBox>

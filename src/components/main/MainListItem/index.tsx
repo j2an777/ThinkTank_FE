@@ -17,6 +17,7 @@ const MainListItem = ({ listItem }: ListItemProps) => {
   const [iconSize, setIconSize] = useState(105);
 
   useEffect(() => {
+    console.log(window.innerWidth);
     const handleResize = () => {
       if (window.innerWidth <= 900) {
         setIconSize(70);
@@ -42,14 +43,18 @@ const MainListItem = ({ listItem }: ListItemProps) => {
           {user.profileImage ? (
             <img src={user.profileImage} />
           ) : (
-            <Icon value="user" size={iconSize} $active={false}/>
+            <Icon value="user" size={iconSize} $active={false} />
           )}
         </S.AvatarBlock>
         <S.MlInfoBlock>
-          <Link to={`/users/profile?user=${user.email}`}>
-            <Text typography="t2" bold="semibold" color="black" id='userP'>{user.nickname}</Text>
+          <Link to={`/profile?user=${user.email}`}>
+            <Text typography="t2" bold="semibold" color="black" id="userP">
+              {user.nickname}
+            </Text>
           </Link>
-          <Text typography='t4' bold='semibold' color='gray200' id='createP'>{createDate}</Text>
+          <Text typography="t4" bold="semibold" color="gray200" id="createP">
+            {createDate}
+          </Text>
         </S.MlInfoBlock>
       </S.MlUserBox>
       <Article article={articleDetails} />

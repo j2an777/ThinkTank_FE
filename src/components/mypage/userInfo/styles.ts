@@ -26,11 +26,6 @@ export const ProfileImage = styled.img`
   border-radius: 10em;
 `;
 
-export const UserName = styled.div`
-  ${typographyMap.t1}
-  ${typographyMap.bold}
-`;
-
 export const Contact = styled.div`
   display: flex;
   align-items: center;
@@ -42,7 +37,7 @@ export const Block = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  ${typographyMap.t5};
+  ${typographyMap.t4};
 `;
 
 export const Info = styled.div`

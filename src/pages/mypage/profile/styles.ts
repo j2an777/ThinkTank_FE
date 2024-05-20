@@ -1,3 +1,4 @@
+import { Icon } from '@/components/shared';
 import { colors } from '@/styles/colorPalette';
 import { layoutMap } from '@/styles/layout';
 import styled from '@emotion/styled';
@@ -12,14 +13,17 @@ export const Container = styled.div`
 `;
 
 export const Block = styled.div`
+  display: flex;
+  flex-direction: column;
   min-width: 800px;
   width: 100%;
   max-width: 1000px;
+  row-gap: 15px;
 `;
 
-export const Cancel = styled.div`
+export const CancelIcon = styled(Icon)`
   position: absolute;
-  top: -50px;
+  top: -40px;
   right: 20vw;
 `;
 
@@ -27,18 +31,6 @@ export const Box = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
-`;
-
-export const Title = styled.div`
-  font-size: 30px;
-  font-weight: 700;
-`;
-
-export const Subtitle = styled.div`
-  color: ${colors.gray200};
-  font-size: 20px;
-  font-weight: 400;
-  margin-top: 15px;
 `;
 
 export const Logout = styled.div`

@@ -6,7 +6,7 @@ const SignupOptionalPage = () => {
   return (
     <S.Container>
       <AuthBackground />
-      <ShadowBox padding={50} height={850}>
+      <ShadowBox padding={50} height={830}>
         <OptionalForm />
       </ShadowBox>
     </S.Container>

@@ -6,7 +6,7 @@ const SignupRequiredPage = () => {
   return (
     <S.Container>
       <AuthBackground />
-      <ShadowBox padding={50} height={850}>
+      <ShadowBox padding={50} height={830}>
         <SignupForm />
       </ShadowBox>
     </S.Container>
