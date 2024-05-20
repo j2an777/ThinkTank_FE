@@ -19,7 +19,7 @@ export const NavContainer = styled.div`
 
   @media (max-width : 900px) {
     top : 60px;
-    left : 30px;
+    left : 40px;
     width : 100px;
     padding : 0 20px;
     gap : 30px;
