@@ -64,12 +64,12 @@
 
 <br/>
 
-## 아키텍처
+## ✔ 아키텍처
 <img width="833" alt="architecture" src="https://github.com/j2an777/ThinkTank_FE/assets/110087099/6623c7cb-e595-45b6-a970-df7e1d5cb0f9">
 
 <br/>
 
-## Fe. 기술스택 및 선정이유
+## 💥 기술스택 및 선정이유
 ![스크린샷 2024-04-29 오전 9 30 50(2)](https://github.com/Goorm-Lucky7/ThinkTank_FE/assets/83047601/ba2b9c2e-0b30-4d03-9e4f-c86980f2a171)
 <br/>
 
@@ -77,35 +77,40 @@
 
 ```
 src
-  ᄂ apis
-  ᄂ components
-    ᄂ shared (여러 컴포넌트에 쓰일 시)
-    ᄂ mainPage
-    ᄂ profilePage
-    ...
-  ᄂ hooks
-    ᄂ shared (여러 컴포넌트에 쓰일 시)
-    ᄂ mainPage
-    ᄂ profilePage
-    ...
-  ᄂ pages (layout)
-    ᄂ mainPage
-    ᄂ profilePage
-    ...
-  ᄂ routes
-    ᄂ Protect.tsx
-    ...
-  ᄂ styles
-    ᄂ globalStyles.ts
-    ᄂ typography.ts
-    ...
-  ᄂ sotres (zustand)
-    ᄂ index.ts (리듀서 관리)
-    ᄂ searchStore
-    ᄂ fileStore
-  ᄂ types
-    ᄂ user.ts
-    ᄂ post.ts
+  ᄂ apis (api)
+  ᄂ assets (폰트, 이미지[gif, png, jpg])
+    ㄴ fonts
+    ㄴ images
+  ᄂ components (컴포넌트)
+    ᄂ detail
+    ᄂ loader
+    ᄂ loginForm
+    ㄴ main
+    ㄴ mypage
+    ㄴ nav
+    ㄴ post
+    ㄴ shared [재사용]
+    ㄴ signup
+  ㄴ consts (데이터 모음)
+  ㄴ contexts (프로바이더)
+  ᄂ hooks (커스텀 훅)
+    ᄂ auth
+    ᄂ detail
+    ᄂ like
+    ㄴ post
+  ᄂ pages (레이아웃)
+    ᄂ detail
+    ᄂ error
+    ㄴ login
+    ㄴ main
+    ㄴ mypage
+    ㄴ post
+    ㄴ signup
+  ᄂ routes (라우터)
+  ㄴ stores (전역 저장소)
+  ᄂ styles (스타일)
+  ᄂ types (타입)
+  ㄴ utils (계산 커스텀 함수)
     ...
   ᄂ App.tsx
 ```
