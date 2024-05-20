@@ -9,8 +9,7 @@ const useGetComments = (postId: string) => {
     queryKey: ['comments', postId],
     queryFn: () => getComments(postId as string),
     initialPageParam: 0,
-    getNextPageParam: (lastPageParam) => lastPageParam + 1,
-    getPreviousPageParam: (lastPageParam) => lastPageParam - 1,
+    getNextPageParam: (lastPageParam) => lastPageParam.length,
     select: (data) => ({
       pageParams: data.pageParams,
       pages: data.pages.flat()[0],
