@@ -14,3 +14,9 @@
 | [강신범](https://github.com/kangsinbeom)      | [김수현](https://github.com/gamjatan9)   | [하승진](https://github.com/j2an777)   |
 | **FrontEnd**                                  | **FrontEnd**                                   | **FrontEnd**                                |                              |
 | FE 팀장, 문제 생성 및 풀이, 배포                           | 로그인, 회원가입, 마이페이지                    | 메인, 라우팅, 메뉴, 좋아요                             |
+
+## 아키텍처
+<img src="readme-image/architecture.png" width="1000" height="600" alt="architecture.png"/>
+
+## 배포환경
+<img src="readme-image/server.png" width="1000" height="600" alt="server.png"/>
