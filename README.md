@@ -41,7 +41,7 @@
 
 **프로젝트 문서**
  
-| 📒 [팀 Notion](https://www.notion.so/96ffa6e6a507434cb352b7ae3a8b9022) | 🎉 [기획안](https://www.notion.so/bab75913e0784267b6d8a326e6c82ec2) | 💌 [요구사항](https://www.notion.so/a961f17b52c54e2198791f393a7169e5) | 🚀 [활동 간 규칙](https://www.notion.so/Ground-rule-626b9da838e842eb90d9104b55006c88) | 💬 [회의, 회고록](https://www.notion.so/349320d273444afabaa9738bd6f48424?v=3b952627e1bd4e37a5f561cfca5faa78&pvs=4) | 💯 [컨벤션] (https://www.notion.so/68aa5fdfd8fe4bbeb66a37a13c840736?pvs=4) |
+| 📒 [팀 Notion](https://www.notion.so/96ffa6e6a507434cb352b7ae3a8b9022) | 🎉 [기획안](https://www.notion.so/bab75913e0784267b6d8a326e6c82ec2) | 💌 [요구사항](https://www.notion.so/a961f17b52c54e2198791f393a7169e5) | 🚀 [활동 간 규칙](https://www.notion.so/Ground-rule-626b9da838e842eb90d9104b55006c88) | 💬 [회의, 회고록](https://www.notion.so/349320d273444afabaa9738bd6f48424?v=3b952627e1bd4e37a5f561cfca5faa78&pvs=4) | 💯 [컨벤션](https://www.notion.so/68aa5fdfd8fe4bbeb66a37a13c840736?pvs=4) |
 | ---- | ---- | ---- | ---- | ---- | ---- |
 <br/>
 
