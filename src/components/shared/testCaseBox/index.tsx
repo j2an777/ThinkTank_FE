@@ -21,6 +21,7 @@ const TestCaseBox = ({ testCases }: { testCases: TestCase[] }) => {
           $active={false}
           $rotate={isExpand}
           onClick={() => setIsExpand((prev) => !prev)}
+          color="yellow"
         />
       </S.TitleBox>
       {isExpand && (

@@ -1,5 +1,4 @@
-import { Icon, UserCircle } from '@/components/shared';
-import * as S from './styles';
+import { Icon, UserCircle, Text } from '@/components/shared';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User } from '@/types/auth.ts';
@@ -7,9 +6,12 @@ import { IconValues } from '@/components/shared/icon';
 import { getUserInfo } from '@/apis/user';
 import { getOthersProfile } from '@/apis/mypage';
 
+import * as S from './styles';
+
 const UserInfo = () => {
   const navigate = useNavigate();
   const [data, setData] = useState<User | null>(null);
+  const [isOwner, setIsOwner] = useState(false);
 
   const updateUserData = (userData: User) => {
     setData(userData);
@@ -33,8 +35,13 @@ const UserInfo = () => {
         updateUserData(userData);
       }
     };
+
+    if (location.pathname.includes('mypage')) {
+      setIsOwner(true);
+    }
+
     fetchUserData();
-  }, [location.search, navigate]);
+  }, []);
 
   const contactInfo = [
     { key: 'email', value: data?.email, icon: 'email' },
@@ -48,17 +55,21 @@ const UserInfo = () => {
         <UserCircle size={150} profileImage={data?.profileImage} />
       </S.LeftBox>
       <S.RightBox>
-        <S.Edit onClick={() => navigate('modify')}>
-          <Icon value="settings" />
-        </S.Edit>
-        <S.UserName>{data?.nickname}</S.UserName>
+        {isOwner && (
+          <S.Edit onClick={() => navigate('modify')}>
+            <Icon value="settings" />
+          </S.Edit>
+        )}
+        <Text typography="t2" color="black" bold="bold">
+          {data?.nickname}
+        </Text>
         <S.Contact>
           {contactInfo.map(
             (info) =>
               info.value && (
                 <S.Block key={info.key}>
-                  <Icon value={info.icon as IconValues} $active={false}/>
-                  {info.value}
+                  <Icon value={info.icon as IconValues} $active={false} />
+                  <S.Info>{info.value}</S.Info>
                 </S.Block>
               ),
           )}

@@ -1,5 +1,5 @@
 import { ArticlesMenu, SolvedMenu } from '@/components/mypage';
-import * as S from './styles.ts';
+import * as S from './styles';
 import { useState } from 'react';
 
 const TabMenu = () => {

@@ -19,7 +19,7 @@ const CodeBox = ({ layout = true, readOnly = false, code, language }: CodeBoxPro
   return (
     <S.Container layout={layout}>
       <S.LanguageBox>
-        <Text typography="t4">언어</Text>
+        <Text typography="t5">언어</Text>
         {language ? (
           <>{language}</>
         ) : (

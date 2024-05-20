@@ -5,7 +5,7 @@ const getCodeEditorOptions = ({ readOnly }: { readOnly: boolean }) => {
     readOnly,
     minimap: { enabled: false },
     scrollbar: { vertical: 'hidden' },
-    fontSize: 12,
+    fontSize: 24,
     domReadOnly: readOnly,
   };
 

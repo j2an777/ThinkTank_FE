@@ -20,7 +20,7 @@ const TextareaField = ({ label, name, value, onChange }: TextareaFieldProps) => 
   };
   return (
     <S.Container
-      onMouseDown={handleMouseDown}
+      onClick={handleMouseDown}
       onBlur={() => setHasFocus(false)}
       hasFocus={hasFocus}
     >

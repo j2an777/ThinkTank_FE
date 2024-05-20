@@ -48,13 +48,18 @@ export const routers = [
     isProtected: false,
   },
   {
-    path: '/users/profile',
+    path: '/mypage',
     element: MyPage,
     isProtected: true,
   },
   {
-    path: '/users/profile/modify',
+    path: '/mypage/modify',
     element: Profile,
+    isProtected: true,
+  },
+  {
+    path: '/profile',
+    element: MyPage,
     isProtected: true,
   },
 ];

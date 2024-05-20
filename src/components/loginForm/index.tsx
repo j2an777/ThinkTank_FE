@@ -6,6 +6,7 @@ import loginImage from '@/assets/images/loginImage.jpg';
 import { postLogin } from '@/apis/user';
 import { Login } from '@/types/auth';
 import { setAccess } from '@/hooks/auth/useLocalStorage';
+import { AxiosError } from 'axios';
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -23,15 +24,38 @@ export default function LoginForm() {
       const response = await postLogin(data);
       const accessToken = response.accessToken;
       setAccess(accessToken);
-      console.log('로그인 성공:', response);
       navigate(-1);
     } catch (error) {
-      setError('email', {
-        type: 'manual',
-        message: '이메일이 존재하지 않거나 비밀번호가 일치하지 않습니다.',
-      });
+      if (error instanceof AxiosError && error.response) {
+        const status = error.response.status;
+        if (status === 404) {
+          setError('email', {
+            type: 'manual',
+            message: '요청하신 회원을 찾을 수 없습니다.',
+          });
+        } else if (status === 400) {
+          setError('password', {
+            type: 'manual',
+            message: '입력하신 비밀번호가 정확하지 않습니다.',
+          });
+        }
+      }
+      throw error;
     }
   };
+
+  // const kakaoLogin = async () => {
+  //   window.open(import.meta.env.VITE_KAKAO_URL);
+  //   try {
+  //     const response = await getKakaoLogin();
+  //     const accessToken = response.accessToken;
+  //     setAccess(accessToken);
+  //     console.log('로그인 성공:', response);
+  //     navigate(-1);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <S.Container>
@@ -44,10 +68,6 @@ export default function LoginForm() {
           <InputBox
             {...register('email', {
               required: '아이디를 입력해주세요.',
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
-                message: '올바른 아이디가 아닙니다.',
-              },
             })}
             label="이메일"
             error={errors.email?.message}
@@ -56,11 +76,6 @@ export default function LoginForm() {
           <InputBox
             {...register('password', {
               required: '비밀번호를 입력해주세요.',
-              pattern: {
-                value:
-                  /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[~!@#$%^&*_+=`|(){}[\]:;"'<>,.?/-]).{6,20}$/,
-                message: '6~20자의 영문, 숫자, 특수문자를 모두 포함해주세요.',
-              },
             })}
             label="비밀번호"
             type="password"
@@ -74,13 +89,13 @@ export default function LoginForm() {
           </S.Signup>
           <StyledButton width="100%">로그인</StyledButton>
         </S.Form>
-        <S.Social>
+        {/* <S.Social>
           간편하게 로그인하세요!
-          <S.KakaoButton>
+          <S.KakaoButton onClick={kakaoLogin}>
             <Icon value="kakao" />
             <p>카카오 로그인</p>
           </S.KakaoButton>
-        </S.Social>
+        </S.Social> */}
       </S.RightBox>
     </S.Container>
   );

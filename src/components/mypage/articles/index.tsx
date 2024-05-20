@@ -47,12 +47,11 @@ const ArticlesMenu = ({ value }: Pick<MypageArticles, 'value'>) => {
         <SkeletonBox />
       ) : (
         data?.pages.map((page) =>
-          page.posts.map((post: ArticleType) => {
-            console.log('포스트', post);
-            <div key={post.postId}>
+          page.posts.map((post: ArticleType) => (
+            <S.Box key={post.postId}>
               <Article article={post} statusFlag="open" />
-            </div>;
-          }),
+            </S.Box>
+          )),
         )
       )}
       <div ref={loader} style={{ height: '100px' }} />
