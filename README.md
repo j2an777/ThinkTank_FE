@@ -9,7 +9,7 @@
 🎬 [시연 영상 보러가기 ]()
 
 ## 🧑‍🧑‍🧒‍🧒 Front TEAMMATE 소개
-| ![강신범](https://github.com/kangsinbeom.png) | ![김수현](https://github.com/gamjatan9.png) | ![하승진](https://github.com/j2an777.png) |(https://github.com/hesener.png) |
+| ![강신범](https://github.com/kangsinbeom.png) | ![김수현](https://github.com/gamjatan9.png) | ![하승진](https://github.com/j2an777.png) |
 |----------------------------------------------|----------------------------------------------|-------------------------------------------|
 | [강신범](https://github.com/kangsinbeom)      | [김수현](https://github.com/gamjatan9)   | [하승진](https://github.com/j2an777)   |
 | **FrontEnd**                                  | **FrontEnd**                                   | **FrontEnd**                                |                              |
