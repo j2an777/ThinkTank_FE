@@ -40,3 +40,39 @@
 ![스크린샷 2024-04-29 오전 9 30 50(2)](https://github.com/Goorm-Lucky7/ThinkTank_FE/assets/83047601/ba2b9c2e-0b30-4d03-9e4f-c86980f2a171)
 
 
+## 📦 파일구조
+
+```
+src
+  ᄂ apis
+  ᄂ components
+    ᄂ shared (여러 컴포넌트에 쓰일 시)
+    ᄂ mainPage
+    ᄂ profilePage
+    ...
+  ᄂ hooks
+    ᄂ shared (여러 컴포넌트에 쓰일 시)
+    ᄂ mainPage
+    ᄂ profilePage
+    ...
+  ᄂ pages (layout)
+    ᄂ mainPage
+    ᄂ profilePage
+    ...
+  ᄂ routes
+    ᄂ Protect.tsx
+    ...
+  ᄂ styles
+    ᄂ globalStyles.ts
+    ᄂ typography.ts
+    ...
+  ᄂ sotres (zustand)
+    ᄂ index.ts (리듀서 관리)
+    ᄂ searchStore
+    ᄂ fileStore
+  ᄂ types
+    ᄂ user.ts
+    ᄂ post.ts
+    ...
+  ᄂ App.tsx
+```
