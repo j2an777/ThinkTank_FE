@@ -1,5 +1,5 @@
 # WebIDE 프로젝트 feat.ThinkTank
-![mockup](https://github.com/j2an777/ThinkTank_FE/assets/110087099/ad97ca46-f23f-4678-9de5-19645999a358)
+<a href="https://d26i62iijbw0u2.cloudfront.net/">![mockup](https://github.com/j2an777/ThinkTank_FE/assets/110087099/ad97ca46-f23f-4678-9de5-19645999a358)</a>
 <br/>
 
 **프로젝트 기간** : 2024.04.25 ~ 2023.05.20
