@@ -49,7 +49,7 @@
 
 | Sprint   | 기간                  | 내용                            | 작업 현황 |
 | -------- | --------------------- | ------------------------------- | ------------- | 
-| 1 | 2024/4/24 - 2024/4/27  | 각 페이지 UI 구현      | [▶️ Sprint1-1](https://www.notion.so/UI-9687407149da4f53a478c34ad8ff3fa8?pvs=4) , [▶️ Sprint1-2](https://www.notion.so/UI-8b5fd15c1c4a4e76b5e4640340a37abe?pvs=4), [▶️ Sprint1-3](https://www.notion.so/Main-UI-ab27e98888f440daa2fdb52be2fa3fef?pvs=4)
+| 1 | 2024/4/24 - 2024/4/27  | 각 페이지 UI 구현      | [▶️ Sprint1-1](https://www.notion.so/UI-9687407149da4f53a478c34ad8ff3fa8?pvs=4), [▶️ Sprint1-2](https://www.notion.so/UI-8b5fd15c1c4a4e76b5e4640340a37abe?pvs=4), [▶️ Sprint1-3](https://www.notion.so/Main-UI-ab27e98888f440daa2fdb52be2fa3fef?pvs=4)
 | 2 | 2024/4/29 - 2024/5/5 |  각 기능 Api 구현              | [▶️ Sprint2-1](https://www.notion.so/1998752a4e82455d8f828b9d5476fd18?pvs=4), [▶️ Sprint2-2](https://www.notion.so/jwt-394962c61c244eb1a5e31eb045219693?pvs=4), [▶️ Sprint2-3](https://www.notion.so/API-4b1b41992e1a4f48943f18e8c030ff3a?pvs=4)
 | 3 | 2024/5/6 - 2024/5/12  | 각 기능 API 구현 | [▶️ Sprint3-1](https://www.notion.so/api-b3f407adf02c46f9bd234a2e14926a9e?pvs=4), [▶️ Sprint3-2](https://www.notion.so/api-1ffdf9c3920e4993be3232b912e2dd04?pvs=4), [▶️ Sprint3-3](https://www.notion.so/33c39851e97c4bb1ad7ccdacc05d5abe?pvs=4)
 | 4 | 2024/5/13 - 2024/5/19  | UI 테스트 및 코드 리팩토링   | [▶️ Sprint4-1](https://www.notion.so/7afb34dc0abf43fa84210831649c294c?pvs=4), [▶️ Sprint4-2](https://www.notion.so/5c3a539358524daa88ed3a8c0ad83248?pvs=4), [▶️ Sprint4-3](https://www.notion.so/3d99e33d3c104b20a24a749ed1370a56?pvs=4)
