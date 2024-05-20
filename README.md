@@ -18,6 +18,27 @@
 - 소셜 플랫폼을 기반한 서비스 구조로 친숙하게 서로간 문제를 공유 및 피드백 가능합니다.
 <br/>
 
+## ⭐️ 주요 기능
+
+### 📌 문제 조회
+- 유저들이 포스팅한 문제들을 소셜 구조로 확인 가능합니다.
+![image](https://github.com/j2an777/ThinkTank_FE/assets/110087099/be64cb59-40d8-4710-a421-fb1f4617529d)
+
+### 📌 문제 생성
+- 문제 내용과 정답 코드, 테스크 케이스로 구성하여 문제를 생성합니다.
+![image](https://github.com/j2an777/ThinkTank_FE/assets/110087099/4810588e-7d1e-4abe-9cef-298727a2b4fc)
+
+### 📌 문제 풀이
+- 유저들이 올린 문제를 풀어보아 정답을 확인할 수 있습니다.
+![image](https://github.com/j2an777/ThinkTank_FE/assets/110087099/e05ed10c-1c4f-4b10-8f93-61e7fe5df0e4)
+
+### 📌 정보 조회
+- 자신의 활동(만든 문제, 맞은 문제, 즐겨 찾기)을 조회 가능합니다.
+- 메인 페이지에서 타 유저의 닉네임 클릭으로 정보 조회 가능합니다.
+![image](https://github.com/j2an777/ThinkTank_FE/assets/110087099/74ae4f3e-3d98-48fc-aad6-f60fb6b5ba33)
+
+<br/>
+
 **프로젝트 문서**
  
 | 📒 [팀 Notion](https://www.notion.so/96ffa6e6a507434cb352b7ae3a8b9022) | 🎉 [기획안](https://www.notion.so/bab75913e0784267b6d8a326e6c82ec2) | 💌 [요구사항](https://www.notion.so/a961f17b52c54e2198791f393a7169e5) | 🚀 [활동 간 규칙](https://www.notion.so/Ground-rule-626b9da838e842eb90d9104b55006c88) | 💬 [회의, 회고록](https://www.notion.so/349320d273444afabaa9738bd6f48424?v=3b952627e1bd4e37a5f561cfca5faa78&pvs=4)
