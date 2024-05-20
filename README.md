@@ -7,6 +7,7 @@
 🔗 [ThinkTank 서비스 둘러보기](https://d26i62iijbw0u2.cloudfront.net/) (데스크탑/태블릿 환경에서 이용 가능)
 
 🎬 [시연 영상 보러가기 ]()
+<br/>
 
 ## ✨ 프로젝트 소개
 
