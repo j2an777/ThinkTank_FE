@@ -18,6 +18,11 @@
 - 소셜 플랫폼을 기반한 서비스 구조로 친숙하게 서로간 문제를 공유 및 피드백 가능합니다.
 <br/>
 
+**프로젝트 문서**
+ 
+| 📒 [팀 Notion](https://www.notion.so/96ffa6e6a507434cb352b7ae3a8b9022) | 🎉 [기획안](https://www.notion.so/bab75913e0784267b6d8a326e6c82ec2) | 💌 [요구사항]([https://sunohvoiin.notion.site/ac659f3772f0480c9243ba5b7b7ada13](https://www.notion.so/a961f17b52c54e2198791f393a7169e5)) | 🚀 [활동 간 규칙](https://www.notion.so/Ground-rule-626b9da838e842eb90d9104b55006c88) | 💬 [회의, 회고록](https://www.notion.so/349320d273444afabaa9738bd6f48424?v=3b952627e1bd4e37a5f561cfca5faa78&pvs=4)
+| ---- | ---- | ---- | ---- | ---- |
+
 ## 🧑‍🧑‍🧒‍🧒 Front TEAMMATE 소개
 | ![강신범](https://github.com/kangsinbeom.png) | ![김수현](https://github.com/gamjatan9.png) | ![하승진](https://github.com/j2an777.png) |
 |----------------------------------------------|----------------------------------------------|-------------------------------------------|
