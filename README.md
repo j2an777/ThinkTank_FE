@@ -11,7 +11,7 @@
 <br/>
 ## ✨ 프로젝트 소개
 
-### Think, Share, Develop, ThinkTank
+### Think, Share, Develop, **ThinkTank**
 
 - ThinkTank은 개발자를 위한 **알고리즘 문제풀이 기반 소셜 플랫폼**입니다.
 - 각 유저들은 서로 문제 생성 및 풀이를 통해 상호작용이 이루어집니다.
