@@ -18,11 +18,11 @@ export const NavContainer = styled.div`
   ${typographyMap.t1}
 
   @media (max-width : 900px) {
-    top: 60px;
-    left: 30px;
-    width: 100px;
-    padding: 0 20px;
-    gap: 30px;
+    top : 60px;
+    left : 40px;
+    width : 100px;
+    padding : 0 20px;
+    gap : 30px;
   }
 
   @media (max-width: 570px) {

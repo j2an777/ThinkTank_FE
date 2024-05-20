@@ -14,6 +14,7 @@ type ArticleTypes = Omit<ArticleType, 'user'>;
 interface ArticleProps {
   threedot?: ReactNode;
   statusFlag?: string;
+  isOwner?: boolean;
   article: ArticleTypes;
 }
 
@@ -40,7 +41,7 @@ const formatContent = (content: string, maxLines: number = Infinity): ReactNode 
   );
 };
 
-const Article = ({ article, statusFlag }: ArticleProps) => {
+const Article = ({ article, statusFlag, isOwner }: ArticleProps) => {
   const navigate = useNavigate();
   const { open } = useModalContext();
 
@@ -64,18 +65,31 @@ const Article = ({ article, statusFlag }: ArticleProps) => {
   const onHandleSetting = (e: React.MouseEvent) => {
     e.stopPropagation();
 
-    open({
-      title: '설정',
-      type: 'setting',
-      buttonLabel: '삭제',
-      onButtonClick: async () => {
-        try {
-          await deleteArticle(article.postId);
-        } catch (error) {
-          console.error(error);
-        }
-      },
-    });
+    if (isOwner) {
+      open({
+        title: '설정',
+        type: 'setting',
+        buttonLabel: '삭제',
+        flag: true,
+        onButtonClick: async () => {
+          
+        },
+      });
+    } else {
+      open({
+        title: '설정',
+        type: 'setting',
+        flag: false,
+        onButtonClick: async () => {
+          try {
+            await deleteArticle(article.postId);
+          } catch (error) {
+            console.error(error);
+          }
+        },
+      });
+    }
+    
   };
 
   return (
