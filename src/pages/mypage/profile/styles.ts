@@ -3,14 +3,25 @@ import { layoutMap } from '@/styles/layout';
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
+  position: relative;
   ${layoutMap.flexCenter}
-  align-items: start;
-  margin: 70px 420px;
+  margin: 70px auto;
   text-align: left;
   row-gap: 80px;
+  max-width: 100%;
 `;
 
-export const Block = styled.div``;
+export const Block = styled.div`
+  min-width: 800px;
+  width: 100%;
+  max-width: 1000px;
+`;
+
+export const Cancel = styled.div`
+  position: absolute;
+  top: -50px;
+  right: 20vw;
+`;
 
 export const Box = styled.div`
   display: flex;

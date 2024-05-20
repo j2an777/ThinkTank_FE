@@ -14,6 +14,7 @@ interface ButtonProp {
   size?: ButtonSize;
   bold?: boolean;
   hover?: Colors;
+  resize?: string;
 }
 
 const StyledButton = styled.button<ButtonProp>`
@@ -31,6 +32,10 @@ const StyledButton = styled.button<ButtonProp>`
   transition: all 0.1s ease;
   &:active {
     transform: scale(0.95);
+  }
+
+  @media (max-width: 900px) {
+    width: ${({ resize = '200px' }) => resize};
   }
 `;
 

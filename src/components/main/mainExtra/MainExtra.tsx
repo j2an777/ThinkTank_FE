@@ -11,7 +11,7 @@ const MainExtra = () => {
       </S.SearchBox>
       <S.MeBox>
         <S.MeTitleBlock>
-          <Icon value="trophy" size={32}/>
+          <Icon value="trophy" size={32} $active={false}/>
           <Text typography='t1' color='black' bold='semibold'>Best Maker</Text>
         </S.MeTitleBlock>
         <S.MeContentBlock>

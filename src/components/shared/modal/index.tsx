@@ -3,8 +3,9 @@ import CommentComponent from './commentComponent';
 import Dimmed from './Dimmed';
 import QuestionComponent from './questionComponent/indext';
 import { LanguageNames } from '@/consts/language';
+import SettingComponent from './settingComponent';
 
-type ModalType = 'alert' | 'comment' | 'question';
+type ModalType = 'alert' | 'comment' | 'question' | 'setting';
 
 interface ModalProps {
   open?: boolean;
@@ -35,5 +36,7 @@ const renderComponent = ({ type, open, ...props }: ModalProps) => {
       return <CommentComponent open={open as boolean} {...props} />;
     case 'question':
       return <QuestionComponent open={open as boolean} {...props} />;
+    case 'setting':
+      return <SettingComponent open={open as boolean} {...props} />;
   }
 };

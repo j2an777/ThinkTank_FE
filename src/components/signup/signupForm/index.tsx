@@ -35,7 +35,6 @@ const SignupForm = () => {
           state: { nickname: data.nickname },
         });
       }
-
     } catch (error) {
       const axiosError = error as AxiosError<{ message: string }>;
       if (axiosError.response) {
