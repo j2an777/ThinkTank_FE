@@ -34,12 +34,22 @@ export const ArticleContainer = styled.div`
     cursor: pointer;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   }
+
+  @media (max-width : 900px) {
+    height : 400px;
+  }
 `;
 
 export const ArTopBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width : 900px) {
+    p {
+      ${typographyMap.t3};
+    }
+  }
 `;
 
 export const ArContentBlock = styled.p`
@@ -47,6 +57,10 @@ export const ArContentBlock = styled.p`
   ${typographyMap.t4};
   ${typographyMap.regular};
   color: black;
+
+  @media (max-width : 900px) {
+    ${typographyMap.t6};
+  }
 `;
 
 export const ArDataBlock = styled.div`
