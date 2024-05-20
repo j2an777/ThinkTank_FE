@@ -4,16 +4,14 @@ import { postFormStore } from '@/stores/post';
 import { TestCase } from '@/types';
 
 import * as S from './styles';
+import TestCaseItem from '../tesCaseItem';
 
 const defalutValue = [{ example: '', result: '' }];
 
 const PostTestCaseBox = () => {
   const updatePostForm = postFormStore((state) => state.updatePostForm);
   const [testCases, setTestCases] = useState<TestCase[]>(defalutValue);
-  useEffect(() => {
-    updatePostForm({ testCases });
-  }, [testCases, updatePostForm]);
-  const handleChange = ({
+  const onChangeTestCase = ({
     index,
     event,
   }: {
@@ -30,8 +28,19 @@ const PostTestCaseBox = () => {
     setTestCases(updateTestCase);
     updatePostForm({ testCases: updateTestCase });
   };
+  const onDeleteTestCase = (index: number) => {
+    if (testCases.length > 1) {
+      const updateTestCase = testCases.filter((_, i) => i !== index);
+      setTestCases(updateTestCase);
+      updatePostForm({ testCases: updateTestCase });
+    }
+  };
+  useEffect(() => {
+    updatePostForm({ testCases });
+  }, [testCases, updatePostForm]);
+
   return (
-    <S.TestCaseContainer>
+    <S.Container>
       <S.TitleBox>
         <Text typography="t2">테스트 케이스</Text>
         <Icon
@@ -40,30 +49,23 @@ const PostTestCaseBox = () => {
         />
       </S.TitleBox>
       <S.ContentBox>
-        <Text>Example</Text>
-        <S.TestBlock>
-          {testCases.map((testCase, index) => (
-            <textarea
-              key={`example-${index}`}
-              name="example"
-              value={testCase.example}
-              onChange={(event) => handleChange({ index, event })}
+        <S.TestCaseTitleBlock>
+          <Text>Example</Text>
+          <Text>Return</Text>
+        </S.TestCaseTitleBlock>
+        {testCases.map((testCase, index) => {
+          return (
+            <TestCaseItem
+              key={index}
+              index={index}
+              testCase={testCase}
+              onChange={onChangeTestCase}
+              onDelete={onDeleteTestCase}
             />
-          ))}
-        </S.TestBlock>
-        <Text>Return</Text>
-        <S.TestBlock>
-          {testCases.map((testCase, index) => (
-            <textarea
-              key={`result-${index}`}
-              name="result"
-              value={testCase.result}
-              onChange={(event) => handleChange({ index, event })}
-            />
-          ))}
-        </S.TestBlock>
+          );
+        })}
       </S.ContentBox>
-    </S.TestCaseContainer>
+    </S.Container>
   );
 };
 

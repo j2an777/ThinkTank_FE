@@ -7,6 +7,7 @@ import { Icon } from '..';
 export const Container = styled.div`
   position: relative;
   padding-right: 30px;
+  width: fit-content;
 `;
 
 export const SelectIcon = styled(Icon)`
