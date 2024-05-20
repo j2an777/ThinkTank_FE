@@ -23,7 +23,7 @@ export const useLike = (
 
       return { previousLikeType: initialLikeType, previousLikeCount: initialLikeCount };
     },
-    onError: (error, variables, context) => {
+    onError: (error, _, context) => {
       if (context) {
         // 에러 발생 시 이전 상태로 되돌리기
         queryClient.setQueryData(['likes', postId], {

@@ -6,7 +6,7 @@ const LoginPage = () => {
   return (
     <S.Container>
       <AuthBackground />
-      <ShadowBox padding={50} height={850}>
+      <ShadowBox padding={50} height={800}>
         <LoginForm />
       </ShadowBox>
     </S.Container>

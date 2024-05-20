@@ -1,10 +1,11 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import * as S from '../articles/styles';
+import * as S from './styles';
 import { getMypageArticles } from '@/apis/mypage';
 import { useEffect, useRef } from 'react';
 import { MypageArticles, SolvedArticles } from '@/types';
 import SkeletonBox from '@/components/loader/skeleton';
-import SolvedBox from './SolvedBox';
+import { Text } from '@/components/shared';
+import { CodeBox } from '@/components/post';
 
 const SolvedMenu = ({ value }: Pick<MypageArticles, 'value'>) => {
   const queryEmail = new URLSearchParams(location.search).get('user');
@@ -47,9 +48,17 @@ const SolvedMenu = ({ value }: Pick<MypageArticles, 'value'>) => {
       ) : (
         data?.pages.map((page) =>
           page.posts.map((post: SolvedArticles) => (
-            <div key={post.postId}>
-              <SolvedBox data={post} />
-            </div>
+            <S.Block key={post.postId}>
+              <Text typography="t1" bold="regular" color="black">
+                {post.postNumber}. {post.title}
+              </Text>
+              <CodeBox
+                readOnly
+                layout={false}
+                code={post.code}
+                language={post.language}
+              />
+            </S.Block>
           )),
         )
       )}

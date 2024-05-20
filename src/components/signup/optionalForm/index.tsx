@@ -5,10 +5,9 @@ import { useModalContext } from '@/contexts/ModalContext';
 import { useNavigate } from 'react-router-dom';
 import useForm from '@/hooks/useForm';
 import React from 'react';
-import { User } from '@/types/auth';
 import { putUser } from '@/apis/user';
 
-const OptionalForm = ({ nickname }: Pick<User, 'nickname'>) => {
+const OptionalForm = () => {
   const navigate = useNavigate();
   const { open } = useModalContext();
   const [isFocus, setIsFocus] = useState(false);
@@ -37,14 +36,13 @@ const OptionalForm = ({ nickname }: Pick<User, 'nickname'>) => {
 
   const onSubmit = () => {
     const data = {
-      nickname: nickname,
+      nickname: null,
       github: github,
       blog: blog,
       introduce: text,
-      profileImage: '',
+      profileImage: null,
     };
-    const response = putUser(data);
-    console.log('정보 수정', response);
+    putUser(data);
     navigate('/');
   };
 

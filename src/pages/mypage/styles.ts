@@ -1,26 +1,33 @@
-import { colors } from '@/styles/colorPalette';
-import { layoutMap } from '@/styles/layout';
 import styled from '@emotion/styled';
 
 export const Block = styled.div`
-  ${layoutMap.flexCenter}
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
   flex: 1;
-`;
-
-export const Title = styled.div`
-  font-size: 30px;
-  font-weight: 700;
-`;
-
-export const Subtitle = styled.div`
-  color: ${colors.gray200};
-  font-size: 20px;
-  font-weight: 400;
-  margin-top: 15px;
+  min-width: 900px;
+  @media (max-width: 900px) {
+  }
+  @media (max-width: 570px) {
+    margin-top: 50px;
+  }
 `;
 
 export const Box = styled.div`
   position: sticky;
-  width: 350px;
+  top: 0;
+  left: 0;
+  width: 380px;
   height: 100%;
+  padding: 50px 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 30px;
+
+  @media (max-width: 1300px) {
+    display: none;
+  }
 `;

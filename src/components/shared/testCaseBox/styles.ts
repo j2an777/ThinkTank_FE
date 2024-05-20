@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
 export const TestCaseContainer = styled(motion.div)`
-  width: 800px;
   padding: 20px;
   bottom: 0;
 `;

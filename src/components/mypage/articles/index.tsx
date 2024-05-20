@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import * as S from './styles';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getMypageArticles } from '@/apis/mypage';
 import { MypageArticles } from '@/types/mypage';
 import { ArticleType } from '@/types/article';
@@ -10,6 +10,7 @@ import Article from '@/components/shared/article';
 const ArticlesMenu = ({ value }: Pick<MypageArticles, 'value'>) => {
   const queryEmail = new URLSearchParams(location.search).get('user');
   const loader = useRef(null);
+  const [isOwner, setIsOwner] = useState(false);
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
     useInfiniteQuery({
@@ -38,6 +39,9 @@ const ArticlesMenu = ({ value }: Pick<MypageArticles, 'value'>) => {
     if (loader.current) {
       io.observe(loader.current);
     }
+    if (location.pathname.includes('mypage')) {
+      setIsOwner(true);
+    }
     return () => io.disconnect();
   }, [fetchNextPage, hasNextPage, isFetchingNextPage]);
 
@@ -47,12 +51,11 @@ const ArticlesMenu = ({ value }: Pick<MypageArticles, 'value'>) => {
         <SkeletonBox />
       ) : (
         data?.pages.map((page) =>
-          page.posts.map((post: ArticleType) => {
-            console.log('포스트', post);
-            <div key={post.postId}>
-              <Article article={post} statusFlag="open" />
-            </div>;
-          }),
+          page.posts.map((post: ArticleType) => (
+            <S.Box key={post.postId}>
+              <Article article={post} statusFlag="open" isOwner={isOwner}/>
+            </S.Box>
+          )),
         )
       )}
       <div ref={loader} style={{ height: '100px' }} />

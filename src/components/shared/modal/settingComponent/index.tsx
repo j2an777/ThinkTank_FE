@@ -7,6 +7,7 @@ interface SettingComponentProps {
   open : boolean;
   buttonLabel?: string;
   onButtonClick: () => void;
+  flag?: boolean;
   close?: () => void;
 }
 
@@ -15,6 +16,7 @@ const SettingComponent = ({
   close,
   onButtonClick,
   buttonLabel,
+  flag
 }: SettingComponentProps) => {
   return (
     <>
@@ -30,9 +32,11 @@ const SettingComponent = ({
             <Text typography="t2" color='black'>수정</Text>
           </S.ButtonBox>
           <S.Line />
-          <S.ButtonBox onClick={onButtonClick}>
-            <Text typography="t2" color='red'>{buttonLabel}</Text>
-          </S.ButtonBox>
+          {flag && (
+            <S.ButtonBox onClick={onButtonClick}>
+              <Text typography="t2" color='red'>{buttonLabel}</Text>
+            </S.ButtonBox>
+          )}
       </S.Container>
     </>
   )

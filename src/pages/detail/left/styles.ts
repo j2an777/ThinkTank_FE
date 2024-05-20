@@ -4,12 +4,13 @@ import { css } from '@emotion/react';
 import { layoutMap } from '@/styles/layout';
 
 export const Container = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   border-right: 1px solid ${colors.gray50};
-  min-width: 800px;
+  min-width: 600px;
+  width: 800px;
   height: 100vh;
-  position: relative;
 `;
 
 export const fallbackContentCss = css`

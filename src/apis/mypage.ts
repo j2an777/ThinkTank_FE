@@ -1,7 +1,7 @@
 import { MypageArticles } from '@/types/mypage';
 import instance from './instance';
 
-/** MYPAGE 게시글 조회 */
+/* MYPAGE 게시글 조회 */
 export const getMypageArticles = async ({ page, size, value, email }: MypageArticles) => {
   try {
     const response = await instance.get('/api/users/profile', {
@@ -21,7 +21,7 @@ export const getMypageArticles = async ({ page, size, value, email }: MypageArti
   }
 };
 
-/** 타인 프로필 조회 */
+/* 타인 프로필 조회 */
 export const getOthersProfile = async (email: string | null) => {
   try {
     const response = await instance.get('/api/users/profile', {

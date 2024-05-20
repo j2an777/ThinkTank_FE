@@ -1,5 +1,5 @@
-import { colors } from '@/styles/colorPalette';
-import { css } from '@emotion/react';
+import { Icon } from '@/components/shared';
+import { layoutMap } from '@/styles/layout';
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
@@ -10,19 +10,13 @@ export const Container = styled.div`
   padding: 30px;
 `;
 
-export const IconCss = css`
+export const CancelIcon = styled(Icon)`
   margin-bottom: 15px;
   margin-left: auto;
 `;
 
-export const testButton = css`
-  font-size: 24px;
-  font-weight: bold;
-
-  background-color: ${colors.yellow};
-  color: white;
-  padding: 10px 50px;
-  border-radius: 50px;
+export const QuestionIcon = styled(Icon)`
+  ${layoutMap.borderCircleIcon}
 `;
 
 export const ButtonBox = styled.div`

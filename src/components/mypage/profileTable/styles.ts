@@ -1,5 +1,6 @@
 import { colors } from '@/styles/colorPalette';
 import { layoutMap } from '@/styles/layout';
+import { typographyMap } from '@/styles/typography';
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
@@ -12,22 +13,23 @@ export const Container = styled.div`
 
 export const Table = styled.div`
   display: flex;
-  height: 550px;
+  height: 700px;
   border-top: 1px solid ${colors.gray200};
 `;
 
 export const Thead = styled.div`
+  ${layoutMap.flexCenter}
   flex: 1;
+  min-width: 150px;
   background: ${colors.yellow};
-  text-align: center;
-  font-size: 24px;
-  font-weight: 500;
+  ${typographyMap.semibold}
+  ${typographyMap.t4}
 `;
 
 export const Tbody = styled.div`
+  display: table;
   flex: 4;
-  font-size: 20px;
-  font-weight: 400;
+  ${typographyMap.t5}
 `;
 
 export const Th = styled.div<{ height: number }>`
@@ -62,6 +64,16 @@ export const Input = styled.input`
   padding: 10px 20px;
   border-radius: 5px;
   border: 1px solid ${colors.gray};
-  font-size: 20px;
+  ${typographyMap.t5}
   outline: none;
+`;
+
+export const TextArea = styled.textarea`
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid ${colors.gray};
+  ${typographyMap.t5}
+  outline: none;
+  width: 70%;
+  height: 60%;
 `;

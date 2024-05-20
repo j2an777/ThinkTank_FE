@@ -21,6 +21,8 @@ jobs:
         run: pnpm install
 
       - name: Build
+        env:
+          VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
         run: pnpm run build
 
       - name: Configure AWS credentials

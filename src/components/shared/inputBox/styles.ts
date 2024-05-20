@@ -1,11 +1,15 @@
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colorPalette';
+import { typographyMap } from '@/styles/typography';
 
 export const Label = styled.div<{ isFocus: boolean }>`
+  ${typographyMap.t5}
+  ${typographyMap.medium}
   color: ${(props) => (props.isFocus ? `${colors.yellow}` : `${colors.gray100}`)};
 `;
 
 export const Input = styled.input<{ isFocus: boolean }>`
+  ${typographyMap.t5}
   width: 100%;
   padding: 15px;
   margin: 10px 0;

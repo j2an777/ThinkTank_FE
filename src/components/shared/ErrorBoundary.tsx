@@ -48,11 +48,15 @@ class ErrorBoundary extends Component<
     const { navigate } = this.props;
     if (error) {
       const { open } = this.context as ModalContextValue;
+      const errorMessage =
+        error instanceof AxiosError && error.response
+          ? error.response.data.message || '알 수 없는 에러가 발생했습니다.'
+          : '알 수 없는 에러가 발생했습니다.';
       if (errorCase === 'Bad Request') {
         open({
           onButtonClick: () => this.resetErrorBoundary(),
           title: '빈 값을 확인해주세요',
-          description: error?.message,
+          description: errorMessage,
           type: 'alert',
           buttonLabel: '확인',
         });
@@ -66,6 +70,7 @@ class ErrorBoundary extends Component<
           description: '로그인 후 이용 가능한 서비스입니다.',
           type: 'alert',
           buttonLabel: '이동',
+          hasCancelButton: true,
         });
       }
     }

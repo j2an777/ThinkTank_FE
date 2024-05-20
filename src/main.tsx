@@ -14,11 +14,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Global styles={globalStyles} />
     <QueryClientProvider client={queryClient}>
-      <ModalContextProvider>
-        <BrowserRouter>
+      <BrowserRouter>
+        <ModalContextProvider>
           <App />
-        </BrowserRouter>
-      </ModalContextProvider>
+        </ModalContextProvider>
+      </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </React.StrictMode>,
