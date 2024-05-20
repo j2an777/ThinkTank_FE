@@ -1,4 +1,4 @@
-# WebIDE 프로젝트 feat.ThinkTank
+# 💛 WebIDE 프로젝트 feat.ThinkTank
 <a href="https://d26i62iijbw0u2.cloudfront.net/">![mockup](https://github.com/j2an777/ThinkTank_FE/assets/110087099/ad97ca46-f23f-4678-9de5-19645999a358)</a>
 <br/>
 
@@ -11,7 +11,7 @@
 <br/>
 ## ✨ 프로젝트 소개
 
-### Think, Share, Develop, ThinkTank
+### Think, Share, Develop, **ThinkTank**
 
 - ThinkTank은 개발자를 위한 **알고리즘 문제풀이 기반 소셜 플랫폼**입니다.
 - 각 유저들은 서로 문제 생성 및 풀이를 통해 상호작용이 이루어집니다.
@@ -41,8 +41,8 @@
 
 **프로젝트 문서**
  
-| 📒 [팀 Notion](https://www.notion.so/96ffa6e6a507434cb352b7ae3a8b9022) | 🎉 [기획안](https://www.notion.so/bab75913e0784267b6d8a326e6c82ec2) | 💌 [요구사항](https://www.notion.so/a961f17b52c54e2198791f393a7169e5) | 🚀 [활동 간 규칙](https://www.notion.so/Ground-rule-626b9da838e842eb90d9104b55006c88) | 💬 [회의, 회고록](https://www.notion.so/349320d273444afabaa9738bd6f48424?v=3b952627e1bd4e37a5f561cfca5faa78&pvs=4)
-| ---- | ---- | ---- | ---- | ---- |
+| 📒 [팀 Notion](https://www.notion.so/96ffa6e6a507434cb352b7ae3a8b9022) | 🎉 [기획안](https://www.notion.so/bab75913e0784267b6d8a326e6c82ec2) | 💌 [요구사항](https://www.notion.so/a961f17b52c54e2198791f393a7169e5) | 🚀 [활동 간 규칙](https://www.notion.so/Ground-rule-626b9da838e842eb90d9104b55006c88) | 💬 [회의, 회고록](https://www.notion.so/349320d273444afabaa9738bd6f48424?v=3b952627e1bd4e37a5f561cfca5faa78&pvs=4) | 💯 [컨벤션](https://www.notion.so/68aa5fdfd8fe4bbeb66a37a13c840736?pvs=4) |
+| ---- | ---- | ---- | ---- | ---- | ---- |
 <br/>
 
 ## 📅 프로젝트 일정
@@ -64,12 +64,12 @@
 
 <br/>
 
-## 아키텍처
+## ✔ 아키텍처
 <img width="833" alt="architecture" src="https://github.com/j2an777/ThinkTank_FE/assets/110087099/6623c7cb-e595-45b6-a970-df7e1d5cb0f9">
 
 <br/>
 
-## Fe. 기술스택 및 선정이유
+## 💥 기술스택 및 선정이유
 ![스크린샷 2024-04-29 오전 9 30 50(2)](https://github.com/Goorm-Lucky7/ThinkTank_FE/assets/83047601/ba2b9c2e-0b30-4d03-9e4f-c86980f2a171)
 <br/>
 
@@ -77,35 +77,40 @@
 
 ```
 src
-  ᄂ apis
-  ᄂ components
-    ᄂ shared (여러 컴포넌트에 쓰일 시)
-    ᄂ mainPage
-    ᄂ profilePage
-    ...
-  ᄂ hooks
-    ᄂ shared (여러 컴포넌트에 쓰일 시)
-    ᄂ mainPage
-    ᄂ profilePage
-    ...
-  ᄂ pages (layout)
-    ᄂ mainPage
-    ᄂ profilePage
-    ...
-  ᄂ routes
-    ᄂ Protect.tsx
-    ...
-  ᄂ styles
-    ᄂ globalStyles.ts
-    ᄂ typography.ts
-    ...
-  ᄂ sotres (zustand)
-    ᄂ index.ts (리듀서 관리)
-    ᄂ searchStore
-    ᄂ fileStore
-  ᄂ types
-    ᄂ user.ts
-    ᄂ post.ts
+  ᄂ apis (api)
+  ᄂ assets (폰트, 이미지[gif, png, jpg])
+    ㄴ fonts
+    ㄴ images
+  ᄂ components (컴포넌트)
+    ᄂ detail
+    ᄂ loader
+    ᄂ loginForm
+    ㄴ main
+    ㄴ mypage
+    ㄴ nav
+    ㄴ post
+    ㄴ shared [재사용]
+    ㄴ signup
+  ㄴ consts (데이터 모음)
+  ㄴ contexts (프로바이더)
+  ᄂ hooks (커스텀 훅)
+    ᄂ auth
+    ᄂ detail
+    ᄂ like
+    ㄴ post
+  ᄂ pages (레이아웃)
+    ᄂ detail
+    ᄂ error
+    ㄴ login
+    ㄴ main
+    ㄴ mypage
+    ㄴ post
+    ㄴ signup
+  ᄂ routes (라우터)
+  ㄴ stores (전역 저장소)
+  ᄂ styles (스타일)
+  ᄂ types (타입)
+  ㄴ utils (계산 커스텀 함수)
     ...
   ᄂ App.tsx
 ```
