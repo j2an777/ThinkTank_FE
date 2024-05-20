@@ -6,11 +6,13 @@ import { Icon, StyledButton } from '@/components/shared';
 
 import * as S from './styles';
 import { postArticle } from '@/apis/article';
+import { useState } from 'react';
 
 const PostRight = () => {
   const navigate = useNavigate();
   const { open } = useModalContext();
   const postForm = postFormStore((state) => state.postForm);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   return (
     <S.Container>
       <Icon
@@ -31,12 +33,18 @@ const PostRight = () => {
         onClick={() =>
           open({
             title: '게시글을 올리겠습니까?',
-            onButtonClick: () => postArticle(postForm).then(() => navigate('/')),
+            onButtonClick: () => {
+              setIsLoading(true);
+              postArticle(postForm)
+                .then(() => navigate('/'))
+                .finally(() => setIsLoading(false));
+            },
             hasCancelButton: true,
             buttonLabel: '확인',
           })
         }
         css={S.testButton}
+        disabled={isLoading}
       >
         Post
       </StyledButton>

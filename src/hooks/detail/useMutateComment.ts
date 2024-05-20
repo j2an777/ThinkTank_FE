@@ -14,13 +14,11 @@
 //       await queryClient.cancelQueries({
 //         queryKey: ['comments', postId],
 //       });
-//       const previousComments = queryClient.getQueriesData({
-//         queryKey: ['comments', postId],
-//       });
+//       const previousComments = queryClient.getQueryData(['comments', postId]);
 //       if (previousComments) {
-//         queryClient.setQueriesData(['comment', postId], {
+//         queryClient.setQueryData(['comments', postId], {
 //           ...previousComments,
-//           items: [...previousComments.items, {}],
+//           comments: [...previousComments.comments],
 //         });
 //       }
 //     },

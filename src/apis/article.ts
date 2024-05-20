@@ -31,22 +31,13 @@ export const postArticle = async (
   return response?.data;
 };
 
-export const deleteArticle = async (postId: number): Promise<void> => {
-  const response = await instance.delete('/api/posts', {
-    data: { postId: postId },
-  });
-  console.log(response);
+interface postCheckState {
+  code: string;
+  language: string;
+  postId: string;
 }
 
-export const postCheck = async (
-  formData: Pick<ArticleDetail, 'language' | 'code'>,
-  postId: string,
-) => {
-  const newFormData = {
-    code: formData.code,
-    language: formData.language,
-    postId,
-  };
-  const response = await instance.post('api/posts/submit', newFormData);
+export const postCheck = async (formData: postCheckState) => {
+  const response = await instance.post('api/posts/submit', formData);
   return response.data;
 };
