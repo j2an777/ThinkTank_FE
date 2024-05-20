@@ -1,4 +1,5 @@
 import { colors } from "@/styles/colorPalette";
+import { typographyMap } from "@/styles/typography";
 import styled from "@emotion/styled";
 
 export const MltContainer = styled.div`
@@ -11,6 +12,11 @@ export const MltContainer = styled.div`
     align-items : center;
     justify-content : center;
     gap : 30px;
+
+    @media (max-width: 570px) {
+        width : 90vw;
+        margin : 30px 0 0 0;
+    }
 `;
 
 export const MlUserBox = styled.div`
@@ -20,6 +26,7 @@ export const MlUserBox = styled.div`
     align-items : center;
     justify-content : flex-start;
     gap : 20px;
+    margin : 15px 0 0 0;
 `;
 
 export const AvatarBlock = styled.div`
@@ -38,4 +45,21 @@ export const MlInfoBlock = styled.div`
     display : flex;
     flex-direction : column;
     justify-content : space-between;
+
+    a {
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+
+    @media (max-width : 900px) {
+        height : 80%;
+        #userP {
+            ${typographyMap.t4};
+        }
+
+        #createP {
+            ${typographyMap.t6};
+        }
+    }
 `;
