@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
   position: relative;
   display: flex;
-  padding: 50px 150px;
+  padding: 50px 3vw;
   width: 100%;
   min-height: 300px;
 `;
@@ -31,13 +31,18 @@ export const Contact = styled.div`
   align-items: center;
   margin-top: 12px;
   gap: 20px;
+  ${typographyMap.t4};
+
+  @media (max-width: 580px) {
+    ${typographyMap.t6};
+    flex-direction: column;
+  }
 `;
 
 export const Block = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  ${typographyMap.t4};
 `;
 
 export const Info = styled.div`
@@ -53,5 +58,5 @@ export const UserIntro = styled.div`
 export const Edit = styled.button`
   display: relative;
   position: absolute;
-  right: 150px;
+  right: 1vw;
 `;

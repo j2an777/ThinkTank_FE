@@ -20,6 +20,18 @@ export const Block = styled.div`
   }
 `;
 
+export const Box = styled.div`
+  ${layoutMap.shadowBox}
+  display: flex;
+  gap: 30px;
+  @media (min-width: 1050px) {
+    min-width: 950px;
+  }
+  @media (max-width: 1049px) {
+    min-width: 750px;
+  }
+`;
+
 export const Title = styled.div`
   ${typographyMap.t1}
 `;

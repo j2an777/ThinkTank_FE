@@ -23,7 +23,6 @@ const SolvedMenu = ({ value }: Pick<MypageArticles, 'value'>) => {
         }),
       initialPageParam: 0,
       getNextPageParam: (lastPage) => lastPage.nextPage,
-      staleTime: 1000 * 60 * 5, // 5분
     });
 
   useEffect(() => {

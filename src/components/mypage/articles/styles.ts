@@ -6,15 +6,22 @@ export const Container = styled.div`
   ${layoutMap.flexCenter}
   gap: 40px;
   margin-top: 40px;
+  width: 100%;
+`;
+
+export const Block = styled.div`
+  width: 90%;
+  min-width: 90%;
+  display: flex;
+  justify-content: start;
+  box-sizing: border-box;
+  min-height: 100px;
 `;
 
 export const Box = styled.div`
-  @media (min-width: 1050px) {
-    min-width: 950px;
-  }
-  @media (max-width: 1049px) {
-    min-width: 750px;
-  }
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 500px;
 `;
 
 export const Title = styled.div`
