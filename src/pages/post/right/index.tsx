@@ -3,10 +3,10 @@ import { CodeBox } from '@/components/post';
 import { useNavigate } from 'react-router-dom';
 import { postFormStore } from '@/stores/post';
 import { Icon, StyledButton } from '@/components/shared';
-
-import * as S from './styles';
 import { postArticle } from '@/apis/article';
 import { useState } from 'react';
+
+import * as S from './styles';
 
 const PostRight = () => {
   const navigate = useNavigate();
@@ -37,6 +37,7 @@ const PostRight = () => {
               setIsLoading(true);
               postArticle(postForm)
                 .then(() => navigate('/'))
+                .catch((error) => console.log(error))
                 .finally(() => setIsLoading(false));
             },
             hasCancelButton: true,

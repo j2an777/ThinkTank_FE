@@ -44,19 +44,6 @@ export default function LoginForm() {
     }
   };
 
-  // const kakaoLogin = async () => {
-  //   window.open(import.meta.env.VITE_KAKAO_URL);
-  //   try {
-  //     const response = await getKakaoLogin();
-  //     const accessToken = response.accessToken;
-  //     setAccess(accessToken);
-  //     console.log('로그인 성공:', response);
-  //     navigate(-1);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   return (
     <S.Container>
       <S.LeftBox>
@@ -89,13 +76,6 @@ export default function LoginForm() {
           </S.Signup>
           <StyledButton width="100%">로그인</StyledButton>
         </S.Form>
-        {/* <S.Social>
-          간편하게 로그인하세요!
-          <S.KakaoButton onClick={kakaoLogin}>
-            <Icon value="kakao" />
-            <p>카카오 로그인</p>
-          </S.KakaoButton>
-        </S.Social> */}
       </S.RightBox>
     </S.Container>
   );

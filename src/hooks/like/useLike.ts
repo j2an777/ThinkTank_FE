@@ -31,7 +31,6 @@ export const useLike = (
           likeType: context.previousLikeType,
         });
       }
-      console.error('좋아요 업데이트 실패', error);
     },
     onSettled: () => {
       queryClient.invalidateQueries({
@@ -42,7 +41,6 @@ export const useLike = (
 
   const toggleLike = useCallback(() => {
     if (typeof postId !== 'number') {
-      console.error('postId is undefined, toggleLike will not execute.');
       return;
     }
     mutation.mutate();

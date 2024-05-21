@@ -71,25 +71,16 @@ const Article = ({ article, statusFlag, isOwner }: ArticleProps) => {
         type: 'setting',
         buttonLabel: '삭제',
         flag: true,
-        onButtonClick: async () => {
-          
-        },
+        onButtonClick: async () => {},
       });
     } else {
       open({
         title: '설정',
         type: 'setting',
         flag: false,
-        onButtonClick: async () => {
-          try {
-            await deleteArticle(article.postId);
-          } catch (error) {
-            console.error(error);
-          }
-        },
+        onButtonClick: async () => await deleteArticle(article.postId),
       });
     }
-    
   };
 
   return (

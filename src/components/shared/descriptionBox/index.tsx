@@ -2,6 +2,7 @@ import { Line, Text } from '@/components/shared';
 import { TextareaField } from '@/components/post';
 import { ChangeEvent } from 'react';
 import { ArticleDetail } from '@/types';
+import getCategoryName from '@/utils/getCategoryName';
 
 import * as S from './styles';
 
@@ -29,7 +30,7 @@ const renderComponent = ({
     case 'detail':
       return (
         <>
-          <Text typography="t2">{`${category} > ${title}`}</Text>
+          <Text typography="t2">{`${getCategoryName(category)} > ${title}`}</Text>
           <S.DetailContentBox>
             <Text typography="t3" bold="bold">
               {title}

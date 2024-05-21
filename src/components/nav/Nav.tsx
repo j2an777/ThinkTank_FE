@@ -12,7 +12,7 @@ const notComplete = ['Search', 'Problem', 'Setting'];
 const Nav = () => {
   const [iconSize, setIconSize] = useState(48);
   const [buttonSize, setButtonSize] = useState<ButtonSize>('large');
-  const [buttonContent, setButtonContent] = useState('post');
+  const [buttonContent, setButtonContent] = useState('Post');
   const { open } = useModalContext();
   useEffect(() => {
     const handleResize = () => {
