@@ -3,7 +3,7 @@ import { ArticleType } from '@/types/article';
 import React from 'react';
 import useGetPosts from '@/hooks/post/useGetPosts';
 import CircleLoader from '@/components/loader/circleLoader';
-import MainListItem from '../mainListItem';
+import MainListItem from '../MainListItem';
 
 const MainList = () => {
   const { data, ref, isFetchingNextPage } = useGetPosts();
