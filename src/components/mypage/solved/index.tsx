@@ -11,20 +11,18 @@ const SolvedMenu = ({ value }: Pick<MypageArticles, 'value'>) => {
   const queryEmail = new URLSearchParams(location.search).get('user');
   const loader = useRef(null);
 
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
-    useInfiniteQuery({
-      queryKey: [value, queryEmail],
-      queryFn: ({ pageParam }) =>
-        getMypageArticles({
-          page: pageParam,
-          size: 10,
-          value: value,
-          email: queryEmail,
-        }),
-      initialPageParam: 0,
-      getNextPageParam: (lastPage) => lastPage.nextPage,
-      staleTime: 1000 * 60 * 5, // 5분
-    });
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
+    queryKey: [value, queryEmail],
+    queryFn: ({ pageParam }) =>
+      getMypageArticles({
+        page: pageParam,
+        size: 10,
+        value: value,
+        email: queryEmail,
+      }),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => lastPage.nextPage,
+  });
 
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -43,7 +41,7 @@ const SolvedMenu = ({ value }: Pick<MypageArticles, 'value'>) => {
 
   return (
     <S.Container>
-      {isLoading ? (
+      {hasNextPage ? (
         <SkeletonBox />
       ) : (
         data?.pages.map((page) =>

@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 import { Component, PropsWithChildren } from 'react';
 
 interface ErrorBoundaryState {
-  error: Error | AxiosError | null;
+  error: AxiosError | null | Error;
   errorCase: 'unauthorized' | 'get' | 'Bad Request' | null;
 }
 
@@ -36,9 +36,9 @@ class ErrorBoundary extends Component<
       const status = reason.response.status;
       switch (status) {
         case 400:
-          return this.setState({ error: reason.response, errorCase: 'Bad Request' });
+          return this.setState({ error: reason, errorCase: 'Bad Request' });
         case 401:
-          return this.setState({ error: reason.response, errorCase: 'unauthorized' });
+          return this.setState({ error: reason, errorCase: 'unauthorized' });
       }
     }
   }
@@ -46,11 +46,11 @@ class ErrorBoundary extends Component<
   render() {
     const { error, errorCase } = this.state;
     const { navigate } = this.props;
+    const { open } = this.context as ModalContextValue;
     if (error) {
-      const { open } = this.context as ModalContextValue;
       const errorMessage =
         error instanceof AxiosError && error.response
-          ? error.response.data.message || '알 수 없는 에러가 발생했습니다.'
+          ? error.response.data.message
           : '알 수 없는 에러가 발생했습니다.';
       if (errorCase === 'Bad Request') {
         open({

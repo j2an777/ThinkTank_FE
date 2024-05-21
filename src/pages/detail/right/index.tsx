@@ -8,9 +8,11 @@ import { StyledButton } from '@/components/shared';
 import InfoStatus from '@/components/shared/infoStatus';
 import { getAccess } from '@/hooks/auth/useLocalStorage';
 import withSuspense from '@/hooks/withSuspense';
+import { useState } from 'react';
 
 import * as S from './styles';
-import { useState } from 'react';
+import Dimmed from '@/components/shared/modal/Dimmed';
+import CircleLoader from '@/components/loader/circleLoader';
 
 const DetailRight = () => {
   const navigate = useNavigate();
@@ -21,18 +23,20 @@ const DetailRight = () => {
   const {
     data: { commentCount, code: answer, language: answerAnswer },
   } = useGetPost();
-
   const handleSubmit = async () => {
     setIsLoading(true);
+
     const access = getAccess();
     if (access && postId) {
-      await postCheck({ code, language, postId }).then(() =>
-        open({
-          title: '정답입니다',
-          onButtonClick: () => {},
-          buttonLabel: '확인',
-        }),
-      );
+      await postCheck({ code, language, postId })
+        .then(() =>
+          open({
+            title: '정답입니다',
+            onButtonClick: () => {},
+            buttonLabel: '확인',
+          }),
+        )
+        .finally(() => setIsLoading(false));
     } else {
       open({
         onButtonClick: () => navigate('/login'),
@@ -43,7 +47,6 @@ const DetailRight = () => {
         hasCancelButton: true,
       });
     }
-    setIsLoading(false);
   };
   return (
     <S.Container>
@@ -80,6 +83,11 @@ const DetailRight = () => {
           Submit
         </StyledButton>
       </S.ButtonBox>
+      {isLoading && (
+        <Dimmed>
+          <CircleLoader />
+        </Dimmed>
+      )}
     </S.Container>
   );
 };

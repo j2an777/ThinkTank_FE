@@ -17,6 +17,7 @@ interface ModalProps {
   close?: () => void;
   type?: ModalType;
   code?: string;
+  flag?: boolean;
   language?: LanguageNames;
 }
 

@@ -23,7 +23,7 @@ export const useLike = (
 
       return { previousLikeType: initialLikeType, previousLikeCount: initialLikeCount };
     },
-    onError: (error, _, context) => {
+    onError: (_error, _, context) => {
       if (context) {
         // 에러 발생 시 이전 상태로 되돌리기
         queryClient.setQueryData(['likes', postId], {
@@ -31,7 +31,6 @@ export const useLike = (
           likeType: context.previousLikeType,
         });
       }
-      console.error('좋아요 업데이트 실패', error);
     },
     onSettled: () => {
       queryClient.invalidateQueries({
@@ -42,7 +41,6 @@ export const useLike = (
 
   const toggleLike = useCallback(() => {
     if (typeof postId !== 'number') {
-      console.error('postId is undefined, toggleLike will not execute.');
       return;
     }
     mutation.mutate();

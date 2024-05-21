@@ -17,7 +17,6 @@ const MainListItem = ({ listItem }: ListItemProps) => {
   const [iconSize, setIconSize] = useState(105);
 
   useEffect(() => {
-    console.log(window.innerWidth);
     const handleResize = () => {
       if (window.innerWidth <= 900) {
         setIconSize(70);
