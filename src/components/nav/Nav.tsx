@@ -27,7 +27,7 @@ const Nav = () => {
       } else {
         setIconSize(48);
         setButtonSize('large');
-        setButtonContent('post');
+        setButtonContent('Post');
       }
     };
 
