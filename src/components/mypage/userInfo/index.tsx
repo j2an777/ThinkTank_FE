@@ -41,7 +41,7 @@ const UserInfo = () => {
     }
 
     fetchUserData();
-  }, []);
+  }, [location.search]);
 
   const contactInfo = [
     { key: 'email', value: data?.email, icon: 'email' },
