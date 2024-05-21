@@ -51,7 +51,7 @@ const ArticlesMenu = ({ value }: Pick<MypageArticles, 'value'>) => {
         data?.pages.map((page) =>
           page.posts.map((post: ArticleType) => (
             <S.Block key={post.postId}>
-              <Article article={post} statusFlag="open" />
+              <Article article={post} statusFlag="open" isOwner={isOwner} />
             </S.Block>
           )),
         )

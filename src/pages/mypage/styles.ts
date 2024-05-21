@@ -33,7 +33,7 @@ export const Block = styled.div`
 
 export const Box = styled.div`
   position: sticky;
-  min-width: 380px;
+  min-width: 300px;
   height: 100%;
 
   @media (max-width: 1600px) {
